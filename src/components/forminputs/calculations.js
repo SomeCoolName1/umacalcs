@@ -51,6 +51,8 @@ const Calculations = ({ stats }) => {
 
   const [recoverySkills, setRecovery] = useState(staminaSkills);
 
+  if (!track) return;
+
   //Coefficients and variables
   const { speed, stamina, power, guts, int } = stats;
   const { umaStrategy, umaMotivation } = umaStratMot;
