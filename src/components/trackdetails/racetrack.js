@@ -5,14 +5,18 @@ import "./racetrack.scss";
 
 const Racetrack = () => {
   const track = useSelector((state) => state.track);
-  const { corners, straights, slopes, distance } = track;
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
 
   useEffect(() => {
+    if (!track) return;
     sortCornersStraight();
     sortSlopes();
   }, [track]);
+
+  if (!track) return;
+
+  const { corners, straights, slopes, distance } = track;
 
   const lastSpurtDistance = distance - distance / 3;
 
