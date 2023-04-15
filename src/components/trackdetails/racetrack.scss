@@ -1,0 +1,11 @@
+.race-track-details {
+  display: flex;
+
+  & > * {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0; //Lets items shrink inside container
+  }
+}

@@ -1,0 +1,54 @@
+@use "../../App.scss";
+
+.stamina-equivalent-container {
+  @include App.skillGrid(35px, "green");
+  button {
+    color: App.$recoveryClr;
+    border: 1px App.$recoveryClr solid;
+  }
+  white-space: nowrap;
+
+  .stamina-details {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.adjusted-stats-container {
+  @include App.uma-stat();
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .uma-stat {
+    flex-direction: column;
+    align-items: center;
+  }
+  .label-value {
+    flex: 1 0;
+    width: 100%;
+    max-width: 158px;
+  }
+}
+
+.speed-accel-container {
+  padding: 10px;
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    & > *:not(:last-child) {
+      border-right: 1px App.$primaryClr solid;
+    }
+  }
+  .speed-accel-phase {
+    border-bottom: 1px App.$primaryClr solid;
+  }
+}
+
+.recoveredStamina {
+  color: App.$recoveryClr;
+}
+
+.debuffedStamina {
+  color: App.$debuffClr;
+}

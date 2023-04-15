@@ -1,0 +1,167 @@
+$primaryClr: rgb(105, 193, 12);
+$secondaryClr: rgb(236, 233, 236);
+$fontClr: rgb(0, 0, 0);
+$recoveryClr: rgb(25, 200, 252);
+$debuffClr: rgb(247, 94, 94);
+
+//FONTS
+@font-face {
+  font-family: "umaJPFont";
+  src: url(".//fonts/dynamic01.otf");
+
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  outline-color: transparent;
+  outline-style: none;
+  box-sizing: border-box;
+  word-break: keep-all;
+
+  font-family: "umaJPFont", sans-serif;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+h1 {
+  background-color: $primaryClr;
+  text-align: left;
+  padding: 4px 8px;
+  color: white;
+  text-transform: uppercase;
+  font-size: large;
+}
+
+h2 {
+  text-align: left;
+  padding: 4px 4px;
+  color: $primaryClr;
+  text-transform: uppercase;
+  font-size: smaller;
+  border-bottom: 2px solid $primaryClr;
+}
+
+h3 {
+  text-align: left;
+  padding: 4px 4px;
+  color: $primaryClr;
+  text-transform: uppercase;
+  font-size: small;
+}
+
+p,
+span {
+  font-size: 0.9rem;
+}
+
+@mixin uma-stat() {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @media (max-width: 1450px) {
+    justify-content: center;
+  }
+
+  .uma-stat,
+  .uma-aptitude {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+    max-width: 340px;
+
+    @media (max-width: 1000px) {
+      max-width: 190px;
+      min-width: 160px;
+    }
+
+    label {
+      @include labelContainer(50%);
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+  }
+
+  input,
+  select,
+  .label-value {
+    border-bottom: 2px solid $secondaryClr;
+    text-align: center;
+  }
+  input:focus,
+  select:focus {
+    border-bottom: 2px solid $primaryClr;
+  }
+}
+
+@mixin button($radius, $minWidth) {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 100%;
+  height: #{$radius}; //Typically 40px
+  min-width: #{$minWidth}; //Typically 125px
+  width: #{$radius}; //typically 10%
+  transition: all 0.3s ease-out 0.1s;
+  background: transparent;
+  color: $primaryClr;
+  border: 1px $primaryClr solid;
+  align-items: center;
+
+  &:hover {
+    background: $primaryClr;
+    color: white;
+  }
+}
+
+@mixin skillGrid($buttonradius, $borderClr) {
+  display: grid;
+  //grid-template-columns: repeat(auto-fit, minmax(<base>, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
+  grid-gap: 10px;
+  justify-content: space-between;
+
+  & > * {
+    display: flex;
+    padding: 4px 8px;
+    border: 2px $borderClr solid;
+    justify-content: space-between;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  button:not(.passive-skills-list) {
+    @include button($buttonradius, $buttonradius);
+    font-size: large;
+  }
+
+  .disabled {
+    pointer-events: none;
+    border: 1px gray solid;
+    color: gray;
+  }
+}
+
+@mixin labelContainer($width) {
+  width: $width;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $secondaryClr;
+  word-break: keep-all;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+// transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;

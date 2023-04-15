@@ -1,0 +1,73 @@
+@use "../App.scss";
+
+input {
+  text-align: center;
+}
+
+.main-container {
+  text-align: center;
+  margin: 0 auto;
+  &:not(.title-block-container) {
+    width: 90%;
+  }
+}
+.uma-stats-container,
+.uma-aptitude-container {
+  @include App.uma-stat();
+  margin-bottom: 10px;
+}
+
+.uma-stats-container {
+  padding-top: 20px;
+  .uma-stat {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.uma-aptitude-container {
+  padding-bottom: 10px;
+  .uma-aptitude {
+    flex-direction: row;
+    justify-content: center;
+
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      width: 80px;
+    }
+  }
+}
+
+.uma-label {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  & > * {
+    transition: all 0.3s ease-out 0.1s;
+  }
+
+  .jp-label {
+    position: absolute;
+    display: block;
+  }
+
+  .en-label {
+    display: block;
+    transform: translateY(50px);
+  }
+
+  &:hover .en-label {
+    transform: translateY(0px);
+  }
+
+  &:hover .jp-label {
+    transform: translateY(-50px);
+  }
+}

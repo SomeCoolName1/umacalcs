@@ -1,0 +1,58 @@
+@use "../../App.scss";
+
+.passives-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > * {
+    flex: 1;
+  }
+  .passive-sum-total {
+    text-align: right;
+  }
+
+  button {
+    transition: all 0.1s ease-out 0.1s;
+    margin-left: 10px;
+    border-radius: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+    &:hover {
+      background: App.$primaryClr;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
+
+.passive-container {
+  @include App.skillGrid(35px, rgb(105, 193, 12));
+  & > * {
+    white-space: nowrap;
+  }
+}
+
+.gold-passive-container,
+.evolved-passive-container {
+  @include App.skillGrid(35px, rgb(105, 193, 12));
+}
+
+.number-of-passives {
+  display: flex;
+  flex-direction: row;
+  p {
+    margin: 0px 10px 0px 10px; //top right bottom left
+  }
+}
+
+.passive {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: rows;
+}
+
+.passive-details {
+  display: flex;
+}
