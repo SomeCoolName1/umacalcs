@@ -1,5 +1,13 @@
+@use "../../App.scss";
+
 .course-details-container {
   display: flex;
+  @include App.uma-stat();
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
 
   & > * {
     display: flex;
@@ -7,5 +15,21 @@
     flex-direction: column;
     flex: 1;
     min-width: 0; //Lets items shrink inside container
+  }
+
+  .race-type {
+    flex-direction: row;
+    justify-content: center;
+    @media (max-width: 1000px) {
+      max-width: 300px;
+      min-width: 250px;
+    }
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      width: 200px;
+    }
   }
 }

@@ -46,53 +46,68 @@ const Coursedetails = () => {
     <>
       <h1>Track Details</h1>
       <div className="course-details-container">
-        <label for="course-racetrack">Racetrack</label>
-        <select
-          className="course-details"
-          name="course-racetrack"
-          onChange={(e) => trackCourseSelect(e)}
-        >
-          <option value="10001">Sapporo (札幌)</option>
-          <option value="10002">Hakodate (函館)</option>
-          <option value="10003">Niigata (新潟)</option>
-          <option value="10004">Fukushima (福島)</option>
-          <option value="10005">Nakayama (中山)</option>
-          <option value="10006">Tokyo (東京)</option>
-          <option value="10007">Chukyo (中京)</option>
-          <option value="10008">Kyoto (京都)</option>
-          <option value="10009">Hanshin (阪神)</option>
-          <option value="10010">Kokura (小倉)</option>
-          <option value="10101">Ooi (大井)</option>
-          <option value="10103">Kawasaki (川崎)</option>
-          <option value="10104">Funabashi (船橋)</option>
-          <option value="10105">Morioka (盛岡)</option>
-        </select>
-        <label for="course-racetrack">Distance</label>
-        <select
-          className="course-details"
-          name="course-distance"
-          onChange={(e) => trackDistanceSelect(e)}
-        >
-          {trackList
-            ? Object.values(trackList).map((track, index) => (
-                <option value={index}>
-                  {track.surface === 1 ? "芝 " : `ダート `}
-                  {track.distance}
-                </option>
-              ))
-            : ""}
-        </select>
-        <label for="ground-condition">Ground Condition</label>
-        <select
-          className="ground-details"
-          name="ground-condition"
-          onChange={(e) => groundSelect(e)}
-        >
-          <option value="良">良</option>
-          <option value="稍重">稍重</option>
-          <option value="重">重</option>
-          <option value="不良">不良</option>
-        </select>
+        <div className="course-racetrack-container race-type">
+          <label for="course-racetrack" className="uma-label label">
+            <span className="jp-label">レース場</span>
+            <span className="en-label">Racetrack</span>
+          </label>
+          <select
+            className="course-details"
+            name="course-racetrack"
+            onChange={(e) => trackCourseSelect(e)}
+          >
+            <option value="10001">Sapporo (札幌)</option>
+            <option value="10002">Hakodate (函館)</option>
+            <option value="10003">Niigata (新潟)</option>
+            <option value="10004">Fukushima (福島)</option>
+            <option value="10005">Nakayama (中山)</option>
+            <option value="10006">Tokyo (東京)</option>
+            <option value="10007">Chukyo (中京)</option>
+            <option value="10008">Kyoto (京都)</option>
+            <option value="10009">Hanshin (阪神)</option>
+            <option value="10010">Kokura (小倉)</option>
+            <option value="10101">Ooi (大井)</option>
+            <option value="10103">Kawasaki (川崎)</option>
+            <option value="10104">Funabashi (船橋)</option>
+            <option value="10105">Morioka (盛岡)</option>
+          </select>
+        </div>
+        <div className="course-distance-container race-type">
+          <label for="course-distance" className="uma-label label">
+            <span className="jp-label">コース</span>
+            <span className="en-label">Distance</span>
+          </label>
+          <select
+            className="course-details"
+            name="course-distance"
+            onChange={(e) => trackDistanceSelect(e)}
+          >
+            {trackList
+              ? Object.values(trackList).map((track, index) => (
+                  <option value={index}>
+                    {track.surface === 1 ? "芝 " : `ダート `}
+                    {track.distance}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </div>
+        <div className="ground-condition-container race-type">
+          <label for="ground-condition" className="uma-label label">
+            <span className="jp-label">Condition</span>
+            <span className="en-label">Ground</span>
+          </label>
+          <select
+            className="ground-details"
+            name="ground-condition"
+            onChange={(e) => groundSelect(e)}
+          >
+            <option value="良">良</option>
+            <option value="稍重">稍重</option>
+            <option value="重">重</option>
+            <option value="不良">不良</option>
+          </select>
+        </div>
       </div>
     </>
   );
