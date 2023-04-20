@@ -9,8 +9,6 @@ const Coursedetails = () => {
   const dispatch = useDispatch();
   const [trackList, setTrackList] = useState(racetracks[10001].courses);
 
-  console.log(trackList[10101]);
-
   const trackCourseSelect = async (e) => {
     let chosenRacetrack;
 

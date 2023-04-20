@@ -7,23 +7,31 @@ import Racetrack from "./trackdetails/racetrack";
 import happyAyabe from "../HappyAyabe.png";
 import "./main.scss";
 
+const initialStats = {
+  speed: { en: "speed", jp: "スペード", value: 1000 },
+  stamina: { en: "stamina", jp: "スタミナ", value: 1000 },
+  power: { en: "power", jp: "パワー", value: 1000 },
+  guts: { en: "guts", jp: "根性", value: 1000 },
+  int: { en: "int", jp: "賢さ", value: 1000 },
+};
+
 const Main = () => {
   const dispatch = useDispatch();
-  const stats = [
-    { en: "speed", jp: "スペード" },
-    { en: "stamina", jp: "スタミナ" },
-    { en: "power", jp: "パワー" },
-    { en: "guts", jp: "根性" },
-    { en: "int", jp: "賢さ" },
-  ];
 
-  const [umaStats, setUmaStats] = useState({
-    speed: 1000,
-    stamina: 1000,
-    power: 1000,
-    guts: 1000,
-    int: 1000,
-  });
+  const [umaStats, setUmaStats] = useState(initialStats);
+
+  const handleStatChange = (e, targetStat) => {
+    let convertNumber = parseInt(e.target.value);
+
+    if (isNaN(convertNumber)) {
+      convertNumber = 0;
+    }
+
+    setUmaStats((prev) => ({
+      ...prev,
+      [targetStat]: { ...prev[targetStat], value: convertNumber },
+    }));
+  };
 
   const updateUmaStratMot = (e, type) => {
     if (type === "strategy") {
@@ -33,18 +41,7 @@ const Main = () => {
     } else return;
   };
 
-  const handleStatChange = (e, stat) => {
-    let convertNumber = parseInt(e.target.value);
-
-    if (isNaN(convertNumber)) {
-      convertNumber = 0;
-    }
-
-    setUmaStats((prev) => ({
-      ...prev,
-      [stat]: convertNumber,
-    }));
-  };
+  const updateUmaProficiency = (e, type) => {};
 
   return (
     <div className="main-container">
@@ -54,7 +51,7 @@ const Main = () => {
       <div className="uma-details-container">
         <h1>UMA Details</h1>
         <div className="uma-stats-container stats-container">
-          {stats.map((stat) => {
+          {Object.values(umaStats).map((stat) => {
             return (
               <div className="uma-stat">
                 <label for={`uma-${stat.en}`} className="label uma-label">
@@ -65,11 +62,10 @@ const Main = () => {
                   className="uma-stat-aptitude"
                   type="text"
                   name={stat.en}
-                  value={umaStats.stat}
+                  value={stat.value}
                   defaultValue={1000}
                   maxLength="4"
                   pattern="\d*"
-                  // onChange={this.handleStatChange}
                   onChange={(e) => handleStatChange(e, stat.en)}
                 />
               </div>
@@ -147,9 +143,6 @@ const Main = () => {
       </div>
 
       <Calculations stats={umaStats} />
-
-      <Coursedetails />
-      <Racetrack />
     </div>
   );
 };

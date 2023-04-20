@@ -1,19 +1,5 @@
 @use "../../App.scss";
 
-.stamina-equivalent-container {
-  @include App.skillGrid(35px, "green");
-  button {
-    color: App.$recoveryClr;
-    border: 1px App.$recoveryClr solid;
-  }
-  white-space: nowrap;
-
-  .stamina-details {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
 .adjusted-stats-container {
   @include App.uma-stat();
   padding-top: 20px;

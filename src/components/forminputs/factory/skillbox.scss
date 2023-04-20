@@ -1,0 +1,44 @@
+@use "../../../App.scss";
+.skill-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.skill-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.number-of-skills {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  p {
+    margin: 0px 10px 0px 10px; //top right bottom left
+  }
+}
+
+.skill-references {
+  position: relative;
+
+  .skills-list-container {
+    opacity: 0;
+    height: 0;
+    transition: all 1s ease-out;
+    overflow: hidden;
+  }
+
+  .show {
+    opacity: 1;
+    height: auto;
+  }
+
+  .skills-list-container {
+    position: absolute;
+    top: 100%;
+    background-color: App.$secondaryClr;
+    z-index: 100;
+  }
+}

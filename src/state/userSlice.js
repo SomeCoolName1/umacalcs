@@ -33,9 +33,15 @@ export const authSlice = createSlice({
     setGround: (state, action) => {
       state.groundType = action.payload.ground;
     },
-    // setProficiency: (state, action) => {
-    //   state.groundType = action.payload.ground;
-    // },
+    setProfDistance: (state, action) => {
+      state.proficiency.profDistance = action.payload.distance;
+    },
+    setProfSurface: (state, action) => {
+      state.proficiency.profSurface = action.payload.distance;
+    },
+    setProfStrategy: (state, action) => {
+      state.proficiency.profStrategy = action.payload.distance;
+    },
   },
 });
 

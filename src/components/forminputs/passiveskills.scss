@@ -25,34 +25,3 @@
     }
   }
 }
-
-.passive-container {
-  @include App.skillGrid(35px, rgb(105, 193, 12));
-  & > * {
-    white-space: nowrap;
-  }
-}
-
-.gold-passive-container,
-.evolved-passive-container {
-  @include App.skillGrid(35px, rgb(105, 193, 12));
-}
-
-.number-of-passives {
-  display: flex;
-  flex-direction: row;
-  p {
-    margin: 0px 10px 0px 10px; //top right bottom left
-  }
-}
-
-.passive {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  flex-direction: rows;
-}
-
-.passive-details {
-  display: flex;
-}

@@ -9,36 +9,27 @@ import {
 } from "../data/coefficients";
 import "./calculations.scss";
 import PassiveSkills from "./passiveskills";
-import evolvedRecovery from "../../assets/skillimages/evolved-recovery.png";
-import goldRecovery from "../../assets/skillimages/gold-recovery.png";
-import whiteRecovery from "../../assets/skillimages/white-recovery.png";
-import whiteSpeed from "../../assets/skillimages/white-speed.png";
-import uniqueSpeed from "../../assets/skillimages/unique-speed.png";
-import whiteStamDebuff from "../../assets/skillimages/white-stamina-debuff.png";
-import goldStamDebuff from "../../assets/skillimages/gold-stamina-debuff.png";
+import recoverySkills from "../data/skillsrecovery";
 import TrackGraph from "../trackdetails/trackgraph";
+import SkillBox from "./factory/skillbox";
+import Coursedetails from "../trackdetails/coursedetails";
+import Racetrack from "../trackdetails/racetrack";
 
-const staminaSkills = [
-  { img: evolvedRecovery, value: 0.095, number: 0 },
-  { img: evolvedRecovery, value: 0.075, number: 0 },
-  { img: goldRecovery, value: 0.055, number: 0 },
-  { img: uniqueSpeed, value: 0.035, number: 0 },
-  { img: whiteRecovery, value: 0.015, number: 0 },
-  { img: uniqueSpeed, value: 0.0035, number: 0 },
-  { img: whiteSpeed, value: 0.005, number: 0 },
-  { img: goldStamDebuff, value: -0.03, number: 0 },
-  { img: whiteSpeed, value: -0.02, number: 0 },
-  { img: whiteStamDebuff, value: -0.01, number: 0 },
-  { img: uniqueSpeed, value: -0.005, number: 0 },
-  { img: uniqueSpeed, value: -0.0025, number: 0 },
-];
+const initialStats = {
+  speed: { en: "speed", jp: "スペード", adjusted: 0, final: 0 },
+  stamina: { en: "stamina", jp: "スタミナ", adjusted: 0, final: 0 },
+  power: { en: "power", jp: "パワー", adjusted: 0, final: 0 },
+  guts: { en: "guts", jp: "根性", adjusted: 0, final: 0 },
+  int: { en: "int", jp: "賢さ", adjusted: 0, final: 0 },
+};
 
 const Calculations = ({ stats }) => {
   const track = useSelector((state) => state.track);
   const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
-  const [graphData, setGraphData] = useState(null);
+
+  const [umaReco, setUmaReco] = useState(recoverySkills);
 
   //Passives
   const [passiveStats, setStats] = useState({
@@ -49,13 +40,32 @@ const Calculations = ({ stats }) => {
     int: 0,
   });
 
-  const [recoverySkills, setRecovery] = useState(staminaSkills);
+  const [finalStats, setFinalStats] = useState(initialStats);
+
+  // const [recoverySkills, setRecovery] = useState(staminaSkills);
 
   if (!track) return;
 
   //Coefficients and variables
-  const { speed, stamina, power, guts, int } = stats;
+  const {
+    speed: baseSpeed,
+    stamina: baseStamina,
+    power: basePower,
+    guts: baseGuts,
+    int: baseInt,
+  } = stats;
+
+  const {
+    speed: finalSpeed,
+    stamina: finalStamina,
+    power: finalPower,
+    guts: finalGuts,
+    int: finalInt,
+  } = finalStats;
+
   const { umaStrategy, umaMotivation } = umaStratMot;
+
+  console.log(proficiency);
 
   ////Strategy
   const strategyCI = strategyCoefficients.find(
@@ -78,13 +88,6 @@ const Calculations = ({ stats }) => {
     surfaceType = "dirt";
   }
 
-  const racePhases = [
-    { phase: "phase0", distance: [0, distance / 6] },
-    { phase: "phase1", distance: [distance / 6, (2 * distance) / 3] },
-    { phase: "phase2", distance: [(2 * distance) / 3, (5 * distance) / 6] },
-    { phase: "phase3", distance: [(5 * distance) / 6, distance] },
-  ];
-
   ////GroundType
   const groundModCI = groundMod.find((obj) => obj.name === groundType);
   const { groundSpeedMod, groundPowerMod, groundHPMod } = groundModCI;
@@ -92,68 +95,82 @@ const Calculations = ({ stats }) => {
   const { [surfaceType]: groundPower } = groundPowerMod;
   const { [surfaceType]: groundHP } = groundHPMod;
 
-  //Adjusted Stats
-  const adjustedStat = () => {
-    let baseStats = {};
+  const racePhases = [
+    { phase: "phase0", distance: [0, distance / 6] },
+    { phase: "phase1", distance: [distance / 6, (2 * distance) / 3] },
+    { phase: "phase2", distance: [(2 * distance) / 3, (5 * distance) / 6] },
+    { phase: "phase3", distance: [(5 * distance) / 6, distance] },
+  ];
 
-    Object.keys(stats).forEach((key) => {
-      let rawStat =
-        Math.min(1200, stats[key]) +
-        (stats[key] > 1200 ? (stats[key] - 1200) / 2 : 0);
-      baseStats[key] = rawStat * moodCI; //Multiply by mood
-    });
+  // //Adjusted/Final Stats
+  // //Stats Notes:
+  // //Raw Stats are stats shown in stat panel
+  // //Base stats are stats modified by motivation
+  // //Adjusted stats are those affected by track modifiers
+  // //FinalStat is Adjusted Stat + green (skill modifier)
+  // //Thresholds after motivation, pre greens
 
-    const { speed, stamina, power, guts, int } = baseStats;
+  const adjustStats = () => {
     //RaceCousre modifier
 
-    //Ground Modfier -> Track.surface and groundModCI
-    const adjustedSpeed = speed + groundSpeed;
-    const adjustedStamina = stamina;
-    const adjustedPower = power + groundPower;
-    const adjustedGuts = guts;
-    const adjustedInt = int;
-    const adjustedStats = [
-      { name: "スペード", engName: "speed", value: adjustedSpeed },
-      { name: "スタミナ", engName: "stamina", value: adjustedStamina },
-      { name: "パワー", engName: "power", value: adjustedPower },
-      { name: "根性", engName: "guts", value: adjustedGuts },
-      { name: "賢さ", engName: "int", value: adjustedInt },
-    ];
+    let baseStats = { ...finalStats };
 
-    return adjustedStats;
+    Object.values(baseStats).forEach((key) => {
+      let currentStat = key.en;
+      let initialStat = stats[currentStat].value;
+
+      let rawStat =
+        Math.min(1200, initialStat) +
+        (initialStat > 1200 ? (initialStat - 1200) / 2 : 0);
+      let moodAdjusted = Math.round(rawStat * moodCI);
+
+      if (currentStat === "speed") {
+        moodAdjusted += groundSpeed;
+      } else if (currentStat === "power") {
+        moodAdjusted += groundPower;
+      }
+
+      key.adjusted = moodAdjusted; //Multiply by mood
+      key.final = moodAdjusted + passiveStats[currentStat];
+    });
   };
 
-  // /*SPEED-RELATED*/
-  const umaBaseSpeed = () => {
-    const speed = 20 - (distance - 2000) / 1000; //[m/s]
-    return speed;
-  };
+  adjustStats();
+
+  // /////////////////SPEED RELATED
+  let umaBaseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
+  let umaMinSpeed =
+    0.85 * umaBaseSpeed + Math.sqrt(200 * finalGuts.final) * 0.001; //[m/s]
 
   const umaTargetSpeed = (phase) => {
-    const { openingLeg, middleLeg, finalLeg } = speedCI;
-    let base = umaBaseSpeed();
     let legSpeed;
+    let uphillSpeedReduc = 0;
+    let speed = finalSpeed.final;
+    let guts = finalGuts.final;
 
-    const openingBST = base * openingLeg;
-    const middleBST = base * middleLeg;
-    const finalBST =
-      base * finalLeg + Math.sqrt(500 * speed) * proficiency.distance * 0.002; //[m/s]
+    const { openingLeg, middleLeg, finalLeg } = speedCI;
+
+    const openingBTS = umaBaseSpeed * openingLeg; //[m/s]
+    const middleBTS = umaBaseSpeed * middleLeg; //[m/s]
+    const finalBTS =
+      umaBaseSpeed * finalLeg +
+      Math.sqrt(500 * speed) * proficiency.distance * 0.002; //[m/s]
     const lastSpurtSpeed =
-      (finalBST + 0.01 * base) * 1.05 +
+      (finalBTS + 0.01 * umaBaseSpeed) * 1.05 +
       Math.sqrt(500 * speed) * proficiency.distance * 0.002 +
       Math.pow(450 * guts, 0.597) * 0.0001; //[m/s]
 
     //Opening Leg: Section 1 to 4
-    if (phase === "openingLeg" || phase === "phase0") {
-      legSpeed = openingBST;
+    if (phase === "phase0") {
+      legSpeed = openingBTS;
     }
     //Middle Leg: Section 5 to 16
-    else if (phase === "middleLeg" || phase === "phase1") {
-      legSpeed = middleBST;
+    else if (phase === "phase1") {
+      legSpeed = middleBTS;
     }
     //Final Leg: Section 17 to 20
-    else if (phase === "finalLeg" || phase === "phase2") {
-      legSpeed = finalBST;
+    else if (phase === "phase2") {
+      legSpeed = finalBTS;
     }
     //Last Spurt: Section 21 to 24
     else {
@@ -163,17 +180,20 @@ const Calculations = ({ stats }) => {
     //If uphill
     //TargetSpeed - SlopePer*200/powerStat
 
+    //If downhill
+    //target speed + 0.3 + slopePer/10
+
     return legSpeed;
   };
 
-  const randomnessSpeed = (phase) => {
+  const randomSpeed = (phase) => {
     const targetSpeed = umaTargetSpeed(phase);
-    const baseSpeed = umaBaseSpeed();
+    let int = finalInt.final;
 
     const max = (int / 5500) * Math.log10(int * 0.1); // Include these in first three phase calculations
     const min = Math.abs(max - 0.65);
 
-    let randomSpeed = baseSpeed * (Math.random() * (max - min) + min);
+    let randomSpeed = umaBaseSpeed * (Math.random() * (max - min) + min);
 
     return targetSpeed + randomSpeed;
   };
@@ -193,22 +213,14 @@ const Calculations = ({ stats }) => {
     return umaSpeed;
   };
 
-  const umaMinimumSpeed = () => {
-    const minSpeed = 0.85 * umaBaseSpeed() + Math.sqrt(200 * guts) * 0.001; //[m/s]
+  // ///////////////////STAMINA RELATED
 
-    return minSpeed;
-  };
-
-  // /*STAMINA-RELATED*/
-  const Stamina = () => {
-    // MaxHP=0.8*StrategyCoefficient*StaminaStat+CourseDistance[m]
-    const maxHP = Math.round(0.8 * staminaCI * stamina + parseInt(distance));
-
-    return maxHP;
-  };
+  let maxHP = Math.round(
+    0.8 * staminaCI * finalStamina.final + parseInt(distance)
+  );
 
   const recoveredHp = (percentage) => {
-    return Math.round(Stamina() * percentage) / 0.8;
+    return Math.round(maxHP * percentage) / 0.8;
   };
 
   const recoveryStaminaValue = () => {
@@ -216,35 +228,33 @@ const Calculations = ({ stats }) => {
     let debuffValue = 0;
     let HPValue = 0;
 
-    recoverySkills.map((x) => {
-      if (x.value > 0) {
-        return (recoveryValue += x.value * x.number);
-      } else {
-        return (debuffValue += x.value * x.number);
-      }
-    });
+    Object.values(recoverySkills).map((x) =>
+      x.value > 0
+        ? (recoveryValue += x.value * x.number)
+        : (debuffValue += x.value * x.number)
+    );
 
     let recoveredStamina = recoveredHp(recoveryValue);
     let debuffedStamina = recoveredHp(debuffValue);
 
-    let HPRecovered = Stamina() * recoveryValue;
-    let HPDebuffed = Stamina() * debuffValue;
+    let HPRecovered = maxHP * recoveryValue;
+    let HPDebuffed = maxHP * debuffValue;
 
-    return [
-      recoveredStamina.toFixed(1),
-      debuffedStamina.toFixed(1),
-      HPRecovered.toFixed(1),
-      HPDebuffed.toFixed(1),
-    ];
+    return {
+      staRec: recoveredStamina,
+      staDeb: debuffedStamina,
+      HPRec: HPRecovered,
+      HPDeb: HPDebuffed,
+    };
   };
 
   const hpConsumption = (phase, currentspeed) => {
+    let guts = finalGuts.final;
     const gutsModifier = 1.0 + 200 / Math.sqrt(600 * guts);
 
     if (phase === "openingLeg" || "phase0" || "middleLeg" || "phase1") {
       const hpConsumption =
-        ((20 * Math.pow(currentspeed - umaBaseSpeed() + 12, 2)) / 144) *
-        groundHP;
+        ((20 * Math.pow(currentspeed - umaBaseSpeed + 12, 2)) / 144) * groundHP;
 
       return hpConsumption;
     } else {
@@ -258,9 +268,25 @@ const Calculations = ({ stats }) => {
     //Current speed is direct result after umaAccel calculations
   };
 
-  // /*POWER-RELATED*/
+  const updateStaminaValues = (key, operator) => {
+    let skillsList = { ...umaReco };
+
+    let findSkill = Object.values(skillsList).find((skill) => skill === key);
+
+    if (operator === "add") {
+      findSkill.number += 1;
+    } else findSkill.number -= 1;
+
+    setUmaReco(skillsList);
+  };
+
+  // // /*POWER-RELATED*/
   const umaAccel = (phase) => {
+    let power = finalPower.final;
+
     const baseAccel = 0.0006; //[m/s^2]
+    const baseUphillAccel = 0.0004;
+
     const { openingLeg, middleLeg, finalLeg } = accelCI;
     // Accel=BaseAccel*sqrt(500.0*PowerStat)*StrategyPhaseCoefficient*
     // GroundTypeProficiencyModifier*DistanceProficiencyModifier+
@@ -285,18 +311,18 @@ const Calculations = ({ stats }) => {
     else {
       return accel(finalLeg);
     }
-
-    const baseUphillAccel = 0.0004;
   };
 
-  // /*WISDOM-RELATED*/
+  // // /*WISDOM-RELATED*/
 
   const skillActivationRate = () => {
+    let int = baseInt.value;
     const rate = Math.max(100 - 9000 / int, 20);
     return rate;
   };
 
   const kakariRate = () => {
+    let int = finalInt.final;
     //Hp consumption during kakari = x1.6
     //Every 3 seconds in kakari, the uma has a 55% chance to snap out of it. Kakari ends if the uma is still affected after 12 seconds.
     const rate = Math.pow(6.5 / Math.log10(0.1 * int + 1), 2);
@@ -304,6 +330,7 @@ const Calculations = ({ stats }) => {
   };
 
   const downHillMode = () => {
+    let int = finalInt.final;
     const downhillModechance = int * 0.04; //'% per second' with exit chance of 20% per second
     const speedIncrease = 0.3; //+SlopePer/10
     const reducedHpConsumption = 60;
@@ -315,7 +342,10 @@ const Calculations = ({ stats }) => {
     let distanceTravelled = 0;
     let speed = 0;
     let targetSpeed = 0; //Updates every phase
-    let remainingStamina = Stamina();
+    const { HPRec, HPDeb } = recoveryStaminaValue();
+
+    let remainingStamina = Math.round(maxHP + HPRec + HPDeb);
+
     let racePlot = [
       {
         targetSpeed: targetSpeed,
@@ -343,7 +373,7 @@ const Calculations = ({ stats }) => {
             phase: `← ${currentPhase} | ${phase.phase} →`,
           });
           currentPhase = phase.phase;
-          targetSpeed = randomnessSpeed(currentPhase);
+          targetSpeed = randomSpeed(currentPhase);
         }
       });
 
@@ -367,62 +397,38 @@ const Calculations = ({ stats }) => {
     return { racePlot, phaseChange };
   };
 
-  console.log(racePlot());
-  const updateStaminaValues = (stamina, op) => {
-    let newCopy = [...recoverySkills];
-    let findStamina = newCopy.find((key) => key === stamina);
-    if (op === "add") {
-      findStamina.number += 1;
-    } else findStamina.number -= 1;
-
-    setRecovery(newCopy);
-  };
-
   return (
     <div className="">
       <h1>Stat Calculations</h1>
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
       <div className="adjusted-stats-container stats-container">
-        {adjustedStat().map((stat) => {
+        {Object.values(finalStats).map((stat) => {
           return (
             <div className="uma-stat">
               <label className="label uma-label">
-                <span className="jp-label">{stat.name}</span>
-                <span className="en-label">{stat.engName}</span>
+                <span className="jp-label">{stat.jp}</span>
+                <span className="en-label">{stat.en}</span>
               </label>
               <span className="label-value">
-                {stat.value}
+                {stat.adjusted}
                 <span
                   style={{
                     color:
-                      passiveStats[stat.engName] >= 0
+                      passiveStats[stat.en] >= 0
                         ? "rgb(105, 193, 12)"
                         : "rgb(159, 90, 247)",
                   }}
                 >
                   {" "}
-                  + {passiveStats[stat.engName]}
-                  {/* {stat.engName === "stamina" ? (
-                    <>
-                      <span className="recoveredStamina">
-                        {" "}
-                        + {recoveryStaminaValue()[0]}
-                      </span>
-                      <span className="debuffedStamina">
-                        {" "}
-                        - {Math.abs(recoveryStaminaValue()[1])}
-                      </span>
-                    </>
-                  ) : (
-                    ""
-                  )} */}
+                  + {passiveStats[stat.en]}
                 </span>
               </span>
             </div>
           );
         })}
       </div>
+
       <h2>Speed and Acceleration</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
@@ -434,69 +440,51 @@ const Calculations = ({ stats }) => {
         </div>
         <div className="leg-speed-container">
           <h3>Leg Speed</h3>
-          <p>{umaTargetSpeed("phase0") + ` m/s`} </p>
-          <p>{umaTargetSpeed("phase1") + ` m/s`}</p>
-          <p>{umaTargetSpeed("phase2") + ` m/s`}</p>
-          <p>{umaTargetSpeed("") + ` m/s`}</p>
+          <p>{umaTargetSpeed("phase0").toFixed(2) + ` m/s`} </p>
+          <p>{umaTargetSpeed("phase1").toFixed(2) + ` m/s`}</p>
+          <p>{umaTargetSpeed("phase2").toFixed(2) + ` m/s`}</p>
+          <p>{umaTargetSpeed("").toFixed(2) + ` m/s`}</p>
         </div>
-
         <div className="acceleration-container">
           <h3>Acceleration</h3>
-          <p>{umaAccel("phase0") + ` m/s²`} </p>
-          <p>{umaAccel("phase1") + ` m/s²`}</p>
-          <p>{umaAccel("phase2") + ` m/s²`}</p>
-          <p>{umaAccel("phase2") + ` m/s²`}</p>
+          <p>{umaAccel("phase0").toFixed(2) + ` m/s²`} </p>
+          <p>{umaAccel("phase1").toFixed(2) + ` m/s²`}</p>
+          <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
+          <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
         </div>
       </div>
 
       <h2>Stamina Recovered</h2>
       <p>
-        Starting HP: {Stamina()}
+        Starting HP: {maxHP}
         <span className="recoveredStamina">
           {" "}
-          + {recoveryStaminaValue()[2]}{" "}
+          + {recoveryStaminaValue().HPRec.toFixed(2)}{" "}
         </span>
         <span className="debuffedStamina">
           {" "}
-          - {Math.abs(recoveryStaminaValue()[3])}
+          - {Math.abs(recoveryStaminaValue().HPDeb.toFixed(2))}
         </span>
       </p>
-      <div className="stamina-equivalent-container">
-        {recoverySkills.map((key) => {
-          return (
-            <div className="stamina-equivalent">
-              <div className="stamina-details stat-details">
-                <img src={key.img} alt="stamina-skill" />
-                <p>
-                  {(key.value * 100).toFixed(2)}% : {recoveredHp(key.value)}{" "}
-                  Stamina{" "}
-                </p>
-              </div>
-              <div className="number-of-passives">
-                <button
-                  className={`number-button ${
-                    key.number <= 0 ? "disabled" : ""
-                  }`}
-                  onClick={() => updateStaminaValues(key, "minus")}
-                >
-                  −
-                </button>
-                <p>{key.number}</p>
-                <button
-                  className="number-button"
-                  onClick={() => updateStaminaValues(key, "add")}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          );
-        })}
+      <div className="skill-box-container">
+        {Object.values(recoverySkills).map((key) => (
+          <SkillBox
+            skill={key}
+            recovered={recoveredHp}
+            updateButton={updateStaminaValues}
+            skillType={"recovery"}
+          />
+        ))}
       </div>
 
       <h2>Wisdom Related</h2>
-      <p>Skill Activation Rate:{skillActivationRate()}%</p>
-      <p>Kakari Rate:{kakariRate().toFixed(2)}%</p>
+      <div className="wisdom-details-container">
+        <span>Skill Activation Rate:{skillActivationRate()}%</span>
+        <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
+      </div>
+      <Coursedetails />
+      <Racetrack />
+      <h2>Race Simulation</h2>
       <TrackGraph dataPlot={racePlot()} />
     </div>
   );

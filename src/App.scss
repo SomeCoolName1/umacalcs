@@ -123,8 +123,8 @@ span {
 
 @mixin skillGrid($buttonradius, $borderClr) {
   display: grid;
-  //grid-template-columns: repeat(auto-fit, minmax(<base>, 1fr))
-  grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
   grid-gap: 10px;
   justify-content: space-between;
 
@@ -141,9 +141,10 @@ span {
     margin-right: 10px;
   }
 
-  button:not(.passive-skills-list) {
+  button {
     @include button($buttonradius, $buttonradius);
     font-size: large;
+    cursor: pointer;
   }
 
   .disabled {
@@ -162,6 +163,18 @@ span {
   border-radius: 30px;
   margin-bottom: 10px;
   cursor: default;
+}
+
+.skill-box-container {
+  @include skillGrid(35px, "green");
+  white-space: nowrap;
+
+  .skill-type-recovery {
+    border: 1px solid blue;
+  }
+  .skill-type-passive {
+    border: 1px solid green;
+  }
 }
 
 // transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;
