@@ -7,6 +7,7 @@ const Racetrack = () => {
   const track = useSelector((state) => state.track);
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
+  const [orderedSections, setOrder] = useState(null);
 
   useEffect(() => {
     if (!track) return;
@@ -41,6 +42,8 @@ const Racetrack = () => {
     array.sort(function (a, b) {
       return a.distance[0] - b.distance[0];
     });
+
+    setOrder(array);
 
     // {corner.start + corner.length}m
     // {straight.start}m - {straight.end}m
@@ -95,9 +98,22 @@ const Racetrack = () => {
     slopeIndex = slopeSpurt.slopeIndex;
   }
 
-  console.log(slopeSpurt);
+  orderedSections.map((x) => {
+    if (x === trackSpurt.spurt) console.log(x);
+  });
   return (
     <div className="race-track-container">
+      <div className="race-section-order">
+        {orderedSections.map((section) => (
+          <div className={`${section.type}`}>
+            <p>
+              {section === trackSpurt.spurt ? "spurt on " : ""}
+              {section.type}
+            </p>
+            {section.distance[0]}m - {section.distance[1]}m
+          </div>
+        ))}
+      </div>
       <div className="race-track-details">
         <div className="race-corners">
           <span>
