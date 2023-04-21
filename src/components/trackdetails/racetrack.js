@@ -8,6 +8,7 @@ const Racetrack = () => {
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
   const [orderedSections, setOrder] = useState(null);
+  const [showType, setShowType] = useState("type");
 
   useEffect(() => {
     if (!track) return;
@@ -98,23 +99,67 @@ const Racetrack = () => {
     slopeIndex = slopeSpurt.slopeIndex;
   }
 
-  orderedSections.map((x) => {
-    if (x === trackSpurt.spurt) console.log(x);
-  });
   return (
     <div className="race-track-container">
-      <div className="race-section-order">
-        {orderedSections.map((section, index) => (
-          <div className={`${section.type}`}>
-            <p>
-              ({index + 1}): {section === trackSpurt.spurt ? "spurt on " : ""}
-              {section.type}
-            </p>
-            {section.distance[0]}m - {section.distance[1]}m
-          </div>
-        ))}
+      <div className="race-track-header">
+        <button
+          className="race-track-button"
+          onClick={() => setShowType("type")}
+        >
+          Type
+        </button>
+        <button
+          className="race-track-button"
+          onClick={() => setShowType("track")}
+        >
+          Track
+        </button>
       </div>
-      <div className="race-track-details">
+      <div
+        className={`race-section-order ${showType === "track" ? "" : "hidden"}`}
+      >
+        <p className="section-title">Racetrack</p>
+        <div className="section-container">
+          {orderedSections
+            ? orderedSections.map((section, index) => (
+                <div className={`${section.type}`}>
+                  <p>
+                    ({index + 1}):{" "}
+                    {section === trackSpurt.spurt ? "spurt on " : ""}
+                    {section.type}
+                  </p>
+                  {section.distance[0]}m - {section.distance[1]}m
+                </div>
+              ))
+            : ""}
+        </div>
+        <p className="section-title">Slope</p>
+        <div className="section-slope-container">
+          {slopes ? (
+            slopes.map((slope, index) => (
+              <div className="slope">
+                <p>
+                  {" "}
+                  ({index + 1}):{" slope"}
+                </p>
+                <p>
+                  {slope.start}m - {slope.start + slope.length}m
+                  {slope.slope > 0 ? (
+                    <> (↑{Math.abs(slope.slope / 10000)})</>
+                  ) : (
+                    <> (↓{Math.abs(slope.slope / 10000)})</>
+                  )}
+                </p>
+              </div>
+            ))
+          ) : (
+            <>No Slopes</>
+          )}
+        </div>
+      </div>
+      <div
+        className={`race-track-details ${showType === "type" ? "" : "hidden"}`}
+      >
         <div className="race-corners">
           <span>
             <p className="section-title">Corners</p>
