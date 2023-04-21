@@ -11,7 +11,7 @@ import "./calculations.scss";
 import PassiveSkills from "./passiveskills";
 import recoverySkills from "../data/skillsrecovery";
 import TrackGraph from "../trackdetails/trackgraph";
-import SkillBox from "./factory/skillbox";
+import SkillBox from "../factory/skillbox";
 import Coursedetails from "../trackdetails/coursedetails";
 import Racetrack from "../trackdetails/racetrack";
 

@@ -10,12 +10,9 @@ const Racetrack = () => {
 
   useEffect(() => {
     if (!track) return;
-    console.log(track);
     sortCornersStraight();
     sortSlopes();
   }, [track]);
-
-  if (!track) return;
 
   const { corners, straights, slopes, distance } = track;
 
@@ -23,42 +20,47 @@ const Racetrack = () => {
 
   const sortCornersStraight = () => {
     let array = [];
+
     if (corners) {
       corners.map((corner) => {
-        return array.push({ type: "corner", distance: corner.start });
+        return array.push({
+          type: "corner",
+          distance: [corner.start, corner.start + corner.length],
+        });
       });
     }
     if (straights) {
       straights.map((straight) => {
-        return array.push({ type: "straight", distance: straight.start });
+        return array.push({
+          type: "straight",
+          distance: [straight.start, straight.end],
+        });
       });
     }
 
     array.sort(function (a, b) {
-      return a.distance - b.distance;
+      return a.distance[0] - b.distance[0];
     });
 
-    // // {corner.start + corner.length}m
-    // // {straight.start}m - {straight.end}m
+    // {corner.start + corner.length}m
+    // {straight.start}m - {straight.end}m
 
-    // for (let i = 0; i <= array.length - 1; i++) {
-    //   if (
-    //     array[i].distance <= lastSpurtDistance &&
-    //     lastSpurtDistance <= array[i + 1].distance
-    //   ) {
-    //     setTrackSpurt({
-    //       spurt: array[i],
-    //       before: i <= array.length - 1 ? array[i + 1] : "",
-    //       after: i > 0 ? array[i - 1] : "",
-    //     });
-    //   }
-    // }
-    // return;
+    for (let i = 0; i < array.length; i++) {
+      if (
+        array[i].distance[0] <= lastSpurtDistance &&
+        lastSpurtDistance <= array[i].distance[1]
+      ) {
+        setTrackSpurt({
+          spurt: array[i],
+          before: i < array.length ? array[i + 1] : "",
+          after: i > 0 ? array[i - 1] : "",
+        });
+      }
+    }
   };
 
   const sortSlopes = () => {
     if (slopes.length === 0) {
-      console.log("none");
       return;
     }
 
@@ -91,41 +93,38 @@ const Racetrack = () => {
 
   if (slopeSpurt) {
     slopeIndex = slopeSpurt.slopeIndex;
-
-    console.log(slopeSpurt);
   }
 
+  console.log(slopeSpurt);
   return (
     <div className="race-track-container">
       <div className="race-track-details">
         <div className="race-corners">
           <span>
-            Corners:
-            {corners.map((corner, index) => {
-              return (
-                <div className="corner">
-                  ({index + 1}): {corner.start}m -{" "}
-                  {corner.start + corner.length}m
-                </div>
-              );
-            })}
+            <p className="section-title">Corners</p>
+            {corners.map((corner, index) => (
+              <div className="corner">
+                ({index + 1}): {corner.start}m - {corner.start + corner.length}m
+              </div>
+            ))}
           </span>
         </div>
         <div className="race-straights">
-          Straight:
-          {straights.map((straight, index) => {
-            return (
+          <span>
+            <p className="section-title">Straights</p>
+
+            {straights.map((straight, index) => (
               <div className="straight">
                 ({index + 1}): {straight.start}m - {straight.end}m{" "}
               </div>
-            );
-          })}
+            ))}
+          </span>
         </div>
         <div className="race-slopes">
-          Slopes:
-          {slopes ? (
-            slopes.map((slope, index) => {
-              return (
+          <span>
+            <p className="section-title">Slopes</p>
+            {slopes ? (
+              slopes.map((slope, index) => (
                 <div className="slope">
                   ({index + 1}): {slope.start}m - {slope.start + slope.length}m
                   {slope.slope > 0 ? (
@@ -134,24 +133,38 @@ const Racetrack = () => {
                     <> (↓{Math.abs(slope.slope / 10000)})</>
                   )}
                 </div>
-              );
-            })
-          ) : (
-            <>No Slopes</>
-          )}
+              ))
+            ) : (
+              <>No Slopes</>
+            )}
+          </span>
         </div>
         <div className="spurt-details">
+          <p className="section-title">Spurt</p>
           {trackSpurt ? (
             <>
-              <p>Spurts occurs on a {spurt.type} while:</p>
               <p>
-                - {spurt.distance - after.distance}m before next {after.type}
+                Occurs at {lastSpurtDistance.toFixed(2)}m on a {spurt.type}{" "}
+                while:
               </p>
+              {after ? (
+                <p>
+                  - {(lastSpurtDistance - after.distance[0]).toFixed(2)}m before
+                  the next {after.type}
+                </p>
+              ) : (
+                ""
+              )}
+              {before ? (
+                <p>
+                  - {(before.distance[1] - lastSpurtDistance).toFixed(2)}m after
+                  the end of {before.type}
+                </p>
+              ) : (
+                ""
+              )}
               <p>
-                - {before.distance - spurt.distance}m after {before.type}
-              </p>
-              <p>
-                {slopeSpurt ? {} : "No slopes at spurt point"}
+                {slopeSpurt ? "" : "No slopes at spurt point"}
                 {/* // <> uphill (↑{Math.abs(slopeSpurt.slope / 10000)})</>
                 // ) : ( //{" "}
                 <> downhill (↓{Math.abs(slopeSpurt.slope / 10000)})</>
@@ -163,7 +176,6 @@ const Racetrack = () => {
           )}
         </div>
       </div>
-      {/* <TrackGraph /> */}
     </div>
   );
 };

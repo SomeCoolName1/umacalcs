@@ -1,3 +1,4 @@
+@use "../../App.scss";
 .race-track-details {
   display: flex;
 
@@ -8,4 +9,30 @@
     flex: 1;
     min-width: 0; //Lets items shrink inside container
   }
+}
+
+.section-title {
+  @include App.labelContainer(40%);
+  margin: 0 auto;
+}
+
+@mixin raceSection($colour) {
+  border: 1px solid $colour;
+  background-color: $colour;
+  border-radius: 5px;
+  width: 230px;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.corner {
+  @include raceSection(App.$debuffClr);
+}
+
+.straight {
+  @include raceSection(App.$recoveryClr);
+}
+
+.slope {
+  @include raceSection(App.$primaryClr);
 }

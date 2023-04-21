@@ -137,7 +137,12 @@ const TrackGraph = ({ dataPlot }) => {
     },
   };
 
-  return <Line options={options} data={data} />;
+  return (
+    <>
+      <Line options={options} data={data} />
+      <span>Note: The graph represents a single simulation and do </span>
+    </>
+  );
 };
 
 export default TrackGraph;
