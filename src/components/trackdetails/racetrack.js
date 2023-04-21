@@ -104,10 +104,10 @@ const Racetrack = () => {
   return (
     <div className="race-track-container">
       <div className="race-section-order">
-        {orderedSections.map((section) => (
+        {orderedSections.map((section, index) => (
           <div className={`${section.type}`}>
             <p>
-              {section === trackSpurt.spurt ? "spurt on " : ""}
+              ({index + 1}): {section === trackSpurt.spurt ? "spurt on " : ""}
               {section.type}
             </p>
             {section.distance[0]}m - {section.distance[1]}m
