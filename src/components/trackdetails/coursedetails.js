@@ -3,26 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDistance, setGround, setTrack } from "../../state/userSlice";
 import "./coursedetails.scss";
 const racetracks = require("../data/trackinfo.json");
-const test = require("../data/test.json");
 
 const Coursedetails = () => {
   const dispatch = useDispatch();
   const [trackList, setTrackList] = useState(racetracks[10001].courses);
 
-  const trackCourseSelect = async (e) => {
-    let chosenRacetrack;
-
-    for (let key in racetracks) {
-      if (key == e.target.value) {
-        chosenRacetrack = racetracks[key].courses;
-      }
-    }
-
-    setTrackList(chosenRacetrack);
+  const raceTrackSelect = async (e) => {
+    let selected = e.target.value;
+    setTrackList(racetracks[selected].courses);
   };
 
-  const trackDistanceSelect = (e) => {
-    let index = e.target.value;
+  const raceCourseSelect = (e) => {
+    let index = e ? e.target.value : 0;
     let getTrack = Object.values(trackList)[index];
     dispatch(setTrack({ track: getTrack }));
   };
@@ -31,15 +23,16 @@ const Coursedetails = () => {
     dispatch(setGround({ ground: e.target.value }));
   };
 
-  useEffect(() => {
-    //Set Track on load
-    //Sapporo 1200 Turf default
-    dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
-  }, []);
+  // useEffect(() => {
+  //   //Set Track on load
+  //   //Sapporo 1200 Turf default
+  //   dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
+  // }, []);
 
   useEffect(() => {
     //Once a trackcourse is changed, default to first track distance
-    dispatch(setTrack({ track: Object.values(trackList)[0] }));
+
+    raceCourseSelect(null);
   }, [trackList]);
 
   return (
@@ -54,7 +47,7 @@ const Coursedetails = () => {
           <select
             className="course-details"
             name="course-racetrack"
-            onChange={(e) => trackCourseSelect(e)}
+            onChange={(e) => raceTrackSelect(e)}
           >
             <option value="10001">Sapporo (札幌)</option>
             <option value="10002">Hakodate (函館)</option>
@@ -80,7 +73,7 @@ const Coursedetails = () => {
           <select
             className="course-details"
             name="course-distance"
-            onChange={(e) => trackDistanceSelect(e)}
+            onChange={(e) => raceCourseSelect(e)}
           >
             {trackList
               ? Object.values(trackList).map((track, index) => (

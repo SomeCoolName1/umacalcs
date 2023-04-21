@@ -10,6 +10,7 @@ const Racetrack = () => {
 
   useEffect(() => {
     if (!track) return;
+    console.log(track);
     sortCornersStraight();
     sortSlopes();
   }, [track]);
@@ -40,19 +41,19 @@ const Racetrack = () => {
     // // {corner.start + corner.length}m
     // // {straight.start}m - {straight.end}m
 
-    for (let i = 0; i <= array.length - 1; i++) {
-      if (
-        array[i].distance <= lastSpurtDistance &&
-        lastSpurtDistance <= array[i + 1].distance
-      ) {
-        setTrackSpurt({
-          spurt: array[i],
-          before: i <= array.length - 1 ? array[i + 1] : "",
-          after: i > 0 ? array[i - 1] : "",
-        });
-      }
-    }
-    return;
+    // for (let i = 0; i <= array.length - 1; i++) {
+    //   if (
+    //     array[i].distance <= lastSpurtDistance &&
+    //     lastSpurtDistance <= array[i + 1].distance
+    //   ) {
+    //     setTrackSpurt({
+    //       spurt: array[i],
+    //       before: i <= array.length - 1 ? array[i + 1] : "",
+    //       after: i > 0 ? array[i - 1] : "",
+    //     });
+    //   }
+    // }
+    // return;
   };
 
   const sortSlopes = () => {
@@ -63,13 +64,9 @@ const Racetrack = () => {
 
     let array = [...slopes];
 
-    console.log(slopes);
-
     array.sort(function (a, b) {
       return a.start - b.start;
     });
-
-    console.log(array);
 
     for (let i = 0; i < array.length - 1; i++) {
       let slopeStart = array[i].start;
@@ -80,8 +77,6 @@ const Racetrack = () => {
       }
     }
   };
-
-  if (!distance) return;
 
   let spurt;
   let after;

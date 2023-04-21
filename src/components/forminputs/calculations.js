@@ -400,8 +400,10 @@ const Calculations = ({ stats }) => {
   return (
     <div className="">
       <h1>Stat Calculations</h1>
+
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
+
       <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat) => {
           return (
@@ -482,8 +484,10 @@ const Calculations = ({ stats }) => {
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
+
       <Coursedetails />
       <Racetrack />
+
       <h2>Race Simulation</h2>
       <TrackGraph dataPlot={racePlot()} />
     </div>
