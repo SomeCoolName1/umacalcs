@@ -61,7 +61,6 @@ const Main = () => {
                   type="text"
                   name={stat.en}
                   value={stat.value}
-                  defaultValue={1000}
                   maxLength="4"
                   pattern="\d*"
                   onChange={(e) => handleStatChange(e, stat.en)}

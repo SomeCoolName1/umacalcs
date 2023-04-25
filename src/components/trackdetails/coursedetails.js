@@ -76,7 +76,7 @@ const Coursedetails = () => {
           >
             {trackList
               ? Object.values(trackList).map((track, index) => (
-                  <option value={index}>
+                  <option value={index} key={index}>
                     {track.surface === 1 ? "芝 " : `ダート `}
                     {track.distance}
                   </option>

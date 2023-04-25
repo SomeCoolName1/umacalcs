@@ -101,7 +101,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
       <div className="passives-title-container">
         <h2>Passive Skills</h2>
         <h2 className="passive-sum-total">
-          {Object.entries(passiveStats).map((key) => {
+          {Object.entries(passiveStats).map((key, index) => {
             return (
               <span className="passive-sum">
                 {key[0]}: {key[1]},{" "}
@@ -117,8 +117,9 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
           <>
             <h3 className="passive-rarity-header">{key[0]}</h3>
             <div className="skill-box-container">
-              {Object.values(key[1]).map((x) => (
+              {Object.values(key[1]).map((x, index) => (
                 <SkillBox
+                  key={index}
                   skill={x}
                   recovered={null}
                   updateButton={updateValues}
