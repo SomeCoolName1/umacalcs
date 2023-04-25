@@ -30,18 +30,16 @@ const store = configureStore({
     }),
 });
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistStore(store)}>
-          <div className="App">
-            <Main />
-          </div>
-        </PersistGate>
-      </Provider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistStore(store)}>
+        <div className="App">
+          <Main />
+        </div>
+      </PersistGate>
+    </Provider>
+  );
+};
 
 export default App;
