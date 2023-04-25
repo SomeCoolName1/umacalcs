@@ -28,6 +28,7 @@ const Calculations = ({ stats }) => {
   const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
+  console.log("testsCalculations", stats);
 
   const [umaReco, setUmaReco] = useState(recoverySkills);
 
@@ -484,7 +485,7 @@ const Calculations = ({ stats }) => {
       <Coursedetails />
       <Racetrack />
       <h2>Race Simulation</h2>
-      <TrackGraph dataPlot={racePlot()} />
+      {/* <TrackGraph dataPlot={racePlot()} /> */}
     </>
   );
 };
