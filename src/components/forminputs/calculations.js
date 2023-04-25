@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   coefficients,
@@ -398,7 +398,7 @@ const Calculations = ({ stats }) => {
   };
 
   return (
-    <div className="calculations-container">
+    <>
       <h1>Stat Calculations</h1>
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
@@ -485,7 +485,7 @@ const Calculations = ({ stats }) => {
       <Racetrack />
       <h2>Race Simulation</h2>
       <TrackGraph dataPlot={racePlot()} />
-    </div>
+    </>
   );
 };
 
