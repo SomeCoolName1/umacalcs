@@ -45,6 +45,7 @@ const authSlice = createSlice({
       state.uma.umaMotivation = action.payload.motivation;
     },
     setTrack: (state, action) => {
+      console.log("I ran");
       state.track = action.payload.track;
     },
     setDistance: (state, action) => {
