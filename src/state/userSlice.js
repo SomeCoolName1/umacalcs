@@ -34,7 +34,7 @@ const initialState = {
   groundType: "良",
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: "uma",
   initialState,
   reducers: {
