@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   coefficients,
@@ -28,7 +28,6 @@ const Calculations = ({ stats }) => {
   const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
-  console.log("testsCalculations", stats);
 
   const [umaReco, setUmaReco] = useState(RecoverySkills);
 
@@ -42,8 +41,6 @@ const Calculations = ({ stats }) => {
   });
 
   const [finalStats, setFinalStats] = useState(initialAdjusted);
-
-  if (!track) return;
 
   //Coefficients and variables
   const {
@@ -132,7 +129,9 @@ const Calculations = ({ stats }) => {
     });
   };
 
-  adjustStats();
+  useEffect(() => {
+    adjustStats();
+  }, []);
 
   // /////////////////SPEED RELATED
   let umaBaseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
@@ -182,7 +181,7 @@ const Calculations = ({ stats }) => {
 
     return legSpeed;
   };
-
+  console.log("basespeed", umaBaseSpeed);
   const randomSpeed = (phase) => {
     const targetSpeed = umaTargetSpeed(phase);
     let int = finalInt.final;
