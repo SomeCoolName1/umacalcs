@@ -480,8 +480,8 @@ const Calculations = ({ stats }) => {
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
-      <Coursedetails />
-      <Racetrack />
+      {/* <Coursedetails /> */}
+      {/* <Racetrack /> */}
       <h2>Race Simulation</h2>
       {/* <TrackGraph dataPlot={racePlot()} /> */}
     </>
