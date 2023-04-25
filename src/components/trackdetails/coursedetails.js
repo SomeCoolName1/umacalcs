@@ -14,7 +14,6 @@ const Coursedetails = () => {
   };
 
   const raceCourseSelect = (e) => {
-    console.log("Obtain TrackList", trackList);
     let index = e ? e.target.value : 0;
     let getTrack = Object.values(trackList)[index];
 

@@ -29,9 +29,6 @@ const Calculations = ({ stats }) => {
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
 
-  console.log("the track", track);
-  console.log("groundType", groundType);
-
   const [umaReco, setUmaReco] = useState(RecoverySkills);
 
   //Passives
@@ -62,6 +59,8 @@ const Calculations = ({ stats }) => {
     int: finalInt,
   } = finalStats;
 
+  const { profDistance, profSurface, profStrategy } = proficiency;
+
   const { umaStrategy, umaMotivation } = umaStratMot;
 
   ////Strategy
@@ -86,8 +85,6 @@ const Calculations = ({ stats }) => {
   } else {
     surfaceType = "dirt";
   }
-
-  console.log("distance", distance);
 
   ////GroundType
   const groundModCI = groundMod.find((obj) => obj.name === groundType);
@@ -138,7 +135,7 @@ const Calculations = ({ stats }) => {
 
   useEffect(() => {
     adjustStats();
-  }, []);
+  }, [stats, passiveStats, ""]);
 
   // /////////////////SPEED RELATED
   let umaBaseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
@@ -156,11 +153,10 @@ const Calculations = ({ stats }) => {
     const openingBTS = umaBaseSpeed * openingLeg; //[m/s]
     const middleBTS = umaBaseSpeed * middleLeg; //[m/s]
     const finalBTS =
-      umaBaseSpeed * finalLeg +
-      Math.sqrt(500 * speed) * proficiency.distance * 0.002; //[m/s]
+      umaBaseSpeed * finalLeg + Math.sqrt(500 * speed) * profDistance * 0.002; //[m/s]
     const lastSpurtSpeed =
       (finalBTS + 0.01 * umaBaseSpeed) * 1.05 +
-      Math.sqrt(500 * speed) * proficiency.distance * 0.002 +
+      Math.sqrt(500 * speed) * profDistance * 0.002 +
       Math.pow(450 * guts, 0.597) * 0.0001; //[m/s]
 
     //Opening Leg: Section 1 to 4
@@ -189,7 +185,6 @@ const Calculations = ({ stats }) => {
     return legSpeed;
   };
 
-  console.log("basespeed", umaBaseSpeed);
   const randomSpeed = (phase) => {
     const targetSpeed = umaTargetSpeed(phase);
     let int = finalInt.final;
@@ -401,8 +396,6 @@ const Calculations = ({ stats }) => {
     return { racePlot, phaseChange };
   };
 
-  console.log(umaTargetSpeed("phase0").toFixed(2));
-
   return (
     <>
       <h1>Stat Calculations</h1>
@@ -487,10 +480,10 @@ const Calculations = ({ stats }) => {
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
-      {track && <Coursedetails />}
-      {track && <Racetrack />}
+      <Coursedetails />
+      <Racetrack />
       <h2>Race Simulation</h2>
-      {track && <TrackGraph dataPlot={racePlot()} />}
+      <TrackGraph dataPlot={racePlot()} />
     </>
   );
 };

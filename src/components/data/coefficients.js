@@ -164,18 +164,6 @@ const groundMod = [
   },
 ];
 
-const groundProf = [
-  {
-    S: 1.05,
-    A: 1.0,
-    B: 0.9,
-    C: 0.8,
-    D: 0.7,
-    E: 0.5,
-    F: 0.3,
-    G: 0.1,
-  },
-];
 const moodCoefficients = [
   { name: "絶好調", moodCI: 1.04 },
   { name: "好調", moodCI: 1.02 },
@@ -184,18 +172,38 @@ const moodCoefficients = [
   { name: "絶不調", moodCI: 0.96 },
 ];
 
-const distanceProf = [
-  {
-    S: 1.0,
-    A: 1.0,
-    B: 1.0,
-    C: 1.0,
-    D: 1.0,
-    E: 0.6,
-    F: 0.5,
-    G: 0.4,
-  },
-];
+const distanceProf = {
+  S: 1.05,
+  A: 1.0,
+  B: 0.9,
+  C: 0.8,
+  D: 0.6,
+  E: 0.4,
+  F: 0.2,
+  G: 0.1,
+};
+
+const surfaceProf = {
+  S: 1.05,
+  A: 1.0,
+  B: 0.9,
+  C: 0.8,
+  D: 0.7,
+  E: 0.5,
+  F: 0.3,
+  G: 0.1,
+};
+
+const strategyProf = {
+  S: 1.1,
+  A: 1.0,
+  B: 0.85,
+  C: 0.75,
+  D: 0.6,
+  E: 0.4,
+  F: 0.2,
+  G: 0.1,
+};
 
 const phaseCoefficient = [
   {
@@ -215,8 +223,10 @@ const phaseCoefficient = [
 ];
 
 module.exports = {
-  strategyCoefficients: strategyCoefficients,
+  surfaceProf: surfaceProf,
   distanceProf: distanceProf,
+  strategyProf: strategyProf,
+  strategyCoefficients: strategyCoefficients,
   moodCoefficients: moodCoefficients,
   groundMod: groundMod,
 };

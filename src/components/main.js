@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setMotivation, setStrategy } from "../state/userSlice";
+import {
+  setMotivation,
+  setProfDistance,
+  setProfStrategy,
+  setProfSurface,
+  setStrategy,
+} from "../state/userSlice";
 import Calculations from "./forminputs/calculations";
 import happyAyabe from "../HappyAyabe.png";
 import "./main.scss";
@@ -39,7 +45,22 @@ const Main = () => {
     } else return;
   };
 
-  const updateUmaProficiency = (e, type) => {};
+  const updateUmaProf = (e, type) => {
+    switch (type) {
+      case "surface":
+        dispatch(setProfSurface({ surface: e.target.value }));
+        break;
+      case "distance":
+        dispatch(setProfDistance({ distance: e.target.value }));
+        break;
+      case "strategy":
+        dispatch(setProfStrategy({ strategy: e.target.value }));
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="main-container">
@@ -92,7 +113,11 @@ const Main = () => {
               <span className="jp-label">バ場適性</span>
               <span className="en-label">Surface</span>
             </label>
-            <select name="uma-surface" className="uma-select">
+            <select
+              name="uma-surface"
+              className="uma-select"
+              onChange={(e) => updateUmaProf(e, "surface")}
+            >
               <option value="S">S</option>
               <option value="A">A</option>
               <option value="B">B</option>
@@ -103,7 +128,11 @@ const Main = () => {
               <span className="jp-label">距離適性</span>
               <span className="en-label">Distance</span>
             </label>
-            <select name="uma-distance" className="uma-select">
+            <select
+              name="uma-distance"
+              className="uma-select"
+              onChange={(e) => updateUmaProf(e, "distance")}
+            >
               <option value="S">S</option>
               <option value="A">A</option>
               <option value="B">B</option>
@@ -114,7 +143,11 @@ const Main = () => {
               <span className="jp-label">脚質適性</span>
               <span className="en-label">Strategy</span>
             </label>
-            <select name="uma-strategy-rank" className="uma-select">
+            <select
+              name="uma-strategy-rank"
+              className="uma-select"
+              onChange={(e) => updateUmaProf(e, "strategy")}
+            >
               <option value="S">S</option>
               <option value="A">A</option>
               <option value="B">B</option>
