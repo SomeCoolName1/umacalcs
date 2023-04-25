@@ -18,7 +18,6 @@ const Coursedetails = () => {
     let index = e ? e.target.value : 0;
     let getTrack = Object.values(trackList)[index];
 
-    console.log("gettrack", getTrack);
     dispatch(setTrack({ track: getTrack }));
   };
 
@@ -26,11 +25,11 @@ const Coursedetails = () => {
     dispatch(setGround({ ground: e.target.value }));
   };
 
-  // useEffect(() => {
-  //   //Set Track on load
-  //   //Sapporo 1200 Turf default
-  //   dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
-  // }, []);
+  useEffect(() => {
+    //Set Track on load
+    //Sapporo 1200 Turf default
+    dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
+  }, []);
 
   useEffect(() => {
     //Once a trackcourse is changed, default to first track distance

@@ -52,6 +52,7 @@ const authSlice = createSlice({
       state.distance = action.payload.distance;
     },
     setGround: (state, action) => {
+      console.log(action.payload.ground);
       state.groundType = action.payload.ground;
     },
     setProfDistance: (state, action) => {
