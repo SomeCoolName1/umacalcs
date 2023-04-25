@@ -394,6 +394,8 @@ const Calculations = ({ stats }) => {
     return { racePlot, phaseChange };
   };
 
+  console.log(umaTargetSpeed("phase0").toFixed(2));
+
   return (
     <>
       <h1>Stat Calculations</h1>
