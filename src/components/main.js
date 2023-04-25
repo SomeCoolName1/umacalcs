@@ -138,7 +138,9 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <Calculations stats={umaStats} />
+      <div className="calculations-container">
+        <Calculations stats={umaStats} />
+      </div>
     </div>
   );
 };
