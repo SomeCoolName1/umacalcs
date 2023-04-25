@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setMotivation, setStrategy } from "../state/userSlice";
 import Calculations from "./forminputs/calculations";
-import Coursedetails from "./trackdetails/coursedetails";
-import Racetrack from "./trackdetails/racetrack";
 import happyAyabe from "../HappyAyabe.png";
 import "./main.scss";
 
@@ -141,7 +139,6 @@ const Main = () => {
           </div>
         </div>
       </div>
-
       <Calculations stats={umaStats} />
     </div>
   );
