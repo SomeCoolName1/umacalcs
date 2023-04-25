@@ -15,7 +15,7 @@ import SkillBox from "../factory/skillbox";
 import Coursedetails from "../trackdetails/coursedetails";
 import Racetrack from "../trackdetails/racetrack";
 
-const initialStats = {
+const initialAdjusted = {
   speed: { en: "speed", jp: "スペード", adjusted: 0, final: 0 },
   stamina: { en: "stamina", jp: "スタミナ", adjusted: 0, final: 0 },
   power: { en: "power", jp: "パワー", adjusted: 0, final: 0 },
@@ -40,7 +40,7 @@ const Calculations = ({ stats }) => {
     int: 0,
   });
 
-  const [finalStats, setFinalStats] = useState(initialStats);
+  const [finalStats, setFinalStats] = useState(initialAdjusted);
 
   // const [recoverySkills, setRecovery] = useState(staminaSkills);
 
