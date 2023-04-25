@@ -23,6 +23,11 @@ const Main = () => {
   const dispatch = useDispatch();
 
   const [umaStats, setUmaStats] = useState(initialStats);
+  const aptitudeTypes = [
+    { en: "surface", jp: "バ場適性" },
+    { en: "distance", jp: "距離適性" },
+    { en: "strategy", jp: "脚質適性" },
+  ];
 
   const handleStatChange = (e, targetStat) => {
     let convertNumber = parseInt(e.target.value);
@@ -93,7 +98,7 @@ const Main = () => {
           <div className="uma-aptitude">
             <label for="uma-strategy" className="uma-label label">
               <span className="jp-label">作戦</span>
-              <span className="en-label">Strategy</span>
+              <span className="en-label">Tactic</span>
             </label>
             <select
               name="uma-strategy"
@@ -101,57 +106,35 @@ const Main = () => {
               onChange={(e) => updateUmaStratMot(e, "strategy")}
             >
               <option value="great escape">大逃げ</option>
-              <option value="runner">逃げ</option>
+              <option value="runner" selected>
+                逃げ
+              </option>
               <option value="leader">先行</option>
               <option value="betweener">差し</option>
               <option value="chaser">追込</option>
             </select>
           </div>
-          <div className="uma-aptitude">
-            <label for="uma-surface" className="uma-label label">
-              <span className="jp-label">バ場適性</span>
-              <span className="en-label">Surface</span>
-            </label>
-            <select
-              name="uma-surface"
-              className="uma-select"
-              onChange={(e) => updateUmaProf(e, "surface")}
-            >
-              <option value="S">S</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-            </select>
-          </div>
-          <div className="uma-aptitude">
-            <label for="uma-distance" className="uma-label label">
-              <span className="jp-label">距離適性</span>
-              <span className="en-label">Distance</span>
-            </label>
-            <select
-              name="uma-distance"
-              className="uma-select"
-              onChange={(e) => updateUmaProf(e, "distance")}
-            >
-              <option value="S">S</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-            </select>
-          </div>
-          <div className="uma-aptitude">
-            <label for="uma-strategy-rank" className="uma-label label">
-              <span className="jp-label">脚質適性</span>
-              <span className="en-label">Strategy</span>
-            </label>
-            <select
-              name="uma-strategy-rank"
-              className="uma-select"
-              onChange={(e) => updateUmaProf(e, "strategy")}
-            >
-              <option value="S">S</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-            </select>
-          </div>
+          {aptitudeTypes.map((aptitude) => {
+            return (
+              <div className="uma-aptitude">
+                <label for="uma-surface" className="uma-label label">
+                  <span className="jp-label">{aptitude.jp}</span>
+                  <span className="en-label">{aptitude.en}</span>
+                </label>
+                <select
+                  name={`uma-${aptitude.en}`}
+                  className="uma-select"
+                  onChange={(e) => updateUmaProf(e, aptitude.en)}
+                >
+                  <option value="S">S</option>
+                  <option value="A" selected>
+                    A
+                  </option>
+                  <option value="B">B</option>
+                </select>
+              </div>
+            );
+          })}
           <div
             className="uma-aptitude"
             onChange={(e) => updateUmaStratMot(e, "motivation")}
@@ -163,7 +146,9 @@ const Main = () => {
             <select name="uma-motivation" className="uma-select">
               <option value="絶好調">絶好調</option>
               <option value="好調">好調</option>
-              <option value="普通">普通</option>
+              <option value="普通" selected>
+                普通
+              </option>
               <option value="不調">不調</option>
               <option value="絶不調">絶不調</option>
             </select>

@@ -48,14 +48,16 @@
 
   .skills-list-container {
     opacity: 0;
-    height: 0;
-    transition: all 1s ease-out;
+    max-height: 0px;
+    transition: all 0.3s ease-out;
     overflow: hidden;
+    padding: 10px;
   }
 
   .show {
     opacity: 1;
     height: auto;
+    max-height: 1000px;
   }
 
   .skills-list-container {

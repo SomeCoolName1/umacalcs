@@ -11,8 +11,8 @@ import {
 
 let initialState = {
   uma: {
-    umaStrategy: "great escape",
-    umaMotivation: 1.04,
+    umaStrategy: "runner",
+    umaMotivation: 1.0,
   },
   track: {
     raceTrackId: 10001,
@@ -36,9 +36,9 @@ let initialState = {
     slopes: [],
   },
   proficiency: {
-    profDistance: 1.05,
-    profSurface: 1.05,
-    profStrategy: 1.1,
+    profDistance: 1.0,
+    profSurface: 1.0,
+    profStrategy: 1.0,
   },
   groundType: "良",
 };

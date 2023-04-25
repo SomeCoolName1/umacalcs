@@ -68,7 +68,7 @@ const Coursedetails = () => {
         <div className="course-distance-container race-type">
           <label for="course-distance" className="uma-label label">
             <span className="jp-label">コース</span>
-            <span className="en-label">Distance</span>
+            <span className="en-label">Course</span>
           </label>
           <select
             className="course-details"
@@ -87,7 +87,7 @@ const Coursedetails = () => {
         </div>
         <div className="ground-condition-container race-type">
           <label for="ground-condition" className="uma-label label">
-            <span className="jp-label">Condition</span>
+            <span className="jp-label">バ場状態</span>
             <span className="en-label">Ground</span>
           </label>
           <select
