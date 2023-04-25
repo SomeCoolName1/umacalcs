@@ -401,7 +401,7 @@ const Calculations = ({ stats }) => {
       <h1>Stat Calculations</h1>
       {/* <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2> */}
-      <div className="adjusted-stats-container stats-container">
+      {/* <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat, index) => {
           return (
             <div className="uma-stat" key={index}>
@@ -426,7 +426,7 @@ const Calculations = ({ stats }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
       <h2>Speed and Acceleration</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
