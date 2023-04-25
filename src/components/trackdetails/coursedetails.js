@@ -23,13 +23,11 @@ const Coursedetails = () => {
     dispatch(setGround({ ground: e.target.value }));
   };
 
-  console.log(Object.values(racetracks[10001])[1][10101]);
-
-  useEffect(() => {
-    //Set Track on load
-    //Sapporo 1200 Turf default
-    dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
-  }, []);
+  // useEffect(() => {
+  //   //Set Track on load
+  //   //Sapporo 1200 Turf default
+  //   dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
+  // }, []);
 
   useEffect(() => {
     //Once a trackcourse is changed, default to first track distance

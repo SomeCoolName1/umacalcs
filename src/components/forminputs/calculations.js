@@ -73,16 +73,19 @@ const Calculations = ({ stats }) => {
   );
   const { moodCI } = motivationCI;
 
+  console.log("hi, before distance'");
+
   ////Track
   let surfaceType;
   const { distance, surface } = track;
+
   if (surface === 1) {
     surfaceType = "turf";
   } else {
     surfaceType = "dirt";
   }
 
-  console.log(distance);
+  console.log("distance", distance);
 
   ////GroundType
   const groundModCI = groundMod.find((obj) => obj.name === groundType);
