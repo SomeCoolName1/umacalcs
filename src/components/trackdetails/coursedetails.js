@@ -23,6 +23,8 @@ const Coursedetails = () => {
     dispatch(setGround({ ground: e.target.value }));
   };
 
+  console.log(Object.values(racetracks[10001])[1][10101]);
+
   useEffect(() => {
     //Set Track on load
     //Sapporo 1200 Turf default

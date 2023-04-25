@@ -82,6 +82,8 @@ const Calculations = ({ stats }) => {
     surfaceType = "dirt";
   }
 
+  console.log(distance);
+
   ////GroundType
   const groundModCI = groundMod.find((obj) => obj.name === groundType);
   const { groundSpeedMod, groundPowerMod, groundHPMod } = groundModCI;
@@ -181,6 +183,7 @@ const Calculations = ({ stats }) => {
 
     return legSpeed;
   };
+
   console.log("basespeed", umaBaseSpeed);
   const randomSpeed = (phase) => {
     const targetSpeed = umaTargetSpeed(phase);
