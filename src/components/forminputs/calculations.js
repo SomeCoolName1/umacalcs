@@ -24,47 +24,47 @@ const initialAdjusted = {
 };
 
 const Calculations = ({ stats }) => {
-  // const track = useSelector((state) => state.track);
-  // const proficiency = useSelector((state) => state.proficiency);
-  // const groundType = useSelector((state) => state.groundType);
-  // const umaStratMot = useSelector((state) => state.uma);
-  // console.log("testsCalculations", stats);
+  const track = useSelector((state) => state.track);
+  const proficiency = useSelector((state) => state.proficiency);
+  const groundType = useSelector((state) => state.groundType);
+  const umaStratMot = useSelector((state) => state.uma);
+  console.log("testsCalculations", stats);
 
-  // const [umaReco, setUmaReco] = useState(recoverySkills);
+  const [umaReco, setUmaReco] = useState(recoverySkills);
 
-  // //Passives
-  // const [passiveStats, setStats] = useState({
-  //   speed: 0,
-  //   stamina: 0,
-  //   power: 0,
-  //   guts: 0,
-  //   int: 0,
-  // });
+  //Passives
+  const [passiveStats, setStats] = useState({
+    speed: 0,
+    stamina: 0,
+    power: 0,
+    guts: 0,
+    int: 0,
+  });
 
-  // const [finalStats, setFinalStats] = useState(initialAdjusted);
+  const [finalStats, setFinalStats] = useState(initialAdjusted);
 
-  // // const [recoverySkills, setRecovery] = useState(staminaSkills);
+  // const [recoverySkills, setRecovery] = useState(staminaSkills);
 
-  // if (!track) return;
+  if (!track) return;
 
-  // //Coefficients and variables
-  // const {
-  //   speed: baseSpeed,
-  //   stamina: baseStamina,
-  //   power: basePower,
-  //   guts: baseGuts,
-  //   int: baseInt,
-  // } = stats;
+  //Coefficients and variables
+  const {
+    speed: baseSpeed,
+    stamina: baseStamina,
+    power: basePower,
+    guts: baseGuts,
+    int: baseInt,
+  } = stats;
 
-  // const {
-  //   speed: finalSpeed,
-  //   stamina: finalStamina,
-  //   power: finalPower,
-  //   guts: finalGuts,
-  //   int: finalInt,
-  // } = finalStats;
+  const {
+    speed: finalSpeed,
+    stamina: finalStamina,
+    power: finalPower,
+    guts: finalGuts,
+    int: finalInt,
+  } = finalStats;
 
-  // const { umaStrategy, umaMotivation } = umaStratMot;
+  const { umaStrategy, umaMotivation } = umaStratMot;
 
   // ////Strategy
   // const strategyCI = strategyCoefficients.find(
@@ -399,7 +399,7 @@ const Calculations = ({ stats }) => {
   return (
     <>
       <h1>Stat Calculations</h1>
-      {/* <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
+      <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
       <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat, index) => {
@@ -427,6 +427,7 @@ const Calculations = ({ stats }) => {
           );
         })}
       </div>
+      {/* 
       <h2>Speed and Acceleration</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
