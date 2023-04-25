@@ -36,7 +36,7 @@ const initialState = {
 
 export const authSlice = createSlice({
   name: "uma",
-  initialState,
+  initialState: initialState,
   reducers: {
     setStrategy: (state, action) => {
       state.uma.umaStrategy = action.payload.strategy;
