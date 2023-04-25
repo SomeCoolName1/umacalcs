@@ -131,11 +131,16 @@ const Calculations = ({ stats }) => {
       key.adjusted = moodAdjusted; //Multiply by mood
       key.final = moodAdjusted + passiveStats[currentStat];
     });
+    setFinalStats(baseStats);
   };
 
   useEffect(() => {
     adjustStats();
-  }, [stats, passiveStats, ""]);
+  }, []);
+
+  useEffect(() => {
+    adjustStats();
+  }, [stats, passiveStats]);
 
   // /////////////////SPEED RELATED
   let umaBaseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
