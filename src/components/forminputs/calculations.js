@@ -463,7 +463,7 @@ const Calculations = ({ stats }) => {
           - {Math.abs(recoveryStaminaValue().HPDeb.toFixed(2))}
         </span>
       </p>
-      <div className="skill-box-container">
+      {/* <div className="skill-box-container">
         {Object.values(recoverySkills).map((key, index) => (
           <SkillBox
             key={index}
@@ -482,7 +482,7 @@ const Calculations = ({ stats }) => {
       </div>
       <Coursedetails />
       <Racetrack />
-      <h2>Race Simulation</h2>
+      <h2>Race Simulation</h2> */}
       {/* <TrackGraph dataPlot={racePlot()} /> */}
     </>
   );

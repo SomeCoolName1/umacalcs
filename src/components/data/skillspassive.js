@@ -10,7 +10,7 @@ import powerGold from "../../assets/skillimages/power-passive-gold.png";
 import gutsWhite from "../../assets/skillimages/guts-passive-white.png";
 import intWhite from "../../assets/skillimages/int-passive-white.png";
 
-const passiveSkillsList = {
+export const passiveSkillsList = {
   "White Passive": {
     speedwhite: {
       name: "スペード",
