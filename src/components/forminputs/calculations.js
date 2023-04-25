@@ -399,8 +399,8 @@ const Calculations = ({ stats }) => {
   return (
     <>
       <h1>Stat Calculations</h1>
-      <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
-      <h2>Corrected Stats</h2>
+      {/* <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
+      <h2>Corrected Stats</h2> */}
       <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat, index) => {
           return (
