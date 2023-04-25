@@ -398,7 +398,7 @@ const Calculations = ({ stats }) => {
   };
 
   return (
-    <div className="">
+    <div className="calculations-container">
       <h1>Stat Calculations</h1>
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
