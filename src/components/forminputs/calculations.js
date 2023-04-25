@@ -397,11 +397,11 @@ const Calculations = ({ stats }) => {
   };
 
   return (
-    <>
+    <div className="some-container">
       <h1>Stat Calculations</h1>
       {/* <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
-      <h2>Corrected Stats</h2> */}
-      {/* <div className="adjusted-stats-container stats-container">
+      <h2>Corrected Stats</h2>
+      <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat, index) => {
           return (
             <div className="uma-stat" key={index}>
@@ -426,7 +426,7 @@ const Calculations = ({ stats }) => {
             </div>
           );
         })}
-      </div> */}
+      </div>
       <h2>Speed and Acceleration</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
@@ -463,7 +463,7 @@ const Calculations = ({ stats }) => {
           - {Math.abs(recoveryStaminaValue().HPDeb.toFixed(2))}
         </span>
       </p>
-      {/* <div className="skill-box-container">
+      <div className="skill-box-container">
         {Object.values(recoverySkills).map((key, index) => (
           <SkillBox
             key={index}
@@ -482,9 +482,9 @@ const Calculations = ({ stats }) => {
       </div>
       <Coursedetails />
       <Racetrack />
-      <h2>Race Simulation</h2> */}
-      {/* <TrackGraph dataPlot={racePlot()} /> */}
-    </>
+      <h2>Race Simulation</h2>
+      <TrackGraph dataPlot={racePlot()} /> */}
+    </div>
   );
 };
 
