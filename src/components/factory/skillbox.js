@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./skillbox.scss";
 
-const SkillBox = ({ skill, recovered, updateButton, skillType }) => {
+const Passiveskillbox = ({ skill, recovered, updateButton, skillType }) => {
   const [show, setShow] = useState(false);
 
   const changeShow = () => {
@@ -43,29 +43,37 @@ const SkillBox = ({ skill, recovered, updateButton, skillType }) => {
             i
           </button>
         </div>
-        <img src={skill.img} alt="skill-icon" />
-        <span>
-          {skill.name}
-          {recovered ? ` : ${recovered(skill.value)} Stamina` : ""}
-        </span>
+        <div className="skill-icon-container">
+          <img src={skill.img} alt="skill-icon" />
+          <span>
+            {skill.name}
+            {recovered ? ` : ${recovered(skill.value)} Stamina` : ""}
+          </span>
+        </div>
       </div>
-      <div className="number-of-skills">
-        <button
-          className={`number-button ${skill.number <= 0 ? "disabled" : ""}`}
-          onClick={() => updateButton(skill, "minus")}
-        >
-          {"−"}
-        </button>
-        <p>{skill.number}</p>
-        <button
-          className="number-button"
-          onClick={() => updateButton(skill, "add")}
-        >
-          +
-        </button>
+      <div className="passive-counter-container">
+        {skill.skillValue.map((key) => {
+          return (
+            <div className="passive-counter">
+              <button
+                className={`number-button ${key.amount <= 0 ? "disabled" : ""}`}
+                onClick={() => updateButton(skill, "minus", key)}
+              >
+                -{key.value}
+              </button>
+              <p>{key.amount}</p>
+              <button
+                className="number-button"
+                onClick={() => updateButton(skill, "add", key)}
+              >
+                +{key.value}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default SkillBox;
+export default Passiveskillbox;

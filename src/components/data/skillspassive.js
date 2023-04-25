@@ -12,10 +12,13 @@ import intWhite from "../../assets/skillimages/int-passive-white.png";
 
 const passiveSkillsList = {
   "White Passive": {
-    speed40: {
-      name: "スペード 40",
+    speedwhite: {
+      name: "スペード",
       stat: ["スペード"],
-      value: 40,
+      skillValue: [
+        { value: 40, amount: 0 },
+        { value: 60, amount: 0 },
+      ],
       skillsList: [
         "右回り○",
         "左回り○",
@@ -32,65 +35,36 @@ const passiveSkillsList = {
         "泥遊び○",
       ],
       img: speedWhite,
-      number: 0,
     },
-    speed60: {
-      name: "スペード 60",
-      stat: ["スペード"],
-      value: 60,
-      skillsList: [
-        "右回り◎",
-        "左回り◎",
-        "春ウマ娘◎",
-        "夏ウマ娘◎",
-        "秋ウマ娘◎",
-        "冬ウマ娘◎",
-        "外枠得意◎",
-        "おひとり様○",
-        "伏兵◎",
-        "交流重賞◎",
-        "泥遊び◎",
-        "抜群の踏み込み",
-      ],
-      img: speedWhite,
-      number: 0,
-    },
-    stamina40: {
-      name: "スタミナ 40",
+
+    staminawhite: {
+      name: "スタミナ",
       stat: ["スタミナ"],
-      value: 40,
+      skillValue: [
+        { value: 40, amount: 0 },
+        { value: 60, amount: 0 },
+      ],
       skillsList: ["-レース場○", "根幹距離○", "非根幹距離○"],
       img: staminaWhite,
-      number: 0,
     },
-    stamina60: {
-      name: "スタミナ 60",
-      stat: ["スタミナ"],
-      value: 60,
-      skillsList: ["-レース場◎", "根幹距離◎", "非根幹距離◎"],
-      img: staminaWhite,
-      number: 0,
-    },
-    power40: {
-      name: "パワー 40",
+
+    powerwhite: {
+      name: "パワー",
       stat: ["パワー"],
-      value: 40,
+      skillValue: [
+        { value: 40, amount: 0 },
+        { value: 60, amount: 0 },
+      ],
       skillsList: ["良バ場○", "道悪○", "対抗意識○"],
       img: powerWhite,
-      number: 0,
     },
-    power60: {
-      name: "パワー 60",
-      stat: ["パワー"],
-      value: 60,
-      skillsList: ["良バ場◎", "道悪◎", "対抗意識◎"],
-      img: powerWhite,
-      number: 0,
-    },
-    guts40: {
-      name: "根性 40",
+    gutswhite: {
+      name: "根性",
       stat: ["根性"],
-      value: 40,
+      skillValue: [
+        { value: 40, amount: 0 },
+        { value: 60, amount: 0 },
+      ],
       skillsList: [
         "晴れの日○",
         "曇りの日○",
@@ -99,26 +73,14 @@ const passiveSkillsList = {
         "徹底マーク○",
       ],
       img: gutsWhite,
-      number: 0,
     },
-    guts60: {
-      name: "根性 60",
-      stat: ["根性"],
-      value: 60,
-      skillsList: [
-        "晴れの日◎",
-        "曇りの日◎",
-        "雨の日◎",
-        "雪の日◎",
-        "徹底マーク◎",
-      ],
-      img: gutsWhite,
-      number: 0,
-    },
-    int40: {
-      name: "賢さ 40",
+    intwhite: {
+      name: "賢さ",
       stat: ["賢さ"],
-      value: 40,
+      skillValue: [
+        { value: 40, amount: 0 },
+        { value: 60, amount: 0 },
+      ],
       skillsList: [
         "内枠得意○",
         "逃げのコツ○",
@@ -129,38 +91,23 @@ const passiveSkillsList = {
         "小回り○",
       ],
       img: intWhite,
-      number: 0,
-    },
-    int60: {
-      name: "賢さ 60",
-      stat: ["賢さ"],
-      value: 60,
-      skillsList: [
-        "内枠得意◎",
-        "逃げのコツ◎",
-        "先行のコツ◎",
-        "差しのコツ◎",
-        "追込のコツ◎",
-        "ナイター◎",
-        "小回り◎",
-      ],
-      img: intWhite,
-      number: 0,
     },
     selfControl: {
       name: "自制心",
       stat: ["賢さ"],
-      value: 60,
+      skillValue: [{ value: 60, amount: 0 }],
       skillsList: ["自制心"],
       img: intWhite,
-      number: 0,
     },
   },
-  "Gold Passive": {
-    speedpower60: {
-      name: "スペード, パワー 60",
+  "Gold/Evolved Passive": {
+    speedpower: {
+      name: "スペード, パワー",
       stat: ["スペード", "パワー"],
-      value: 60,
+      skillValue: [
+        { value: 60, amount: 0 },
+        { value: 80, amount: 0 },
+      ],
       skillsList: [
         "初嵐",
         "春一番",
@@ -169,57 +116,60 @@ const passiveSkillsList = {
         "良バ場の鬼",
       ],
       img: speedGold,
-      number: 0,
     },
-    speedpowerguts80: {
-      name: "スペード, パワー, 根性 80",
+    speedpowerguts: {
+      name: "スペード, パワー, 根性",
       stat: ["スペード", "パワー", "根性"],
-      value: 80,
+      skillValue: [
+        { value: 80, amount: 0 },
+        { value: 100, amount: 0 },
+      ],
       skillsList: ["勝負師"],
       img: speedGold,
-      number: 0,
     },
-    speedstamint60: {
-      name: "スペード, スタミナ, 賢さ 60",
+    speedstamint: {
+      name: "スペード, スタミナ, 賢さ",
       stat: ["スペード", "スタミナ", " 賢さ"],
-      value: 60,
+      skillValue: [
+        { value: 60, amount: 0 },
+        { value: 80, amount: 0 },
+      ],
       skillsList: ["淀の申し子"],
       img: staminaGold,
-      number: 0,
     },
   },
-  "Evolved Passive": {
-    speedpower80: {
-      name: "スペード, パワー 80",
-      stat: ["スペード", "パワー"],
-      value: 80,
-      skillsList: [
-        "風霜高潔",
-        "いたずらマイスター",
-        "春風吹きて、桜舞う",
-        "右回りの輪舞曲",
-        "けふ九重に満開です",
-      ],
-      img: speedEvolved,
-      number: 0,
-    },
-    speedpowerguts100: {
-      name: "スペード, パワー, 根性 100",
-      stat: ["スペード", "パワー", "根性"],
-      value: 100,
-      skillsList: ["鉄火のギャンブラー"],
-      img: speedEvolved,
-      number: 0,
-    },
-    speedstamint80: {
-      name: "スペード, スタミナ, 賢さ 80",
-      stat: ["スペード", "スタミナ", "賢さ"],
-      value: 80,
-      skillsList: ["淀の女王"],
-      img: staminaEvolved,
-      number: 0,
-    },
-  },
+  // "Evolved Passive": {
+  //   speedpower80: {
+  //     name: "スペード, パワー 80",
+  //     stat: ["スペード", "パワー"],
+  //     value: 80,
+  //     skillsList: [
+  //       "風霜高潔",
+  //       "いたずらマイスター",
+  //       "春風吹きて、桜舞う",
+  //       "右回りの輪舞曲",
+  //       "けふ九重に満開です",
+  //     ],
+  //     img: speedEvolved,
+  //     number: 0,
+  //   },
+  //   speedpowerguts100: {
+  //     name: "スペード, パワー, 根性 100",
+  //     stat: ["スペード", "パワー", "根性"],
+  //     value: 100,
+  //     skillsList: ["鉄火のギャンブラー"],
+  //     img: speedEvolved,
+  //     number: 0,
+  //   },
+  //   speedstamint80: {
+  //     name: "スペード, スタミナ, 賢さ 80",
+  //     stat: ["スペード", "スタミナ", "賢さ"],
+  //     value: 80,
+  //     skillsList: ["淀の女王"],
+  //     img: staminaEvolved,
+  //     number: 0,
+  //   },
+  // },
 };
 
 export default passiveSkillsList;

@@ -1,26 +1,22 @@
 import passiveSkillsList from "../data/skillspassive";
-import SkillBox from "../factory/skillbox";
 import "./passiveskills.scss";
+import SkillBox from "../factory/skillbox";
 import { useState } from "react";
 
 const PassiveSkills = ({ setStats, passiveStats }) => {
   const [umaPassives, setUmaPassives] = useState(passiveSkillsList);
 
-  const updateValues = (skill, operator) => {
+  const updateValues = (skill, operator, key) => {
     let skillsList = { ...umaPassives };
-
     const mergeList = {
       ...skillsList["White Passive"],
-      ...skillsList["Gold Passive"],
-      ...skillsList["Evolved Passive"],
+      ...skillsList["Gold/Evolved Passive"],
     };
-
     let findSkill = Object.values(mergeList).find((x) => x === skill);
+    let findValue = findSkill.skillValue.find((x) => x === key);
+    let value = key.value;
 
-    if (operator === "add") {
-      findSkill.number += 1;
-    } else findSkill.number -= 1;
-
+    operator === "add" ? (findValue.amount += 1) : (findValue.amount -= 1);
     setUmaPassives(skillsList);
 
     skill.stat.map((x) => {
@@ -30,8 +26,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
             ...prev,
             speed:
               operator === "add"
-                ? (prev.speed += skill.value)
-                : Math.max((prev.speed -= skill.value), 0),
+                ? (prev.speed += value)
+                : Math.max((prev.speed -= value), 0),
           }));
           break;
         case "スタミナ":
@@ -39,8 +35,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
             ...prev,
             stamina:
               operator === "add"
-                ? (prev.stamina += skill.value)
-                : Math.max((prev.stamina -= skill.value), 0),
+                ? (prev.stamina += value)
+                : Math.max((prev.stamina -= value), 0),
           }));
           break;
         case "パワー":
@@ -48,8 +44,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
             ...prev,
             power:
               operator === "add"
-                ? (prev.power += skill.value)
-                : Math.max((prev.power -= skill.value), 0),
+                ? (prev.power += value)
+                : Math.max((prev.power -= value), 0),
           }));
           break;
         case "根性":
@@ -57,8 +53,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
             ...prev,
             guts:
               operator === "add"
-                ? (prev.guts += skill.value)
-                : Math.max((prev.guts -= skill.value), 0),
+                ? (prev.guts += value)
+                : Math.max((prev.guts -= value), 0),
           }));
           break;
         case "賢さ":
@@ -66,8 +62,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
             ...prev,
             int:
               operator === "add"
-                ? (prev.int += skill.value)
-                : Math.max((prev.int -= skill.value), 0),
+                ? (prev.int += value)
+                : Math.max((prev.int -= value), 0),
           }));
           break;
         default:
@@ -89,11 +85,15 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
 
     const mergeList = {
       ...skillsList["White Passive"],
-      ...skillsList["Gold Passive"],
-      ...skillsList["Evolved Passive"],
+      ...skillsList["Gold/Evolved Passive"],
     };
 
-    Object.values(mergeList).map((key) => (key.number = 0));
+    Object.values(mergeList).map((key) => {
+      let value = key.skillValue;
+      for (let i = 0; i < value.length; i++) {
+        value[i].amount = 0;
+      }
+    });
   };
 
   return (
@@ -115,7 +115,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
       {Object.entries(umaPassives).map((key) => {
         return (
           <>
-            <h3>{key[0]}</h3>
+            <h3 className="passive-rarity-header">{key[0]}</h3>
             <div className="skill-box-container">
               {Object.values(key[1]).map((x) => (
                 <SkillBox
