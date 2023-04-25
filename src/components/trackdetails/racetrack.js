@@ -4,37 +4,14 @@ import TrackGraph from "./trackgraph";
 import "./racetrack.scss";
 
 const Racetrack = () => {
-  let track = useSelector((state) => state.track);
+  const track = useSelector((state) => state.track);
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
   const [orderedSections, setOrder] = useState(null);
   const [showType, setShowType] = useState("type");
 
-  if (!track) {
-    track = {
-      raceTrackId: 10001,
-      name: "芝1200m",
-      distance: 1200,
-      distanceType: 1,
-      surface: 1,
-      turn: 1,
-      courseSetStatus: [],
-      laneMax: 13500,
-      finishTimeMin: 67.5,
-      finishTimeMax: 71,
-      corners: [
-        { start: 400, length: 275 },
-        { start: 675, length: 259 },
-      ],
-      straights: [
-        { start: 0, end: 400 },
-        { start: 934, end: 1200 },
-      ],
-      slopes: [],
-    };
-  }
-
   useEffect(() => {
+    if (!track) return;
     sortCornersStraight();
     sortSlopes();
   }, [track]);

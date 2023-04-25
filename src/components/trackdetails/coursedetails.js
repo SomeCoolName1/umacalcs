@@ -14,8 +14,9 @@ const Coursedetails = () => {
   };
 
   const raceCourseSelect = (e) => {
-    let index = e ? e.target.value : 0;
-    let getTrack = Object.values(trackList)[index];
+    let getTrack = e
+      ? Object.values(trackList)[e.target.value]
+      : Object.values(trackList)[0];
     dispatch(setTrack({ track: getTrack }));
   };
 
@@ -29,10 +30,10 @@ const Coursedetails = () => {
   //   dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
   // }, []);
 
-  useEffect(() => {
-    //Once a trackcourse is changed, default to first track distance
-    raceCourseSelect(null);
-  }, [trackList]);
+  // useEffect(() => {
+  //   //Once a trackcourse is changed, default to first track distance
+  //   raceCourseSelect(null);
+  // }, [trackList]);
 
   return (
     <>

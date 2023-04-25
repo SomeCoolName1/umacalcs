@@ -24,7 +24,7 @@ const initialAdjusted = {
 };
 
 const Calculations = ({ stats }) => {
-  let track = useSelector((state) => state.track);
+  const track = useSelector((state) => state.track);
   const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
@@ -32,30 +32,6 @@ const Calculations = ({ stats }) => {
   console.log("the track", track);
 
   const [umaReco, setUmaReco] = useState(RecoverySkills);
-
-  if (!track) {
-    track = {
-      raceTrackId: 10001,
-      name: "芝1200m",
-      distance: 1200,
-      distanceType: 1,
-      surface: 1,
-      turn: 1,
-      courseSetStatus: [],
-      laneMax: 13500,
-      finishTimeMin: 67.5,
-      finishTimeMax: 71,
-      corners: [
-        { start: 400, length: 275 },
-        { start: 675, length: 259 },
-      ],
-      straights: [
-        { start: 0, end: 400 },
-        { start: 934, end: 1200 },
-      ],
-      slopes: [],
-    };
-  }
 
   //Passives
   const [passiveStats, setStats] = useState({
