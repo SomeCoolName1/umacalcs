@@ -401,7 +401,7 @@ const Calculations = ({ stats }) => {
       <h1>Stat Calculations</h1>
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
-      <div className="adjusted-stats-container stats-container">
+      {/* <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat, index) => {
           return (
             <div className="uma-stat" key={index}>
@@ -479,7 +479,7 @@ const Calculations = ({ stats }) => {
       <div className="wisdom-details-container">
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
-      </div>
+      </div> */}
       {/* <Coursedetails /> */}
       {/* <Racetrack /> */}
       <h2>Race Simulation</h2>
