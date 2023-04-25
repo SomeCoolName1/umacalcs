@@ -124,10 +124,10 @@ span {
 
 @mixin skillGrid($buttonradius, $borderClr) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 275px));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
   // grid-template-columns: repeat(auto-fit, minmax(420px, 450px));
   // grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
-  grid-gap: 10px;
+  grid-gap: 7px;
   justify-content: center;
 
   & > * {
@@ -145,7 +145,7 @@ span {
 
   button {
     @include button($buttonradius);
-    font-size: smaller;
+    font-size: 12px;
   }
 
   .disabled {

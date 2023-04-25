@@ -400,10 +400,8 @@ const Calculations = ({ stats }) => {
   return (
     <div className="">
       <h1>Stat Calculations</h1>
-
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
-
       <div className="adjusted-stats-container stats-container">
         {Object.values(finalStats).map((stat) => {
           return (
@@ -430,7 +428,6 @@ const Calculations = ({ stats }) => {
           );
         })}
       </div>
-
       <h2>Speed and Acceleration</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
@@ -455,7 +452,6 @@ const Calculations = ({ stats }) => {
           <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
         </div>
       </div>
-
       <h2>Stamina Recovered</h2>
       <p>
         Starting HP: {maxHP}
@@ -484,10 +480,8 @@ const Calculations = ({ stats }) => {
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
-
       <Coursedetails />
       <Racetrack />
-
       <h2>Race Simulation</h2>
       <TrackGraph dataPlot={racePlot()} />
     </div>
