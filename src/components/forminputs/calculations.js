@@ -403,9 +403,9 @@ const Calculations = ({ stats }) => {
       <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
       <h2>Corrected Stats</h2>
       <div className="adjusted-stats-container stats-container">
-        {Object.values(finalStats).map((stat) => {
+        {Object.values(finalStats).map((stat, index) => {
           return (
-            <div className="uma-stat">
+            <div className="uma-stat" key={index}>
               <label className="label uma-label">
                 <span className="jp-label">{stat.jp}</span>
                 <span className="en-label">{stat.en}</span>
@@ -465,8 +465,9 @@ const Calculations = ({ stats }) => {
         </span>
       </p>
       <div className="skill-box-container">
-        {Object.values(recoverySkills).map((key) => (
+        {Object.values(recoverySkills).map((key, index) => (
           <SkillBox
+            key={index}
             skill={key}
             recovered={recoveredHp}
             updateButton={updateStaminaValues}
