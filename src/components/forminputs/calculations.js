@@ -66,8 +66,6 @@ const Calculations = ({ stats }) => {
 
   const { umaStrategy, umaMotivation } = umaStratMot;
 
-  console.log(proficiency);
-
   ////Strategy
   const strategyCI = strategyCoefficients.find(
     (obj) => obj.strategy === umaStrategy
@@ -231,8 +229,8 @@ const Calculations = ({ stats }) => {
 
     Object.values(recoverySkills).map((x) =>
       x.value > 0
-        ? (recoveryValue += x.value * x.number)
-        : (debuffValue += x.value * x.number)
+        ? (recoveryValue += x.value * x.skillValue[0].amount)
+        : (debuffValue += x.value * x.skillValue[0].amount)
     );
 
     let recoveredStamina = recoveredHp(recoveryValue);
@@ -274,9 +272,9 @@ const Calculations = ({ stats }) => {
 
     let findSkill = Object.values(skillsList).find((skill) => skill === key);
 
-    if (operator === "add") {
-      findSkill.number += 1;
-    } else findSkill.number -= 1;
+    operator === "add"
+      ? (findSkill.skillValue[0].amount += 1)
+      : (findSkill.skillValue[0].amount -= 1);
 
     setUmaReco(skillsList);
   };
