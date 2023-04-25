@@ -12,7 +12,7 @@ import {
 let initialState = {
   uma: {
     umaStrategy: "great escape",
-    umaMotivation: "普通",
+    umaMotivation: 1.04,
   },
   track: {
     raceTrackId: 10001,
@@ -51,7 +51,9 @@ const authSlice = createSlice({
       state.uma.umaStrategy = action.payload.strategy;
     },
     setMotivation: (state, action) => {
-      state.uma.umaMotivation = action.payload.motivation;
+      let mood = action.payload.mood;
+      let findMood = moodCoefficients.find((x) => x.name === mood);
+      state.uma.umaMotivation = findMood.moodCI;
     },
     setTrack: (state, action) => {
       state.track = action.payload.track;

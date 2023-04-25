@@ -41,7 +41,7 @@ const Main = () => {
     if (type === "strategy") {
       dispatch(setStrategy({ strategy: e.target.value }));
     } else if (type === "motivation") {
-      dispatch(setMotivation({ motivation: e.target.value }));
+      dispatch(setMotivation({ mood: e.target.value }));
     } else return;
   };
 
@@ -56,7 +56,6 @@ const Main = () => {
       case "strategy":
         dispatch(setProfStrategy({ strategy: e.target.value }));
         break;
-
       default:
         break;
     }

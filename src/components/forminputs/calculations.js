@@ -70,10 +70,6 @@ const Calculations = ({ stats }) => {
   const { speedCI, accelCI, staminaCI, conserveCI } = strategyCI;
 
   ////Motivation
-  const motivationCI = moodCoefficients.find(
-    (obj) => obj.name === umaMotivation
-  );
-  const { moodCI } = motivationCI;
 
   ////Track
   let surfaceType;
@@ -120,7 +116,7 @@ const Calculations = ({ stats }) => {
       let rawStat =
         Math.min(1200, initialStat) +
         (initialStat > 1200 ? (initialStat - 1200) / 2 : 0);
-      let moodAdjusted = Math.round(rawStat * moodCI);
+      let moodAdjusted = Math.round(rawStat * umaMotivation);
 
       if (currentStat === "speed") {
         moodAdjusted += groundSpeed;
@@ -140,7 +136,7 @@ const Calculations = ({ stats }) => {
 
   useEffect(() => {
     adjustStats();
-  }, [stats, passiveStats]);
+  }, [stats, passiveStats, umaStratMot]);
 
   // /////////////////SPEED RELATED
   let umaBaseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
