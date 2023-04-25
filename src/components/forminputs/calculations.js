@@ -29,6 +29,8 @@ const Calculations = ({ stats }) => {
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
 
+  console.log("the track", track);
+
   const [umaReco, setUmaReco] = useState(RecoverySkills);
 
   //Passives
@@ -77,6 +79,7 @@ const Calculations = ({ stats }) => {
 
   ////Track
   let surfaceType;
+
   const { distance, surface } = track;
 
   if (surface === 1) {
@@ -85,7 +88,7 @@ const Calculations = ({ stats }) => {
     surfaceType = "dirt";
   }
 
-  console.log("distance", distance);
+  console.log("distance", track);
 
   ////GroundType
   const groundModCI = groundMod.find((obj) => obj.name === groundType);
