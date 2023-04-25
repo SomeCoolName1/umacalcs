@@ -21,23 +21,15 @@ import { PersistGate } from "redux-persist/integration/react";
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, userSlice);
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  reducer: userSlice,
 });
 
 const App = () => {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistStore(store)}>
-        <div className="App">
-          <Main />
-        </div>
-      </PersistGate>
+      <div className="App">
+        <Main />
+      </div>
     </Provider>
   );
 };
