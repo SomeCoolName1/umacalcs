@@ -1,10 +1,10 @@
-import passiveSkillsList from "../data/skillspassive";
+import PassiveSkillsList from "../data/skillspassive";
 import "./passiveskills.scss";
 import SkillBox from "../factory/skillbox";
 import { useState } from "react";
 
 const PassiveSkills = ({ setStats, passiveStats }) => {
-  const [umaPassives, setUmaPassives] = useState(passiveSkillsList);
+  const [umaPassives, setUmaPassives] = useState(PassiveSkillsList);
 
   const updateValues = (skill, operator, key) => {
     let skillsList = { ...umaPassives };

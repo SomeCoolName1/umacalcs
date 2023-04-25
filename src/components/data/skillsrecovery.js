@@ -6,7 +6,7 @@ import uniqueSpeed from "../../assets/skillimages/unique-speed.png";
 import whiteStamDebuff from "../../assets/skillimages/white-stamina-debuff.png";
 import goldStamDebuff from "../../assets/skillimages/gold-stamina-debuff.png";
 
-const recoverySkills = {
+export const RecoverySkills = {
   reco095: {
     name: "9.50%",
     img: evolvedRecovery,
@@ -93,4 +93,4 @@ const recoverySkills = {
   },
 };
 
-export default recoverySkills;
+export default RecoverySkills;
