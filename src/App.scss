@@ -100,21 +100,21 @@ span {
   }
 }
 
-@mixin button($radius, $minWidth) {
+@mixin button($radius) {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   border-radius: 100%;
   height: #{$radius}; //Typically 40px
-  min-width: #{$minWidth}; //Typically 125px
+  // min-width: #{$minWidth}; //Typically 125px
   width: #{$radius}; //typically 10%
   transition: all 0.3s ease-out 0.1s;
   background: transparent;
   color: $primaryClr;
   border: 1px $primaryClr solid;
-  align-items: center;
 
   &:hover {
     background: $primaryClr;
@@ -124,28 +124,28 @@ span {
 
 @mixin skillGrid($buttonradius, $borderClr) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 275px));
+  // grid-template-columns: repeat(auto-fit, minmax(420px, 450px));
   // grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
   grid-gap: 10px;
-  justify-content: space-between;
+  justify-content: center;
 
   & > * {
     display: flex;
-    padding: 4px 8px;
+    padding: 8px 12px;
     border: 2px $borderClr solid;
     justify-content: space-between;
   }
 
   img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    margin-right: 3px;
   }
 
   button {
-    @include button($buttonradius, $buttonradius);
-    font-size: large;
-    cursor: pointer;
+    @include button($buttonradius);
+    font-size: smaller;
   }
 
   .disabled {
@@ -167,14 +167,15 @@ span {
 }
 
 .skill-box-container {
-  @include skillGrid(35px, "green");
+  @include skillGrid(40px, "green");
   white-space: nowrap;
-
   .skill-type-recovery {
-    border: 1px solid blue;
+    border: 1px solid $recoveryClr;
+    border-radius: 7px;
   }
   .skill-type-passive {
-    border: 1px solid green;
+    border: 1px solid $primaryClr;
+    border-radius: 7px;
   }
 }
 
