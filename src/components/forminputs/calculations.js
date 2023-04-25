@@ -30,6 +30,7 @@ const Calculations = ({ stats }) => {
   const umaStratMot = useSelector((state) => state.uma);
 
   console.log("the track", track);
+  console.log("groundType", groundType);
 
   const [umaReco, setUmaReco] = useState(RecoverySkills);
 
@@ -486,10 +487,10 @@ const Calculations = ({ stats }) => {
         <span>Skill Activation Rate:{skillActivationRate()}%</span>
         <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
-      <Coursedetails />
-      <Racetrack />
+      {track && <Coursedetails />}
+      {track && <Racetrack />}
       <h2>Race Simulation</h2>
-      <TrackGraph dataPlot={racePlot()} />
+      {track && <TrackGraph dataPlot={racePlot()} />}
     </>
   );
 };
