@@ -22,6 +22,29 @@ const TrackGraph = ({ dataPlot }) => {
   const track = useSelector((state) => state.track);
   const { distance, corners, straights, slopes } = track;
 
+  if (!track) {
+    track = {
+      raceTrackId: 10001,
+      name: "芝1200m",
+      distance: 1200,
+      distanceType: 1,
+      surface: 1,
+      turn: 1,
+      courseSetStatus: [],
+      laneMax: 13500,
+      finishTimeMin: 67.5,
+      finishTimeMax: 71,
+      corners: [
+        { start: 400, length: 275 },
+        { start: 675, length: 259 },
+      ],
+      straights: [
+        { start: 0, end: 400 },
+        { start: 934, end: 1200 },
+      ],
+      slopes: [],
+    };
+  }
   const racePhases = {
     phase0: { start: 0, end: distance / 6 },
     phase1: { start: distance / 6, end: (2 * distance) / 3 },
