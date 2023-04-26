@@ -56,3 +56,14 @@
 .debuffedStamina {
   color: App.$debuffClr;
 }
+
+.wisdom-details-container {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.leg-speed-min-max {
+  font-size: 12px;
+}

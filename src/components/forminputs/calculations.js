@@ -186,17 +186,41 @@ const Calculations = ({ stats }) => {
     return legSpeed;
   };
 
-  const randomSpeed = (phase) => {
-    const targetSpeed = umaTargetSpeed(phase);
+  const getMinMaxSpeed = () => {
     let int = finalInt.final;
 
     const max = (int / 5500) * Math.log10(int * 0.1); // Include these in first three phase calculations
-    const min = Math.abs(max - 0.65);
+    const min = max - 0.65;
 
-    let randomSpeed = umaBaseSpeed * (Math.random() * (max - min) + min);
-
-    return targetSpeed + randomSpeed;
+    return {
+      max: Math.round(max * 1000) / 1000,
+      min: Math.round(min * 1000) / 1000,
+    };
   };
+
+  const randomSpeed = (phase, type) => {
+    const targetSpeed = umaTargetSpeed(phase);
+
+    let { max, min } = getMinMaxSpeed();
+    let randomSpeed;
+
+    if (phase === "phase3") {
+      randomSpeed = 0;
+    } else {
+      if (type === "random") {
+        randomSpeed =
+          (umaBaseSpeed * (Math.random() * (max - min) + min)) / 100;
+      } else if (type === "min") {
+        randomSpeed = (umaBaseSpeed * min) / 100;
+      } else if (type === "max") {
+        randomSpeed = (umaBaseSpeed * max) / 100;
+      } else return;
+    }
+
+    return Math.round((targetSpeed + randomSpeed) * 1000) / 1000;
+  };
+
+  //For purposes of displaying in table
 
   const umaCurrentSpeed = (currentSpeed, targetspeed, phase) => {
     let umaSpeed;
@@ -438,23 +462,32 @@ const Calculations = ({ stats }) => {
           <p>Last Spurt </p>
         </div>
         <div className="leg-speed-container">
-          <h3>Leg Speed</h3>
-          <p>{umaTargetSpeed("phase0").toFixed(2) + ` m/s`} </p>
-          <p>{umaTargetSpeed("phase1").toFixed(2) + ` m/s`}</p>
-          <p>{umaTargetSpeed("phase2").toFixed(2) + ` m/s`}</p>
-          <p>{umaTargetSpeed("").toFixed(2) + ` m/s`}</p>
+          <h3>
+            Target Speed
+            <p className="leg-speed-min-max">{`[Min: ${
+              getMinMaxSpeed().min
+            }%, Max: ${getMinMaxSpeed().max}%]`}</p>
+          </h3>
+          {racePhases.map((x) => (
+            <div className="leg-speed-calc-container">
+              <p>{umaTargetSpeed(x.phase).toFixed(3) + ` m/s`} </p>
+              <p className="leg-speed-min-max">{`[${randomSpeed(
+                x.phase,
+                "min"
+              )} m/s, ${randomSpeed(x.phase, "max")} m/s]`}</p>
+            </div>
+          ))}
         </div>
         <div className="acceleration-container">
-          <h3>Acceleration</h3>
-          <p>{umaAccel("phase0").toFixed(2) + ` m/s²`} </p>
-          <p>{umaAccel("phase1").toFixed(2) + ` m/s²`}</p>
-          <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
-          <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
+          <h3>Accel</h3>
+          {racePhases.map((x) => (
+            <p>{umaAccel(x.phase).toFixed(3) + ` m/s²`} </p>
+          ))}
         </div>
       </div>
       <div className="wisdom-details-container">
-        <span>Skill Activation Rate:{skillActivationRate()}%</span>
-        <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
+        <span>Skill Activation Rate: {skillActivationRate()}%</span>
+        <span>Kakari Rate: {kakariRate().toFixed(2)}%</span>
       </div>
       <h2>Stamina Recovered</h2>
       <p>

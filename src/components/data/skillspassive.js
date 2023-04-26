@@ -130,7 +130,7 @@ export const PassiveSkillsList = {
     },
     speedstamint: {
       name: "スペード, スタミナ, 賢さ",
-      stat: ["スペード", "スタミナ", " 賢さ"],
+      stat: ["スペード", "スタミナ", "賢さ"],
       skillValue: [
         { value: 60, amount: 0 },
         { value: 80, amount: 0 },
