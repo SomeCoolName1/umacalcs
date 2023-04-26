@@ -19,6 +19,8 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
     operator === "add" ? (findValue.amount += 1) : (findValue.amount -= 1);
     setUmaPassives(skillsList);
 
+    console.log(findSkill);
+
     skill.stat.map((x) => {
       switch (x) {
         case "スペード":

@@ -8,6 +8,7 @@ import {
 } from "chart.js";
 import { useDispatch, useSelector } from "react-redux";
 import Annotation from "chartjs-plugin-annotation";
+import "./trackgraph.scss";
 
 ChartJS.register(
   LineElement,
@@ -138,6 +139,7 @@ const TrackGraph = ({ dataPlot }) => {
 
   return (
     <>
+      <div className="phases-progress-bar"></div>
       <Line options={options} data={data} />
       <span>Note: The graph represents a single simulation and do </span>
     </>
