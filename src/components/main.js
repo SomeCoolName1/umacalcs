@@ -140,7 +140,7 @@ const Main = () => {
             onChange={(e) => updateUmaStratMot(e, "motivation")}
           >
             <label for="uma-motivation" className="uma-label label">
-              <span className="jp-label">やる気</span>
+              <span className="jp-label">調子</span>
               <span className="en-label">Mood</span>
             </label>
             <select name="uma-motivation" className="uma-select">

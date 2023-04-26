@@ -18,16 +18,34 @@
 
 .speed-accel-container {
   padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+
   & > div {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-
-    & > *:not(:last-child) {
+    border-top: 1px App.$primaryClr solid;
+    border-left: 1px App.$primaryClr solid;
+    & > * {
       border-right: 1px App.$primaryClr solid;
+      border-bottom: 1px App.$primaryClr solid;
     }
   }
-  .speed-accel-phase {
-    border-bottom: 1px App.$primaryClr solid;
+
+  & > div {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    h3 {
+      text-align: center;
+    }
+
+    & > div {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 1fr);
+    }
   }
 }
 

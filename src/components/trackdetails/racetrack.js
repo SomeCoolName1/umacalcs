@@ -100,141 +100,124 @@ const Racetrack = () => {
   }
 
   return (
-    <div className="race-track-container">
-      <div className="race-track-header">
-        <button
-          className="race-track-button"
-          onClick={() => setShowType("type")}
-        >
-          Type
-        </button>
-        <button
-          className="race-track-button"
-          onClick={() => setShowType("track")}
-        >
-          Track
-        </button>
-      </div>
-      <div
-        className={`race-section-order ${showType === "track" ? "" : "hidden"}`}
-      >
-        <p className="section-title">Racetrack</p>
-        <div className="section-container">
-          {orderedSections
-            ? orderedSections.map((section, index) => (
-                <div className={`${section.type}`}>
-                  <p>
-                    ({index + 1}):{" "}
-                    {section === trackSpurt.spurt ? "spurt on " : ""}
-                    {section.type}
-                  </p>
-                  {section.distance[0]}m - {section.distance[1]}m
-                </div>
-              ))
-            : ""}
+    <div className="track-container">
+      <h2 className="track-header">
+        Track Breakdown
+        <div className="track-sort-container">
+          <button className="track-button" onClick={() => setShowType("type")}>
+            Sort by Type
+          </button>
+          <button className="track-button" onClick={() => setShowType("order")}>
+            Sort by Order
+          </button>
         </div>
-        <p className="section-title">Slope</p>
-        <div className="section-slope-container">
-          {slopes ? (
-            slopes.map((slope, index) => (
-              <div className="slope">
-                <p>
-                  {" "}
-                  ({index + 1}):{" slope"}
-                </p>
-                <p>
-                  {slope.start}m - {slope.start + slope.length}m
-                  {slope.slope > 0 ? (
-                    <> (↑{Math.abs(slope.slope / 10000)})</>
-                  ) : (
-                    <> (↓{Math.abs(slope.slope / 10000)})</>
-                  )}
-                </p>
+      </h2>
+      <div className="track-breakdown-container">
+        <div
+          className={`section-container ${
+            showType === "order" ? "section-order" : "section-type"
+          }`}
+        >
+          {showType === "order" ? (
+            <>
+              <p className="section-title">Racetrack</p>
+              <div className="sections">
+                {orderedSections &&
+                  orderedSections.map((section, index) => (
+                    <div className={`${section.type}`}>
+                      <p>
+                        ({index + 1}):{" "}
+                        {section === trackSpurt.spurt ? "spurt on " : ""}
+                        {section.type}
+                      </p>
+                      {section.distance[0]}m - {section.distance[1]}m
+                    </div>
+                  ))}
               </div>
-            ))
+            </>
           ) : (
-            <>No Slopes</>
+            <>
+              <div className="race-corners">
+                <span>
+                  <p className="section-title">Corners</p>
+                  {corners.map((corner, index) => (
+                    <div className="corner">
+                      ({index + 1}): {corner.start}m -{" "}
+                      {corner.start + corner.length}m
+                    </div>
+                  ))}
+                </span>
+              </div>
+              <div className="race-straights">
+                <span>
+                  <p className="section-title">Straights</p>
+                  {straights.map((straight, index) => (
+                    <div className="straight">
+                      ({index + 1}): {straight.start}m - {straight.end}m{" "}
+                    </div>
+                  ))}
+                </span>
+              </div>
+            </>
           )}
         </div>
-      </div>
-      <div
-        className={`race-track-details ${showType === "type" ? "" : "hidden"}`}
-      >
-        <div className="race-corners">
-          <span>
-            <p className="section-title">Corners</p>
-            {corners.map((corner, index) => (
-              <div className="corner">
-                ({index + 1}): {corner.start}m - {corner.start + corner.length}m
-              </div>
-            ))}
-          </span>
-        </div>
-        <div className="race-straights">
-          <span>
-            <p className="section-title">Straights</p>
-
-            {straights.map((straight, index) => (
-              <div className="straight">
-                ({index + 1}): {straight.start}m - {straight.end}m{" "}
-              </div>
-            ))}
-          </span>
-        </div>
-        <div className="race-slopes">
-          <span>
-            <p className="section-title">Slopes</p>
-            {slopes ? (
-              slopes.map((slope, index) => (
-                <div className="slope">
-                  ({index + 1}): {slope.start}m - {slope.start + slope.length}m
-                  {slope.slope > 0 ? (
-                    <> (↑{Math.abs(slope.slope / 10000)})</>
-                  ) : (
-                    <> (↓{Math.abs(slope.slope / 10000)})</>
-                  )}
-                </div>
-              ))
-            ) : (
-              <>No Slopes</>
-            )}
-          </span>
-        </div>
-        <div className="spurt-details">
-          <p className="section-title">Spurt</p>
-          {trackSpurt ? (
-            <>
-              <p>
-                Occurs at {lastSpurtDistance.toFixed(2)}m on a {spurt.type}{" "}
-                while:
-              </p>
-              {after ? (
-                <p>
-                  - {(lastSpurtDistance - after.distance[0]).toFixed(2)}m before
-                  the next {after.type}
-                </p>
+        <div className="slopes-spurt-container">
+          <div className="race-slopes">
+            <span>
+              <p className="section-title">Slopes</p>
+              {slopes.length !== 0 ? (
+                slopes.map((slope, index) => (
+                  <div className="slope">
+                    ({index + 1}): {slope.start}m - {slope.start + slope.length}
+                    m
+                    {slope.slope > 0 ? (
+                      <> (↑{Math.abs(slope.slope / 10000)})</>
+                    ) : (
+                      <> (↓{Math.abs(slope.slope / 10000)})</>
+                    )}
+                  </div>
+                ))
               ) : (
-                ""
+                <p>No Slopes</p>
               )}
-              {before ? (
+            </span>
+          </div>
+          <div className="spurt-details">
+            <p className="section-title">Spurt</p>
+            {trackSpurt ? (
+              <>
                 <p>
-                  - {(before.distance[1] - lastSpurtDistance).toFixed(2)}m after
-                  the end of {before.type}
+                  Occurs at {lastSpurtDistance.toFixed(2)}m on a {spurt.type}{" "}
+                  while:
                 </p>
-              ) : (
-                ""
-              )}
-              <p>
-                {slopeSpurt ? "" : "No slopes at spurt point"}
-                {/* // <> uphill (↑{Math.abs(slopeSpurt.slope / 10000)})</>
+                {after ? (
+                  <p>
+                    - {(lastSpurtDistance - after.distance[0]).toFixed(2)}m
+                    before the next {after.type}
+                  </p>
+                ) : (
+                  ""
+                )}
+                {before ? (
+                  <p>
+                    - {(before.distance[1] - lastSpurtDistance).toFixed(2)}m
+                    after the end of {before.type}
+                  </p>
+                ) : (
+                  ""
+                )}
+                <p>
+                  {slopeSpurt ? "" : "No slopes at spurt point"}
+                  {/* // <> uphill (↑{Math.abs(slopeSpurt.slope / 10000)})</>
                 // ) : ( //{" "}
                 <> downhill (↓{Math.abs(slopeSpurt.slope / 10000)})</>
                 // )} // slope ({slopeIndex + 1}) */}
-              </p>
-            </>
-          ) : (
-            ""
-          )}
+                </p>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -242,6 +225,3 @@ const Racetrack = () => {
 };
 
 export default Racetrack;
-
-{
-}

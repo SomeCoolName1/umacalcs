@@ -428,7 +428,7 @@ const Calculations = ({ stats }) => {
           );
         })}
       </div>
-      <h2>Speed and Acceleration</h2>
+      <h2>Race Calculations</h2>
       <div className="speed-accel-container">
         <div className="speed-accel-phase">
           <h3>Phase</h3>
@@ -451,6 +451,10 @@ const Calculations = ({ stats }) => {
           <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
           <p>{umaAccel("phase2").toFixed(2) + ` m/s²`}</p>
         </div>
+      </div>
+      <div className="wisdom-details-container">
+        <span>Skill Activation Rate:{skillActivationRate()}%</span>
+        <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
       </div>
       <h2>Stamina Recovered</h2>
       <p>
@@ -476,11 +480,6 @@ const Calculations = ({ stats }) => {
         ))}
       </div>
 
-      <h2>Wisdom Related</h2>
-      <div className="wisdom-details-container">
-        <span>Skill Activation Rate:{skillActivationRate()}%</span>
-        <span>Kakari Rate:{kakariRate().toFixed(2)}%</span>
-      </div>
       <Coursedetails />
       <Racetrack />
       <h2>Race Simulation</h2>

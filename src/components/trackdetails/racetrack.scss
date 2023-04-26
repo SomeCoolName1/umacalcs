@@ -1,26 +1,81 @@
 @use "../../App.scss";
 
-.race-track-container {
-  .hidden {
-    display: none;
+.track-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 10px;
+
+  button {
+    transition: all 0.1s ease-out 0.1s;
+    margin-left: 10px;
+    border-radius: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+    &:hover {
+      background: App.$primaryClr;
+      color: white;
+      cursor: pointer;
+    }
   }
 }
-.race-track-details {
+
+.track-breakdown-container {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.slopes-spurt-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+.race-slopes {
+  width: 50%;
+}
+.spurt-details {
+  width: 50%;
+}
+
+.section-order {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 200px));
+    grid-gap: 10px;
+    justify-content: center;
+    & > * {
+      display: flex;
+      width: 190px;
+      margin: 10px;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+.section-type {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  grid-gap: 10px;
+  width: 50%;
+  grid-template-columns: 1fr 1fr;
 
   & > * {
     display: flex;
-    margin: 10px;
-    flex-direction: column;
+    width: 190px;
     flex: 1;
-    min-width: 0; //Lets items shrink inside container
+    min-width: 0;
   }
 }
 
 .section-title {
-  @include App.labelContainer(40%);
+  @include App.labelContainer(50%);
   margin: 0 auto;
 }
 
@@ -43,26 +98,4 @@
 
 .slope {
   @include raceSection(App.$primaryClr);
-}
-
-.race-section-order {
-  display: flex;
-  flex-direction: column;
-
-  .section-title {
-    width: 10%;
-    margin: 0 auto;
-    margin-top: 10px;
-  }
-}
-
-.section-container,
-.section-slope-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 200px));
-  grid-gap: 10px;
-  justify-content: center;
-  & > * {
-    width: 190px;
-  }
 }
