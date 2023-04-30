@@ -14,6 +14,7 @@ import TrackGraph from "../trackdetails/trackgraph";
 import SkillBox from "../factory/skillbox";
 import Coursedetails from "../trackdetails/coursedetails";
 import Racetrack from "../trackdetails/racetrack";
+import Collapsible from "react-collapsible";
 
 const initialAdjusted = {
   speed: { en: "speed", jp: "スペード", adjusted: 0, final: 0 },
@@ -425,102 +426,103 @@ const Calculations = ({ stats }) => {
   };
 
   return (
-    <>
-      <h1>Stat Calculations</h1>
-      <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
-      <h2>Corrected Stats</h2>
-      <div className="adjusted-stats-container stats-container">
-        {Object.values(finalStats).map((stat, index) => {
-          return (
-            <div className="uma-stat" key={index}>
-              <label className="label uma-label">
-                <span className="jp-label">{stat.jp}</span>
-                <span className="en-label">{stat.en}</span>
-              </label>
-              <span className="label-value">
-                {stat.adjusted}
-                <span
-                  style={{
-                    color:
-                      passiveStats[stat.en] >= 0
-                        ? "rgb(105, 193, 12)"
-                        : "rgb(159, 90, 247)",
-                  }}
-                >
-                  {" "}
-                  + {passiveStats[stat.en]}
+    <div className="calculations-container">
+      <Collapsible trigger={<h1>Stat Calculations</h1>}>
+        <PassiveSkills setStats={setStats} passiveStats={passiveStats} />
+        <h2>Corrected Stats</h2>
+        <div className="adjusted-stats-container stats-container">
+          {Object.values(finalStats).map((stat, index) => {
+            return (
+              <div className="uma-stat" key={index}>
+                <label className="label uma-label">
+                  <span className="jp-label">{stat.jp}</span>
+                  <span className="en-label">{stat.en}</span>
+                </label>
+                <span className="label-value">
+                  {stat.adjusted}
+                  <span
+                    style={{
+                      color:
+                        passiveStats[stat.en] >= 0
+                          ? "rgb(105, 193, 12)"
+                          : "rgb(159, 90, 247)",
+                    }}
+                  >
+                    {" "}
+                    + {passiveStats[stat.en]}
+                  </span>
                 </span>
-              </span>
-            </div>
-          );
-        })}
-      </div>
-      <h2>Race Calculations</h2>
-      <div className="speed-accel-container">
-        <div className="speed-accel-phase">
-          <h3>Phase</h3>
-          <p>Opening Leg </p>
-          <p>Middle Leg </p>
-          <p>Final Leg</p>
-          <p>Last Spurt </p>
+              </div>
+            );
+          })}
         </div>
-        <div className="leg-speed-container">
-          <h3>
-            Target Speed
-            <p className="leg-speed-min-max">{`[Min: ${
-              getMinMaxSpeed().min
-            }%, Max: ${getMinMaxSpeed().max}%]`}</p>
-          </h3>
-          {racePhases.map((x) => (
-            <div className="leg-speed-calc-container">
-              <p>{umaTargetSpeed(x.phase).toFixed(3) + ` m/s`} </p>
-              <p className="leg-speed-min-max">{`[${randomSpeed(
-                x.phase,
-                "min"
-              )} m/s, ${randomSpeed(x.phase, "max")} m/s]`}</p>
-            </div>
+        <h2>Race Calculations</h2>
+        <div className="speed-accel-container">
+          <div className="speed-accel-phase">
+            <h3>Phase</h3>
+            <p>Opening Leg </p>
+            <p>Middle Leg </p>
+            <p>Final Leg</p>
+            <p>Last Spurt </p>
+          </div>
+          <div className="leg-speed-container">
+            <h3>
+              Target Speed
+              <p className="leg-speed-min-max">{`[Min: ${
+                getMinMaxSpeed().min
+              }%, Max: ${getMinMaxSpeed().max}%]`}</p>
+            </h3>
+            {racePhases.map((x) => (
+              <div className="leg-speed-calc-container">
+                <p>{umaTargetSpeed(x.phase).toFixed(3) + ` m/s`} </p>
+                <p className="leg-speed-min-max">{`[${randomSpeed(
+                  x.phase,
+                  "min"
+                )} m/s, ${randomSpeed(x.phase, "max")} m/s]`}</p>
+              </div>
+            ))}
+          </div>
+          <div className="acceleration-container">
+            <h3>Accel</h3>
+            {racePhases.map((x) => (
+              <p>{umaAccel(x.phase).toFixed(3) + ` m/s²`} </p>
+            ))}
+          </div>
+        </div>
+        <div className="wisdom-details-container">
+          <span>Skill Activation Rate: {skillActivationRate()}%</span>
+          <span>Kakari Rate: {kakariRate().toFixed(2)}%</span>
+        </div>
+        <h2>Stamina Recovered</h2>
+        <p>
+          Starting HP: {maxHP}
+          <span className="recoveredStamina">
+            {" "}
+            + {recoveryStaminaValue().HPRec.toFixed(2)}{" "}
+          </span>
+          <span className="debuffedStamina">
+            {" "}
+            - {Math.abs(recoveryStaminaValue().HPDeb.toFixed(2))}
+          </span>
+        </p>
+        <div className="skill-box-container">
+          {Object.values(RecoverySkills).map((key, index) => (
+            <SkillBox
+              key={index}
+              skill={key}
+              recovered={recoveredHp}
+              updateButton={updateStaminaValues}
+              skillType={"recovery"}
+            />
           ))}
         </div>
-        <div className="acceleration-container">
-          <h3>Accel</h3>
-          {racePhases.map((x) => (
-            <p>{umaAccel(x.phase).toFixed(3) + ` m/s²`} </p>
-          ))}
-        </div>
-      </div>
-      <div className="wisdom-details-container">
-        <span>Skill Activation Rate: {skillActivationRate()}%</span>
-        <span>Kakari Rate: {kakariRate().toFixed(2)}%</span>
-      </div>
-      <h2>Stamina Recovered</h2>
-      <p>
-        Starting HP: {maxHP}
-        <span className="recoveredStamina">
-          {" "}
-          + {recoveryStaminaValue().HPRec.toFixed(2)}{" "}
-        </span>
-        <span className="debuffedStamina">
-          {" "}
-          - {Math.abs(recoveryStaminaValue().HPDeb.toFixed(2))}
-        </span>
-      </p>
-      <div className="skill-box-container">
-        {Object.values(RecoverySkills).map((key, index) => (
-          <SkillBox
-            key={index}
-            skill={key}
-            recovered={recoveredHp}
-            updateButton={updateStaminaValues}
-            skillType={"recovery"}
-          />
-        ))}
-      </div>
-
-      <Coursedetails />
-      <Racetrack />
-      <h2>Race Simulation</h2>
-      <TrackGraph dataPlot={racePlot()} />
-    </>
+      </Collapsible>
+      <Collapsible trigger={<h1>Track Details</h1>}>
+        <Coursedetails />
+        <Racetrack />
+        <TrackGraph dataPlot={racePlot()} />
+      </Collapsible>
+    </div>
   );
 };
 

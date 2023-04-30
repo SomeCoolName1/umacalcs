@@ -163,6 +163,7 @@ const TrackGraph = ({ dataPlot }) => {
 
   return (
     <>
+      <h2>Race Simulation</h2>
       <div
         className="phases-bar-container"
         style={{ width: `${containerWidth}px` }}

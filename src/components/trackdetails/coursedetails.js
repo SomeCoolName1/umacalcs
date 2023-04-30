@@ -37,7 +37,6 @@ const Coursedetails = () => {
 
   return (
     <>
-      <h1>Track Details</h1>
       <div className="course-details-container">
         <div className="course-racetrack-container race-type">
           <label for="course-racetrack" className="uma-label label">
