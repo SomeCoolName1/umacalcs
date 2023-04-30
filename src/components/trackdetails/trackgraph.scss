@@ -1,9 +1,19 @@
-.phases-progress-bar {
+.phases-bar-container {
   display: block;
-  width: 100%;
+  position: relative;
   height: 10px;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: beige;
+}
+
+.phases-bar {
+  position: absolute;
+  background-color: black;
+  height: 100%;
+  left: 54.699px;
+}
+
+.phase-seperator {
+  height: 100px;
+  width: 10px;
+  position: absolute;
+  background-color: black;
 }

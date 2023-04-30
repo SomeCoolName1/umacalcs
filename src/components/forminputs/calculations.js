@@ -321,7 +321,7 @@ const Calculations = ({ stats }) => {
     };
 
     if (phase === "openingLeg" || phase === "phase0") {
-      const startAccel = 24;
+      const startAccel = Math.min(24, 0.85 * umaBaseSpeed);
 
       return accel(openingLeg) + startAccel;
       //Ends when 0.85*umaBaseSpeed\\
@@ -360,65 +360,68 @@ const Calculations = ({ stats }) => {
     const reducedHpConsumption = 60;
   };
 
+  //RACE PLOT
   const racePlot = () => {
-    let currentPhase = "openingLeg";
-    let time = 0;
-    let distanceTravelled = 0;
+    let currentPhase = "phase0";
     let speed = 0;
-    let targetSpeed = 0; //Updates every phase
+    let targetSpeed = randomSpeed(currentPhase, "random"); //Updates every phase
+    let distanceTravelled = 0;
+    let time = 0;
     const { HPRec, HPDeb } = recoveryStaminaValue();
 
     let remainingStamina = Math.round(maxHP + HPRec + HPDeb);
 
     let racePlot = [
       {
-        targetSpeed: targetSpeed,
+        phase: currentPhase,
         speed: 0,
+        targetSpeed: targetSpeed,
         distance: 0,
         time: 0,
         remainingStamina: remainingStamina,
       },
     ];
 
-    let phaseChange = [{ time: 0, phase: "Start" }];
-
     while (distanceTravelled <= distance) {
-      //Checks current phase based on distancetravelled
-      racePhases.map((phase) => {
-        let phaseStart = phase.distance[0];
-        let phaseEnd = phase.distance[1];
+      //Check if phase needs to be changed before calculations
+      //If Phase change, updates target speed
+      for (let i = 0; i < racePhases.length; i++) {
+        let phase = racePhases[i];
+        let start = phase.distance[0];
+        let end = phase.distance[1];
+        //   let phaseChange = [{ time: 0, phase: "start" }];
         if (
-          phaseStart <= distanceTravelled &&
-          distanceTravelled <= phaseEnd &&
+          start <= distanceTravelled &&
+          distanceTravelled <= end &&
           currentPhase !== phase.phase
         ) {
-          phaseChange.push({
-            time: time,
-            phase: `← ${currentPhase} | ${phase.phase} →`,
-          });
+          //         phaseChange.push({
+          //           time: time,
+          //           phase: `← ${currentPhase} | ${phase.phase} →`,
+          //         });
+
           currentPhase = phase.phase;
-          targetSpeed = randomSpeed(currentPhase);
+          targetSpeed = randomSpeed(currentPhase, "random");
         }
-      });
+      }
 
-      //Need to capture exact time once past goal
-
-      time += 1; //s
-      distanceTravelled += umaCurrentSpeed(speed, targetSpeed, currentPhase); //m
-
-      speed = umaCurrentSpeed(speed, targetSpeed, currentPhase);
-      remainingStamina -= hpConsumption(currentPhase, speed); //Remaining stamina always after speed
+      time += 1; //1 second intervals
+      let currentSpeed = umaCurrentSpeed(speed, targetSpeed, currentPhase); //Calculate speed first
+      speed = currentSpeed;
+      distanceTravelled += currentSpeed;
+      remainingStamina -= hpConsumption(currentPhase, currentSpeed); //Remaining stamina always after speed
 
       racePlot.push({
-        speed: speed,
+        phase: currentPhase,
+        speed: currentSpeed,
+        targetSpeed: targetSpeed,
         distance: distanceTravelled,
         time: time,
         remainingStamina: remainingStamina,
-        targetSpeed: targetSpeed,
       });
     }
 
-    return { racePlot, phaseChange };
+    return { racePlot };
   };
 
   return (

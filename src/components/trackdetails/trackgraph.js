@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Annotation from "chartjs-plugin-annotation";
 import "./trackgraph.scss";
+import { useEffect, useRef } from "react";
 
 ChartJS.register(
   LineElement,
@@ -23,16 +24,16 @@ const TrackGraph = ({ dataPlot }) => {
   const track = useSelector((state) => state.track);
   const { distance, corners, straights, slopes } = track;
 
-  const racePhases = {
-    phase0: { start: 0, end: distance / 6 },
-    phase1: { start: distance / 6, end: (2 * distance) / 3 },
-    phase2: { start: (2 * distance) / 3, end: (5 * distance) / 6 },
-    phase3: { start: (5 * distance) / 6, end: distance },
-  };
+  const racePhases = [
+    { phase: "Opening Leg", start: 0, end: distance / 6 },
+    { phase: "Middle Leg", start: distance / 6, end: (2 * distance) / 3 },
+    { phase: "Final Leg", start: (2 * distance) / 3, end: (5 * distance) / 6 },
+    { phase: "Last Spurt", start: (5 * distance) / 6, end: distance },
+  ];
 
   const { phase0, phase1, phase2, phase3 } = racePhases;
 
-  const { racePlot, phaseChange } = dataPlot;
+  const { racePlot } = dataPlot;
 
   const maxSpeed = Math.max(...racePlot.map((o) => o.speed));
 
@@ -76,41 +77,41 @@ const TrackGraph = ({ dataPlot }) => {
     ],
   };
 
-  let phaseChangeAnnotations = phaseChange.map((x) => {
-    return {
-      type: "line",
-      borderColor: "green",
-      borderWidth: 1,
-      label: {
-        display: true,
-        content: x.phase,
-        position: "end",
-        height: 100,
-      },
-      scaleID: "x",
-      value: x.time,
-    };
-  });
+  // let phaseChangeAnnotations = phaseChange.map((x) => {
+  //   return {
+  //     type: "line",
+  //     borderColor: "green",
+  //     borderWidth: 1,
+  //     label: {
+  //       display: true,
+  //       content: x.phase,
+  //       position: "end",
+  //       height: 100,
+  //     },
+  //     scaleID: "x",
+  //     value: x.time,
+  //   };
+  // });
 
-  let cornerStraightAnnotation = phaseChange.map((x) => {
-    return {
-      type: "box",
-      scaleID: "y",
-      xMin: 1,
-      xMax: 2,
-      yMin: 0,
-      yMax: maxSpeed / 2,
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    };
-  });
+  // let cornerStraightAnnotation = phaseChange.map((x) => {
+  //   return {
+  //     type: "box",
+  //     scaleID: "y",
+  //     xMin: 1,
+  //     xMax: 2,
+  //     yMin: 0,
+  //     yMax: maxSpeed / 2,
+  //     backgroundColor: "rgba(255, 99, 132, 0.5)",
+  //   };
+  // });
 
-  let annotations = [...phaseChangeAnnotations, ...cornerStraightAnnotation];
+  // let annotations = [...phaseChangeAnnotations, ...cornerStraightAnnotation];
 
   const options = {
     plugins: {
       legend: true,
       annotation: {
-        annotations: annotations,
+        // annotations: annotations,
       },
     },
     elements: {
@@ -121,6 +122,8 @@ const TrackGraph = ({ dataPlot }) => {
     },
     scales: {
       y: {
+        // beginAtZero: true,
+        min: 15,
         display: true,
         position: "right",
         grid: {
@@ -128,6 +131,8 @@ const TrackGraph = ({ dataPlot }) => {
         },
       },
       y1: {
+        beginAtZero: true,
+        min: -500,
         display: true,
         position: "left",
         grid: {
@@ -135,12 +140,42 @@ const TrackGraph = ({ dataPlot }) => {
         },
       },
     },
+    options: { maintainAspectRatio: true },
+  };
+
+  const chartRef = useRef(null);
+  const chart = chartRef.current;
+  let containerWidth;
+  let graphWidth;
+
+  if (chart) {
+    containerWidth = chart.width;
+    graphWidth = chart.chartArea.width;
+  }
+
+  const calculatePhaseDistance = (phase) => {
+    const { start, end } = phase;
+
+    const ratio = (graphWidth * end) / distance;
+
+    return ratio;
   };
 
   return (
     <>
-      <div className="phases-progress-bar"></div>
-      <Line options={options} data={data} />
+      <div
+        className="phases-bar-container"
+        style={{ width: `${containerWidth}px` }}
+      >
+        <div className="phases-bar" style={{ width: `${graphWidth}px` }} />
+        {racePhases.map((phase) => (
+          <div
+            className="phase-seperator"
+            style={{ left: `${calculatePhaseDistance(phase)}px` }}
+          />
+        ))}
+      </div>
+      <Line options={options} data={data} ref={chartRef} />
       <span>Note: The graph represents a single simulation and do </span>
     </>
   );
