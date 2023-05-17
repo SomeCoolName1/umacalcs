@@ -361,8 +361,15 @@ const Calculations = ({ stats }) => {
     const reducedHpConsumption = 60;
   };
 
+  const getOrderedSection = (sectionList) => {
+    return sectionList;
+  };
+
   //RACE PLOT
   const racePlot = () => {
+    let test = getOrderedSection();
+    console.log(test);
+
     let currentPhase = "phase0";
     let speed = 0;
     let targetSpeed = randomSpeed(currentPhase, "random"); //Updates every phase
@@ -380,6 +387,7 @@ const Calculations = ({ stats }) => {
         distance: 0,
         time: 0,
         remainingStamina: remainingStamina,
+        section: "straight",
       },
     ];
 
@@ -406,6 +414,8 @@ const Calculations = ({ stats }) => {
         }
       }
 
+      getOrderedSection(distanceTravelled);
+
       time += 1; //1 second intervals
       let currentSpeed = umaCurrentSpeed(speed, targetSpeed, currentPhase); //Calculate speed first
       speed = currentSpeed;
@@ -419,6 +429,7 @@ const Calculations = ({ stats }) => {
         distance: distanceTravelled,
         time: time,
         remainingStamina: remainingStamina,
+        section: "straight",
       });
     }
 
@@ -519,7 +530,7 @@ const Calculations = ({ stats }) => {
       </Collapsible>
       <Collapsible trigger={<h1>Track Details</h1>}>
         <Coursedetails />
-        <Racetrack />
+        <Racetrack getData={getOrderedSection} />
         <TrackGraph dataPlot={racePlot()} />
       </Collapsible>
     </div>

@@ -2,18 +2,12 @@
   display: block;
   position: relative;
   height: 10px;
-}
-
-.phases-bar {
-  position: absolute;
   background-color: black;
-  height: 100%;
-  left: 54.699px;
 }
 
 .phase-seperator {
   height: 100px;
-  width: 10px;
   position: absolute;
   background-color: black;
+  display: block;
 }

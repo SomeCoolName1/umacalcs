@@ -157,7 +157,6 @@ const Main = () => {
           </div>
         </Collapsible>
       </div>
-
       <Calculations stats={umaStats} />
     </div>
   );

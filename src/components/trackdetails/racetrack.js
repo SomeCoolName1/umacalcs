@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import TrackGraph from "./trackgraph";
 import "./racetrack.scss";
 
-const Racetrack = () => {
+const Racetrack = ({ getData }) => {
   const track = useSelector((state) => state.track);
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
@@ -19,6 +19,8 @@ const Racetrack = () => {
   const { corners, straights, slopes, distance } = track;
 
   const lastSpurtDistance = distance - distance / 3;
+
+  getData(orderedSections);
 
   const sortCornersStraight = () => {
     let array = [];

@@ -66,6 +66,9 @@ const TrackGraph = ({ dataPlot }) => {
         borderColor: "black",
         borderWidth: 1,
         yAxisID: "y",
+        backgroundColor: racePlot.map((x) =>
+          x.speed % 2 === 0 ? "red" : "pink"
+        ),
       },
       {
         label: "Stamina",
@@ -107,11 +110,27 @@ const TrackGraph = ({ dataPlot }) => {
 
   // let annotations = [...phaseChangeAnnotations, ...cornerStraightAnnotation];
 
+  let checkSection = racePlot.map((x) => {
+    return {
+      type: "box",
+      yScaleID: "y",
+      xMin: x.time - 1,
+      xMax: x.time,
+      yMin: 0,
+      yMax: 20,
+      borderWidth: 0,
+      backgroundColor:
+        x.section === "straight"
+          ? "rgba(25, 200, 252, 0.25)"
+          : "rgba(255, 51, 51, 0.25)",
+    };
+  });
+
   const options = {
     plugins: {
       legend: true,
       annotation: {
-        // annotations: annotations,
+        annotations: checkSection,
       },
     },
     elements: {
@@ -143,41 +162,52 @@ const TrackGraph = ({ dataPlot }) => {
     options: { maintainAspectRatio: true },
   };
 
+  //Phase Progression Bar
+
   const chartRef = useRef(null);
   const chart = chartRef.current;
   let containerWidth;
   let graphWidth;
+  let graphLeft;
+  let timeFinished = racePlot[racePlot.length - 1].time;
 
   if (chart) {
     containerWidth = chart.width;
     graphWidth = chart.chartArea.width;
+    graphLeft = chart.chartArea.left;
   }
 
   const calculatePhaseDistance = (phase) => {
-    const { start, end } = phase;
+    const absolutePointRatio = graphWidth * (phase / timeFinished);
 
-    const ratio = (graphWidth * end) / distance;
-
-    return ratio;
+    return absolutePointRatio;
   };
+
+  const getPhaseChanges = [
+    ...new Map(racePlot.map((item) => [item["phase"], item])).values(),
+  ];
 
   return (
     <>
       <h2>Race Simulation</h2>
       <div
         className="phases-bar-container"
-        style={{ width: `${containerWidth}px` }}
+        style={{ width: `${graphWidth}px`, left: `${graphLeft}px` }}
       >
-        <div className="phases-bar" style={{ width: `${graphWidth}px` }} />
-        {racePhases.map((phase) => (
+        {getPhaseChanges.map((phase) => (
           <div
             className="phase-seperator"
-            style={{ left: `${calculatePhaseDistance(phase)}px` }}
+            id={`{phase-seperator-${phase.phase}`}
+            style={{
+              width: `${calculatePhaseDistance(phase.time)}px`,
+            }}
           />
         ))}
       </div>
       <Line options={options} data={data} ref={chartRef} />
-      <span>Note: The graph represents a single simulation and do </span>
+      <span>
+        Note: The graph represents a single simulation and does some shit{" "}
+      </span>
     </>
   );
 };
