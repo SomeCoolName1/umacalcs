@@ -8,7 +8,8 @@ const Racetrack = ({ stats }) => {
   const track = useSelector((state) => state.track);
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
-  const [orderedSections, setOrder] = useState(null);
+  const [orderedSections, setSectionOrder] = useState(null);
+  const [orderedSlopes, setSlopeOrder] = useState(null);
   const [showType, setShowType] = useState("type");
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const Racetrack = ({ stats }) => {
       return a.distance[0] - b.distance[0];
     });
 
-    setOrder(array);
+    setSectionOrder(array);
 
     // {corner.start + corner.length}m
     // {straight.start}m - {straight.end}m
@@ -74,6 +75,8 @@ const Racetrack = ({ stats }) => {
     array.sort(function (a, b) {
       return a.start - b.start;
     });
+
+    setSlopeOrder(array);
 
     for (let i = 0; i < array.length - 1; i++) {
       let slopeStart = array[i].start;
@@ -221,8 +224,12 @@ const Racetrack = ({ stats }) => {
           </div>
         </div>
       </div>
-      {orderedSections ? (
-        <TrackGraph sections={orderedSections} stats={stats} />
+      {orderedSections && orderedSlopes ? (
+        <TrackGraph
+          sections={orderedSections}
+          slopes={orderedSlopes}
+          stats={stats}
+        />
       ) : (
         <Loading />
       )}

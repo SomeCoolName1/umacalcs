@@ -4,13 +4,6 @@ input {
   text-align: center;
 }
 
-.details-main-container {
-  text-align: center;
-  margin: 0 auto;
-  &:not(.title-block-container) {
-    width: 90%;
-  }
-}
 .uma-stats-container,
 .uma-aptitude-container {
   @include App.uma-stat();
@@ -50,7 +43,7 @@ input {
   width: 100%;
 
   & > * {
-    transition: all 0.3s ease-out 0.1s;
+    transition: all 0.2s ease-out 0.1s;
   }
 
   .jp-label {

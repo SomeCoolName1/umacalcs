@@ -28,7 +28,7 @@ const RaceCalculations = (stats) => {
   return { maxHP: maxHP, distance: distance, racePhases: racePhases };
 };
 
-export function raceSimPlot(section, stats) {
+export function raceSimPlot(section, slopes, stats) {
   const { distance, maxHP, racePhases } = RaceCalculations(stats);
 
   let currentPhase = "phase0";
@@ -36,7 +36,8 @@ export function raceSimPlot(section, stats) {
   let targetSpeed = randomSpeed(stats, currentPhase, "random"); //Updates every phase
   let distanceTravelled = 0;
   let time = 0;
-  let currentSection = section[0].type;
+  let currentSection;
+  let existingSlope;
   const { HPRec, HPDeb } = recoveryStaminaValue(maxHP);
   let remainingStamina = Math.round(maxHP + HPRec + HPDeb);
 
@@ -48,7 +49,8 @@ export function raceSimPlot(section, stats) {
       distance: 0,
       time: 0,
       remainingStamina: remainingStamina,
-      currentSection: currentSection,
+      currentSection: null,
+      existingSlope: null,
     },
   ];
 
@@ -79,8 +81,20 @@ export function raceSimPlot(section, stats) {
         distanceTravelled >= section[i].distance[0] &&
         distanceTravelled <= section[i].distance[1]
       ) {
-        console.log(distanceTravelled, section[i]);
         currentSection = section[i].type;
+      }
+    }
+
+    existingSlope = null;
+
+    if (slopes) {
+      for (let i = 0; i < slopes.length; i++) {
+        if (
+          distanceTravelled >= slopes[i].start &&
+          distanceTravelled <= slopes[i].start + slopes[i].length
+        ) {
+          existingSlope = slopes[i].slope;
+        }
       }
     }
 
@@ -98,6 +112,7 @@ export function raceSimPlot(section, stats) {
       time: time,
       remainingStamina: remainingStamina,
       currentSection: currentSection,
+      existingSlope: existingSlope,
     });
   }
 
