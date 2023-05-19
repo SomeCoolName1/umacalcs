@@ -8,7 +8,7 @@ import {
   strategyCoefficients,
 } from "../data/coefficients";
 import "./calculations.scss";
-import PassiveSkills from "./passiveskills";
+import PassiveSkills from "../calculations/passiveskills";
 import RecoverySkills from "../data/skillsrecovery";
 import TrackGraph from "../trackdetails/trackgraph";
 import SkillBox from "../factory/skillbox";

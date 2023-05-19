@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import TrackGraph from "./trackgraph";
 import "./racetrack.scss";
+import Loading from "../loading/loading";
 
-const Racetrack = ({ getData }) => {
+const Racetrack = ({ stats }) => {
   const track = useSelector((state) => state.track);
   const [slopeSpurt, setSlopeSpurt] = useState(null);
   const [trackSpurt, setTrackSpurt] = useState(null);
@@ -19,8 +20,6 @@ const Racetrack = ({ getData }) => {
   const { corners, straights, slopes, distance } = track;
 
   const lastSpurtDistance = distance - distance / 3;
-
-  getData(orderedSections);
 
   const sortCornersStraight = () => {
     let array = [];
@@ -222,6 +221,11 @@ const Racetrack = ({ getData }) => {
           </div>
         </div>
       </div>
+      {orderedSections ? (
+        <TrackGraph sections={orderedSections} stats={stats} />
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

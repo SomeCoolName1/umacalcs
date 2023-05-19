@@ -6,7 +6,7 @@ import userSlice from "./state/userSlice";
 
 import React, { Component } from "react";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: userSlice,
 });
 

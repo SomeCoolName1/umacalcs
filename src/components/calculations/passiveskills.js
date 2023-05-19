@@ -1,14 +1,15 @@
 import PassiveSkillsList from "../data/skillspassive";
-import "./passiveskills.scss";
 import SkillBox from "../factory/skillbox";
 import { useState } from "react";
 import Collapsible from "react-collapsible";
+import "./passiveskills.scss";
 
-const PassiveSkills = ({ setStats, passiveStats }) => {
+const PassiveSkills = ({ setPassiveStats, passiveStats }) => {
   const [umaPassives, setUmaPassives] = useState(PassiveSkillsList);
 
   const updateValues = (skill, operator, key) => {
     let skillsList = { ...umaPassives };
+
     const mergeList = {
       ...skillsList["White Passive"],
       ...skillsList["Gold/Evolved Passive"],
@@ -20,12 +21,10 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
     operator === "add" ? (findValue.amount += 1) : (findValue.amount -= 1);
     setUmaPassives(skillsList);
 
-    console.log(findSkill);
-
     skill.stat.map((x) => {
       switch (x) {
         case "スペード":
-          setStats((prev) => ({
+          setPassiveStats((prev) => ({
             ...prev,
             speed:
               operator === "add"
@@ -34,7 +33,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
           }));
           break;
         case "スタミナ":
-          setStats((prev) => ({
+          setPassiveStats((prev) => ({
             ...prev,
             stamina:
               operator === "add"
@@ -43,7 +42,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
           }));
           break;
         case "パワー":
-          setStats((prev) => ({
+          setPassiveStats((prev) => ({
             ...prev,
             power:
               operator === "add"
@@ -52,7 +51,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
           }));
           break;
         case "根性":
-          setStats((prev) => ({
+          setPassiveStats((prev) => ({
             ...prev,
             guts:
               operator === "add"
@@ -61,7 +60,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
           }));
           break;
         case "賢さ":
-          setStats((prev) => ({
+          setPassiveStats((prev) => ({
             ...prev,
             int:
               operator === "add"
@@ -76,7 +75,7 @@ const PassiveSkills = ({ setStats, passiveStats }) => {
   };
 
   const clearStats = () => {
-    setStats({
+    setPassiveStats({
       speed: 0,
       stamina: 0,
       power: 0,

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Annotation from "chartjs-plugin-annotation";
 import "./trackgraph.scss";
 import { useEffect, useRef } from "react";
+import { raceSimPlot } from "../calculations/racesim";
 
 ChartJS.register(
   LineElement,
@@ -19,10 +20,12 @@ ChartJS.register(
   Annotation
 );
 
-const TrackGraph = ({ dataPlot }) => {
+const TrackGraph = ({ sections, stats }) => {
   const dispatch = useDispatch();
   const track = useSelector((state) => state.track);
   const { distance, corners, straights, slopes } = track;
+
+  const dataPlot = raceSimPlot(sections, stats);
 
   const racePhases = [
     { phase: "Opening Leg", start: 0, end: distance / 6 },
@@ -120,7 +123,7 @@ const TrackGraph = ({ dataPlot }) => {
       yMax: 20,
       borderWidth: 0,
       backgroundColor:
-        x.section === "straight"
+        x.currentSection === "straight"
           ? "rgba(25, 200, 252, 0.25)"
           : "rgba(255, 51, 51, 0.25)",
     };
