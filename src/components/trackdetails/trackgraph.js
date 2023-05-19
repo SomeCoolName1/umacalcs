@@ -91,7 +91,7 @@ const TrackGraph = ({ sections, slopes, stats }) => {
   let containerWidth;
   let graphWidth;
   let graphLeft;
-  let yAxisHeight = 30;
+  let yAxisHeight = 50;
 
   let timeFinished = racePlot[racePlot.length - 1].time;
 
@@ -134,8 +134,8 @@ const TrackGraph = ({ sections, slopes, stats }) => {
       yScaleID: "y",
       xMin: x.time - 1,
       xMax: x.time,
-      yMin: 15,
-      yMax: (15 + yAxisHeight) / 2,
+      yMin: 10,
+      yMax: (10 + yAxisHeight) / 2,
       borderWidth: 0,
       backgroundColor:
         x.currentSection === "straight"
@@ -150,7 +150,7 @@ const TrackGraph = ({ sections, slopes, stats }) => {
       yScaleID: "y",
       xMin: x.time - 1,
       xMax: x.time,
-      yMin: (15 + yAxisHeight) / 2,
+      yMin: (10 + yAxisHeight) / 2,
       yMax: yAxisHeight,
       borderWidth: 0,
       backgroundColor: x.existingSlope
@@ -179,7 +179,8 @@ const TrackGraph = ({ sections, slopes, stats }) => {
     scales: {
       y: {
         // beginAtZero: true,
-        min: 15,
+        min: 10,
+        max: 50,
         display: true,
         position: "right",
         grid: {
@@ -202,7 +203,7 @@ const TrackGraph = ({ sections, slopes, stats }) => {
   return (
     <>
       <h2>Race Simulation</h2>
-      <div
+      {/* <div
         className="phases-bar-container"
         style={{ width: `${graphWidth}px`, left: `${graphLeft}px` }}
       >
@@ -215,7 +216,7 @@ const TrackGraph = ({ sections, slopes, stats }) => {
             }}
           />
         ))}
-      </div>
+      </div> */}
       <Line options={options} data={data} ref={chartRef} />
       <span>
         Note: The graph represents a single simulation and does some shit{" "}
