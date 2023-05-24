@@ -104,3 +104,12 @@
 .slope {
   @include raceSection(App.$primaryClr);
 }
+
+.race-phase {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.race-phase-details {
+  background-color: blue;
+}

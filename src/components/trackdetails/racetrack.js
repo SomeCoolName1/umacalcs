@@ -20,6 +20,25 @@ const Racetrack = ({ stats }) => {
 
   const { corners, straights, slopes, distance } = track;
 
+  const racePhases = [
+    { phase: "Opening Leg", start: 0, end: Math.round(distance / 6) },
+    {
+      phase: "Middle Leg",
+      start: Math.round(distance / 6),
+      end: Math.round((2 * distance) / 3),
+    },
+    {
+      phase: "Final Leg",
+      start: Math.round((2 * distance) / 3),
+      end: Math.round((5 * distance) / 6),
+    },
+    {
+      phase: "Last Spurt",
+      start: Math.round((5 * distance) / 6),
+      end: distance,
+    },
+  ];
+
   const lastSpurtDistance = distance - distance / 3;
 
   const sortCornersStraight = () => {
@@ -102,6 +121,8 @@ const Racetrack = ({ stats }) => {
   if (slopeSpurt) {
     slopeIndex = slopeSpurt.slopeIndex;
   }
+
+  racePhases.map((x) => console.log(x));
 
   return (
     <div className="track-container">
@@ -188,7 +209,7 @@ const Racetrack = ({ stats }) => {
           </div>
           <div className="spurt-details">
             <p className="section-title">Spurt</p>
-            {trackSpurt ? (
+            {trackSpurt && (
               <>
                 <p>
                   Occurs at {lastSpurtDistance.toFixed(2)}m on a {spurt.type}{" "}
@@ -218,11 +239,25 @@ const Racetrack = ({ stats }) => {
                 // )} // slope ({slopeIndex + 1}) */}
                 </p>
               </>
-            ) : (
-              ""
             )}
           </div>
         </div>
+      </div>
+      <div className="race-phase-container">
+        <span>
+          <p className="section-title">Race Phases</p>
+          <div className="race-phase">
+            {racePhases &&
+              racePhases.map((phase) => (
+                <div className="race-phase-details">
+                  <p>{phase.phase}</p>
+                  <p>
+                    {phase.start}m - {phase.end}m
+                  </p>
+                </div>
+              ))}
+          </div>
+        </span>
       </div>
       {orderedSections && orderedSlopes ? (
         <TrackGraph
