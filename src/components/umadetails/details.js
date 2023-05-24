@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   setMotivation,
@@ -62,8 +61,8 @@ const Details = ({ stats, setStats }) => {
       <div className="title-block-container">
         <img src={happyAyabe} alt="happy-ayabe" />
       </div>
-      <div className="uma-details-container">
-        <Collapsible trigger={<h1>UMA Details</h1>}>
+      <Collapsible trigger={<h1>UMA Details</h1>}>
+        <div className="uma-details-container">
           <div className="uma-stats-container stats-container">
             {Object.values(stats).map((stat) => {
               return (
@@ -145,8 +144,8 @@ const Details = ({ stats, setStats }) => {
               </select>
             </div>
           </div>
-        </Collapsible>
-      </div>
+        </div>
+      </Collapsible>
     </div>
   );
 };

@@ -8,7 +8,6 @@ $debuffClr: rgb(247, 94, 94);
 @font-face {
   font-family: "umaJPFont";
   src: url(".//fonts/dynamic01.otf");
-
   font-style: normal;
 }
 
@@ -19,13 +18,18 @@ $debuffClr: rgb(247, 94, 94);
   outline: 0;
   outline-color: transparent;
   outline-style: none;
+  border: 1px rgba(0, 0, 0, 0.25) solid;
   box-sizing: border-box;
   word-break: keep-all;
-
   font-family: "umaJPFont", sans-serif;
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.Collapsible,
+.Collapsible__trigger {
+  border: none;
 }
 
 h1 {
@@ -162,7 +166,6 @@ span {
   background-color: $secondaryClr;
   word-break: keep-all;
   border-radius: 30px;
-  margin-bottom: 10px;
   cursor: default;
 }
 
