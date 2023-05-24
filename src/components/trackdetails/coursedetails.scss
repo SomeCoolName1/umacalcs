@@ -3,15 +3,12 @@
 .course-details-container {
   display: flex;
   @include App.uma-stat();
-  margin-bottom: 10px;
-  padding-bottom: 10px;
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
 
   & > * {
     display: flex;
-    margin: 10px;
     flex-direction: column;
     flex: 1;
     min-width: 0; //Lets items shrink inside container

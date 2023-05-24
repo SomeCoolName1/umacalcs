@@ -23,16 +23,15 @@ const initialStats = {
 const Main = () => {
   const [umaStats, setUmaStats] = useState(initialStats);
 
-  console.log(umaStats);
-
   return (
     <div className="main-container">
       <Details stats={umaStats} setStats={setUmaStats} />
       <Calculations stats={umaStats} setStats={setUmaStats} />
-      <Collapsible trigger={<h1>Track Details</h1>}>
+      <h1>Track Details</h1>
+      <div className="race-course-container">
         <Coursedetails />
         <Racetrack stats={umaStats} />
-      </Collapsible>
+      </div>
     </div>
   );
 };
