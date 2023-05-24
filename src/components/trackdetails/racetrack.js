@@ -169,8 +169,8 @@ const Racetrack = ({ stats }) => {
           <div className="race-slopes">
             <span>
               <p className="section-title">Slopes</p>
-              {slopes.length !== 0 ? (
-                slopes.map((slope, index) => (
+              {orderedSlopes ? (
+                orderedSlopes.map((slope, index) => (
                   <div className="slope">
                     ({index + 1}): {slope.start}m - {slope.start + slope.length}
                     m

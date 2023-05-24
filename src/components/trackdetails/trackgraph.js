@@ -6,10 +6,10 @@ import {
   LinearScale, //yaxis
   PointElement,
 } from "chart.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Annotation from "chartjs-plugin-annotation";
 import "./trackgraph.scss";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { raceSimPlot } from "../calculations/racesim";
 
 ChartJS.register(
@@ -39,26 +39,6 @@ const TrackGraph = ({ sections, slopes, stats }) => {
 
   const maxSpeed = Math.max(...racePlot.map((o) => o.speed));
 
-  // let trackCourse = [];
-  // if (corners) {
-  //   corners.map((corner) => {
-  //     return trackCourse.push({
-  //       type: "corner",
-  //       cornerStart: corner.start,
-  //       cornerEnd: corner.start + corner.length,
-  //     });
-  //   });
-  // }
-  // if (straights) {
-  //   straights.map((straight) => {
-  //     return trackCourse.push({
-  //       type: "straight",
-  //       straightStart: straight.start,
-  //       straightEnd: straight.end,
-  //     });
-  //   });
-  // }
-
   const data = {
     labels: racePlot.map((x) => x.time),
     datasets: [
@@ -82,9 +62,7 @@ const TrackGraph = ({ sections, slopes, stats }) => {
     ],
   };
 
-  // let annotations = [...phaseChangeAnnotations, ...cornerStraightAnnotation];
-
-  //Phase Progression Bar
+  console.log(data);
 
   const chartRef = useRef(null);
   const chart = chartRef.current;
