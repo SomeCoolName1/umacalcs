@@ -1,9 +1,14 @@
 @use "../../App.scss";
 
+.calculations-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .adjusted-stats-container {
   @include App.uma-stat();
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 
   .uma-stat {
     flex-direction: column;
@@ -20,6 +25,8 @@
   padding: 10px;
   width: 90%;
   margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
 
   & > div {
     display: grid;
@@ -49,6 +56,10 @@
   }
 }
 
+.stamina-container {
+  margin-top: 10px;
+}
+
 .recoveredStamina {
   color: App.$recoveryClr;
 }
@@ -62,6 +73,8 @@
   width: 50%;
   justify-content: space-evenly;
   margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .leg-speed-min-max {

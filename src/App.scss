@@ -18,7 +18,7 @@ $debuffClr: rgb(247, 94, 94);
   outline: 0;
   outline-color: transparent;
   outline-style: none;
-  border: 1px rgba(0, 0, 0, 0.25) solid;
+  // border: 1px rgba(0, 0, 0, 0.25) solid;
   box-sizing: border-box;
   word-break: keep-all;
   font-family: "umaJPFont", sans-serif;
@@ -129,10 +129,10 @@ span {
 @mixin skillGrid($buttonradius, $borderClr) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
-  // grid-template-columns: repeat(auto-fit, minmax(420px, 450px));
-  // grid-template-columns: repeat(auto-fill, minmax(200px, 360px));
-  grid-gap: 7px;
+  grid-gap: 5px;
   justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   & > * {
     display: flex;

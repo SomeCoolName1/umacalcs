@@ -1,10 +1,4 @@
-import {
-  coefficients,
-  distanceProf,
-  groundMod,
-  moodCoefficients,
-  strategyCoefficients,
-} from "../data/coefficients";
+import { groundMod } from "../data/coefficients";
 import RecoverySkills from "../data/skillsrecovery";
 import SkillBox from "../factory/skillbox";
 import Collapsible from "react-collapsible";
@@ -12,16 +6,9 @@ import PassiveSkills from "./passiveskills";
 import "./calculations.scss";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import {
-  getMinMaxSpeed,
-  randomSpeed,
-  umaCurrentSpeed,
-  umaTargetSpeed,
-  umaBaseSpeed,
-} from "./speed";
+import { getMinMaxSpeed, randomSpeed, umaTargetSpeed } from "./speed";
 import {
   getMaxHP,
-  hpConsumption,
   kakariRate,
   recoveryStaminaValue,
   skillActivationRate,
@@ -51,12 +38,7 @@ const Calculations = ({ stats, setStats }) => {
 
   //Destructuring
 
-  const { umaStrategy, umaMotivation } = umaStratMot;
-
-  const strategyCI = strategyCoefficients.find(
-    (obj) => obj.strategy === umaStrategy
-  );
-  const { speedCI, accelCI, staminaCI, conserveCI } = strategyCI;
+  const { umaMotivation } = umaStratMot;
 
   ////Track
   let surfaceType;
@@ -135,8 +117,8 @@ const Calculations = ({ stats, setStats }) => {
   //RACE PLOT
 
   return (
-    <div className="calculations-container">
-      <Collapsible trigger={<h1>Stat Calculations</h1>}>
+    <Collapsible trigger={<h1>Stat Calculations</h1>}>
+      <div className="calculations-container">
         <PassiveSkills
           setPassiveStats={setPassivestats}
           passiveStats={passiveStats}
@@ -207,30 +189,32 @@ const Calculations = ({ stats, setStats }) => {
           <span>Kakari Rate: {kakariRate(stats).toFixed(2)}%</span>
         </div>
         <h2>Stamina Recovered</h2>
-        <p>
-          Starting HP: {maxHP}
-          <span className="recoveredStamina">
-            {" "}
-            + {recoveryStaminaValue(maxHP).HPRec.toFixed(2)}{" "}
-          </span>
-          <span className="debuffedStamina">
-            {" "}
-            - {Math.abs(recoveryStaminaValue(maxHP).HPDeb.toFixed(2))}
-          </span>
-        </p>
-        <div className="skill-box-container">
-          {Object.values(RecoverySkills).map((key, index) => (
-            <SkillBox
-              key={index}
-              skill={key}
-              recovered={recoveredHp}
-              updateButton={updateStaminaValues}
-              skillType={"recovery"}
-            />
-          ))}
+        <div className="stamina-container">
+          <p>
+            Starting HP: {maxHP}
+            <span className="recoveredStamina">
+              {" "}
+              + {recoveryStaminaValue(maxHP).HPRec.toFixed(2)}{" "}
+            </span>
+            <span className="debuffedStamina">
+              {" "}
+              - {Math.abs(recoveryStaminaValue(maxHP).HPDeb.toFixed(2))}
+            </span>
+          </p>
+          <div className="skill-box-container">
+            {Object.values(RecoverySkills).map((key, index) => (
+              <SkillBox
+                key={index}
+                skill={key}
+                recovered={recoveredHp}
+                updateButton={updateStaminaValues}
+                skillType={"recovery"}
+              />
+            ))}
+          </div>
         </div>
-      </Collapsible>
-    </div>
+      </div>
+    </Collapsible>
   );
 };
 

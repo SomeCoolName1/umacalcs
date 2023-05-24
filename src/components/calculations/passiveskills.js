@@ -1,7 +1,6 @@
 import PassiveSkillsList from "../data/skillspassive";
 import SkillBox from "../factory/skillbox";
 import { useState } from "react";
-import Collapsible from "react-collapsible";
 import "./passiveskills.scss";
 
 const PassiveSkills = ({ setPassiveStats, passiveStats }) => {
@@ -100,42 +99,37 @@ const PassiveSkills = ({ setPassiveStats, passiveStats }) => {
 
   return (
     <div className="passive-skills-container">
-      <Collapsible
-        trigger={
-          <div className="passives-title-container">
-            <h2>Passive Skills</h2>
-            <h2 className="passive-sum-total">
-              {Object.entries(passiveStats).map((key, index) => {
-                return (
-                  <span className="passive-sum">
-                    {key[0]}: {key[1]},{" "}
-                  </span>
-                );
-              })}
-              <button onClick={clearStats}>Clear</button>
-            </h2>
-          </div>
-        }
-      >
-        {Object.entries(umaPassives).map((key) => {
-          return (
-            <>
-              <h3 className="passive-rarity-header">{key[0]}</h3>
-              <div className="skill-box-container">
-                {Object.values(key[1]).map((x, index) => (
-                  <SkillBox
-                    key={index}
-                    skill={x}
-                    recovered={null}
-                    updateButton={updateValues}
-                    skillType={"passive"}
-                  />
-                ))}
-              </div>
-            </>
-          );
-        })}
-      </Collapsible>
+      <div className="passives-title-container">
+        <h2>Passive Skills</h2>
+        <h2 className="passive-sum-total">
+          {Object.entries(passiveStats).map((key, index) => {
+            return (
+              <span className="passive-sum">
+                {key[0]}: {key[1]},{" "}
+              </span>
+            );
+          })}
+          <button onClick={clearStats}>Clear</button>
+        </h2>
+      </div>
+      {Object.entries(umaPassives).map((key) => {
+        return (
+          <>
+            <h3 className="passive-rarity-header">{key[0]}</h3>
+            <div className="skill-box-container">
+              {Object.values(key[1]).map((x, index) => (
+                <SkillBox
+                  key={index}
+                  skill={x}
+                  recovered={null}
+                  updateButton={updateValues}
+                  skillType={"passive"}
+                />
+              ))}
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 };
