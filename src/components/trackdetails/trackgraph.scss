@@ -1,13 +1,54 @@
 .phases-bar-container {
   display: block;
   position: relative;
-  height: 10px;
+  height: 5px;
   background-color: black;
+  margin-top: 10px;
+  border-radius: 3px;
 }
 
 .phase-seperator {
-  height: 100px;
-  position: absolute;
+  height: 20px;
   background-color: black;
-  display: block;
+  width: 2px;
+  border-radius: 3px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+@mixin phase_seperator_bar($firstPhase, $secondPhase) {
+  position: absolute;
+  &::before {
+    position: absolute;
+    content: $firstPhase;
+    font-size: 0.7rem;
+    width: max-content;
+    right: 5px;
+  }
+  &::after {
+    position: absolute;
+    content: $secondPhase;
+    font-size: 0.7rem;
+    width: max-content;
+    left: 5px;
+  }
+}
+
+#phase-seperator-phase0 {
+  @include phase_seperator_bar("←Opening Leg", "Middle Leg→");
+}
+#phase-seperator-phase1 {
+  @include phase_seperator_bar("←Middle Leg", "Final Leg→");
+}
+
+#phase-seperator-phase2 {
+  @include phase_seperator_bar("←Final Leg", "Last Spurt→");
+}
+
+#phase-seperator-phase3 {
+  display: none;
 }

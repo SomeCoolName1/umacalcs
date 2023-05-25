@@ -6,10 +6,9 @@ import {
   LinearScale, //yaxis
   PointElement,
 } from "chart.js";
-import { useSelector } from "react-redux";
 import Annotation from "chartjs-plugin-annotation";
 import "./trackgraph.scss";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { raceSimPlot } from "../calculations/racesim";
 
 ChartJS.register(
@@ -21,20 +20,7 @@ ChartJS.register(
 );
 
 const TrackGraph = ({ sections, slopes, stats }) => {
-  const track = useSelector((state) => state.track);
-  const { distance } = track;
-
   const dataPlot = raceSimPlot(sections, slopes, stats);
-
-  const racePhases = [
-    { phase: "Opening Leg", start: 0, end: distance / 6 },
-    { phase: "Middle Leg", start: distance / 6, end: (2 * distance) / 3 },
-    { phase: "Final Leg", start: (2 * distance) / 3, end: (5 * distance) / 6 },
-    { phase: "Last Spurt", start: (5 * distance) / 6, end: distance },
-  ];
-
-  const { phase0, phase1, phase2, phase3 } = racePhases;
-
   const { racePlot } = dataPlot;
 
   const maxSpeed = Math.max(...racePlot.map((o) => o.speed));
@@ -62,8 +48,6 @@ const TrackGraph = ({ sections, slopes, stats }) => {
     ],
   };
 
-  console.log(data);
-
   const chartRef = useRef(null);
   const chart = chartRef.current;
   let containerWidth;
@@ -80,8 +64,8 @@ const TrackGraph = ({ sections, slopes, stats }) => {
     yAxisHeight = chart.scales.y.max;
   }
 
-  const calculatePhaseDistance = (phase) => {
-    const absolutePointRatio = graphWidth * (phase / timeFinished);
+  const calculatePhaseDistance = (time) => {
+    const absolutePointRatio = graphWidth * (time / timeFinished);
 
     return absolutePointRatio;
   };
@@ -97,7 +81,6 @@ const TrackGraph = ({ sections, slopes, stats }) => {
       borderWidth: 1,
       label: {
         display: true,
-        content: x.phase,
         position: "end",
         height: 100,
       },
@@ -181,24 +164,28 @@ const TrackGraph = ({ sections, slopes, stats }) => {
   return (
     <>
       <h2>Race Simulation</h2>
-      {/* <div
-        className="phases-bar-container"
-        style={{ width: `${graphWidth}px`, left: `${graphLeft}px` }}
-      >
-        {getPhaseChanges.map((phase) => (
+      <div className="race-simulation-container">
+        {chart && (
           <div
-            className="phase-seperator"
-            id={`{phase-seperator-${phase.phase}`}
-            style={{
-              width: `${calculatePhaseDistance(phase.time)}px`,
-            }}
-          />
-        ))}
-      </div> */}
-      <Line options={options} data={data} ref={chartRef} />
-      <span>
-        Note: The graph represents a single simulation and does some shit{" "}
-      </span>
+            className="phases-bar-container"
+            style={{ width: `${graphWidth}px`, left: `${graphLeft}px` }}
+          >
+            {getPhaseChanges.map((phase) => (
+              <div
+                className="phase-seperator"
+                id={`phase-seperator-${phase.phase}`}
+                style={{
+                  left: `${calculatePhaseDistance(phase.time) - 1.5}px `,
+                }}
+              />
+            ))}
+          </div>
+        )}
+        <Line options={options} data={data} ref={chartRef} />
+        <span>
+          Note: The graph represents a single simulation and does some shit{" "}
+        </span>
+      </div>
     </>
   );
 };

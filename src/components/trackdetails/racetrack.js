@@ -122,17 +122,25 @@ const Racetrack = ({ stats }) => {
     slopeIndex = slopeSpurt.slopeIndex;
   }
 
-  racePhases.map((x) => console.log(x));
-
   return (
     <div className="track-container">
       <h2 className="track-header">
         Track Breakdown
         <div className="track-sort-container">
-          <button className="track-button" onClick={() => setShowType("type")}>
+          <button
+            className={`track-button ${
+              showType === "type" ? "show-active" : ""
+            }`}
+            onClick={() => setShowType("type")}
+          >
             Sort by Type
           </button>
-          <button className="track-button" onClick={() => setShowType("order")}>
+          <button
+            className={`track-button ${
+              showType === "order" ? "show-active" : ""
+            }`}
+            onClick={() => setShowType("order")}
+          >
             Sort by Order
           </button>
         </div>
@@ -259,7 +267,7 @@ const Racetrack = ({ stats }) => {
           </div>
         </span>
       </div>
-      {orderedSections && orderedSlopes ? (
+      {orderedSections ? (
         <TrackGraph
           sections={orderedSections}
           slopes={orderedSlopes}
