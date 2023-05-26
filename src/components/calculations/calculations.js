@@ -97,15 +97,17 @@ const Calculations = ({ stats, setStats }) => {
 
       let moodAdjusted = Math.round(rawStat * umaMotivation);
 
-      if (threshold.find((x) => x === jpCurrentStat)) {
-        if (moodAdjusted <= 300) {
-          courseModifier += 0.05;
-        } else if (moodAdjusted > 300 && moodAdjusted <= 600) {
-          courseModifier += 0.1;
-        } else if (moodAdjusted > 600 && moodAdjusted <= 900) {
-          courseModifier += 0.15;
-        } else if (moodAdjusted > 900) {
-          courseModifier += 0.2;
+      if (threshold) {
+        if (threshold.find((x) => x === jpCurrentStat)) {
+          if (moodAdjusted <= 300) {
+            courseModifier += 0.05;
+          } else if (moodAdjusted > 300 && moodAdjusted <= 600) {
+            courseModifier += 0.1;
+          } else if (moodAdjusted > 600 && moodAdjusted <= 900) {
+            courseModifier += 0.15;
+          } else if (moodAdjusted > 900) {
+            courseModifier += 0.2;
+          }
         }
       }
 

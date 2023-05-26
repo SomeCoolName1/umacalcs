@@ -6,12 +6,10 @@ const EnoughStamina = ({ sections, slopes, stats }) => {
 
   //Check if phase2 is delayed
 
-  console.log(racePlot);
-
   return (
     <div className="enough-stamina-container">
       <button>Click me to calculate</button>
-      <div className="stamina-remainder">6</div>
+      <div className="stamina-remainder">Placeholder</div>
     </div>
   );
 };

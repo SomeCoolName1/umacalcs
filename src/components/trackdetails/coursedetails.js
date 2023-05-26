@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setDistance, setGround, setTrack } from "../../state/userSlice";
+import { useDispatch } from "react-redux";
+import { setGround, setTrack } from "../../state/userSlice";
 import "./coursedetails.scss";
 const racetracks = require("../data/trackinfo.json");
 

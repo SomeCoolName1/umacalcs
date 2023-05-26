@@ -272,7 +272,7 @@ const Racetrack = ({ stats }) => {
           <span>
             <p className="thresholds-title section-title">Thresholds</p>
             <div className="thresholds-container">
-              {threshold.length > 0
+              {threshold && threshold.length > 0
                 ? threshold.map((stat) => (
                     <div className="thresholds-stat">
                       <p>{stat}</p>
