@@ -3,6 +3,7 @@
     "name": "札幌",
     "courses": {
       "10101": {
+        "threshold": [],
         "raceTrackId": 10001,
         "name": "芝1200m",
         "distance": 1200,
@@ -24,6 +25,7 @@
         "slopes": []
       },
       "10102": {
+        "threshold": [],
         "raceTrackId": 10001,
         "name": "芝1500m",
         "distance": 1500,
@@ -46,6 +48,7 @@
         "slopes": []
       },
       "10103": {
+        "threshold": [],
         "raceTrackId": 10001,
         "name": "芝1800m",
         "distance": 1800,
@@ -70,6 +73,7 @@
         "slopes": []
       },
       "10104": {
+        "threshold": ["パワー"],
         "raceTrackId": 10001,
         "name": "芝2000m",
         "distance": 2000,
@@ -94,6 +98,7 @@
         "slopes": []
       },
       "10105": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10001,
         "name": "芝2600m",
         "distance": 2600,
@@ -121,6 +126,7 @@
         "slopes": []
       },
       "10106": {
+        "threshold": [],
         "raceTrackId": 10001,
         "name": "ダート1000m",
         "distance": 1000,
@@ -142,6 +148,7 @@
         "slopes": []
       },
       "10107": {
+        "threshold": ["スピード"],
         "raceTrackId": 10001,
         "name": "ダート1700m",
         "distance": 1700,
@@ -166,6 +173,7 @@
         "slopes": []
       },
       "10108": {
+        "threshold": [],
         "raceTrackId": 10001,
         "name": "ダート2400m",
         "distance": 2400,
@@ -199,6 +207,7 @@
     "name": "函館",
     "courses": {
       "10201": {
+        "threshold": [],
         "raceTrackId": 10002,
         "name": "芝1000m",
         "distance": 1000,
@@ -220,6 +229,7 @@
         "slopes": [{ "start": 0, "length": 555, "slope": 10000 }]
       },
       "10202": {
+        "threshold": [],
         "raceTrackId": 10002,
         "name": "芝1200m",
         "distance": 1200,
@@ -241,6 +251,7 @@
         "slopes": [{ "start": 0, "length": 755, "slope": 10000 }]
       },
       "10203": {
+        "threshold": ["パワー"],
         "raceTrackId": 10002,
         "name": "芝1800m",
         "distance": 1800,
@@ -268,6 +279,7 @@
         ]
       },
       "10204": {
+        "threshold": ["スピード"],
         "raceTrackId": 10002,
         "name": "芝2000m",
         "distance": 2000,
@@ -295,6 +307,7 @@
         ]
       },
       "10205": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10002,
         "name": "芝2600m",
         "distance": 2600,
@@ -326,6 +339,7 @@
         ]
       },
       "10206": {
+        "threshold": [],
         "raceTrackId": 10002,
         "name": "ダート1000m",
         "distance": 1000,
@@ -347,6 +361,7 @@
         "slopes": []
       },
       "10207": {
+        "threshold": [],
         "raceTrackId": 10002,
         "name": "ダート1700m",
         "distance": 1700,
@@ -374,6 +389,7 @@
         ]
       },
       "10208": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10002,
         "name": "ダート2400m",
         "distance": 2400,
@@ -407,6 +423,7 @@
     "name": "新潟",
     "courses": {
       "10301": {
+        "threshold": ["パワー"],
         "raceTrackId": 10003,
         "name": "芝1000m",
         "distance": 1000,
@@ -425,6 +442,7 @@
         "slopes": []
       },
       "10302": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "芝1200m(内)",
         "distance": 1200,
@@ -446,6 +464,7 @@
         "slopes": []
       },
       "10303": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "芝1400m(内)",
         "distance": 1400,
@@ -467,6 +486,7 @@
         "slopes": []
       },
       "10304": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "芝1600m(外)",
         "distance": 1600,
@@ -491,6 +511,7 @@
         ]
       },
       "10305": {
+        "threshold": ["パワー"],
         "raceTrackId": 10003,
         "name": "芝1800m(外)",
         "distance": 1800,
@@ -515,6 +536,7 @@
         ]
       },
       "10306": {
+        "threshold": ["スタミナ", "パワー"],
         "raceTrackId": 10003,
         "name": "芝2000m(内)",
         "distance": 2000,
@@ -539,6 +561,7 @@
         "slopes": []
       },
       "10307": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "芝2000m(外)",
         "distance": 2000,
@@ -563,6 +586,7 @@
         ]
       },
       "10308": {
+        "threshold": ["スピード"],
         "raceTrackId": 10003,
         "name": "芝2200m(内)",
         "distance": 2200,
@@ -587,6 +611,7 @@
         "slopes": []
       },
       "10309": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "芝2400m(内)",
         "distance": 2400,
@@ -611,6 +636,7 @@
         "slopes": []
       },
       "10310": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "ダート1200m",
         "distance": 1200,
@@ -632,6 +658,7 @@
         "slopes": []
       },
       "10311": {
+        "threshold": ["賢さ"],
         "raceTrackId": 10003,
         "name": "ダート1800m",
         "distance": 1800,
@@ -656,6 +683,7 @@
         "slopes": []
       },
       "10312": {
+        "threshold": [],
         "raceTrackId": 10003,
         "name": "ダート2500m",
         "distance": 2500,
@@ -689,6 +717,7 @@
     "name": "福島",
     "courses": {
       "10401": {
+        "threshold": [],
         "raceTrackId": 10004,
         "name": "芝1200m",
         "distance": 1200,
@@ -710,6 +739,7 @@
         "slopes": [{ "start": 180, "length": 100, "slope": 15000 }]
       },
       "10402": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10004,
         "name": "芝1800m",
         "distance": 1800,
@@ -734,6 +764,7 @@
         "slopes": [{ "start": 780, "length": 100, "slope": 15000 }]
       },
       "10403": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10004,
         "name": "芝2000m",
         "distance": 2000,
@@ -758,6 +789,7 @@
         "slopes": [{ "start": 980, "length": 100, "slope": 15000 }]
       },
       "10404": {
+        "threshold": [],
         "raceTrackId": 10004,
         "name": "芝2600m",
         "distance": 2600,
@@ -788,6 +820,7 @@
         ]
       },
       "10405": {
+        "threshold": [],
         "raceTrackId": 10004,
         "name": "ダート1150m",
         "distance": 1150,
@@ -809,6 +842,7 @@
         "slopes": []
       },
       "10406": {
+        "threshold": ["パワー"],
         "raceTrackId": 10004,
         "name": "ダート1700m",
         "distance": 1700,
@@ -833,6 +867,7 @@
         "slopes": [{ "start": 285, "length": 320, "slope": -10000 }]
       },
       "10407": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10004,
         "name": "ダート2400m",
         "distance": 2400,
@@ -866,6 +901,7 @@
     "name": "中山",
     "courses": {
       "10501": {
+        "threshold": ["パワー"],
         "raceTrackId": 10005,
         "name": "芝1200m(外)",
         "distance": 1200,
@@ -887,6 +923,7 @@
         ]
       },
       "10502": {
+        "threshold": [],
         "raceTrackId": 10005,
         "name": "芝1600m(外)",
         "distance": 1600,
@@ -909,6 +946,7 @@
         ]
       },
       "10503": {
+        "threshold": [],
         "raceTrackId": 10005,
         "name": "芝1800m(内)",
         "distance": 1800,
@@ -938,6 +976,7 @@
         ]
       },
       "10504": {
+        "threshold": ["スピード"],
         "raceTrackId": 10005,
         "name": "芝2000m(内)",
         "distance": 2000,
@@ -967,6 +1006,7 @@
         ]
       },
       "10505": {
+        "threshold": ["スタミナ", "根性"],
         "raceTrackId": 10005,
         "name": "芝2200m(外)",
         "distance": 2200,
@@ -995,6 +1035,7 @@
         ]
       },
       "10506": {
+        "threshold": ["パワー"],
         "raceTrackId": 10005,
         "name": "芝2500m(内)",
         "distance": 2500,
@@ -1026,6 +1067,7 @@
         ]
       },
       "10507": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10005,
         "name": "芝3600m(内)",
         "distance": 3600,
@@ -1064,6 +1106,7 @@
         ]
       },
       "10508": {
+        "threshold": ["パワー"],
         "raceTrackId": 10005,
         "name": "ダート1200m",
         "distance": 1200,
@@ -1088,6 +1131,7 @@
         ]
       },
       "10509": {
+        "threshold": ["パワー"],
         "raceTrackId": 10005,
         "name": "ダート1800m",
         "distance": 1800,
@@ -1117,6 +1161,7 @@
         ]
       },
       "10510": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10005,
         "name": "ダート2400m",
         "distance": 2400,
@@ -1144,6 +1189,7 @@
         "slopes": []
       },
       "10511": {
+        "threshold": [],
         "raceTrackId": 10005,
         "name": "ダート2500m",
         "distance": 2500,
@@ -1177,6 +1223,7 @@
     "name": "東京",
     "courses": {
       "10601": {
+        "threshold": ["スタミナ", "パワー"],
         "raceTrackId": 10006,
         "name": "芝1400m",
         "distance": 1400,
@@ -1202,6 +1249,7 @@
         ]
       },
       "10602": {
+        "threshold": ["スタミナ", "根性"],
         "raceTrackId": 10006,
         "name": "芝1600m",
         "distance": 1600,
@@ -1227,6 +1275,7 @@
         ]
       },
       "10603": {
+        "threshold": ["スピード"],
         "raceTrackId": 10006,
         "name": "芝1800m",
         "distance": 1800,
@@ -1253,6 +1302,7 @@
         ]
       },
       "10604": {
+        "threshold": [],
         "raceTrackId": 10006,
         "name": "芝2000m",
         "distance": 2000,
@@ -1279,6 +1329,7 @@
         ]
       },
       "10605": {
+        "threshold": ["スタミナ", "根性"],
         "raceTrackId": 10006,
         "name": "芝2300m",
         "distance": 2300,
@@ -1307,6 +1358,7 @@
         ]
       },
       "10606": {
+        "threshold": [],
         "raceTrackId": 10006,
         "name": "芝2400m",
         "distance": 2400,
@@ -1336,6 +1388,7 @@
         ]
       },
       "10607": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10006,
         "name": "芝2500m",
         "distance": 2500,
@@ -1365,6 +1418,7 @@
         ]
       },
       "10608": {
+        "threshold": [],
         "raceTrackId": 10006,
         "name": "芝3400m",
         "distance": 3400,
@@ -1399,6 +1453,7 @@
         ]
       },
       "10609": {
+        "threshold": ["スピード"],
         "raceTrackId": 10006,
         "name": "ダート1300m",
         "distance": 1300,
@@ -1423,6 +1478,7 @@
         ]
       },
       "10610": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10006,
         "name": "ダート1400m",
         "distance": 1400,
@@ -1447,6 +1503,7 @@
         ]
       },
       "10611": {
+        "threshold": ["スタミナ", "スピード"],
         "raceTrackId": 10006,
         "name": "ダート1600m",
         "distance": 1600,
@@ -1471,6 +1528,7 @@
         ]
       },
       "10612": {
+        "threshold": [],
         "raceTrackId": 10006,
         "name": "ダート2100m",
         "distance": 2100,
@@ -1498,6 +1556,7 @@
         ]
       },
       "10613": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10006,
         "name": "ダート2400m",
         "distance": 2400,
@@ -1528,6 +1587,7 @@
     "name": "中京",
     "courses": {
       "10701": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "芝1200m",
         "distance": 1200,
@@ -1552,6 +1612,7 @@
         ]
       },
       "10702": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "芝1400m",
         "distance": 1400,
@@ -1576,6 +1637,7 @@
         ]
       },
       "10703": {
+        "threshold": ["スピード"],
         "raceTrackId": 10007,
         "name": "芝1600m",
         "distance": 1600,
@@ -1601,6 +1663,7 @@
         ]
       },
       "10704": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "芝2000m",
         "distance": 2000,
@@ -1629,6 +1692,7 @@
         ]
       },
       "10705": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10007,
         "name": "芝2200m",
         "distance": 2200,
@@ -1658,6 +1722,7 @@
         ]
       },
       "10706": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "ダート1200m",
         "distance": 1200,
@@ -1679,6 +1744,7 @@
         "slopes": []
       },
       "10707": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "ダート1400m",
         "distance": 1400,
@@ -1703,6 +1769,7 @@
         ]
       },
       "10708": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10007,
         "name": "ダート1800m",
         "distance": 1800,
@@ -1731,6 +1798,7 @@
         ]
       },
       "10709": {
+        "threshold": [],
         "raceTrackId": 10007,
         "name": "ダート1900m",
         "distance": 1900,
@@ -1761,6 +1829,7 @@
     "name": "京都",
     "courses": {
       "10801": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "芝1200m(内)",
         "distance": 1200,
@@ -1785,6 +1854,7 @@
         ]
       },
       "10802": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "芝1400m(内)",
         "distance": 1400,
@@ -1809,6 +1879,7 @@
         ]
       },
       "10803": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "芝1400m(外)",
         "distance": 1400,
@@ -1834,6 +1905,7 @@
         ]
       },
       "10804": {
+        "threshold": ["スピード"],
         "raceTrackId": 10008,
         "name": "芝1600m(内)",
         "distance": 1600,
@@ -1858,6 +1930,7 @@
         ]
       },
       "10805": {
+        "threshold": ["スピード"],
         "raceTrackId": 10008,
         "name": "芝1600m(外)",
         "distance": 1600,
@@ -1883,6 +1956,7 @@
         ]
       },
       "10806": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "芝1800m(外)",
         "distance": 1800,
@@ -1908,6 +1982,7 @@
         ]
       },
       "10807": {
+        "threshold": ["パワー"],
         "raceTrackId": 10008,
         "name": "芝2000m(内)",
         "distance": 2000,
@@ -1935,6 +2010,7 @@
         ]
       },
       "10808": {
+        "threshold": ["スピード"],
         "raceTrackId": 10008,
         "name": "芝2200m(外)",
         "distance": 2200,
@@ -1963,6 +2039,7 @@
         ]
       },
       "10809": {
+        "threshold": ["パワー"],
         "raceTrackId": 10008,
         "name": "芝2400m(外)",
         "distance": 2400,
@@ -1991,6 +2068,7 @@
         ]
       },
       "10810": {
+        "threshold": ["パワー", "賢さ"],
         "raceTrackId": 10008,
         "name": "芝3000m(外)",
         "distance": 3000,
@@ -2025,6 +2103,7 @@
         ]
       },
       "10811": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "芝3200m(外)",
         "distance": 3200,
@@ -2059,6 +2138,7 @@
         ]
       },
       "10812": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "ダート1200m",
         "distance": 1200,
@@ -2083,6 +2163,7 @@
         ]
       },
       "10813": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "ダート1400m",
         "distance": 1400,
@@ -2107,6 +2188,7 @@
         ]
       },
       "10814": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "ダート1800m",
         "distance": 1800,
@@ -2134,6 +2216,7 @@
         ]
       },
       "10815": {
+        "threshold": [],
         "raceTrackId": 10008,
         "name": "ダート1900m",
         "distance": 1900,
@@ -2167,6 +2250,7 @@
     "name": "阪神",
     "courses": {
       "10901": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "芝1200m(内)",
         "distance": 1200,
@@ -2191,6 +2275,7 @@
         ]
       },
       "10902": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "芝1400m(内)",
         "distance": 1400,
@@ -2215,6 +2300,7 @@
         ]
       },
       "10903": {
+        "threshold": ["パワー"],
         "raceTrackId": 10009,
         "name": "芝1600m(外)",
         "distance": 1600,
@@ -2239,6 +2325,7 @@
         ]
       },
       "10904": {
+        "threshold": ["パワー"],
         "raceTrackId": 10009,
         "name": "芝1800m(外)",
         "distance": 1800,
@@ -2263,6 +2350,7 @@
         ]
       },
       "10905": {
+        "threshold": ["根性"],
         "raceTrackId": 10009,
         "name": "芝2000m(内)",
         "distance": 2000,
@@ -2292,6 +2380,7 @@
         ]
       },
       "10906": {
+        "threshold": ["スピード"],
         "raceTrackId": 10009,
         "name": "芝2200m(内)",
         "distance": 2200,
@@ -2321,6 +2410,7 @@
         ]
       },
       "10907": {
+        "threshold": ["パワー"],
         "raceTrackId": 10009,
         "name": "芝2400m(外)",
         "distance": 2400,
@@ -2349,6 +2439,7 @@
         ]
       },
       "10908": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "芝2600m(外)",
         "distance": 2600,
@@ -2378,6 +2469,7 @@
         ]
       },
       "10909": {
+        "threshold": ["パワー"],
         "raceTrackId": 10009,
         "name": "芝3000m(内)",
         "distance": 3000,
@@ -2410,6 +2502,7 @@
         ]
       },
       "10910": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "ダート1200m",
         "distance": 1200,
@@ -2431,6 +2524,7 @@
         "slopes": []
       },
       "10911": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "ダート1400m",
         "distance": 1400,
@@ -2452,6 +2546,7 @@
         "slopes": [{ "start": 1200, "length": 125, "slope": 15000 }]
       },
       "10912": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "ダート1800m",
         "distance": 1800,
@@ -2479,6 +2574,7 @@
         ]
       },
       "10913": {
+        "threshold": ["スタミナ", "パワー"],
         "raceTrackId": 10009,
         "name": "ダート2000m",
         "distance": 2000,
@@ -2506,6 +2602,7 @@
         ]
       },
       "10914": {
+        "threshold": [],
         "raceTrackId": 10009,
         "name": "芝3200m(外→内)",
         "distance": 3200,
@@ -2543,6 +2640,7 @@
     "name": "小倉",
     "courses": {
       "11001": {
+        "threshold": ["スピード"],
         "raceTrackId": 10010,
         "name": "芝1200m",
         "distance": 1200,
@@ -2564,6 +2662,7 @@
         "slopes": [{ "start": 0, "length": 60, "slope": -15000 }]
       },
       "11002": {
+        "threshold": [],
         "raceTrackId": 10010,
         "name": "芝1800m",
         "distance": 1800,
@@ -2588,6 +2687,7 @@
         "slopes": [{ "start": 280, "length": 255, "slope": 15000 }]
       },
       "11003": {
+        "threshold": ["パワー"],
         "raceTrackId": 10010,
         "name": "芝2000m",
         "distance": 2000,
@@ -2612,6 +2712,7 @@
         "slopes": [{ "start": 480, "length": 255, "slope": 15000 }]
       },
       "11004": {
+        "threshold": ["スタミナ"],
         "raceTrackId": 10010,
         "name": "芝2600m",
         "distance": 2600,
@@ -2639,6 +2740,7 @@
         "slopes": [{ "start": 1100, "length": 255, "slope": 15000 }]
       },
       "11005": {
+        "threshold": ["スピード"],
         "raceTrackId": 10010,
         "name": "ダート1000m",
         "distance": 1000,
@@ -2660,6 +2762,7 @@
         "slopes": []
       },
       "11006": {
+        "threshold": [],
         "raceTrackId": 10010,
         "name": "ダート1700m",
         "distance": 1700,
@@ -2684,6 +2787,7 @@
         "slopes": [{ "start": 370, "length": 150, "slope": 15000 }]
       },
       "11007": {
+        "threshold": [],
         "raceTrackId": 10010,
         "name": "ダート2400m",
         "distance": 2400,
@@ -2716,6 +2820,7 @@
     "name": "大井",
     "courses": {
       "11101": {
+        "threshold": [],
         "raceTrackId": 10101,
         "name": "ダート1200m",
         "distance": 1200,
@@ -2737,6 +2842,7 @@
         "slopes": []
       },
       "11102": {
+        "threshold": [],
         "raceTrackId": 10101,
         "name": "ダート1800m",
         "distance": 1800,
@@ -2761,6 +2867,7 @@
         "slopes": []
       },
       "11103": {
+        "threshold": [],
         "raceTrackId": 10101,
         "name": "ダート2000m",
         "distance": 2000,
@@ -2790,6 +2897,7 @@
     "name": "川崎",
     "courses": {
       "11301": {
+        "threshold": [],
         "raceTrackId": 10103,
         "name": "ダート1400m",
         "distance": 1400,
@@ -2814,6 +2922,7 @@
         "slopes": []
       },
       "11302": {
+        "threshold": [],
         "raceTrackId": 10103,
         "name": "ダート1600m",
         "distance": 1600,
@@ -2838,6 +2947,7 @@
         "slopes": []
       },
       "11303": {
+        "threshold": [],
         "raceTrackId": 10103,
         "name": "ダート2100m",
         "distance": 2100,
@@ -2871,6 +2981,7 @@
     "name": "船橋",
     "courses": {
       "11401": {
+        "threshold": [],
         "raceTrackId": 10104,
         "name": "ダート1000m",
         "distance": 1000,
@@ -2892,6 +3003,7 @@
         "slopes": []
       },
       "11402": {
+        "threshold": [],
         "raceTrackId": 10104,
         "name": "ダート1600m",
         "distance": 1600,
@@ -2916,6 +3028,7 @@
         "slopes": []
       },
       "11403": {
+        "threshold": [],
         "raceTrackId": 10104,
         "name": "ダート1800m",
         "distance": 1800,
@@ -2940,6 +3053,7 @@
         "slopes": []
       },
       "11404": {
+        "threshold": [],
         "raceTrackId": 10104,
         "name": "ダート2400m",
         "distance": 2400,
@@ -2972,6 +3086,7 @@
     "name": "盛岡",
     "courses": {
       "11501": {
+        "threshold": [],
         "raceTrackId": 10105,
         "name": "ダート1200m",
         "distance": 1200,
@@ -2997,6 +3112,7 @@
         ]
       },
       "11502": {
+        "threshold": [],
         "raceTrackId": 10105,
         "name": "ダート1600m",
         "distance": 1600,
@@ -3022,6 +3138,7 @@
         ]
       },
       "11503": {
+        "threshold": [],
         "raceTrackId": 10105,
         "name": "ダート1800m",
         "distance": 1800,
@@ -3050,6 +3167,7 @@
         ]
       },
       "11504": {
+        "threshold": [],
         "raceTrackId": 10105,
         "name": "ダート2000m",
         "distance": 2000,
@@ -3085,6 +3203,7 @@
     "name": "ﾛﾝｼｬﾝ?",
     "courses": {
       "11201": {
+        "threshold": [],
         "raceTrackId": 10201,
         "name": "芝1000m",
         "distance": 1000,
@@ -3103,6 +3222,7 @@
         "slopes": []
       },
       "11203": {
+        "threshold": [],
         "raceTrackId": 10201,
         "name": "芝2400m",
         "distance": 2400,

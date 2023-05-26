@@ -17,6 +17,7 @@ import {
 
 const Calculations = ({ stats, setStats }) => {
   const track = useSelector((state) => state.track);
+  const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
 
@@ -34,15 +35,20 @@ const Calculations = ({ stats, setStats }) => {
     adjustStats();
     //First dependency checks if basevalue are changed sicne adjustStats() will
     //infinitely loop
-  }, [...Object.values(stats).map((x) => x.value), passiveStats, umaStratMot]);
+  }, [
+    ...Object.values(stats).map((x) => x.value),
+    passiveStats,
+    umaStratMot,
+    proficiency,
+  ]);
 
   //Destructuring
-
   const { umaMotivation } = umaStratMot;
+  const { profStrategy } = proficiency;
 
   ////Track
   let surfaceType;
-  const { distance, surface } = track;
+  const { distance, surface, threshold } = track;
 
   if (surface === 1) {
     surfaceType = "turf";
@@ -72,27 +78,55 @@ const Calculations = ({ stats, setStats }) => {
   // //Thresholds after motivation, pre greens
 
   const adjustStats = () => {
-    //Add in RaceCousre modifier
     let baseStats = { ...stats };
+    let courseModifier = 1;
 
     Object.values(baseStats).forEach((key) => {
       let currentStat = key.en;
+      let jpCurrentStat = key.jp;
       let initialStat = stats[currentStat].value;
 
       let rawStat =
         Math.min(1200, initialStat) +
         (initialStat > 1200 ? (initialStat - 1200) / 2 : 0);
+
+      //Only for int does profiency affect base stat
+      if (currentStat === "int") {
+        rawStat *= profStrategy;
+      }
+
       let moodAdjusted = Math.round(rawStat * umaMotivation);
 
-      if (currentStat === "speed") {
-        moodAdjusted += groundSpeed;
-      } else if (currentStat === "power") {
+      if (threshold.find((x) => x === jpCurrentStat)) {
+        if (moodAdjusted <= 300) {
+          courseModifier += 0.05;
+        } else if (moodAdjusted > 300 && moodAdjusted <= 600) {
+          courseModifier += 0.1;
+        } else if (moodAdjusted > 600 && moodAdjusted <= 900) {
+          courseModifier += 0.15;
+        } else if (moodAdjusted > 900) {
+          courseModifier += 0.2;
+        }
+      }
+
+      if (currentStat === "power") {
         moodAdjusted += groundPower;
       }
 
       key.adjusted = moodAdjusted; //Multiply by mood
       key.final = moodAdjusted + passiveStats[currentStat];
     });
+
+    //Race Course Modifier
+    baseStats["speed"].adjusted = Math.round(
+      baseStats["speed"].adjusted * courseModifier
+    );
+
+    baseStats["speed"].final = Math.round(
+      baseStats["speed"].adjusted * courseModifier +
+        groundSpeed +
+        passiveStats["speed"]
+    );
 
     setStats(baseStats);
   };

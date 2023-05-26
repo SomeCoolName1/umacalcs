@@ -18,7 +18,7 @@ const Racetrack = ({ stats }) => {
     sortSlopes();
   }, [track]);
 
-  const { corners, straights, slopes, distance } = track;
+  const { corners, straights, slopes, distance, threshold } = track;
 
   const racePhases = [
     { phase: "Opening Leg", start: 0, end: Math.round(distance / 6) },
@@ -251,21 +251,37 @@ const Racetrack = ({ stats }) => {
           </div>
         </div>
       </div>
-      <div className="race-phase-container">
-        <span>
-          <p className="section-title">Race Phases</p>
-          <div className="race-phase">
-            {racePhases &&
-              racePhases.map((phase) => (
-                <div className="race-phase-details">
-                  <p>{phase.phase}</p>
-                  <p>
-                    {phase.start}m - {phase.end}m
-                  </p>
-                </div>
-              ))}
-          </div>
-        </span>
+      <div className="lower-race-track-container">
+        <div className="race-phase-container">
+          <span>
+            <p className="section-title">Race Phases</p>
+            <div className="race-phase">
+              {racePhases &&
+                racePhases.map((phase) => (
+                  <div className="race-phase-details">
+                    <p>{phase.phase}</p>
+                    <p>
+                      {phase.start}m - {phase.end}m
+                    </p>
+                  </div>
+                ))}
+            </div>
+          </span>
+        </div>
+        <div className="race-track-thresholds">
+          <span>
+            <p className="thresholds-title section-title">Thresholds</p>
+            <div className="thresholds-container">
+              {threshold.length > 0
+                ? threshold.map((stat) => (
+                    <div className="thresholds-stat">
+                      <p>{stat}</p>
+                    </div>
+                  ))
+                : "No thresholds"}
+            </div>
+          </span>
+        </div>
       </div>
       {orderedSections ? (
         <TrackGraph

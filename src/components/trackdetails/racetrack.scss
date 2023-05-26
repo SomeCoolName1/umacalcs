@@ -98,6 +98,12 @@
   margin-bottom: 10px;
 }
 
+.lower-race-track-container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 @mixin raceSection($colour) {
   border: 1px solid $colour;
   background-color: $colour;
@@ -119,14 +125,16 @@
   @include raceSection(App.$primaryClr);
 }
 
-.race-phase {
+.race-phase,
+.thresholds-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 230px);
+  grid-template-columns: repeat(auto-fit, 220px);
   grid-gap: 10px;
   justify-content: center;
 }
 
-.race-phase-details {
+.race-phase-details,
+.thresholds-stat {
   position: relative;
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -134,8 +142,13 @@
   width: 170px;
   margin: 0 auto;
   background-color: white;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 10px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &::before {
     content: "";
@@ -146,7 +159,7 @@
     position: absolute;
     left: -10px;
     top: -5px;
-    transform: rotate(-3deg);
+    transform: rotate(-2.5deg);
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
       rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,

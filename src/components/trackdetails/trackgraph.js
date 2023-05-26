@@ -10,6 +10,7 @@ import Annotation from "chartjs-plugin-annotation";
 import "./trackgraph.scss";
 import { useEffect, useRef } from "react";
 import { raceSimPlot } from "../calculations/racesim";
+import EnoughStamina from "../calculations/enoughstamina";
 
 ChartJS.register(
   LineElement,
@@ -163,6 +164,11 @@ const TrackGraph = ({ sections, slopes, stats }) => {
 
   return (
     <>
+      <div>
+        {sections && (
+          <EnoughStamina sections={sections} slopes={slopes} stats={stats} />
+        )}
+      </div>
       <h2>Race Simulation</h2>
       <div className="race-simulation-container">
         {chart && (
