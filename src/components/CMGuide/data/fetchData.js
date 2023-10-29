@@ -1,26 +1,30 @@
 export async function fetchSkills() {
-  const res = await fetch("https://" + process.env.VERCEL_URL + "/skills");
+  const res = await fetch(
+    "http://" + process.env.REACT_APP_VERCEL_URL + "/skills"
+  );
 
   return await res.json();
 }
 
 export async function fetchCardRarityData() {
   const res = await fetch(
-    "https://" + process.env.VERCEL_URL + "/cardRarityData"
+    "http://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData"
   );
 
   return await res.json();
 }
 
 export async function fetchSkillSet() {
-  const res = await fetch("https://" + process.env.VERCEL_URL + "/skillSet");
+  const res = await fetch(
+    "http://" + process.env.REACT_APP_VERCEL_URL + "/skillSet"
+  );
 
   return await res.json();
 }
 
 export async function fetchSupportCard() {
   const res = await fetch(
-    "https://" + process.env.VERCEL_URL + "/supportCards"
+    "http://" + process.env.REACT_APP_VERCEL_URL + "/supportCards"
   );
 
   return await res.json();
@@ -33,25 +37,25 @@ export async function fetchSupportCard() {
 //   fetchSupportCard: fetchSupportCard,
 // };
 // export async function fetchSkills() {
-//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/skills`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/skills`);
 
 //   return await res.json();
 // }
 
 // export async function fetchCardRarityData() {
-//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/cardRarityData`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData`);
 
 //   return await res.json();
 // }
 
 // export async function fetchSkillSet() {
-//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/skillSet`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/skillSet`);
 
 //   return await res.json();
 // }
 
 // export async function fetchSupportCard() {
-//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/supportCards`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/supportCards`);
 
 //   return await res.json();
 // }
