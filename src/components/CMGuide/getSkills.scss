@@ -1,0 +1,163 @@
+@use "../../App.scss";
+
+.rec-skills-list {
+  display: grid;
+  width: 100%;
+  // grid-template-columns: repeat(2, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-auto-flow: row;
+  font-size: 0.75rem;
+  position: relative;
+}
+
+.rec-single-skill-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.rec-skill-container {
+  background-color: App.$secondaryClr;
+  padding: 4px 6px;
+  margin: 0px 0px 10px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in;
+  min-width: 150px;
+  max-width: 95%;
+  &:hover {
+    background-color: App.$drkSecondaryClr;
+  }
+}
+
+.rec-unique-skill-container {
+  width: 260px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+  .rec-skill-unique-uma-container {
+    text-align: center;
+    font-size: large;
+  }
+
+  .rec-skill-unique-uma-image {
+    max-width: 128px;
+    max-height: 128px;
+    display: inline-block;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.rec-skill-condition {
+}
+
+.rec-skill-description {
+}
+
+.rec-skill-front {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 210px;
+}
+
+.rec-skill {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: App.$secondaryClr;
+  border-radius: 16px;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.rec-skill-JPname {
+  border-bottom: 1.5px solid black;
+}
+
+.rec-skill-name-container {
+  width: 75%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.rec-gold-skill-container {
+  border: 3px solid App.$goldClr;
+}
+
+.rec-white-skill-container {
+  border: 3px solid App.$whiteClr;
+}
+
+.rec-gold-skill,
+.rec-white-skill {
+  display: flex;
+  flex-direction: row;
+}
+
+.rec-skill-image {
+  width: 25%;
+  img {
+    width: 42px;
+    height: 42px;
+    vertical-align: middle;
+  }
+}
+
+.rec-skill-details {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  max-width: 400px;
+  background-color: App.$secondaryClr;
+  border: 3px solid App.$primaryClr;
+  z-index: 100;
+  inset: 0px auto auto 0px;
+  border-radius: 7px;
+  margin: 0px;
+  translate: 150px;
+  transition: all 0.3s ease-in-out;
+
+  .support-card-images {
+    width: 50px;
+    height: 50px;
+  }
+
+  & > * {
+    padding: 2px 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    p:not(p:first-child) {
+      font-size: 0.8rem;
+      font-family: "Open Sans", "Helvetica", "sans-serif";
+    }
+    & > p:first-child {
+      color: App.$primaryClr;
+    }
+  }
+}
+
+
+
+.rec-skill-hints {
+  padding: 4px 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+
+.details-false {
+  display: none;
+}

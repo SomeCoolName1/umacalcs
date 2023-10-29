@@ -7,7 +7,7 @@ import {
   strategyCoefficients,
   surfaceProf,
   strategyProf,
-} from "../components/data/coefficients";
+} from "../components/home/data/coefficients";
 
 let initialState = {
   uma: {

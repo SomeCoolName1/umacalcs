@@ -1,0 +1,54 @@
+@use "../../App.scss";
+
+.CMGuide-main-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.rec-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  & > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.track-info-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  min-height: 300px;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-auto-flow: row;
+}
+
+.rec-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  text-align: center;
+  h3 {
+    text-align: center;
+  }
+}
+
+.rec-skills-container {
+  border: 5px solid App.$primaryClr;
+  border-radius: 7px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rec-skills-Everyone {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  margin: 0 auto;
+}

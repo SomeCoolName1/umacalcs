@@ -1,0 +1,51 @@
+@use "../../App.scss";
+
+.track-info {
+  border: 5px solid App.$primaryClr;
+  border-radius: 7px;
+  text-align: center;
+  padding: 4px 6px;
+  margin: 0px 5px 10px;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.track-info-header {
+  height: 100px;
+  h3 {
+    text-align: center;
+  }
+}
+
+.track-skill-image {
+  background-color: App.$secondaryClr;
+  padding: 4px 6px;
+  margin: 0px 0px 10px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  max-width: 80%;
+  border: 3px solid App.$whiteClr;
+  img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.track-skill-name-container {
+  width: 75%;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 0.7em;
+}
+
+.track-info-skill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

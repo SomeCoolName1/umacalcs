@@ -1,8 +1,11 @@
 $primaryClr: rgb(105, 193, 12);
 $secondaryClr: rgb(236, 233, 236);
+$drkSecondaryClr: rgb(221, 221, 221);
 $fontClr: rgb(0, 0, 0);
 $recoveryClr: rgb(25, 200, 252);
 $debuffClr: rgb(247, 94, 94);
+$goldClr: rgb(255, 215, 33);
+$whiteClr: rgb(189, 189, 190);
 
 //FONTS
 @font-face {
@@ -184,3 +187,14 @@ span {
 }
 
 // transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;
+
+.main-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: $primaryClr;
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+  justify-content: space-evenly;
+}

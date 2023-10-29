@@ -1,0 +1,82 @@
+@use "../../../App.scss";
+
+.calculations-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.adjusted-stats-container {
+  @include App.uma-stat();
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  .uma-stat {
+    flex-direction: column;
+    align-items: center;
+  }
+  .label-value {
+    flex: 1 0;
+    width: 100%;
+    max-width: 158px;
+  }
+}
+
+.speed-accel-container {
+  padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  & > div {
+    display: grid;
+    border-top: 1px App.$primaryClr solid;
+    border-left: 1px App.$primaryClr solid;
+    & > * {
+      border-right: 1px App.$primaryClr solid;
+      border-bottom: 1px App.$primaryClr solid;
+    }
+  }
+
+  & > div {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    h3 {
+      text-align: center;
+    }
+
+    & > div {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 1fr);
+    }
+  }
+}
+
+.stamina-container {
+  margin-top: 10px;
+}
+
+.recoveredStamina {
+  color: App.$recoveryClr;
+}
+
+.debuffedStamina {
+  color: App.$debuffClr;
+}
+
+.wisdom-details-container {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.leg-speed-min-max {
+  font-size: 12px;
+}
