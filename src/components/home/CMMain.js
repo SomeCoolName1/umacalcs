@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import {
+  fetchSkills,
   fetchCardRarityData,
   fetchSkillSet,
-  fetchSkills,
   fetchSupportCard,
 } from "../CMGuide/data/fetchData";
 import DisplayInherit from "../CMGuide/getInherit";
@@ -27,6 +27,7 @@ const CMMain = () => {
   };
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_URL);
     getSkillsData();
   }, []);
 

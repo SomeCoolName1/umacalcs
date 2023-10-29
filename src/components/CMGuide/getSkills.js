@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./getSkills.scss";
-import { fetchSkills } from "./data/fetchData";
 import SkillDisplay from "./factory/skillDisplay";
 
 //アングリング×スキーミング
@@ -47,7 +46,6 @@ const DisplaySkill = (skill, data) => {
   };
 
   useEffect(() => {
-    console.log("displaySkills check");
     if (!skill || !data) return;
     getSkills();
   }, [data]);
