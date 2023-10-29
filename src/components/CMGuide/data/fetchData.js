@@ -1,23 +1,29 @@
 export async function fetchSkills() {
-  const res = await fetch(`${process.env.REACT_APP_URL}/skills`);
+  const res = await fetch("https://" + process.env.VERCEL_URL + "/api/skills");
 
   return await res.json();
 }
 
 export async function fetchCardRarityData() {
-  const res = await fetch(`${process.env.REACT_APP_URL}/cardRarityData`);
+  const res = await fetch(
+    "https://" + process.env.VERCEL_URL + "/api/cardRarityData"
+  );
 
   return await res.json();
 }
 
 export async function fetchSkillSet() {
-  const res = await fetch(`${process.env.REACT_APP_URL}/skillSet`);
+  const res = await fetch(
+    "https://" + process.env.VERCEL_URL + "/api/skillSet"
+  );
 
   return await res.json();
 }
 
 export async function fetchSupportCard() {
-  const res = await fetch(`${process.env.REACT_APP_URL}/supportCards`);
+  const res = await fetch(
+    "https://" + process.env.VERCEL_URL + "/api/supportCards"
+  );
 
   return await res.json();
 }
@@ -28,3 +34,26 @@ export async function fetchSupportCard() {
 //   fetchSkillSet: fetchSkillSet,
 //   fetchSupportCard: fetchSupportCard,
 // };
+// export async function fetchSkills() {
+//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/api/skills`);
+
+//   return await res.json();
+// }
+
+// export async function fetchCardRarityData() {
+//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/api/cardRarityData`);
+
+//   return await res.json();
+// }
+
+// export async function fetchSkillSet() {
+//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/api/skillSet`);
+
+//   return await res.json();
+// }
+
+// export async function fetchSupportCard() {
+//   const res = await fetch(`"https://" + process.env.VERCEL_URL + "/api/supportCards`);
+
+//   return await res.json();
+// }
