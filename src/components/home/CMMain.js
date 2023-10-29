@@ -27,6 +27,7 @@ const CMMain = () => {
   };
 
   useEffect(() => {
+    console.log("https://" + process.env.REACT_APP_VERCEL_URL + "/skills");
     getSkillsData();
   }, []);
 
