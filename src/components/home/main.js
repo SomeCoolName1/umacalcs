@@ -30,7 +30,7 @@ const Main = () => {
     <div className="main-container">
       <div className="main-header">
         <div className="home-button-container" onClick={() => navigate("/")}>
-          Welcome to {process.env.PUBLIC_NAME}
+          Welcome to ${process.env.PUBLIC_NAME}
         </div>
         <div
           className="CMGuide-button-container"
