@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
   const [show, setShow] = useState("false");
-  console.log(skill.skill_name);
 
   //Rank placements
   const newLineCondition = (text) => {

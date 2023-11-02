@@ -14,22 +14,24 @@ const DisplaySkill = ({ skill, data }) => {
     console.log(goldSkill);
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].skill_name === goldSkill) {
+      if (data[i].skill_name == goldSkill) {
         data[i].skill_name_english = skillDesc(data[i].skill_name_english);
         data[i].skill_desc_english = skillDesc(data[i].skill_desc_english);
-        gold = data[i];
 
-        if (data[i + 1]) {
-          data[i + 1].skill_name_english = skillDesc(
-            data[i + 1].skill_name_english
+        gold = data[i];
+        let goldSkillId = data[i].skill_id;
+
+        let findWhite = data.find((x) => goldSkillId === x.skill_id - 1);
+
+        if (findWhite) {
+          findWhite.skill_name_english = skillDesc(
+            findWhite.skill_name_english
           );
-          data[i + 1].skill_desc_english = skillDesc(
-            data[i + 1].skill_desc_english
+          findWhite.skill_desc_english = skillDesc(
+            findWhite.skill_desc_english
           );
-          data[i + 1].support_card_ids = sepCardIds(
-            data[i + 1].support_card_ids
-          );
-          white = data[i + 1];
+          findWhite.support_card_ids = sepCardIds(findWhite.support_card_ids);
+          white = findWhite;
         }
         return [gold, white];
       }

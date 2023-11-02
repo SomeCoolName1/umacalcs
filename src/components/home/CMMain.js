@@ -41,6 +41,21 @@ const CMMain = () => {
     { name: "Ground", detail: "Random Weather", keyWord: "" },
   ];
 
+  const reqNoone = [
+    {
+      goldSkill: "王手",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments: "",
+    },
+    {
+      goldSkill: "決意の直滑降",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments: "",
+    },
+  ];
+
   const reqEveryone = [
     {
       goldSkill: "ノンストップガール",
@@ -51,13 +66,13 @@ const CMMain = () => {
   ];
   const reqRunner = [
     {
-      goldSkill: "逃亡者",
+      goldSkill: "ハイボルテージ",
       goldEventCards: [""],
       whiteEventCards: [""],
       comments: "",
     },
     {
-      goldSkill: "ハイボルテージ",
+      goldSkill: "逃亡者",
       goldEventCards: [""],
       whiteEventCards: [""],
       comments: "",
@@ -117,6 +132,7 @@ const CMMain = () => {
       comments: "",
     },
   ];
+  const inhNoone = [];
   const inhEveryone = [];
   const inhRunner = [{ id: 102001, enName: "Seuin Sky", comments: "" }];
 
@@ -135,6 +151,7 @@ const CMMain = () => {
 
   const strategies = [
     { name: "Everyone", recommended: reqEveryone, inherit: inhEveryone },
+    { name: "Ill-Advised", recommended: reqNoone, inherit: inhNoone },
     { name: "Runner", recommended: reqRunner, inherit: inhRunner },
     { name: "Leader", recommended: reqLeader, inherit: inhLeader },
     { name: "Betweener", recommended: reqBetweener, inherit: inhBetweener },
