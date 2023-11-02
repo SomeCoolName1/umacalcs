@@ -1,33 +1,78 @@
-export async function fetchSkills() {
-  const res = await fetch(
-    "https://" + process.env.REACT_APP_VERCEL_URL + "/skills"
-  );
+import { createClient } from "@supabase/supabase-js";
+const supabaseUrl = process.env.REACT_APP_SUPERBASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPERBASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-  return await res.json();
+export async function fetchSkills() {
+  const { data, error } = await supabase
+    .from("vw_condensed_skill_data_info")
+    .select();
+
+  if (error) {
+    console.log(error);
+  }
+  if (data) {
+    return data;
+  }
+  // const res = await fetch(
+  //   // "http://" + process.env.REACT_APP_VERCEL_URL + "/skills"
+  //   // `https://www.tracenacademy.com/api/CondensedSkillDataInfo`
+  // );
+
+  // return await res.json();
 }
 
 export async function fetchCardRarityData() {
-  const res = await fetch(
-    "https://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData"
-  );
+  const { data, error } = await supabase.from("card_rarity_data").select();
 
-  return await res.json();
+  if (error) {
+    console.log(error);
+  }
+  if (data) {
+    return data;
+  }
+  // const res = await fetch(
+  //   // "http://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData"
+  //   `https://www.tracenacademy.com/api/CardRarityData`
+  // );
+
+  // return await res.json();
 }
 
 export async function fetchSkillSet() {
-  const res = await fetch(
-    "https://" + process.env.REACT_APP_VERCEL_URL + "/skillSet"
-  );
+  const { data, error } = await supabase.from("skill_set").select();
 
-  return await res.json();
+  if (error) {
+    console.log(error);
+  }
+  if (data) {
+    return data;
+  }
+  // const res = await fetch(
+  //   // "http://" + process.env.REACT_APP_VERCEL_URL + "/skillSet"
+  //   `https://www.tracenacademy.com/api/SkillSet`
+  // );
+
+  // return await res.json();
 }
 
 export async function fetchSupportCard() {
-  const res = await fetch(
-    "https://" + process.env.REACT_APP_VERCEL_URL + "/supportCards"
-  );
+  const { data, error } = await supabase
+    .from("vw_basic_support_card_data_info")
+    .select();
 
-  return await res.json();
+  if (error) {
+    console.log(error);
+  }
+  if (data) {
+    return data;
+  }
+  // const res = await fetch(
+  //   // "http://" + process.env.REACT_APP_VERCEL_URL + "/supportCards"
+  //   `https://www.tracenacademy.com/api/BasicSupportCardDataInfo`
+  // );
+
+  // return await res.json();
 }
 
 // module.exports = {
@@ -37,25 +82,25 @@ export async function fetchSupportCard() {
 //   fetchSupportCard: fetchSupportCard,
 // };
 // export async function fetchSkills() {
-//   const res = await fetch(`"https://" + process.env.REACT_APP_VERCEL_URL + "/skills`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/skills`);
 
 //   return await res.json();
 // }
 
 // export async function fetchCardRarityData() {
-//   const res = await fetch(`"https://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/cardRarityData`);
 
 //   return await res.json();
 // }
 
 // export async function fetchSkillSet() {
-//   const res = await fetch(`"https://" + process.env.REACT_APP_VERCEL_URL + "/skillSet`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/skillSet`);
 
 //   return await res.json();
 // }
 
 // export async function fetchSupportCard() {
-//   const res = await fetch(`"https://" + process.env.REACT_APP_VERCEL_URL + "/supportCards`);
+//   const res = await fetch(`"http://" + process.env.REACT_APP_VERCEL_URL + "/supportCards`);
 
 //   return await res.json();
 // }

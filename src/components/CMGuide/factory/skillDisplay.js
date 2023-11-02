@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
   const [show, setShow] = useState("false");
+  console.log(skill.skill_name);
 
   //Rank placements
   const newLineCondition = (text) => {
@@ -57,18 +58,19 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
           )}
         </div>
         <div className="rec-skill-hints">
-          {skill.support_card_ids && (
-            <>
-              <p>Support (Hints)</p>
-              {skill.support_card_ids.map((cardId) => (
-                <img
-                  src={`https://gametora.com/images/umamusume/supports/support_card_s_${cardId}.png`}
-                  alt="skill-hints"
-                  className="support-card-images"
-                />
-              ))}
-            </>
-          )}
+          {skill.support_card_ids &&
+            typeof skill.support_card_ids === Object && (
+              <>
+                <p>Support (Hints)</p>
+                {skill.support_card_ids.map((cardId) => (
+                  <img
+                    src={`https://gametora.com/images/umamusume/supports/support_card_s_${cardId}.png`}
+                    alt="skill-hints"
+                    className="support-card-images"
+                  />
+                ))}
+              </>
+            )}
         </div>
         <div className="rec-skill-condition">
           <p>Conditions</p>

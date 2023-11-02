@@ -2,34 +2,40 @@ import { useEffect, useState } from "react";
 import "./getSkills.scss";
 import SkillDisplay from "./factory/skillDisplay";
 
-//アングリング×スキーミング
-//まっしぐら
-
-const DisplaySkill = (skill, data) => {
-  const [goldData, setGoldData] = useState({});
-  const [whiteData, setWhiteData] = useState({});
+const DisplaySkill = ({ skill, data }) => {
+  const [goldData, setGoldData] = useState([]);
+  // const [whiteData, setWhiteData] = useState({});
 
   const { goldSkill, goldEventCards, whiteEventCards, comments } = skill;
 
   const getSkills = () => {
+    let gold;
+    let white;
+    console.log(goldSkill);
+
     for (let i = 0; i < data.length; i++) {
       if (data[i].skill_name === goldSkill) {
+        data[i].skill_name_english = skillDesc(data[i].skill_name_english);
         data[i].skill_desc_english = skillDesc(data[i].skill_desc_english);
-
-        setGoldData(data[i]);
+        gold = data[i];
 
         if (data[i + 1]) {
+          data[i + 1].skill_name_english = skillDesc(
+            data[i + 1].skill_name_english
+          );
           data[i + 1].skill_desc_english = skillDesc(
             data[i + 1].skill_desc_english
           );
-          setWhiteData(data[i + 1]);
+          data[i + 1].support_card_ids = sepCardIds(
+            data[i + 1].support_card_ids
+          );
+          white = data[i + 1];
         }
-
-        data[i + 1].support_card_ids = sepCardIds(data[i + 1].support_card_ids);
-
-        return;
+        return [gold, white];
       }
     }
+
+    return [gold, white];
   };
 
   const sepCardIds = (id) => {
@@ -40,27 +46,30 @@ const DisplaySkill = (skill, data) => {
 
   const skillDesc = (desc) => {
     if (!desc) return;
-    const output = desc.replace(/<size=18>|<b>|<\/b>|\\n|<\/size>/gi, "");
+    let output = desc.replace(/<size=18>|<b>|<\/b>|\\n|\\N|<\/size>/gi, "");
 
     return output;
   };
 
   useEffect(() => {
     if (!skill || !data) return;
-    getSkills();
+    setGoldData(getSkills());
+    // console.log("skill", skill, "golddata:", goldData);
   }, [data]);
 
   return (
     <div className="rec-single-skill-container">
-      <SkillDisplay
-        skill={goldData}
-        rarity={"gold"}
-        eventCards={goldEventCards}
-        comments={comments}
-      />
-      {whiteData && (
+      {goldData[0] && (
         <SkillDisplay
-          skill={whiteData}
+          skill={goldData[0]}
+          rarity={"gold"}
+          eventCards={goldEventCards}
+          comments={comments}
+        />
+      )}
+      {goldData[1] && (
+        <SkillDisplay
+          skill={goldData[1]}
           rarity={"white"}
           eventCards={whiteEventCards}
           comments={comments}

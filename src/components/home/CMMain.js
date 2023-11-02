@@ -27,7 +27,6 @@ const CMMain = () => {
   };
 
   useEffect(() => {
-    console.log("https://" + process.env.REACT_APP_VERCEL_URL + "/skills");
     getSkillsData();
   }, []);
 
@@ -198,9 +197,9 @@ const CMMain = () => {
             <div
               className={`rec-skills-${strategy.name}-skills rec-skills-list`}
             >
-              {strategy.recommended.map((skill) => {
-                return DisplaySkill(skill, skillsData);
-              })}
+              {strategy.recommended.map((skill) => (
+                <DisplaySkill skill={skill} data={skillsData} />
+              ))}
             </div>
           </div>
         ))}
