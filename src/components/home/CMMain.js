@@ -9,15 +9,21 @@ import DisplayInherit from "../CMGuide/getInherit";
 import DisplaySkill from "../CMGuide/getSkills";
 import "./CMMain.scss";
 import TrackInfo from "../CMGuide/getTrack";
-import { useNavigate } from "react-router-dom";
+import { nigeSkills } from "../CMGuide/data/nigeSkills";
+import ayabeOndo1 from "../../assets/cmimages/ayabe_tracenondo_1.jpg";
+import ayabeOndo2 from "../../assets/cmimages/ayabe_tracenondo_2.jpg";
+import ayabeOndo3 from "../../assets/cmimages/ayabe_tracenondo_3.jpg";
+import ayabeOndo4 from "../../assets/cmimages/ayabe_tracenondo_4.jpg";
+import { senkouSkills } from "../CMGuide/data/senkouSkills";
+import { sashiSkills } from "../CMGuide/data/sashiSkills";
+import { oikomiSkills } from "../CMGuide/data/oikomiSkills";
+import { zenSkills } from "../CMGuide/data/zenSkills";
 
 const CMMain = () => {
   let [skillsData, setSkills] = useState(false);
   let [cardRarity, setCardRarity] = useState(false);
   let [skillSetData, setSkillSet] = useState(false);
   let [supportCardData, setSupportCard] = useState(false);
-
-  const navigate = useNavigate();
 
   const getSkillsData = async () => {
     setSkills(await fetchSkills());
@@ -41,113 +47,16 @@ const CMMain = () => {
     { name: "Ground", detail: "Random Weather", keyWord: "" },
   ];
 
-  const reqNoone = [
-    {
-      goldSkill: "王手",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "決意の直滑降",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      comments: "",
-    },
-  ];
-
-  const reqEveryone = [
-    {
-      goldSkill: "ノンストップガール",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      comments: "Everyone except runners",
-    },
-  ];
-  const reqRunner = [
-    {
-      goldSkill: "ハイボルテージ",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "逃亡者",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-  ];
-  const reqLeader = [
-    {
-      goldSkill: "ハイボルテージ",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "鍔迫り合い",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-  ];
-  const reqBetweener = [
-    {
-      goldSkill: "電光石火",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "乗り換え上手",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "豪脚",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-  ];
-  const reqChaser = [
-    {
-      goldSkill: "電光石火",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "抜群の切れ味",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "豪脚",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-  ];
-  const inhNoone = [];
-  const inhEveryone = [];
-  const inhRunner = [{ id: 102001, enName: "Seuin Sky", comments: "" }];
-
-  const inhLeader = [
-    { id: 101001, enName: "Taiki Shuttle", comments: "" },
-    { id: 105101, enName: "Nishino Flower", comments: "" },
-  ];
-  const inhBetweener = [
-    { id: 102701, enName: "Mejiro Ryan", comments: "" },
-    { id: 100101, enName: "Special Week", comments: "" },
-  ];
-  const inhChaser = [
-    { id: 102701, enName: "Mejiro Ryan", comments: "" },
-    { id: 100101, enName: "Special Week", comments: "" },
-  ];
+  const {
+    inherit: inhEveryone,
+    recc: reqEveryone,
+    nonInherit: inhNoone,
+    nonRecc: reqNoone,
+  } = zenSkills;
+  const { inherit: inhRunner, recc: reqRunner } = nigeSkills;
+  const { inherit: inhLeader, recc: reqLeader } = senkouSkills;
+  const { inherit: inhBetweener, recc: reqBetweener } = sashiSkills;
+  const { inherit: inhChaser, recc: reqChaser } = oikomiSkills;
 
   const strategies = [
     { name: "Everyone", recommended: reqEveryone, inherit: inhEveryone },
@@ -160,15 +69,20 @@ const CMMain = () => {
 
   return (
     <div className="CMGuide-main-container">
-      <div className="main-header">
-        <div className="home-button-container" onClick={() => navigate("/")}>
-          Home
-        </div>
-        <div
-          className="CMGuide-button-container"
-          onClick={() => navigate("/cm")}
-        >
-          CMGuide
+      <div className="CMGuide-picture-container">
+        <div className="ayabe-banner">
+          <img src={ayabeOndo1} />
+          <img src={ayabeOndo2} />
+          <img src={ayabeOndo3} />
+          <img src={ayabeOndo4} />
+          <img src={ayabeOndo1} />
+          <img src={ayabeOndo2} />
+          <img src={ayabeOndo3} />
+          <img src={ayabeOndo4} />
+          <img src={ayabeOndo1} />
+          <img src={ayabeOndo2} />
+          <img src={ayabeOndo3} />
+          <img src={ayabeOndo4} />
         </div>
       </div>
       <h1>League of Heroes track information</h1>

@@ -197,4 +197,25 @@ span {
   flex-direction: row;
   z-index: 1000;
   justify-content: space-evenly;
+  cursor: pointer;
+
+  .header-button {
+    background: #ededed;
+    border: 1px solid #ccc;
+    padding: 10px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .header-button:active {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+  }
+
+  .path-current {
+    background-color: blue;
+  }
 }

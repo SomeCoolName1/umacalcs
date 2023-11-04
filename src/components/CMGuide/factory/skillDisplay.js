@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
   const [show, setShow] = useState("false");
+  const skillPopup = useRef(null);
+
+  const closePopup = (e) => {
+    if (skillPopup.current && show && !skillPopup.current.contains(e.target)) {
+      setShow(false);
+    }
+  };
+
+  document.addEventListener("mousedown", closePopup);
 
   //Rank placements
   const newLineCondition = (text) => {
@@ -19,6 +28,7 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
     <div
       className={`rec-${rarity}-skill-container rec-skill-container`}
       onClick={() => setShow((prev) => !prev)}
+      ref={skillPopup}
     >
       <div className={`rec-skill-details details-${show}`}>
         {rarity === "unique" && (

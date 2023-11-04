@@ -3,10 +3,8 @@ import "./main.scss";
 import Details from "./umadetails/details";
 import Calculations from "./calculations/calculations";
 import Coursedetails from "./trackdetails/coursedetails";
-import Collapsible from "react-collapsible";
 import Racetrack from "./trackdetails/racetrack";
 import Loading from "./loading/loading";
-import { useNavigate } from "react-router-dom";
 
 const initialStats = {
   speed: { en: "speed", jp: "スペード", value: 1000, adjusted: 0, final: 0 },
@@ -24,21 +22,9 @@ const initialStats = {
 
 const Main = () => {
   const [umaStats, setUmaStats] = useState(initialStats);
-  const navigate = useNavigate();
 
   return (
     <div className="main-container">
-      <div className="main-header">
-        <div className="home-button-container" onClick={() => navigate("/")}>
-          Welcome to ${process.env.PUBLIC_NAME}
-        </div>
-        <div
-          className="CMGuide-button-container"
-          onClick={() => navigate("/cm")}
-        >
-          CMGuide
-        </div>
-      </div>
       <Details stats={umaStats} setStats={setUmaStats} />
       <Calculations stats={umaStats} setStats={setUmaStats} />
       <h1>Track Details</h1>

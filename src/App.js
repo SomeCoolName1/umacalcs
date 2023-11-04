@@ -18,15 +18,32 @@ export const store = configureStore({
 });
 
 const App = () => {
+  const navigate = useNavigate();
   return (
     <Provider store={store}>
       <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/cm" element={<CMMain />} />
-          </Routes>
-        </BrowserRouter>
+        <div className="main-header">
+          <div
+            className={`home-button-container header-button ${
+              window.location.pathname === "/" ? "path-current" : ""
+            }`}
+            onClick={() => navigate("/")}
+          >
+            Home
+          </div>
+          <div
+            className={`CMGuide-button-container header-button ${
+              window.location.pathname === "/cm" ? "path-current" : ""
+            }`}
+            onClick={() => navigate("/cm")}
+          >
+            CMGuide
+          </div>
+        </div>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/cm" element={<CMMain />} />
+        </Routes>
       </div>
     </Provider>
   );
