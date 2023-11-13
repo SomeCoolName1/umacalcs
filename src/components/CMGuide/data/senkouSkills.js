@@ -1,7 +1,13 @@
 export const senkouSkills = {
   inherit: [
-    { id: 101001, enName: "Taiki Shuttle", comments: "" },
-    { id: 105101, enName: "Nishino Flower", comments: "" },
+    { id: 102002, enName: "Alt Seuin", comments: "" },
+    { id: 106801, enName: "Kitasan Black", comments: "" },
+    {
+      id: 106802,
+      enName: "Alt Kitasan",
+      comments: "Activates later. Get Kitasan",
+    },
+    { id: 100101, enName: "Special Week", comments: "" },
   ],
   recc: [
     {
