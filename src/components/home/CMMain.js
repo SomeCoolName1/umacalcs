@@ -124,6 +124,9 @@ const CMMain = () => {
                 );
               })}
             </div>
+            <div className={`rec-skills-${strategy.name}-inherit-comment`}>
+              fk
+            </div>
             <h4>Skills</h4>
             <div
               className={`rec-skills-${strategy.name}-skills rec-skills-list`}
@@ -132,6 +135,9 @@ const CMMain = () => {
                 <DisplaySkill skill={skill} data={skillsData} />
               ))}
             </div>
+            <div className={`rec-skills-${strategy.name}-unique-comment`}>
+              fk
+            </div>{" "}
           </div>
         ))}
       </div>

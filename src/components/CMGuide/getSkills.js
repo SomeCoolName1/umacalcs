@@ -11,7 +11,6 @@ const DisplaySkill = ({ skill, data }) => {
   const getSkills = () => {
     let gold;
     let white;
-    console.log(goldSkill);
 
     for (let i = 0; i < data.length; i++) {
       if (data[i].skill_name === goldSkill) {
