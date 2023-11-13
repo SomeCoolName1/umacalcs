@@ -39,7 +39,7 @@ const CMMain = () => {
   const trackInfo = [
     {
       name: "RaceTrack",
-      detail: "Nakayama Inside Track (京都レース場)",
+      detail: "Nakayama Inside Track (中山レース場)",
       keyWord: "中山レース場○",
     },
     { name: "Distance", detail: "2500m", keyWord: "非根幹距離○" },
