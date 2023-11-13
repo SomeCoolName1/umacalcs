@@ -7,6 +7,7 @@ $debuffClr: rgb(247, 94, 94);
 $goldClr: rgb(255, 215, 33);
 $whiteClr: rgb(189, 189, 190);
 
+$phoneSize: 600px;
 //FONTS
 @font-face {
   font-family: "umaJPFont";
@@ -200,22 +201,37 @@ span {
   cursor: pointer;
 
   .header-button {
-    background: #ededed;
-    border: 1px solid #ccc;
-    padding: 10px 30px;
-    border-radius: 3px;
     cursor: pointer;
+    color: white;
+    position: relative;
+    text-transform: uppercase;
+    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  .header-button::before {
+    content: "";
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 15%;
+    width: 0%;
+    background-color: white;
+    height: 2px;
+  }
+
+  .header-button:hover::before {
+    width: 100%;
   }
 
   .header-button:active {
-    background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
+    // background: #e5e5e5;
+    // -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    // -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    // box-shadow: inset 0px 0px 5px #c1c1c1;
+    // outline: none;
   }
 
   .path-current {
-    background-color: blue;
+    // background-color: blue;
   }
 }

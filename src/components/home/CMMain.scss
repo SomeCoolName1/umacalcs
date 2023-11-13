@@ -43,7 +43,7 @@
   justify-content: space-around;
   & > * {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
   }
 }
@@ -94,7 +94,10 @@
 }
 
 .rec-skills-comment {
-  font-size: 12px;
+  p {
+    font-size: 12px;
+    padding-bottom: 2px;
+  }
 }
 
 .rec-divider {

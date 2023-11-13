@@ -135,7 +135,7 @@ const CMMain = () => {
         <div>
           <h3>Recommended Stats:</h3>
           <p>
-            1600 / 1200 (To live: 900-950-ish + 1 gold) / 1200 / 1200 / 1200
+            1600 / 1200 (To live: 900-950-ish + 1 gold) / 1200 / 1000 / 1200
           </p>
         </div>
         <div>
@@ -174,7 +174,8 @@ const CMMain = () => {
             <div
               className={`rec-skills-${strategy.name}-inherit-comment rec-skills-comment`}
             >
-              *{strategy.inhComm}
+              {strategy.inhComm &&
+                strategy.inhComm.map((comment) => <p>* {comment}</p>)}
             </div>
             <div className="rec-divider" />
             <h4>Skills</h4>

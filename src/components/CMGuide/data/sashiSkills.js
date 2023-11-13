@@ -19,8 +19,8 @@ export const sashiSkills = {
     { id: 101102, enName: "Alt Grass", comments: "Poor grass" },
   ],
   inheritComments: [
-    `OG Dober is the best inherit. OG Dober > OG Ryan. 
-    Sakura Laurel recovery > Alt Grass recovery due to additional speed yet same recovery effect (worth a little over 2 whites). Both are easy triggers`,
+    `OG Dober is the best inherit. OG Dober > OG Ryan. Just be wary that both Mejiro inherits trigger 23m late.`,
+    `Sakura Laurel recovery > Alt Grass recovery due to additional speed yet same recovery effect (worth a little over 2 whites). Both are easy triggers`,
   ],
   recc: [
     {

@@ -26,7 +26,7 @@ export const senkouSkills = {
   ],
   inheritComments: [
     `Some of these inherits depend on whether runners will be prevalent or not because all except speek require top 2/3. 
-    Will know later but I believe it's more senkous/leaders in rooms.`,
+    Will know later but I believe it's more senkous/sashis in rooms.`,
   ],
   recc: [
     {
