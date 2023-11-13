@@ -39,12 +39,13 @@ const CMMain = () => {
   const trackInfo = [
     {
       name: "RaceTrack",
-      detail: "Kyoto Outside Track (京都レース場－外)",
-      keyWord: "京都レース場○",
+      detail: "Nakayama Inside Track (京都レース場)",
+      keyWord: "中山レース場○",
     },
-    { name: "Distance", detail: "1600m", keyWord: "根幹距離○" },
+    { name: "Distance", detail: "2500m", keyWord: "非根幹距離○" },
+    { name: "Season", detail: "Winter", keyWord: "冬ウマ娘○" },
     { name: "Turn", detail: "右回り - Clockwise", keyWord: "右回り○" },
-    { name: "Ground", detail: "Random Weather", keyWord: "" },
+    { name: "Ground", detail: "Heavy Weather", keyWord: "道悪○" },
   ];
 
   const {
@@ -53,18 +54,62 @@ const CMMain = () => {
     nonInherit: inhNoone,
     nonRecc: reqNoone,
   } = zenSkills;
-  const { inherit: inhRunner, recc: reqRunner } = nigeSkills;
-  const { inherit: inhLeader, recc: reqLeader } = senkouSkills;
-  const { inherit: inhBetweener, recc: reqBetweener } = sashiSkills;
-  const { inherit: inhChaser, recc: reqChaser } = oikomiSkills;
+  const {
+    inherit: inhRunner,
+    inheritComments: inhRunComs,
+    recc: reqRunner,
+  } = nigeSkills;
+  const {
+    inherit: inhLeader,
+    inheritComments: inhLeaComs,
+    recc: reqLeader,
+  } = senkouSkills;
+  const {
+    inherit: inhBetweener,
+    inheritComments: inhBetComs,
+    recc: reqBetweener,
+  } = sashiSkills;
+  const {
+    inherit: inhChaser,
+    inheritComments: inhChaComs,
+    recc: reqChaser,
+  } = oikomiSkills;
 
   const strategies = [
-    { name: "Everyone", recommended: reqEveryone, inherit: inhEveryone },
-    { name: "Ill-Advised", recommended: reqNoone, inherit: inhNoone },
-    { name: "Runner", recommended: reqRunner, inherit: inhRunner },
-    { name: "Leader", recommended: reqLeader, inherit: inhLeader },
-    { name: "Betweener", recommended: reqBetweener, inherit: inhBetweener },
-    { name: "Chaser", recommended: reqChaser, inherit: inhChaser },
+    {
+      name: "Everyone",
+      recommended: reqEveryone,
+      inherit: inhEveryone,
+    },
+    {
+      name: "Ill-Advised",
+      recommended: reqNoone,
+      inherit: inhNoone,
+    },
+    {
+      name: "Runner",
+      recommended: reqRunner,
+      inherit: inhRunner,
+      inhComm: inhRunComs,
+    },
+    {
+      name: "Leader",
+      recommended: reqLeader,
+      inherit: inhLeader,
+      inhComm: inhLeaComs,
+    },
+    {
+      name: "Betweener",
+      recommended: reqBetweener,
+      inherit: inhBetweener,
+      inhComm: inhBetComs,
+    },
+    {
+      name: "Chaser",
+      recommended: reqChaser,
+      inherit: inhChaser,
+      inhComm: inhChaComs,
+    },
   ];
 
   return (
@@ -89,11 +134,13 @@ const CMMain = () => {
       <span className="rec-stats">
         <div>
           <h3>Recommended Stats:</h3>
-          <p>1600 / 700 / 1200 / 1200 / 1200</p>
+          <p>
+            1600 / 1200 (To live: 900-950-ish + 1 gold) / 1200 / 1200 / 1200
+          </p>
         </div>
         <div>
           <h3>Stat Threshold:</h3>
-          <p>SPEED</p>
+          <p>Power</p>
         </div>
       </span>
       <div className="track-info-container">
@@ -124,9 +171,12 @@ const CMMain = () => {
                 );
               })}
             </div>
-            <div className={`rec-skills-${strategy.name}-inherit-comment`}>
-              fk
+            <div
+              className={`rec-skills-${strategy.name}-inherit-comment rec-skills-comment`}
+            >
+              *{strategy.inhComm}
             </div>
+            <div className="rec-divider" />
             <h4>Skills</h4>
             <div
               className={`rec-skills-${strategy.name}-skills rec-skills-list`}
@@ -135,9 +185,7 @@ const CMMain = () => {
                 <DisplaySkill skill={skill} data={skillsData} />
               ))}
             </div>
-            <div className={`rec-skills-${strategy.name}-unique-comment`}>
-              fk
-            </div>{" "}
+            <div className={`rec-skills-${strategy.name}-unique-comment`}></div>{" "}
           </div>
         ))}
       </div>

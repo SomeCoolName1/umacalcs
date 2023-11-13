@@ -1,27 +1,30 @@
 export const oikomiSkills = {
   inherit: [
-    { id: 102701, enName: "Mejiro Ryan", comments: "" },
-    { id: 100101, enName: "Special Week", comments: "" },
-    { id: 105901, enName: "Mejiro Dober", comments: "" },
-    { id: 107601, enName: "Sakura Laurel", comments: "" },
-    { id: 101102, enName: "Grass Wonder", comments: "" },
+    { id: 105901, enName: "Mejiro Dober", comments: "YEAH THE DOBER" },
+    {
+      id: 102701,
+      enName: "Mejiro Ryan",
+      comments: "Dober > Ryan. But Ryan is like a backup.",
+    },
+    {
+      id: 100101,
+      enName: "Special Week",
+      comments: "Nice to have but not a prioarity",
+    },
+    {
+      id: 107601,
+      enName: "Sakura Laurel",
+      comments: "Better than Alt Grass inherit",
+    },
+    { id: 101102, enName: "Alt Grass", comments: "Poor grass" },
+  ],
+  inheritComments: [
+    `Same comments as betweeners. Chasers are pretty similar to betweeners here except the gold skills`,
   ],
   recc: [
     {
-      goldSkill: "電光石火",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "抜群の切れ味",
-      goldEventCards: [""],
-      whiteEventCards: [""],
-      comments: "",
-    },
-    {
-      goldSkill: "豪脚",
-      goldEventCards: [""],
+      goldSkill: "迫る影",
+      goldEventCards: [30164],
       whiteEventCards: [""],
       comments: "",
     },

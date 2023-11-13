@@ -118,7 +118,7 @@
   display: flex;
   flex-direction: column;
   padding: 5px;
-  max-width: 400px;
+  min-width: 267px;
   background-color: App.$secondaryClr;
   border: 3px solid App.$primaryClr;
   z-index: 100;

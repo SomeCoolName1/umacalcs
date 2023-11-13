@@ -3,13 +3,13 @@ import SkillDisplay from "./factory/skillDisplay";
 
 const DisplayInherit = (uma, cardRarityData, skillSetData, skillsData) => {
   let [unique, setUnique] = useState(false);
+  console.log(uma);
 
   //Gets Unique skill ID from ID from SkillSets
   const getSkills = () => {
     let umaSkillSet = findSkillSet(uma.id);
 
     //Then find the uniqueskillset from skillSetData
-    console.log(uma.enName, umaSkillSet);
     for (let i = 0; i < skillSetData.length; i++) {
       if (skillSetData[i].id === umaSkillSet) {
         return skillSetData[i].skill_id1;
@@ -47,7 +47,7 @@ const DisplayInherit = (uma, cardRarityData, skillSetData, skillsData) => {
           skill={unique}
           rarity={"unique"}
           eventCards={""}
-          comments={""}
+          comments={uma.comments}
           uniqueUma={uma}
         />
       )}

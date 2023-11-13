@@ -72,7 +72,7 @@ const DisplaySkill = ({ skill, data }) => {
         <SkillDisplay
           skill={goldData[1]}
           rarity={"white"}
-          eventCards={whiteEventCards}
+          eventCards={goldData[1].support_card_ids}
           comments={comments}
         />
       )}
