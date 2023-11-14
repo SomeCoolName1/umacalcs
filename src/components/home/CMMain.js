@@ -153,8 +153,8 @@ const CMMain = () => {
         ))}
       </div>
 
+      <h2>Recommended Skills/Inherits</h2>
       <div className="rec-container">
-        <h2>Recommended Skills/Inherits</h2>
         {strategies.map((strategy) => (
           <div className={`rec-skills-${strategy.name} rec-skills-container`}>
             <h3>{strategy.name}</h3>
