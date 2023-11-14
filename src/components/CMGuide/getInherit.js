@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import SkillDisplay from "./factory/skillDisplay";
+import { TextCleaner } from "./factory/textCleaner";
 
 const DisplayInherit = (uma, cardRarityData, skillSetData, skillsData) => {
   let [unique, setUnique] = useState(false);
-  console.log(uma);
 
   //Gets Unique skill ID from ID from SkillSets
   const getSkills = () => {
@@ -29,6 +29,10 @@ const DisplayInherit = (uma, cardRarityData, skillSetData, skillsData) => {
   const getUnique = (skill) => {
     for (let i = 0; i < skillsData.length; i++) {
       if (skillsData[i].skill_id === skill) {
+        skillsData[i].skill_desc_english = TextCleaner(
+          skillsData[i].skill_desc_english
+        );
+
         return skillsData[i];
       }
     }

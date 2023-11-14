@@ -45,12 +45,14 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
           </div>
         )}
         <div className="rec-skill-JPname">
-          {skill.skill_name ? skill.skill_name : "Undefined"}
+          {skill.skill_name ? <h4>{skill.skill_name}</h4> : "Undefined"}
         </div>
         <div className="rec-skill-ENname">
-          {skill.skill_name_english
-            ? skill.skill_name_english
-            : "No translation yet"}
+          {skill.skill_name_english ? (
+            <h4>{skill.skill_name_english}</h4>
+          ) : (
+            "No translation yet"
+          )}
         </div>
         <div className="rec-skill-events">
           {eventCards && (
@@ -85,13 +87,14 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
           <p>Conditions</p>
           {skill.condition_1 && (
             <>
-              <p>Condition 1</p>
+              <p style={{ fontWeight: 750 }}>Condition 1</p>
               <p>{newLineCondition(skill.condition_1)}</p>
             </>
           )}
           {skill.condition_2 && (
             <>
-              <p>Condition 2</p> <p>{newLineCondition(skill.condition_2)}</p>
+              <p style={{ fontWeight: 750 }}>Condition 2</p>{" "}
+              <p>{newLineCondition(skill.condition_2)}</p>
             </>
           )}
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./getSkills.scss";
 import SkillDisplay from "./factory/skillDisplay";
+import { TextCleaner } from "./factory/textCleaner";
 
 const DisplaySkill = ({ skill, data }) => {
   const [goldData, setGoldData] = useState([]);
@@ -14,8 +15,8 @@ const DisplaySkill = ({ skill, data }) => {
 
     for (let i = 0; i < data.length; i++) {
       if (data[i].skill_name === goldSkill) {
-        data[i].skill_name_english = skillDesc(data[i].skill_name_english);
-        data[i].skill_desc_english = skillDesc(data[i].skill_desc_english);
+        data[i].skill_name_english = TextCleaner(data[i].skill_name_english);
+        data[i].skill_desc_english = TextCleaner(data[i].skill_desc_english);
 
         gold = data[i];
         let goldSkillId = data[i].skill_id;
@@ -23,10 +24,10 @@ const DisplaySkill = ({ skill, data }) => {
         let findWhite = data.find((x) => goldSkillId === x.skill_id - 1);
 
         if (findWhite) {
-          findWhite.skill_name_english = skillDesc(
+          findWhite.skill_name_english = TextCleaner(
             findWhite.skill_name_english
           );
-          findWhite.skill_desc_english = skillDesc(
+          findWhite.skill_desc_english = TextCleaner(
             findWhite.skill_desc_english
           );
           findWhite.support_card_ids = sepCardIds(findWhite.support_card_ids);
@@ -43,13 +44,6 @@ const DisplaySkill = ({ skill, data }) => {
     if (id.constructor === Array) return;
     const array = id.split(",");
     return array.filter((x) => x >= 20000);
-  };
-
-  const skillDesc = (desc) => {
-    if (!desc) return;
-    let output = desc.replace(/<size=18>|<b>|<\/b>|\\n|\\N|<\/size>/gi, "");
-
-    return output;
   };
 
   useEffect(() => {
