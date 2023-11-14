@@ -61,7 +61,7 @@
   grid-template-columns: repeat(4, minmax(270px, 1fr));
   grid-gap: 10px;
   grid-auto-flow: row;
-  grid-auto-rows: auto;
+  grid-auto-rows: minmax(min-content, max-content);
   text-align: center;
   h3 {
     text-align: center;
@@ -89,11 +89,21 @@
 
 @media only screen and (max-width: 1200px) {
   .rec-container {
-    grid-template-columns: repeat(2, minmax(270px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 250px));
   }
 
   .rec-skills-Everyone,
   .rec-skills-Ill-Advised {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .rec-skills-container {
+    padding: 2px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .rec-skills-container {
     grid-column-start: 1;
     grid-column-end: 3;
   }
