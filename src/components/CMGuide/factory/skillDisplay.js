@@ -127,6 +127,17 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
               : "No translation yet"}
           </div>
         </div>
+        {rarity === "unique" && (
+          <div className="rec-front-unique-uma-image">
+            <img
+              src={`http://gametora.com/images/umamusume/characters/chara_stand_${uniqueShortId(
+                uniqueUma.id
+              )}_${uniqueUma.id}.png`}
+              alt="uma"
+              style={{ height: "50px", width: "auto" }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
