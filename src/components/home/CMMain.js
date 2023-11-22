@@ -15,7 +15,7 @@ import { sashiSkills } from "../CMGuide/data/sashiSkills";
 import { oikomiSkills } from "../CMGuide/data/oikomiSkills";
 import { zenSkills } from "../CMGuide/data/zenSkills";
 import championBg from "../../assets/champions_bg.png";
-import championLogo from "../../assets/champions_logo.png";
+import raceCourseLogo from "../../assets/race_course_logo.png";
 
 const CMMain = () => {
   let [skillsData, setSkills] = useState(false);
@@ -116,12 +116,16 @@ const CMMain = () => {
         <div className="CMGuide-picture">
           <img src={championBg} />
         </div>
-        {/* <div className="CMGuide-picture">
-          <img src={championLogo} />
-        </div> */}
-        <div className="CMGuide-title">Champions Meeting</div>
+
+        <div className="CMGuide-title">
+          <img src={raceCourseLogo} />
+        </div>
         <div className="CMGuide-overview">
-          中山 芝 2500m（長距離） 右・内 冬 雪 重 昼
+          <p className="CMGuide-overview-title">Champions Meeting</p>
+          <p>■ 開催予定時期</p>
+          <p>14/12 (dd/mm)</p>
+          <p>■ 対象レース</p>
+          <p>中山 芝 2500m（長距離） 右・内 冬 雪 重 昼</p>
         </div>
       </div>
 
