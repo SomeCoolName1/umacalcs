@@ -10,14 +10,12 @@ import DisplaySkill from "../CMGuide/getSkills";
 import "./CMMain.scss";
 import TrackInfo from "../CMGuide/getTrack";
 import { nigeSkills } from "../CMGuide/data/nigeSkills";
-import ayabeOndo1 from "../../assets/cmimages/ayabe_tracenondo_1.jpg";
-import ayabeOndo2 from "../../assets/cmimages/ayabe_tracenondo_2.jpg";
-import ayabeOndo3 from "../../assets/cmimages/ayabe_tracenondo_3.jpg";
-import ayabeOndo4 from "../../assets/cmimages/ayabe_tracenondo_4.jpg";
 import { senkouSkills } from "../CMGuide/data/senkouSkills";
 import { sashiSkills } from "../CMGuide/data/sashiSkills";
 import { oikomiSkills } from "../CMGuide/data/oikomiSkills";
 import { zenSkills } from "../CMGuide/data/zenSkills";
+import championBg from "../../assets/champions_bg.png";
+import championLogo from "../../assets/champions_logo.png";
 
 const CMMain = () => {
   let [skillsData, setSkills] = useState(false);
@@ -115,22 +113,18 @@ const CMMain = () => {
   return (
     <div className="CMGuide-main-container">
       <div className="CMGuide-picture-container">
-        <div className="ayabe-banner">
-          <img src={ayabeOndo1} />
-          <img src={ayabeOndo2} />
-          <img src={ayabeOndo3} />
-          <img src={ayabeOndo4} />
-          <img src={ayabeOndo1} />
-          <img src={ayabeOndo2} />
-          <img src={ayabeOndo3} />
-          <img src={ayabeOndo4} />
-          <img src={ayabeOndo1} />
-          <img src={ayabeOndo2} />
-          <img src={ayabeOndo3} />
-          <img src={ayabeOndo4} />
+        <div className="CMGuide-picture">
+          <img src={championBg} />
+        </div>
+        {/* <div className="CMGuide-picture">
+          <img src={championLogo} />
+        </div> */}
+        <div className="CMGuide-title">Champions Meeting</div>
+        <div className="CMGuide-overview">
+          中山 芝 2500m（長距離） 右・内 冬 雪 重 昼
         </div>
       </div>
-      <h1>League of Heroes track information</h1>
+
       <span className="rec-stats">
         <div>
           <h3>Recommended Stats:</h3>
