@@ -32,6 +32,9 @@ const CMMain = () => {
 
   useEffect(() => {
     getSkillsData();
+    let s = new Date().toLocaleString();
+
+    console.log(s);
   }, []);
 
   const trackInfo = [
