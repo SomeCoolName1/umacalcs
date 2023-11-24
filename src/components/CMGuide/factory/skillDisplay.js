@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import "./skillDisplay.scss";
 
 const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
   const [show, setShow] = useState("false");
@@ -30,84 +31,87 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
       onClick={() => setShow((prev) => !prev)}
       ref={skillPopup}
     >
-      <div className={`rec-skill-details details-${show}`}>
-        {rarity === "unique" && (
-          <div className="rec-skill-unique-uma-container">
-            <h4>{uniqueUma.enName}</h4>
-            <div className="rec-skill-unique-uma-image">
-              <img
-                src={`http://gametora.com/images/umamusume/characters/chara_stand_${uniqueShortId(
-                  uniqueUma.id
-                )}_${uniqueUma.id}.png`}
-                alt="uma"
-              />
-            </div>
-          </div>
-        )}
-        <div className="rec-skill-JPname">
-          {skill.skill_name ? <h4>{skill.skill_name}</h4> : "Undefined"}
-        </div>
-        <div className="rec-skill-ENname">
-          {skill.skill_name_english ? (
-            <h4>{skill.skill_name_english}</h4>
-          ) : (
-            "No translation yet"
-          )}
-        </div>
-        <div className="rec-skill-events">
-          {eventCards && (
-            <>
-              <p>Support (Events)</p>
-              {eventCards.map((card) => (
+      <div className={`rec-skill-details-container details-${show}`}>
+        <div className={`rec-skill-details rec-skill-details-info`}>
+          {rarity === "unique" && (
+            <div className="rec-skill-unique-uma-container">
+              <h4>{uniqueUma.enName}</h4>
+              <div className="rec-skill-unique-uma-image">
                 <img
-                  src={`http://gametora.com/images/umamusume/supports/support_card_s_${card}.png`}
-                  alt="sup"
-                  className="support-card-images"
+                  src={`http://gametora.com/images/umamusume/characters/chara_stand_${uniqueShortId(
+                    uniqueUma.id
+                  )}_${uniqueUma.id}.png`}
+                  alt="uma"
                 />
-              ))}
-            </>
+              </div>
+            </div>
           )}
-        </div>
-        <div className="rec-skill-hints">
-          {skill.support_card_ids &&
-            typeof skill.support_card_ids === Object && (
+          <div className="rec-skill-JPname">
+            {skill.skill_name ? <h4>{skill.skill_name}</h4> : "Undefined"}
+          </div>
+          <div className="rec-skill-ENname">
+            {skill.skill_name_english ? (
+              <h4>{skill.skill_name_english}</h4>
+            ) : (
+              "No translation yet"
+            )}
+          </div>
+          <div className="rec-skill-events">
+            {eventCards && (
               <>
-                <p>Support (Hints)</p>
-                {skill.support_card_ids.map((cardId) => (
+                <p>Support (Events)</p>
+                {eventCards.map((card) => (
                   <img
-                    src={`https://gametora.com/images/umamusume/supports/support_card_s_${cardId}.png`}
-                    alt="skill-hints"
+                    src={`http://gametora.com/images/umamusume/supports/support_card_s_${card}.png`}
+                    alt="sup"
                     className="support-card-images"
                   />
                 ))}
               </>
             )}
+          </div>
+          <div className="rec-skill-hints">
+            {skill.support_card_ids &&
+              typeof skill.support_card_ids === Object && (
+                <>
+                  <p>Support (Hints)</p>
+                  {skill.support_card_ids.map((cardId) => (
+                    <img
+                      src={`https://gametora.com/images/umamusume/supports/support_card_s_${cardId}.png`}
+                      alt="skill-hints"
+                      className="support-card-images"
+                    />
+                  ))}
+                </>
+              )}
+          </div>
+          <div className="rec-skill-condition">
+            <p>Conditions</p>
+            {skill.condition_1 && (
+              <>
+                <p style={{ fontWeight: 750 }}>Condition 1</p>
+                <p>{newLineCondition(skill.condition_1)}</p>
+              </>
+            )}
+            {skill.condition_2 && (
+              <>
+                <p style={{ fontWeight: 750 }}>Condition 2</p>{" "}
+                <p>{newLineCondition(skill.condition_2)}</p>
+              </>
+            )}
+          </div>
+          <div
+            className={`rec-${rarity}-skill-description rec-skill-description`}
+          >
+            <p>Description</p>
+            <p>{skill.skill_desc_english}</p>
+          </div>
         </div>
-        <div className="rec-skill-condition">
-          <p>Conditions</p>
-          {skill.condition_1 && (
-            <>
-              <p style={{ fontWeight: 750 }}>Condition 1</p>
-              <p>{newLineCondition(skill.condition_1)}</p>
-            </>
-          )}
-          {skill.condition_2 && (
-            <>
-              <p style={{ fontWeight: 750 }}>Condition 2</p>{" "}
-              <p>{newLineCondition(skill.condition_2)}</p>
-            </>
-          )}
-        </div>
-        <div
-          className={`rec-${rarity}-skill-description rec-skill-description`}
-        >
-          <p>Description</p>
-          <p>{skill.skill_desc_english}</p>
-        </div>
-
-        <div className={`rec-skill-comments`}>
-          <p>Comment</p>
-          {comments ? <p>{comments}</p> : <p>No Comment</p>}
+        <div className={`rec-skill-comment-container rec-skill-details-info`}>
+          <div className={`rec-skill-comment`}>
+            <p>Comment</p>
+            {comments ? <p>{comments}</p> : <p>No Comment</p>}
+          </div>
         </div>
       </div>
       <div className={`rec-${rarity}-skill rec-skill-front`}>

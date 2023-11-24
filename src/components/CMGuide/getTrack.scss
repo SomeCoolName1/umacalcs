@@ -1,12 +1,33 @@
 @use "../../App.scss";
 
+.track-info-container {
+  animation: transform 0.5s cubic-bezier(0.28, 1.64, 0.58, 0.87) 0.8s,
+    opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s;
+
+  opacity: 0;
+  opacity: 1;
+  left: 0%;
+  width: 100%;
+}
+
+// @keyframes transform {
+//   0% {
+//     transform: translateY(80px);
+//   }
+//   100% {
+//     transform: translateY(0px);
+//   }
+// }
+
 .track-info {
-  border: 5px solid App.$primaryClr;
+  border: 3px solid App.$primaryClr;
   border-radius: 7px;
   text-align: center;
   padding: 4px 6px;
   margin: 0px 5px 10px;
+  background-color: rgb(256, 256, 256, 0.75);
 
+  // clip-path: polygon(0% 20%, 0% 100%, 100% 80%, 100% 3%);
   img {
     width: 50px;
     height: 50px;

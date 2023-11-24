@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   fetchSkills,
   fetchCardRarityData,
@@ -15,6 +15,9 @@ import { sashiSkills } from "../CMGuide/data/sashiSkills";
 import { oikomiSkills } from "../CMGuide/data/oikomiSkills";
 import { zenSkills } from "../CMGuide/data/zenSkills";
 import championBg from "../../assets/champions_bg.png";
+import trackBg from "../../assets/champions_bg_1.png";
+import recBg from "../../assets/champions_bg_2.png";
+import endBg from "../../assets/champions_bg_3.png";
 import raceCourseLogo from "../../assets/race_course_logo.png";
 
 const CMMain = () => {
@@ -22,6 +25,8 @@ const CMMain = () => {
   let [cardRarity, setCardRarity] = useState(false);
   let [skillSetData, setSkillSet] = useState(false);
   let [supportCardData, setSupportCard] = useState(false);
+  const [show, setShow] = useState("false");
+  const trackPopup = useRef(null);
 
   const getSkillsData = async () => {
     setSkills(await fetchSkills());
@@ -33,9 +38,15 @@ const CMMain = () => {
   useEffect(() => {
     getSkillsData();
     let s = new Date().toLocaleString();
-
-    console.log(s);
   }, []);
+
+  const closePopup = (e) => {
+    if (trackPopup.current && show && !trackPopup.current.contains(e.target)) {
+      setShow(false);
+    }
+  };
+
+  document.addEventListener("mousedown", closePopup);
 
   const trackInfo = [
     {
@@ -114,7 +125,8 @@ const CMMain = () => {
   ];
 
   return (
-    <div className="CMGuide-main-container">
+    <div className={`CMGuide-main-container`}>
+      <div className={`CMGuide-main-container-overlay CMGuide-main-${show}`} />
       <div className="CMGuide-picture-container">
         <div className="CMGuide-picture">
           <img src={championBg} />
@@ -131,65 +143,99 @@ const CMMain = () => {
           <p>中山 芝 2500m（長距離） 右・内 冬 雪 重 昼</p>
         </div>
       </div>
-
-      <span className="rec-stats">
-        <div>
-          <h3>Recommended Stats:</h3>
-          <p>
-            1600 / 1200 (To live: 900-950-ish + 1 gold) / 1200 / 1000 / 1200
-          </p>
+      <div className="CMGuide-track-container">
+        <div className="CMGuide-track-title">
+          <div className="CMGuide-track-seperator" />
+          <h3>Track Info</h3>
         </div>
-        <div>
-          <h3>Stat Threshold:</h3>
-          <p>Power</p>
+        <div className="CMGuide-track-picture">
+          <img src={trackBg} />
         </div>
-      </span>
-      <div className="track-info-container">
-        {trackInfo.map((info) => (
-          <TrackInfo
-            info={info}
-            data={skillsData}
-            supportCardsData={supportCardData}
-          />
-        ))}
+        <div className="CMGuide-track-info">
+          <span className="rec-stats">
+            <div>
+              <h3>Recommended Stat</h3>
+              <p>
+                1600 / 1200 (To live: 900-950-ish + 1 gold) / 1200 / 1000 / 1200
+              </p>
+            </div>
+            <div
+              className={`CMGuide-track-course-image`}
+              onClick={() => setShow((prev) => !prev)}
+              ref={trackPopup}
+            >
+              <h3>Show Course</h3>
+              <img
+                className={`course-${show}`}
+                src="https://cdn.discordapp.com/attachments/924875144260882474/1173569353560621076/image.png?ex=656da921&is=655b3421&hm=f268fafdf05c7064e9466671c4aebfbda0518db46060d6f4c38f396349cd65af&"
+              />
+            </div>
+            <div>
+              <h3>Stat Threshold</h3>
+              <p>Power</p>
+            </div>
+          </span>
+          <div className="track-info-container">
+            {trackInfo.map((info) => (
+              <TrackInfo
+                info={info}
+                data={skillsData}
+                supportCardsData={supportCardData}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      <h2>Recommended Skills/Inherits</h2>
-      <div className="rec-container">
-        {strategies.map((strategy) => (
-          <div className={`rec-skills-${strategy.name} rec-skills-container`}>
-            <h3>{strategy.name}</h3>
-            <h4>Inherits</h4>
-            <div
-              className={`rec-skills-${strategy.name}-inherit rec-skills-list`}
-            >
-              {strategy.inherit.map((uma) => {
-                return DisplayInherit(
-                  uma,
-                  cardRarity,
-                  skillSetData,
-                  skillsData
-                );
-              })}
+      <div className="CMGuide-rec-container">
+        <div className="CMGuide-rec-title">
+          <div className="CMGuide-rec-seperator" />
+          <h3>Recommended Skills</h3>
+        </div>
+        <div className="CMGuide-rec-picture">
+          <img src={recBg} />
+        </div>
+        <div className="CMGuide-rec-skills-container">
+          {strategies.map((strategy) => (
+            <div className={`rec-skills-${strategy.name} rec-skills-container`}>
+              <h3>{strategy.name}</h3>
+              <h4>Inherits</h4>
+              <div
+                className={`rec-skills-${strategy.name}-inherit rec-skills-list`}
+              >
+                {strategy.inherit.map((uma) => {
+                  return DisplayInherit(
+                    uma,
+                    cardRarity,
+                    skillSetData,
+                    skillsData
+                  );
+                })}
+              </div>
+              <div
+                className={`rec-skills-${strategy.name}-inherit-comment rec-skills-comment`}
+              >
+                {strategy.inhComm &&
+                  strategy.inhComm.map((comment) => <p>* {comment}</p>)}
+              </div>
+              <div className="rec-divider" />
+              <h4>Skills</h4>
+              <div
+                className={`rec-skills-${strategy.name}-skills rec-skills-list`}
+              >
+                {strategy.recommended.map((skill) => (
+                  <DisplaySkill skill={skill} data={skillsData} />
+                ))}
+              </div>
+              <div
+                className={`rec-skills-${strategy.name}-unique-comment`}
+              ></div>{" "}
             </div>
-            <div
-              className={`rec-skills-${strategy.name}-inherit-comment rec-skills-comment`}
-            >
-              {strategy.inhComm &&
-                strategy.inhComm.map((comment) => <p>* {comment}</p>)}
-            </div>
-            <div className="rec-divider" />
-            <h4>Skills</h4>
-            <div
-              className={`rec-skills-${strategy.name}-skills rec-skills-list`}
-            >
-              {strategy.recommended.map((skill) => (
-                <DisplaySkill skill={skill} data={skillsData} />
-              ))}
-            </div>
-            <div className={`rec-skills-${strategy.name}-unique-comment`}></div>{" "}
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+      <div className={`CMGuide-footer-bg`}>
+        <img src={endBg} />
       </div>
     </div>
   );

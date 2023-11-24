@@ -1,0 +1,129 @@
+@use "../../../App.scss";
+
+.rec-skill-container {
+  background-color: App.$secondaryClr;
+  padding: 4px 6px;
+  margin: 0px 0px 10px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in;
+  min-width: 220px;
+  max-width: 80%;
+
+  &:hover {
+    background-color: App.$drkSecondaryClr;
+  }
+}
+
+.rec-single-skill-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.rec-unique-skill-container {
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+  .rec-skill-unique-uma-container {
+    text-align: center;
+    font-size: large;
+  }
+
+  .rec-skill-unique-uma-image {
+    max-width: 128px;
+    max-height: 128px;
+    display: inline-block;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.rec-skill-details-container {
+  position: relative;
+  width: 100%;
+}
+
+.rec-skill-details-info {
+  position: absolute;
+  background-color: App.$secondaryClr;
+  border: 3px solid App.$primaryClr;
+  padding: 5px;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 28px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+  min-width: 267px;
+  z-index: 100;
+  inset: 0px auto auto 0px;
+  border-radius: 7px;
+
+  & > * {
+    padding: 2px 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    p:not(p:first-child) {
+      font-size: 0.8rem;
+      font-family: "Open Sans", "Helvetica", "sans-serif";
+    }
+    & > p:first-child {
+      color: App.$primaryClr;
+    }
+  }
+}
+
+.rec-skill-details {
+  display: flex;
+  flex-direction: column;
+  translate: -75px 60px;
+
+  .support-card-images {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.rec-skill-comment-container {
+  translate: 190px 60px;
+}
+
+.details-false {
+  max-height: 0px;
+  overflow: hidden;
+  border: none;
+  padding: none;
+  visibility: hidden;
+
+  // p,
+  // h4,
+  // img {
+  //   opacity: 0%;
+  // }
+}
+
+// .details-true {
+//   max-height: 1000px;
+//   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+//     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+//     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+//   p,
+//   h4,
+//   img {
+//     opacity: 100%;
+
+//     transition: opacity 0.1s ease-in 0.3s;
+//   }
+
+//   h4 {
+//     font-size: 0.8rem;
+//   }
+//   transition: max-height 0.3s ease-out;
+// }

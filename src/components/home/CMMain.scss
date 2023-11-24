@@ -4,33 +4,21 @@ $overviewClr: black;
 
 .CMGuide-main-container {
   width: 90%;
+  width: 1650px;
   margin: 0 auto;
 }
 
 .CMGuide-picture-container {
   overflow: hidden;
-  height: 610px;
-
-  clip-path: polygon(0% 0%, 0% 100%, 100% 75%, 100% 0%);
-
-  // &::before {
-  //   background-color: App.$primaryClr;
-  //   height: 100%;
-  //   content: "";
-  //   z-index: 100;
-  //   bottom: 20%;
-  //   position: absolute;
-  //   width: 100%;
-  //   clip-path: polygon(0% 80%, 0% 80%, 100% 60%, 100% 65%);
-  // }
+  height: 700px;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 80%, 100% 0%);
 }
 
 .CMGuide-picture {
   background-repeat: no-repeat;
   position: relative;
-  width: 2080px;
-  height: 802px;
-
+  width: 2100px;
+  height: 750px;
   img {
     opacity: 0.8;
     animation: sizeIn 2s cubic-bezier(0.23, 1, 0.32, 1) both;
@@ -47,6 +35,8 @@ $overviewClr: black;
     0 -2px $overviewClr, 1px 1px $overviewClr, -1px -1px $overviewClr,
     1px -1px $overviewClr, -1px 1px $overviewClr;
   color: white;
+  width: 600px;
+
   p {
     font-size: 20px;
   }
@@ -82,56 +72,205 @@ $overviewClr: black;
 @keyframes titleSlideIn {
   0% {
     top: 50%;
-    left: 15%;
+    transform: translateX(100px);
     opacity: 0%;
   }
   100% {
     top: 15%;
-    left: 15%;
+    transform: translateX(100px);
     opacity: 100%;
   }
 }
 @keyframes textSlideIn {
   0% {
     top: 17%;
-    right: 0%;
+    transform: translateX(1200px);
     opacity: 0%;
   }
   100% {
     top: 17%;
-    right: 18%;
+    transform: translateX(900px);
     opacity: 100%;
   }
 }
 
+//-----------------------------------------------------
+
+.CMGuide-track-container {
+  position: relative;
+  // overflow: hidden;
+  height: 700px;
+}
+
+.CMGuide-track-title {
+  width: 100%;
+  position: absolute;
+  text-shadow: 5px 0 App.$primaryClr, -2px 0 App.$primaryClr,
+    0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
+    -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
+    -1px 1px App.$primaryClr;
+  z-index: 25;
+  top: -17%;
+
+  h3 {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    position: relative;
+
+    &:before {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 200px;
+      left: 0%;
+      top: -25%;
+      background-color: rgb(117, 175, 248);
+      clip-path: polygon(0% 84%, 0% 100%, 100% 3%, 100% 0%);
+      z-index: -100;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 200px;
+      left: 0%;
+      top: 20%;
+      background-color: rgb(117, 175, 248);
+      clip-path: polygon(0% 8%, 0% 24%, 100% 16%, 100% 13%);
+      z-index: -100;
+    }
+  }
+}
+
+.CMGuide-track-seperator {
+  width: 100%;
+  position: absolute;
+  top: -5%;
+  height: 150px;
+  background-color: rgb(31, 129, 252);
+  z-index: 0;
+  clip-path: polygon(0% 55%, 0% 95%, 100% 20%, 100% 10%);
+}
+
+.CMGuide-track-picture {
+  overflow: hidden;
+  position: absolute;
+  z-index: -10;
+  width: 1650px;
+  top: -35%;
+
+  img {
+    opacity: 0.8;
+    // animation: sizeIn 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+    // clip-path: polygon(0% 15%, 0% 87%, 100% 100%, 100% 5%);+
+    clip-path: polygon(0% 0%, 0% 100%, 100% 80%, 100% 0%);
+  }
+}
+
+.CMGuide-track-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.CMGuide-track-course-image {
+  z-index: 10000;
+  border-top: 3px solid App.$primaryClr;
+  cursor: pointer;
+  animation: all 2s cubic-bezier(0.23, 1, 0.32, 1);
+
+  img {
+    width: 1500px;
+    position: fixed;
+    top: 15%;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &:hover {
+    background-color: App.$primaryClr;
+  }
+}
+
+.CMGuide-main-true {
+  display: inline-block;
+  position: fixed;
+  top: 0%;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  z-index: 500;
+  content: "";
+  background-color: rgb(0, 0, 0, 0.8);
+}
+
+.course-false {
+  max-height: 0px;
+  overflow: hidden;
+  border: none;
+  padding: none;
+  visibility: hidden;
+}
+
 .rec-stats {
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 50px;
 
-  overflow: hidden;
   & > * {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     min-width: 500px;
+    padding: 15px;
+
     text-align: center;
+    background-color: rgb(256, 256, 256, 0.75);
+    border-left: 3px solid App.$primaryClr;
+    border-right: 3px solid App.$primaryClr;
+    border-bottom: 3px solid App.$primaryClr;
+    border-radius: 5px;
   }
-  div:before {
+  div:not(.CMGuide-track-course-image):before {
     content: "";
     height: 3px;
     width: 100%;
     background-color: App.$primaryClr;
-    z-index: -10;
-    position: absolute;
-    top: 25%;
-  }
 
+    position: absolute;
+    top: 0%;
+    width: 27%;
+    left: 0%;
+  }
+  div:not(.CMGuide-track-course-image):after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: App.$primaryClr;
+
+    position: absolute;
+    top: 0%;
+    width: 27%;
+    right: 0%;
+  }
   h3 {
-    background-color: white;
+    position: absolute;
+    top: -40%;
+    font-size: 20px;
+    color: white;
+    text-shadow: 5px 0 App.$primaryClr, -2px 0 App.$primaryClr,
+      0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
+      -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
+      -1px 1px App.$primaryClr;
   }
 }
 
@@ -141,21 +280,102 @@ $overviewClr: black;
   min-height: 300px;
   grid-auto-rows: minmax(min-content, max-content);
   grid-auto-flow: row;
+  margin-top: 30px;
 }
 
-.rec-container {
+//--------------------------------
+
+.CMGuide-rec-container {
+  position: relative;
+  // overflow: hidden;
+  height: 700px;
+}
+
+.CMGuide-rec-skills-container {
   display: grid;
   grid-template-columns: repeat(4, minmax(270px, 1fr));
   grid-gap: 10px;
   grid-auto-flow: row;
   grid-auto-rows: minmax(min-content, max-content);
   text-align: center;
+  position: relative;
+  padding-top: 120px;
+
   h3 {
     text-align: center;
   }
 }
 
+.CMGuide-rec-seperator {
+  width: 100%;
+  position: absolute;
+  top: -5%;
+  height: 150px;
+  background-color: rgb(31, 129, 252);
+  z-index: 0;
+  clip-path: polygon(0% 55%, 0% 95%, 100% 20%, 100% 10%);
+}
+
+.CMGuide-rec-title {
+  width: 100%;
+  position: absolute;
+  text-shadow: 5px 0 App.$primaryClr, -2px 0 App.$primaryClr,
+    0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
+    -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
+    -1px 1px App.$primaryClr;
+  z-index: 25;
+  top: -9%;
+
+  h3 {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    position: relative;
+
+    &:before {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 200px;
+      left: 0%;
+      top: -25%;
+      background-color: rgb(117, 175, 248);
+      clip-path: polygon(0% 84%, 0% 100%, 100% 5%, 100% 2%);
+      z-index: -100;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 200px;
+      left: 0%;
+      top: 20%;
+      background-color: rgb(117, 175, 248);
+      clip-path: polygon(0% 8%, 0% 24%, 100% 16%, 100% 13%);
+      z-index: -100;
+    }
+  }
+}
+
+.CMGuide-rec-picture {
+  overflow: hidden;
+  position: absolute;
+  z-index: -100;
+  width: 1650px;
+
+  top: -22%;
+
+  img {
+    opacity: 0.8;
+    // animation: sizeIn 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+    clip-path: polygon(0% 20%, 0% 100%, 100% 100%, 100% 4%);
+  }
+}
+
 .rec-skills-container {
+  background-color: rgb(256, 256, 256, 0.75);
   border: 5px solid App.$primaryClr;
   border-radius: 7px;
   width: 100%;
@@ -174,28 +394,6 @@ $overviewClr: black;
   border: 5px solid App.$debuffClr;
 }
 
-@media only screen and (max-width: 1200px) {
-  .rec-container {
-    grid-template-columns: repeat(2, minmax(200px, 250px));
-  }
-
-  .rec-skills-Everyone,
-  .rec-skills-Ill-Advised {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  .rec-skills-container {
-    padding: 2px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .rec-skills-container {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-}
-
 .rec-skills-comment {
   p {
     font-size: 12px;
@@ -208,3 +406,34 @@ $overviewClr: black;
   height: 2px;
   background-color: App.$primaryClr;
 }
+
+.CMGuide-footer-bg {
+  img {
+    z-index: -10;
+
+    width: 1650px;
+  }
+}
+//Recommended skills mobile mode
+
+// @media only screen and (max-width: 1200px) {
+//   .rec-container {
+//     grid-template-columns: repeat(2, minmax(200px, 250px));
+//   }
+
+//   .rec-skills-Everyone,
+//   .rec-skills-Ill-Advised {
+//     grid-column-start: 1;
+//     grid-column-end: 3;
+//   }
+//   .rec-skills-container {
+//     padding: 2px;
+//   }
+// }
+
+// @media only screen and (max-width: 600px) {
+//   .rec-skills-container {
+//     grid-column-start: 1;
+//     grid-column-end: 3;
+//   }
+// }
