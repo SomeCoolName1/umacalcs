@@ -41,7 +41,7 @@ const GuideSkills = ({ strategies, cardRarity, skillSetData, skillsData }) => {
   const contentTransition = {
     type: "spring",
     stiffness: 250,
-    delay: 0.5,
+    delay: 0.2,
   };
 
   //------------------------------------

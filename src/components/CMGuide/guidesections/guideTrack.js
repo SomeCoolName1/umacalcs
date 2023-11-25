@@ -44,7 +44,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
   const contentTransition = {
     type: "spring",
     stiffness: 250,
-    delay: 0.5,
+    delay: 0.2,
   };
 
   //------------------------------------
