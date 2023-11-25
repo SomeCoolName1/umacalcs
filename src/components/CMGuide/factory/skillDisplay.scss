@@ -12,29 +12,50 @@
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease-in;
-  min-width: 220px;
-  max-width: 80%;
+  min-width: 300px;
+  max-width: 85%;
+  font-size: 0.75em;
 
   &:hover {
     background-color: App.$drkSecondaryClr;
   }
 }
 
-.rec-single-skill-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 .rec-unique-skill-container {
   margin: 0 auto;
   margin-bottom: 10px;
+  position: relative;
+
+  &:before {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 3px solid transparent; /*2*/
+    opacity: 1;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+      )
+      border-box;
+    border-radius: 7px;
+  }
 
   .rec-skill-unique-uma-container {
     text-align: center;
-    font-size: large;
   }
 
   .rec-skill-unique-uma-image {
@@ -50,7 +71,8 @@
 
 .rec-skill-details-container {
   position: relative;
-  width: 100%;
+  width: 85%;
+  z-index: 100;
 }
 
 .rec-skill-details-info {
@@ -60,8 +82,7 @@
   padding: 5px;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 28px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
-  min-width: 267px;
-  z-index: 100;
+
   inset: 0px auto auto 0px;
   border-radius: 7px;
 
@@ -83,7 +104,8 @@
 .rec-skill-details {
   display: flex;
   flex-direction: column;
-  translate: -75px 60px;
+  translate: -60px 60px;
+  min-width: 267px;
 
   .support-card-images {
     width: 50px;
@@ -92,7 +114,9 @@
 }
 
 .rec-skill-comment-container {
-  translate: 190px 60px;
+  translate: 205px 60px;
+  max-width: 250px;
+  width: 100%;
 }
 
 .details-false {
@@ -101,29 +125,80 @@
   border: none;
   padding: none;
   visibility: hidden;
-
-  // p,
-  // h4,
-  // img {
-  //   opacity: 0%;
-  // }
 }
 
-// .details-true {
-//   max-height: 1000px;
-//   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-//     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-//     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-//   p,
-//   h4,
-//   img {
-//     opacity: 100%;
+.rec-skills-list {
+  display: grid;
+  width: 100%;
 
-//     transition: opacity 0.1s ease-in 0.3s;
-//   }
+  // grid-template-columns: repeat(2, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-auto-flow: row;
+  font-size: 0.7rem;
+  position: relative;
+}
 
-//   h4 {
-//     font-size: 0.8rem;
-//   }
-//   transition: max-height 0.3s ease-out;
-// }
+.rec-skill-front {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.rec-skill {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: App.$secondaryClr;
+  border-radius: 16px;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.rec-skill-JPname {
+  border-bottom: 1.5px solid black;
+}
+
+.rec-skill-name-container {
+  width: 90%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.rec-gold-skill-container {
+  border: 3px solid App.$goldClr;
+}
+
+.rec-white-skill-container {
+  border: 3px solid App.$whiteClr;
+}
+
+.rec-gold-skill,
+.rec-white-skill {
+  display: flex;
+  flex-direction: row;
+}
+
+.rec-skill-image {
+  width: 20%;
+  img {
+    width: 42px;
+    height: 42px;
+    vertical-align: middle;
+  }
+}
+
+.rec-skill-condition,
+.rec-skill-description {
+  p {
+    white-space: pre-wrap;
+  }
+}
+
+.rec-skill-hints {
+  padding: 4px 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+}

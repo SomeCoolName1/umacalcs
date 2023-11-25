@@ -59,7 +59,7 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
           <div className="rec-skill-events">
             {eventCards && (
               <>
-                <p>Support (Events)</p>
+                <p>Support (Events/Hints)</p>
                 {eventCards.map((card) => (
                   <img
                     src={`http://gametora.com/images/umamusume/supports/support_card_s_${card}.png`}
