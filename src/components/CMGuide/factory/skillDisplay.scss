@@ -75,6 +75,18 @@
   z-index: 100;
 }
 
+.details-false {
+  max-height: 0px;
+  overflow: hidden;
+  border: none;
+  padding: none;
+  visibility: hidden;
+}
+
+.details-true {
+  animation: slideDown 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 .rec-skill-details-info {
   position: absolute;
   background-color: App.$secondaryClr;
@@ -117,14 +129,6 @@
   translate: 205px 60px;
   max-width: 250px;
   width: 100%;
-}
-
-.details-false {
-  max-height: 0px;
-  overflow: hidden;
-  border: none;
-  padding: none;
-  visibility: hidden;
 }
 
 .rec-skills-list {
@@ -201,4 +205,15 @@
   word-break: break-word;
   overflow-wrap: break-word;
   text-align: left;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(75px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

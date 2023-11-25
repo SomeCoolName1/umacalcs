@@ -4,7 +4,6 @@ $titleShadow: App.$primaryClr;
 
 .CMGuide-track-container {
   position: relative;
-  // overflow: hidden;
   height: 700px;
 }
 
@@ -29,8 +28,6 @@ $titleShadow: App.$primaryClr;
   width: 1650px;
   top: -35%;
   visibility: hidden;
-  animation: slideLeft 2s cubic-bezier(0.23, 1, 0.32, 1) 0.333s;
-  animation-fill-mode: forwards;
 
   img {
     opacity: 0.8;
@@ -48,8 +45,6 @@ $titleShadow: App.$primaryClr;
   z-index: 25;
   top: -17%;
   visibility: hidden;
-  animation: slideLeft 2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s both;
-  animation-fill-mode: forwards;
 
   h3 {
     margin: 0 auto;
@@ -125,9 +120,7 @@ $titleShadow: App.$primaryClr;
   position: relative;
   padding: 15px;
 
-  opacity: 0;
-  animation: slideUp 2s cubic-bezier(0.23, 1, 0.32, 1) 0.333s;
-  animation-fill-mode: forwards;
+  // opacity: 0;
 
   h3 {
     position: absolute;
@@ -145,10 +138,18 @@ $titleShadow: App.$primaryClr;
 
 .CMGuide-track-course-container {
   cursor: pointer;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
   position: relative;
-  width: 250px;
+  width: 200px;
+  height: 50px;
   min-width: 0;
   padding: 10px;
+  transition: all 0.333s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   img {
     z-index: 10000;
@@ -191,24 +192,24 @@ $titleShadow: App.$primaryClr;
   margin-top: 30px;
 }
 
-@keyframes slideLeft {
-  0% {
-    clip-path: polygon(0% -200%, 0% 200%, 0% 0%, 0% 0%);
-  }
-  100% {
-    visibility: visible;
+// @keyframes slideLeft {
+//   0% {
+//     clip-path: polygon(0% -200%, 0% 200%, 0% 0%, 0% 0%);
+//   }
+//   100% {
+//     visibility: visible;
 
-    clip-path: polygon(0% -200%, 0% 200%, 100% 200%, 100% -200%);
-  }
-}
+//     clip-path: polygon(0% -200%, 0% 200%, 100% 200%, 100% -200%);
+//   }
+// }
 
-@keyframes slideUp {
-  0% {
-    opacity: 0%;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(000px);
-  }
-}
+// @keyframes slideUp {
+//   0% {
+//     opacity: 0%;
+//     transform: translateY(100px);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translateY(000px);
+//   }
+// }

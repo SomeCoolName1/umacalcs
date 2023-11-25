@@ -127,9 +127,9 @@ const CMMain = () => {
         </div>
         <div className="CMGuide-overview">
           <p className="CMGuide-overview-title">Champions Meeting</p>
-          <p>■ 開催予定時期</p>
+          <p>開催予定時期</p>
           <p>14/12 (dd/mm)</p>
-          <p>■ 対象レース</p>
+          <p>対象レース</p>
           <p>中山 芝 2500m（長距離） 右・内 冬 雪 重 昼</p>
         </div>
       </div>

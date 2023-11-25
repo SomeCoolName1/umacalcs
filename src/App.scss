@@ -191,9 +191,12 @@ span {
 // transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;
 
 .main-header {
+  display: inline-flex;
   width: 100%;
+
   position: sticky;
   top: 0;
+  left: 0;
   background-color: $primaryClr;
   display: flex;
   flex-direction: row;
@@ -222,17 +225,5 @@ span {
 
   .header-button:hover::before {
     width: 100%;
-  }
-
-  .header-button:active {
-    // background: #e5e5e5;
-    // -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    // -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    // box-shadow: inset 0px 0px 5px #c1c1c1;
-    // outline: none;
-  }
-
-  .path-current {
-    // background-color: blue;
   }
 }

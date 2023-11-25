@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import React, { Component, useEffect, useState } from "react";
 import CMMain from "./components/home/CMMain";
+import ScrollToTop from "./components/home/loading/scrollToTop";
 
 export const store = configureStore({
   reducer: userSlice,
@@ -19,6 +20,7 @@ export const store = configureStore({
 
 const App = () => {
   const navigate = useNavigate();
+
   return (
     <Provider store={store}>
       <div className="App">
@@ -40,6 +42,7 @@ const App = () => {
             CMGuide
           </div>
         </div>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/cm" element={<CMMain />} />
