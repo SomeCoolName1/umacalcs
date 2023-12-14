@@ -124,6 +124,7 @@ $titleShadow: App.$primaryClr;
 
   h3 {
     position: absolute;
+
     top: -40%;
     font-size: 20px;
     left: 50%;
@@ -133,6 +134,8 @@ $titleShadow: App.$primaryClr;
       0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
       -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
       -1px 1px App.$primaryClr;
+    width: 100%;
+    text-align: center;
   }
 }
 

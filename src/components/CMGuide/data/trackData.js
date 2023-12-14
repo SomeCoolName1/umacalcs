@@ -1,17 +1,19 @@
 export const trackInfo = [
   {
     name: "RaceTrack",
-    detail: "Nakayama Inside Track (中山レース場)",
-    keyWord: "中山レース場○",
+    detail: "Kawasaki Track (川崎レース場)",
+    keyWord: "川崎レース場○",
   },
-  { name: "Distance", detail: "2500m", keyWord: "非根幹距離○" },
+  { name: "Distance", detail: "2100m", keyWord: "非根幹距離○" },
   { name: "Season", detail: "Winter", keyWord: "冬ウマ娘○" },
-  { name: "Turn", detail: "右回り - Clockwise", keyWord: "右回り○" },
-  { name: "Ground", detail: "Heavy Weather", keyWord: "道悪○" },
+  { name: "Turn", detail: "左回り", keyWord: "左回り○" },
+  { name: "Ground", detail: "Random", keyWord: "-" },
 ];
 
 export const trackTitle = {
-  name: "Champions Meeting",
-  date: "14/12 (dd/mm)",
-  details: "中山 芝 2500m（長距離） 右・内 冬 雪 重 昼",
+  name: "League of Heroes",
+  date: "-- / 01 (dd/mm)",
+  details: "川崎 ダート 2100m（中距離） 左 冬 夕",
 };
+
+//道悪○
