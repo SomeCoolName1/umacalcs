@@ -100,7 +100,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
         <div className="CMGuide-track-header-container">
           <div className="CMGuide-track-rec-stats CMGuide-track-header CMGuide-track-info">
             <h3>Recommended Stat</h3>
-            <p>1600 / like 900 / 1200 / 1000 / 1200</p>
+            <p>1600 / 1100(?) / 1200 / 1000 / 1200</p>
           </div>
           <div
             className={`CMGuide-track-course-container CMGuide-track-header`}
