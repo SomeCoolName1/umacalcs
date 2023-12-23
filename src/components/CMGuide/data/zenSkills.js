@@ -13,6 +13,12 @@ export const zenSkills = {
       whiteEventCards: [""],
       comments: `For backliners. Getting the white is enough cause no cards offer the gold`,
     },
+    {
+      goldSkill: "ノンストップガール",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments: "Everyone except runners",
+    },
   ],
   inheritComments: [`Fk`],
   ///NONE RECOMMENDATIONS
@@ -24,12 +30,7 @@ export const zenSkills = {
       whiteEventCards: [""],
       comments: "Great bait",
     },
-    {
-      goldSkill: "ノンストップガール",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      comments: "Great bait",
-    },
+
     {
       goldSkill: "決意の直滑降",
       goldEventCards: [30031, 30127, 30151],
