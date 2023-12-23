@@ -5,6 +5,17 @@ export const sashiSkills = {
       enName: "Special Week",
       comments: "Nice to have but not a prioarity",
     },
+    {
+      id: 110501,
+      enName: "Neo Universe",
+      comments: "Pretty good mid-leg speed",
+    },
+    {
+      id: 106902,
+      enName: "Ballroom Chiyo",
+      comments:
+        "Powerful accel but triggers late. Requires position 4-5 but seems possible when it triggers late and you're bots suck at taking top 6 positions regardless of position. Will need testing.",
+    },
   ],
   inheritComments: [],
   recc: [
