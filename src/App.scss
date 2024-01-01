@@ -6,6 +6,7 @@ $recoveryClr: rgb(25, 200, 252);
 $debuffClr: rgb(247, 94, 94);
 $goldClr: rgb(255, 215, 33);
 $whiteClr: rgb(189, 189, 190);
+$evoClr: rgb(255, 154, 210);
 
 $phoneSize: 600px;
 
@@ -200,7 +201,7 @@ span {
   background-color: $primaryClr;
   display: flex;
   flex-direction: row;
-  z-index: 1000;
+  z-index: 1002;
   justify-content: space-evenly;
   cursor: pointer;
 

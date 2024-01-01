@@ -1,0 +1,208 @@
+@use "../../App.scss";
+
+.race-track-skill-container {
+  display: flex;
+  justify-content: start;
+  margin: 0 auto;
+  flex-direction: column;
+  position: relative;
+  min-height: 500px;
+}
+
+.race-track-skill-search-button {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-self: center;
+
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  min-width: 0;
+  padding: 10px;
+  transition: all 0.333s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border: 3px solid App.$primaryClr;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  img {
+    z-index: 10000;
+    width: 1500px;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+  }
+
+  &:hover {
+    background-color: App.$primaryClr;
+  }
+
+  h3 {
+    text-align: center;
+    color: white;
+    text-shadow: 5px 0 App.$primaryClr, -2px 0 App.$primaryClr,
+      0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
+      -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
+      -1px 1px App.$primaryClr;
+  }
+}
+
+.race-track-skill-search-container {
+  position: fixed;
+  top: 3.5%;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 1300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 1000;
+  background-color: App.$secondaryClr;
+}
+
+.race-track-skill-filter-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  position: relative;
+  margin: 0 auto;
+  align-items: center;
+
+  .race-track-skill-filter-title {
+    font-size: x-large;
+  }
+
+  .race-track-skill-filter-close {
+    cursor: pointer;
+    width: auto;
+    user-select: none;
+    position: relative;
+    &::before {
+      content: "";
+      transition: width 0.3s ease;
+      position: absolute;
+      left: 0;
+      bottom: 15%;
+      width: 0%;
+      background-color: App.$primaryClr;
+      height: 2px;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+
+.race-track-skill-filter-container {
+  width: 100%;
+}
+
+.race-track-skill-type-filter-container {
+  width: 100%;
+}
+
+.race-track-skill-type-filter-type-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.race-track-skill-filter {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  img {
+    width: 42px;
+    height: 42px;
+    margin: 3px;
+  }
+}
+
+.race-track-skill-filter-button {
+  user-select: none;
+  div {
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 35px;
+    padding: 10px;
+    transition: all 0.333s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border: 3px solid App.$primaryClr;
+    border-radius: 5px;
+    margin: 10px;
+    color: App.$primaryClr;
+
+    &:hover {
+      background-color: App.$primaryClr;
+      color: white;
+    }
+  }
+  img {
+    width: 42px;
+    height: 42px;
+    margin: 3px;
+  }
+}
+
+.race-track-skill-search-list {
+  display: grid;
+  height: auto;
+  min-height: 1000px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.search-show-false {
+  max-height: 0px;
+  overflow: hidden;
+  border: none;
+  padding: none;
+  visibility: hidden;
+}
+
+.search-show-true {
+  animation: slideDown 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.race-track-skill-filter-button {
+  cursor: pointer;
+  div,
+  img {
+    filter: grayscale(1);
+  }
+}
+
+.race-track-skill-filter-button-active {
+  div {
+    background-color: App.$primaryClr;
+    color: white;
+    filter: none;
+  }
+  img {
+    filter: none;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(75px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

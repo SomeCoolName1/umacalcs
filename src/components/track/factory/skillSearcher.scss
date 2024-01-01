@@ -1,0 +1,83 @@
+@use "../../../App.scss";
+
+.skill-searcher-box-container {
+  max-width: 300px;
+  font-size: 0.75em;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 6px;
+  border-radius: 7px;
+  background-color: App.$secondaryClr;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.skill-searcher-container-rarity-1,
+.skill-searcher-container-rarity-4 {
+  border: 3px solid App.$whiteClr;
+}
+
+.skill-searcher-container-rarity-2 {
+  border: 3px solid App.$goldClr;
+}
+
+.skill-searcher-container-rarity-3 {
+  position: relative;
+
+  &:before {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 3px solid transparent; /*2*/
+    opacity: 0.5;
+    z-index: -1;
+    border-radius: 7px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+      )
+      border-box;
+  }
+}
+
+.skill-searcher-container-rarity-6 {
+  border: 3px solid App.$evoClr;
+}
+
+.skill-searcher-icon {
+  width: 15%;
+
+  img {
+    width: 42px;
+    height: 42px;
+    vertical-align: middle;
+  }
+}
+
+.skill-searcher-name-container {
+  width: 90%;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.skill-searcher-JPName {
+  border-bottom: 1.5px solid black;
+}

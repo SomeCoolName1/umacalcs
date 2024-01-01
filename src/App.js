@@ -10,9 +10,10 @@ import {
   Router,
   useNavigate,
 } from "react-router-dom";
-import React, { Component, useEffect, useState } from "react";
+import React from "react";
 import CMMain from "./components/home/CMMain";
 import ScrollToTop from "./components/home/loading/scrollToTop";
+import TrackMain from "./components/track/trackmain";
 
 export const store = configureStore({
   reducer: userSlice,
@@ -31,7 +32,7 @@ const App = () => {
             }`}
             onClick={() => navigate("/")}
           >
-            Home
+            Stat Calculations
           </div>
           <div
             className={`CMGuide-button-container header-button ${
@@ -41,11 +42,20 @@ const App = () => {
           >
             CMGuide
           </div>
+          <div
+            className={`CMGuide-button-container header-button ${
+              window.location.pathname === "/skillcheck" ? "path-current" : ""
+            }`}
+            onClick={() => navigate("/skillcheck")}
+          >
+            Skill Checker
+          </div>
         </div>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/cm" element={<CMMain />} />
+          <Route path="/skillcheck" element={<TrackMain />} />
         </Routes>
       </div>
     </Provider>

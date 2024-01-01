@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import TrackGraph from "./trackgraph";
-import "./racetrack.scss";
-import Loading from "../loading/loading";
+import "./courseGraph.scss";
+import { skillCheck } from "./skills/skillDecipher";
 
-const Racetrack = ({ stats }) => {
+const Racetrack = ({ skill }) => {
   const track = useSelector((state) => state.track);
-  const [trackSpurt, setTrackSpurt] = useState(null);
-  const [orderedSections, setSectionOrder] = useState(null);
-  const [orderedSlopes, setSlopeOrder] = useState(null);
+  const [trackSpurt, setTrackSpurt] = useState(false);
+  const [orderedSections, setSectionOrder] = useState(false);
+  const [orderedSlopes, setSlopeOrder] = useState(false);
   const [showType, setShowType] = useState("type");
+  const [skillTrigger, setSkillTrigger] = useState(false);
 
   useEffect(() => {
     if (!track) return;
     sortCornersStraight();
     sortSlopes();
   }, [track]);
+
+  useEffect(() => {
+    if (!skill) return;
+    setSkillTrigger(skillCheck(track, skill));
+    console.log("after setting skill", skillTrigger);
+  }, [skill, track]);
 
   const { corners, straights, slopes, distance, threshold } = track;
 
@@ -176,12 +182,8 @@ const Racetrack = ({ stats }) => {
       );
     }
 
-    console.log(slopeHeight);
-
     return slopeArray;
   };
-
-  console.log(track);
 
   const getTrackDistance = (type) => {
     if (2 == type) return "Mile マイル";
@@ -256,6 +258,21 @@ const Racetrack = ({ stats }) => {
         </div>
       </h2>
       <div className="track-chart-container">
+        <div className="skill-overlay-container">
+          {skillTrigger &&
+            skillTrigger.map((points) =>
+              points.map((x) => (
+                <div
+                  className="skill-overlay"
+                  style={{
+                    width: `${((x.end - x.start) / distance) * 100}%`,
+                    left: ` ${(x.start / distance) * 100}%`,
+                  }}
+                ></div>
+              ))
+            )}
+        </div>
+
         <div className="track-chart-phase-container">
           {racePhases.map((phases) => {
             return (
@@ -323,7 +340,7 @@ const Racetrack = ({ stats }) => {
               <span className="track-chart-spurt-value track-chart-value">
                 {Math.round((distance * 8) / 12)}
               </span>
-              <span>Spurt </span>{" "}
+              <span>Spurt</span>{" "}
               <span>
                 {distance - Math.round((distance * 8) / 12)}m remaining
               </span>
@@ -384,7 +401,7 @@ const Racetrack = ({ stats }) => {
                   <p className="section-title">Corners</p>
                   {corners.map((corner, index) => (
                     <div className="corner">
-                      {corner.start}m -{corner.start + corner.length}m
+                      {corner.start}m - {corner.start + corner.length}m
                     </div>
                   ))}
                 </span>
@@ -402,7 +419,6 @@ const Racetrack = ({ stats }) => {
             </>
           )}
         </div>
-
         <div className="race-slopes">
           <span>
             <p className="section-title">Slopes</p>
@@ -445,15 +461,6 @@ const Racetrack = ({ stats }) => {
           </span>
         </div>
       </div>
-      {/* {orderedSections ? (
-        <TrackGraph
-          sections={orderedSections}
-          slopes={orderedSlopes}
-          stats={stats}
-        />
-      ) : (
-        <Loading />
-      )} */}
     </div>
   );
 };
