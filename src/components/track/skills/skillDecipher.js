@@ -6,8 +6,8 @@ export const skillCheck = (course, skill) => {
   const { condition_1, condition_2 } = skill;
   let triggerPoints = [];
 
-  const conditions = [condition_1, condition_2];
-  // const conditions = ["up_slope_random==1"];
+  // const conditions = [condition_1, condition_2];
+  const conditions = ["change_order_up_middle>=3"];
 
   //Seperate skill conditions
   let conditionsArray = conditions.map((skill) => breakSkillCondition(skill));

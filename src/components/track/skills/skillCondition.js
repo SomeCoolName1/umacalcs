@@ -17,6 +17,30 @@ const always = (course, skill) => {
   return [{ start: 0, end: 0 }];
 };
 
+const changeOrderUpEndAfter = (course, skill) => {
+  const { distance } = course;
+  const getFinalLeg = getPhasePoints(distance)[2];
+  const { start } = getFinalLeg;
+
+  return [{ start: start, end: distance }];
+};
+
+const changeOrderUpFinalCornerAfter = (course, skill) => {
+  const { corners, distance } = course;
+
+  const getLastCorner = corners[corners.length - 1];
+
+  return [{ start: getLastCorner.start, end: distance }];
+};
+
+const changeOrderUpMiddle = (course, skill) => {
+  const { distance } = course;
+  const getMidLeg = getPhasePoints(distance)[1];
+  const { start, end } = getMidLeg;
+
+  return [{ start: start, end: end }];
+};
+
 const competeFightCount = (course, skill) => {
   const { straights } = course;
   const value = getNumber(skill);
@@ -398,6 +422,9 @@ const upSlopeRandom = (course, skill) => {
 export const conditionMap = {
   all_corner_random: allCornerRandom,
   always: always,
+  change_order_up_end_after: changeOrderUpEndAfter,
+  change_order_up_finalcorner_after: changeOrderUpFinalCornerAfter,
+  change_order_up_middle: changeOrderUpMiddle,
   compete_fight_count: competeFightCount,
   course_distance: courseDistance,
   distance_rate: distanceRate,
