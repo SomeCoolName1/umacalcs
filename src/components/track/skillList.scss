@@ -161,9 +161,12 @@
 
 .race-track-skill-search-list {
   display: grid;
-  height: auto;
-  min-height: 1000px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  min-height: 500px;
+  width: 95%;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-rows: repeat(auto-fill, 100px);
 }
 
 .search-show-false {
