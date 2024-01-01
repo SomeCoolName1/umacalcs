@@ -1,5 +1,11 @@
 export const zenSkills = {
-  inherit: [],
+  inherit: [
+    {
+      id: 105201,
+      enName: "Urara will beat you up",
+      comments: "Everyone needs her",
+    },
+  ],
   recc: [
     {
       goldSkill: "目指せセンター！",

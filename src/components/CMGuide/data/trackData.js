@@ -12,7 +12,7 @@ export const trackInfo = [
 
 export const trackTitle = {
   name: "League of Heroes",
-  date: "-- / 01 (dd/mm)",
+  date: "12- / 01 (dd/mm)",
   details: "川崎 ダート 2100m（中距離） 左 冬 夕",
 };
 
