@@ -58,6 +58,7 @@ const Coursedetails = () => {
             <option value="10103">Kawasaki (川崎)</option>
             <option value="10104">Funabashi (船橋)</option>
             <option value="10105">Morioka (盛岡)</option>
+            <option value="10201">LongChamp (ロンシャン)</option>
           </select>
         </div>
         <div className="course-distance-container race-type">
@@ -106,3 +107,24 @@ export default Coursedetails;
 </select>}
 </div> */
 }
+
+//LongChamp 1000m
+// "11201": {
+//   "threshold": [],
+//   "raceTrackId": 10201,
+//   "name": "芝1000m",
+//   "distance": 1000,
+//   "distanceType": 1,
+//   "surface": 1,
+//   "turn": 4,
+//   "courseSetStatus": [],
+//   "laneMax": 12000,
+//   "finishTimeMin": 54.7,
+//   "finishTimeMax": 57,
+//   "corners": [
+//     { "start": 200, "length": 200 },
+//     { "start": 400, "length": 200 }
+//   ],
+//   "straights": [],
+//   "slopes": []
+// },

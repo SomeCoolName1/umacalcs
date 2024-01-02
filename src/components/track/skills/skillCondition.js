@@ -60,9 +60,9 @@ const corner = (course, skill) => {
   let addCornerEnds = corners.map((x) => ({ ...x, end: x.start + x.length }));
 
   if (skill == "corner!=0") {
-    output = ladderFill(addCornerEnds, distance);
-  } else if (skill == "corner==0") {
     output = addCornerEnds;
+  } else if (skill == "corner==0") {
+    output = ladderFill(addCornerEnds, distance);
   } else {
     output = [addCornerEnds[value - 1]];
   }
