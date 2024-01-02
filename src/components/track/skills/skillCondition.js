@@ -61,11 +61,13 @@ const corner = (course, skill) => {
 
   if (skill == "corner!=0") {
     output = ladderFill(addCornerEnds, distance);
-  } else if (value == 0) {
+  } else if (skill == "corner==0") {
     output = addCornerEnds;
   } else {
     output = [addCornerEnds[value - 1]];
   }
+
+  console.log(output);
 
   return output;
 };
@@ -333,7 +335,7 @@ const phaseFirstHalfRandom = (course, skill) => {
   //get end of last phase
   const { end } = phaseArray[phaseCheck[phaseCheck.length - 1]];
 
-  return [{ start: start, end: end / 2 }];
+  return [{ start: start, end: start + (end - start) / 2 }];
 };
 
 const phaseFirstQuarterRandom = (course, skill) => {

@@ -108,13 +108,13 @@ const overlap = (conditionGroup) => {
 
         console.log("----------------");
         console.log("first", startPoint, endPoint);
-        console.log("current", currentGroup);
+        console.log("current", currentGroup[j]);
         console.log("----------------");
 
         if (endPoint <= startPoint) {
-          firstStart = null;
-          firstEnd = null;
-          break;
+          firstStart = start;
+          firstEnd = end;
+          continue;
         }
 
         firstStart = startPoint;
@@ -126,20 +126,13 @@ const overlap = (conditionGroup) => {
     firstStart = null;
     firstEnd = null;
   }
+  console.log(array);
 
-  // console.log("final array", array);
-  // //Get the largest value of starting points
-  // let start = Math.max(...array.map((x) => x.start));
-
-  // //Get smalelst value of ending points
-  // let end = Math.min(...array.map((x) => x.end));
-
-  // return [{ start: start, end: end }];
   return array;
-
-  // //Get the largest value of starting points
-  // let start = Math.max(...condition.map((x) => x.start));
-
-  // //Get smalelst value of ending points
-  // let end = Math.min(...condition.map((x) => x.end));
 };
+
+// //Get the largest value of starting points
+// let start = Math.max(...condition.map((x) => x.start));
+
+// //Get smalelst value of ending points
+// let end = Math.min(...condition.map((x) => x.end));

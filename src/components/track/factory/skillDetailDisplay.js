@@ -69,8 +69,6 @@ const SkillDisplay = ({ skill, course }) => {
     return abilityMap[ability](effect);
   };
 
-  console.log(conditionDetails.map((x) => x.length));
-
   return (
     <div
       className={`race-track-skill-box-container race-track-skill-box-${rarity}`}
