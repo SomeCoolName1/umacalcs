@@ -120,19 +120,18 @@
 }
 
 .skill-overlay-digital-nerd {
-  transition: all 1s ease-in;
-  margin-right: 30%;
-  opacity: 0;
-  right: 0%;
+  animation: digitalSlide 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+  // animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+  visibility: hidden;
 }
 
 .skill-overlay-digital-nerd-true {
   position: absolute;
-  right: -75%;
+  left: 545px;
   z-index: -1;
   bottom: -10%;
-  opacity: 100;
-  transition: all 1s ease-in;
+  visibility: visible;
 
   img {
     height: 400px;
@@ -154,6 +153,17 @@
     font-weight: 900;
   }
   p {
-    font-size: 2px !important;
+    font-size: 13px;
+  }
+}
+
+@keyframes digitalSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-175px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
