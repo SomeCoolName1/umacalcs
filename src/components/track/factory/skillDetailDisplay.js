@@ -1,6 +1,7 @@
 import { abilityMap } from "../data/abilityTypes";
 import "./skillDetailDisplay.scss";
 import digitalNerd from "../../../assets/digital-nerd.png";
+const digitalInsults = ["nerd", "bozo", "dumbass"];
 
 const SkillDisplay = ({ skill, course, triggers }) => {
   if (!skill) return;
