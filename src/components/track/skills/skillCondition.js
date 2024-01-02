@@ -54,6 +54,38 @@ const competeFightCount = (course, skill) => {
 };
 const corner = (course, skill) => {
   const { corners, distance } = course;
+  let output;
+  const value = getNumber(skill);
+
+  let addCornerEnds = corners.map((x) => ({ ...x, end: x.start + x.length }));
+
+  if (skill == "corner!=0") {
+    output = ladderFill(addCornerEnds, distance);
+  } else if (value == 0) {
+    output = addCornerEnds;
+  } else {
+    output = [addCornerEnds[value - 1]];
+  }
+
+  return output;
+};
+
+const cornerRandom = (course, skill) => {
+  const { corners, distance } = course;
+  let output;
+  const value = getNumber(skill);
+
+  let addCornerEnds = corners.map((x) => ({ ...x, end: x.start + x.length }));
+
+  if (addCornerEnds.length > 4) {
+    addCornerEnds = addCornerEnds.slice(-4);
+  }
+
+  if ([addCornerEnds[value - 1]]) {
+    output = [addCornerEnds[value - 1]];
+  }
+
+  return output;
 };
 
 const courseDistance = (course, skill) => {
@@ -384,15 +416,25 @@ const rotation = (course, skill) => {
 
 const slope = (course, skill) => {
   const { slopes, distance } = course;
-  let slopeArray = [slopes];
+  let slopeArray = slopes;
+  let output;
   const value = getNumber(skill);
 
-  // for (let i =0; i< slopes.length; i++) {
+  let addSlopeEnds = slopeArray.map((x) => ({ ...x, end: x.start + x.length }));
 
-  //   s
-  // }
+  if (value == 0) {
+    output = ladderFill(addSlopeEnds, distance);
+  } else if (value == 1) {
+    let upSlopes = slopes.filter((x) => x.slope > 0);
 
-  // console.log(slopeArray);
+    output = upSlopes.map((x) => ({ ...x, end: x.start + x.length }));
+  } else if (value == 2) {
+    let downSlopes = slopes.filter((x) => x.slope < 0);
+
+    output = downSlopes.map((x) => ({ ...x, end: x.start + x.length }));
+  }
+
+  return output;
 };
 
 const straightRandom = (course, skill) => {
@@ -430,6 +472,7 @@ export const conditionMap = {
   change_order_up_middle: changeOrderUpMiddle,
   compete_fight_count: competeFightCount,
   corner: corner,
+  corner_random: cornerRandom,
   course_distance: courseDistance,
   distance_rate: distanceRate,
   distance_rate_after_random: distanceRateAfterRandom,
@@ -463,8 +506,8 @@ export const conditionMap = {
 ////all_corner_random
 ////always
 ////compete_fight_count
-//corner
-//corner_random
+////corner
+////corner_random
 ////course_distance
 ////distance_rate
 ////distance_rate_after_random
@@ -490,7 +533,7 @@ export const conditionMap = {
 ////phase_random
 ////remain_distance
 ////rotation
-//slope
+////slope
 //straight_front_type
 ////straight_random
 ////track_id
@@ -551,4 +594,29 @@ const getPhasePoints = (distance) => {
   };
 
   return phases;
+};
+
+const ladderFill = (distanceArray, distance) => {
+  let array = [];
+
+  let startPoint = 0;
+
+  for (let i = 0; i < distanceArray.length; i++) {
+    const { start, end } = distanceArray[i];
+
+    if (startPoint === start) {
+      startPoint = end;
+      if (i === distanceArray.length - 1) {
+        array.push({ start: startPoint, end: distance });
+      }
+      continue;
+    }
+
+    let ladderPoints = { start: startPoint, end: start };
+
+    startPoint = end;
+    array.push(ladderPoints);
+  }
+
+  return array;
 };
