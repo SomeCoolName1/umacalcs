@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "./courseGraph.scss";
 import { skillCheck } from "./skills/skillDecipher";
 
-const Racetrack = ({ skill }) => {
+const Racetrack = ({ skill, setTriggers }) => {
   const track = useSelector((state) => state.track);
   const [trackSpurt, setTrackSpurt] = useState(false);
   const [orderedSections, setSectionOrder] = useState(false);
@@ -20,8 +20,11 @@ const Racetrack = ({ skill }) => {
   useEffect(() => {
     if (!skill) return;
     setSkillTrigger(skillCheck(track, skill));
-    console.log("after setting skill", skillTrigger);
   }, [skill, track]);
+
+  useEffect(() => {
+    checkIfAllFalse(skillTrigger);
+  }, [skillTrigger]);
 
   const { corners, straights, slopes, distance, threshold } = track;
 
@@ -70,9 +73,9 @@ const Racetrack = ({ skill }) => {
       return a.distance[0] - b.distance[0];
     });
 
-    console.log(array, distance);
+    // console.log(array, distance);
 
-    console.log(ladderFill(array, distance));
+    // console.log(ladderFill(array, distance));
 
     setSectionOrder(array);
 
@@ -233,6 +236,15 @@ const Racetrack = ({ skill }) => {
     );
   };
 
+  //Setting the nerd
+  const checkIfAllFalse = (skillArray) => {
+    if (!skillArray) return;
+    let checker = skillArray.every((x) => x === false);
+    if (checker) {
+      setTriggers(true);
+    } else setTriggers(false);
+  };
+
   return (
     <div className="track-container">
       <h2 className="track-header">
@@ -259,16 +271,18 @@ const Racetrack = ({ skill }) => {
       <div className="track-chart-container">
         <div className="skill-overlay-container">
           {skillTrigger &&
-            skillTrigger.map((points) =>
-              points.map((x) => (
-                <div
-                  className="skill-overlay"
-                  style={{
-                    width: `${((x.end - x.start) / distance) * 100}%`,
-                    left: ` ${(x.start / distance) * 100}%`,
-                  }}
-                ></div>
-              ))
+            skillTrigger.map(
+              (points) =>
+                points &&
+                points.map((x) => (
+                  <div
+                    className="skill-overlay"
+                    style={{
+                      width: `${((x.end - x.start) / distance) * 100}%`,
+                      left: ` ${(x.start / distance) * 100}%`,
+                    }}
+                  ></div>
+                ))
             )}
         </div>
 

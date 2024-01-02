@@ -3,7 +3,6 @@
 .race-track-skill-box-container {
   width: auto;
   min-width: 550px;
-  font-size: 15px;
   background-color: App.$secondaryClr;
   display: flex;
   justify-content: center;
@@ -13,6 +12,7 @@
   margin: 0 auto;
   margin-top: 10px;
   border-radius: 7px;
+  position: relative;
 }
 
 //Gold Skill
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  font-size: 15px;
   width: 100%;
   padding: 5px;
   border-bottom: 1.5px solid black;
@@ -106,6 +106,7 @@
   width: 100%;
   justify-content: space-between;
   white-space: pre-line;
+
   p {
     font-size: 13px;
   }
@@ -115,5 +116,44 @@
   padding: 10px;
   & > * {
     padding-bottom: 10px;
+  }
+}
+
+.skill-overlay-digital-nerd {
+  transition: all 1s ease-in;
+  margin-right: 30%;
+  opacity: 0;
+  right: 0%;
+}
+
+.skill-overlay-digital-nerd-true {
+  position: absolute;
+  right: -75%;
+  z-index: -1;
+  bottom: -10%;
+  opacity: 100;
+  transition: all 1s ease-in;
+
+  img {
+    height: 400px;
+    width: auto;
+  }
+}
+
+.digital-text {
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 6%;
+  height: 20%;
+  width: 40%;
+
+  letter-spacing: 1px;
+  .digital-text-insult {
+    color: App.$debuffClr;
+    font-weight: 900;
+  }
+  p {
+    font-size: 2px !important;
   }
 }

@@ -10,6 +10,7 @@ const TrackMain = () => {
   let [skillsData, setSkills] = useState(false);
   let [selectedSkill, setSelectedSkill] = useState(false);
   let [searchShow, setShowSearch] = useState(false);
+  let [triggers, setTriggers] = useState(false);
 
   const getSkillsData = async () => {
     setSkills(await fetchSkills());
@@ -22,7 +23,7 @@ const TrackMain = () => {
   return (
     <div style={style}>
       <Coursedetails />
-      <Racetrack skill={selectedSkill} />
+      <Racetrack skill={selectedSkill} setTriggers={setTriggers} />
       {skillsData ? (
         <SkillList
           skillsList={skillsData}
@@ -30,6 +31,7 @@ const TrackMain = () => {
           selectedSkill={selectedSkill}
           setSearchShow={setShowSearch}
           searchShow={searchShow}
+          triggers={triggers}
         />
       ) : (
         <Loading />

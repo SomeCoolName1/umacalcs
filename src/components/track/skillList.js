@@ -21,6 +21,7 @@ const SkillList = ({
   selectedSkill,
   setSearchShow,
   searchShow,
+  triggers,
 }) => {
   const [filteredSkills, setFilterList] = useState(skillsList);
   const [filterType, setFilter] = useState(defaultFilter);
@@ -121,11 +122,14 @@ const SkillList = ({
       >
         <h3>Search Skill</h3>
       </div>
-      {selectedSkill ? (
-        <SkillDisplay skill={selectedSkill} course={course} />
-      ) : (
-        ""
+      {selectedSkill && (
+        <SkillDisplay
+          skill={selectedSkill}
+          course={course}
+          triggers={triggers}
+        />
       )}
+
       <div
         className={`race-track-skill-search-container search-show-${searchShow}`}
       >

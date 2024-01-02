@@ -1,8 +1,8 @@
-import { TextCleaner } from "../../CMGuide/factory/textCleaner";
 import { abilityMap } from "../data/abilityTypes";
 import "./skillDetailDisplay.scss";
+import digitalNerd from "../../../assets/digital-nerd.png";
 
-const SkillDisplay = ({ skill, course }) => {
+const SkillDisplay = ({ skill, course, triggers }) => {
   if (!skill) return;
 
   const {
@@ -69,6 +69,8 @@ const SkillDisplay = ({ skill, course }) => {
     return abilityMap[ability](effect);
   };
 
+  console.log(triggers);
+
   return (
     <div
       className={`race-track-skill-box-container race-track-skill-box-${rarity}`}
@@ -121,11 +123,22 @@ const SkillDisplay = ({ skill, course }) => {
                         : "Infinite"}
                     </p>
                   </div>
-                </div>
+                </div>{" "}
               </div>
             )
         )}
       </div>
+      {triggers && (
+        <div
+          className={`skill-overlay-digital-nerd skill-overlay-digital-nerd-${triggers}`}
+        >
+          <img src={digitalNerd} alt="digital-nerd" />
+          <div className="digital-text">
+            <p className="digital-text-comment">Skill does not trigger,</p>
+            <p className="digital-text-insult">NERD</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

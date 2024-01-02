@@ -7,7 +7,7 @@ export const skillCheck = (course, skill) => {
   let triggerPoints = [];
 
   const conditions = [condition_1, condition_2];
-  // const conditions = ["slope==2"];
+  // const conditions = ["distance_type==3"];
 
   //Seperate skill conditions
   let conditionsArray = conditions.map((skill) => breakSkillCondition(skill));
@@ -35,12 +35,9 @@ export const skillCheck = (course, skill) => {
         if (getTriggerPoints === undefined) continue;
 
         if (getTriggerPoints === false) {
-          //empty array because false statement means no distance
           groupArray = [];
           break;
         }
-
-        // groupArray = groupArray.concat(getTriggerPoints);
 
         groupArray.push(getTriggerPoints);
       }
@@ -54,7 +51,7 @@ export const skillCheck = (course, skill) => {
   );
 
   const getOverlaps = removeUndefined.map((x) => overlap(x));
-  // console.log(getOverlaps);
+  console.log(getOverlaps);
 
   return getOverlaps;
 };
@@ -71,10 +68,8 @@ const breakSkillCondition = (skill) => {
 };
 
 const overlap = (conditionGroup) => {
-  if (!conditionGroup || conditionGroup.length === 0)
-    return [{ start: 0, end: 0 }];
+  if (!conditionGroup || conditionGroup.length === 0) return false;
   let array = [];
-  console.log("origainl croupo", conditionGroup);
 
   //Case Scenario, 3 groups
   //[ [{}] , [{}] , [{}] ]
@@ -83,6 +78,8 @@ const overlap = (conditionGroup) => {
   let firstEnd;
 
   for (let i = 0; i < firstGroup.length; i++) {
+    if (!firstGroup) continue;
+
     let { start, end } = firstGroup[i];
 
     if (!firstStart) {
@@ -106,14 +103,10 @@ const overlap = (conditionGroup) => {
         let startPoint = Math.max(firstStart, currentGroup[j].start);
         let endPoint = Math.min(firstEnd, currentGroup[j].end);
 
-        console.log("----------------");
-        console.log("first", startPoint, endPoint);
-        console.log("current", currentGroup[j]);
-        console.log("----------------");
-
         if (endPoint <= startPoint) {
           firstStart = start;
           firstEnd = end;
+          array.push(false);
           continue;
         }
 
@@ -126,13 +119,6 @@ const overlap = (conditionGroup) => {
     firstStart = null;
     firstEnd = null;
   }
-  console.log(array);
 
   return array;
 };
-
-// //Get the largest value of starting points
-// let start = Math.max(...condition.map((x) => x.start));
-
-// //Get smalelst value of ending points
-// let end = Math.min(...condition.map((x) => x.end));

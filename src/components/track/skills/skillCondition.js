@@ -10,7 +10,6 @@ const distanceType = (course, skill) => {
 const allCornerRandom = (course, skill) => {
   const { corners } = course;
   const addCornerEnds = corners.map((x) => ({ ...x, end: x.start + x.length }));
-  console.log(course);
   return addCornerEnds;
 };
 
@@ -141,7 +140,7 @@ const groundType = (course, skill) => {
 
   if (surface == value) {
     return [{ start: 0, end: distance }];
-  } else return;
+  } else return false;
 };
 
 const isBasisDistance = (course, skill) => {
@@ -153,7 +152,7 @@ const isBasisDistance = (course, skill) => {
     (value == 0 && distance % 400 !== 0)
   ) {
     return [{ start: 0, end: distance }];
-  } else return;
+  } else return false;
 };
 
 const isDirtGrade = (course, skill) => {
