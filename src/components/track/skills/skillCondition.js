@@ -52,6 +52,9 @@ const competeFightCount = (course, skill) => {
     return [{ start: 0, end: getFinalStraight["start"] }];
   }
 };
+const corner = (course, skill) => {
+  const { corners, distance } = course;
+};
 
 const courseDistance = (course, skill) => {
   const { distance } = course;
@@ -426,6 +429,7 @@ export const conditionMap = {
   change_order_up_finalcorner_after: changeOrderUpFinalCornerAfter,
   change_order_up_middle: changeOrderUpMiddle,
   compete_fight_count: competeFightCount,
+  corner: corner,
   course_distance: courseDistance,
   distance_rate: distanceRate,
   distance_rate_after_random: distanceRateAfterRandom,
@@ -467,7 +471,6 @@ export const conditionMap = {
 ////distance_type <- fix
 ////down_slope_random
 //grade (idk about this)
-//ground_condition (not part of course)
 ////ground_type
 ////is_basis_distance
 ////is_dirtgrade
