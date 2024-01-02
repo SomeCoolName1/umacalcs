@@ -10,6 +10,7 @@ const distanceType = (course, skill) => {
 const allCornerRandom = (course, skill) => {
   const { corners } = course;
   const addCornerEnds = corners.map((x) => ({ ...x, end: x.start + x.length }));
+  console.log(course);
   return addCornerEnds;
 };
 

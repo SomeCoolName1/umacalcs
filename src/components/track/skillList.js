@@ -10,6 +10,7 @@ const defaultFilter = {
   rarity: [],
   condition: [],
   skill: [],
+  search: "",
 };
 
 const filters = allFilters;
@@ -36,6 +37,7 @@ const SkillList = ({
       rarity: [],
       condition: [],
       skill: [],
+      search: "",
     });
   };
 
@@ -77,14 +79,15 @@ const SkillList = ({
 
   const filterSkills = () => {
     let filter = filterType;
-    const { condition } = filter;
+    const { condition, search } = filter;
 
     let fullSkillList = skillsList;
 
     let firstFilter = conditionFilter(fullSkillList, condition);
     let secondFilter = iconFilter(firstFilter, filter);
+    let thirdFilter = searchFilter(secondFilter, search);
 
-    setFilterList(secondFilter);
+    setFilterList(thirdFilter);
   };
 
   useEffect(() => {
@@ -96,6 +99,15 @@ const SkillList = ({
 
     if (group.length === 0 || condition.every((x) => x && group.includes(x)))
       return "active";
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFilter((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -131,6 +143,16 @@ const SkillList = ({
           >
             Close
           </h3>
+        </div>
+        <div className="race-track-skill-search-box-container">
+          <input
+            type="text"
+            placeholder="Search Skill"
+            name="search"
+            autocomplete="off"
+            value={filterType.search}
+            onChange={handleChange}
+          />
         </div>
         <div className="race-track-skill-filter-container">
           {filters.map((group) => (
@@ -201,6 +223,22 @@ const conditionFilter = (list, filter) => {
       : false && skill.condition_2
       ? filter.some((x) => skill.condition_2.includes(x))
       : false
+  );
+
+  return output;
+};
+
+const searchFilter = (list, filter) => {
+  if (!filter) return list;
+
+  let lowerCase = filter.toLowerCase();
+
+  let output = list.filter(
+    (skill) =>
+      (skill.skill_name &&
+        skill.skill_name.toLowerCase().includes(lowerCase)) ||
+      (skill.skill_name_english &&
+        skill.skill_name_english.toLowerCase().includes(lowerCase))
   );
 
   return output;

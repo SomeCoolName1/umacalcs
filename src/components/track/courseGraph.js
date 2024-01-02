@@ -70,6 +70,10 @@ const Racetrack = ({ skill }) => {
       return a.distance[0] - b.distance[0];
     });
 
+    console.log(array, distance);
+
+    console.log(ladderFill(array, distance));
+
     setSectionOrder(array);
 
     // {corner.start + corner.length}m
@@ -190,11 +194,6 @@ const Racetrack = ({ skill }) => {
     if (3 == type) return "Medium 中距離";
     if (4 == type) return "Long 長距離";
     else return "Short 短距離";
-
-    // if ((1500 <= length) & (length < 1900)) return "Mile マイル";
-    // if ((1900 <= length) & (length < 2500)) return "Medium 中距離";
-    // if (2500 <= length) return "Long 長距離";
-    // else return "Short 短距離";
   };
 
   const createSlope = (slopeStart, slopeEnd, nextDis, curDis, slope) => {
@@ -466,3 +465,28 @@ const Racetrack = ({ skill }) => {
 };
 
 export default Racetrack;
+
+const ladderFill = (distanceArray, distance) => {
+  let array = [];
+
+  let startPoint = 0;
+
+  for (let i = 0; i < distanceArray.length; i++) {
+    const { start, end } = distanceArray[i];
+
+    if (startPoint === start) {
+      startPoint = end;
+      if (i === distanceArray.length - 1) {
+        array.push({ start: startPoint, end: distance });
+      }
+      continue;
+    }
+
+    let ladderPoints = { start: startPoint, end: start };
+
+    startPoint = end;
+    array.push(ladderPoints);
+  }
+
+  return array;
+};

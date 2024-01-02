@@ -64,6 +64,9 @@
   overflow-x: hidden;
   z-index: 1000;
   background-color: App.$secondaryClr;
+
+  scrollbar-color: App.$primaryClr App.$secondaryClr;
+  scrollbar-width: thin;
 }
 
 .race-track-skill-filter-header {
@@ -189,6 +192,7 @@
 }
 
 .race-track-skill-filter-button-active {
+  transition: all 0.2s ease-in;
   div {
     background-color: App.$primaryClr;
     color: white;
@@ -196,6 +200,9 @@
   }
   img {
     filter: none;
+  }
+  &:hover {
+    filter: brightness(90%);
   }
 }
 
@@ -207,5 +214,27 @@
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+.race-track-skill-search-box-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+
+  input {
+    width: 100%;
+    background-color: white;
+    border-radius: 50px;
+    height: 33px;
+    width: 100%;
+    border: 1px white solid;
+    transition: all 0.2s ease-in;
+
+    &:focus,
+    &:active {
+      border-color: App.$primaryClr;
+    }
   }
 }
