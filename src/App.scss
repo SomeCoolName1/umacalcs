@@ -28,9 +28,9 @@ $phoneSize: 600px;
   box-sizing: border-box;
   word-break: keep-all;
   font-family: "umaJPFont", sans-serif;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 .Collapsible,
@@ -191,19 +191,28 @@ span {
 
 // transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;
 
-.main-header {
-  display: inline-flex;
+.App {
   width: 100%;
+  height: 100%;
+  overflow: auto;
+}
 
-  position: sticky;
+.main-header {
+  width: 100%;
+  height: 35px;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky !important;
   top: 0;
   left: 0;
   background-color: $primaryClr;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   z-index: 1002;
+  align-items: center;
   justify-content: space-evenly;
-  cursor: pointer;
 
   .header-button {
     cursor: pointer;

@@ -10,7 +10,7 @@ import {
   Router,
   useNavigate,
 } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import CMMain from "./components/home/CMMain";
 import ScrollToTop from "./components/home/loading/scrollToTop";
 import TrackMain from "./components/track/trackmain";
@@ -19,8 +19,26 @@ export const store = configureStore({
   reducer: userSlice,
 });
 
+const WindowSize = () => {
+  const [screenSize, setScreen] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateScreen = () => {
+      setScreen(window.screen.width);
+    };
+    window.addEventListener("resize", updateScreen);
+    updateScreen();
+    return () => window.removeEventListener("resize", updateScreen);
+  }, []);
+  return screenSize;
+};
+
 const App = () => {
   const navigate = useNavigate();
+
+  let windowWidth = WindowSize();
+
+  console.log(windowWidth);
 
   return (
     <Provider store={store}>
@@ -32,7 +50,7 @@ const App = () => {
             }`}
             onClick={() => navigate("/")}
           >
-            Stat Calculations
+            {windowWidth && windowWidth > 500 ? "Stat Calculations" : "Stat"}
           </div>
           <div
             className={`CMGuide-button-container header-button ${
@@ -40,7 +58,7 @@ const App = () => {
             }`}
             onClick={() => navigate("/cm")}
           >
-            CMGuide
+            {windowWidth && windowWidth > 500 ? "CMGuide" : "CM"}
           </div>
           <div
             className={`CMGuide-button-container header-button ${
@@ -48,7 +66,7 @@ const App = () => {
             }`}
             onClick={() => navigate("/skillcheck")}
           >
-            Skill Checker
+            {windowWidth && windowWidth > 500 ? "Skill Checker" : "Skill"}
           </div>
         </div>
         <ScrollToTop />
