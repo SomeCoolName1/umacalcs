@@ -1,3 +1,32 @@
+const activateCountAll = (course, skill) => {
+  const { distance } = course;
+  return [{ start: 0, end: distance }];
+};
+
+const activateCountEndAfter = (course, skill) => {
+  const { distance } = course;
+
+  return [{ start: (2 * distance) / 3, end: distance }];
+};
+
+const activateCounterLaterHalf = (course, skill) => {
+  const { distance } = course;
+
+  return [{ start: distance / 2, end: distance }];
+};
+
+const activateCountMiddle = (course, skill) => {
+  const { distance } = course;
+
+  return [{ start: distance / 3, end: (2 * distance) / 3 }];
+};
+
+const activateCountStart = (course, skill) => {
+  const { distance } = course;
+
+  return [{ start: 0, end: distance / 3 }];
+};
+
 const distanceType = (course, skill) => {
   const { distance, distanceType } = course;
   const value = getNumber(skill);
@@ -67,7 +96,8 @@ const corner = (course, skill) => {
     output = [addCornerEnds[value - 1]];
   }
 
-  return output;
+  if (!output) return false;
+  else return output;
 };
 
 const cornerRandom = (course, skill) => {
@@ -84,8 +114,8 @@ const cornerRandom = (course, skill) => {
   if ([addCornerEnds[value - 1]]) {
     output = [addCornerEnds[value - 1]];
   }
-
-  return output;
+  if (!output) return false;
+  else return output;
 };
 
 const courseDistance = (course, skill) => {
@@ -465,6 +495,13 @@ const upSlopeRandom = (course, skill) => {
 };
 
 export const conditionMap = {
+  activate_count_all: activateCountAll,
+  activate_count_all_team: activateCountAll,
+  activate_count_end_after: activateCountEndAfter,
+  activate_count_heal: activateCountAll,
+  activate_count_later_half: activateCounterLaterHalf,
+  activate_count_middle: activateCountMiddle,
+  activate_count_start: activateCountStart,
   all_corner_random: allCornerRandom,
   always: always,
   change_order_up_end_after: changeOrderUpEndAfter,

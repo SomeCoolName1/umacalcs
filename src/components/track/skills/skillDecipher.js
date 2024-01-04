@@ -7,7 +7,7 @@ export const skillCheck = (course, skill) => {
   let triggerPoints = [];
 
   const conditions = [condition_1, condition_2];
-  // const conditions = ["distance_type==3"];
+  // const conditions = ["activate_count_start>=3"];
 
   //Seperate skill conditions
   let conditionsArray = conditions.map((skill) => breakSkillCondition(skill));
@@ -50,6 +50,8 @@ export const skillCheck = (course, skill) => {
     x.filter((y) => y !== undefined)
   );
 
+  console.log(removeUndefined);
+
   const getOverlaps = removeUndefined.map((x) => overlap(x));
 
   return getOverlaps;
@@ -69,27 +71,16 @@ const breakSkillCondition = (skill) => {
 const overlap = (conditionGroup) => {
   if (!conditionGroup || conditionGroup.length === 0) return false;
   let array = [];
-  console.log("conditionGroups", conditionGroup);
 
   //Case Scenario, 3 groups
   //[ [{}] , [{}] , [{}] ]
   let firstGroup = conditionGroup[0];
-  let firstStart; //Start:150
-  let firstEnd; //End: 200
-
-  //Scenario that does not work
-  //First Array= [{start: 100, end: 200},{start:350, end:400}]
-  //Second Array: =[{start:150, end: 300},{start:350, end: 450}]
-  //Third Array = [{start: 0, end: 1400}]
-
-  //Start 150, end: 200
-  //St
-
-  //Output = [{start:150, 200}, {start: 350,400}]
+  let firstStart;
+  let firstEnd;
 
   for (let i = 0; i < firstGroup.length; i++) {
     //If condition is false, continue
-    if (!firstGroup) continue;
+    if (!firstGroup || !firstGroup[i]) continue;
 
     let { start, end } = firstGroup[i];
 

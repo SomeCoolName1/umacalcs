@@ -3,7 +3,6 @@ import { fetchSkills } from "../CMGuide/data/fetchData";
 import Coursedetails from "./coursedetails";
 import Racetrack from "./courseGraph";
 import SkillList from "./skillList";
-import { skillCheck } from "./skills/skillDecipher";
 import Loading from "../home/loading/loading";
 
 const TrackMain = () => {
