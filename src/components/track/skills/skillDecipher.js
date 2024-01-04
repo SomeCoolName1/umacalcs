@@ -51,7 +51,6 @@ export const skillCheck = (course, skill) => {
   );
 
   const getOverlaps = removeUndefined.map((x) => overlap(x));
-  console.log(getOverlaps);
 
   return getOverlaps;
 };
@@ -70,14 +69,26 @@ const breakSkillCondition = (skill) => {
 const overlap = (conditionGroup) => {
   if (!conditionGroup || conditionGroup.length === 0) return false;
   let array = [];
+  console.log("conditionGroups", conditionGroup);
 
   //Case Scenario, 3 groups
   //[ [{}] , [{}] , [{}] ]
   let firstGroup = conditionGroup[0];
-  let firstStart;
-  let firstEnd;
+  let firstStart; //Start:150
+  let firstEnd; //End: 200
+
+  //Scenario that does not work
+  //First Array= [{start: 100, end: 200},{start:350, end:400}]
+  //Second Array: =[{start:150, end: 300},{start:350, end: 450}]
+  //Third Array = [{start: 0, end: 1400}]
+
+  //Start 150, end: 200
+  //St
+
+  //Output = [{start:150, 200}, {start: 350,400}]
 
   for (let i = 0; i < firstGroup.length; i++) {
+    //If condition is false, continue
     if (!firstGroup) continue;
 
     let { start, end } = firstGroup[i];
@@ -90,6 +101,8 @@ const overlap = (conditionGroup) => {
     }
 
     for (let h = 0; h < conditionGroup.length; h++) {
+      if (!conditionGroup[h]) continue;
+
       let currentGroup = conditionGroup[h];
 
       if (firstGroup === currentGroup) {
@@ -100,10 +113,12 @@ const overlap = (conditionGroup) => {
       }
 
       for (let j = 0; j < currentGroup.length; j++) {
+        if (!currentGroup[j]) continue;
+
         let startPoint = Math.max(firstStart, currentGroup[j].start);
         let endPoint = Math.min(firstEnd, currentGroup[j].end);
 
-        if (endPoint <= startPoint) {
+        if (endPoint < startPoint) {
           firstStart = start;
           firstEnd = end;
           array.push(false);
@@ -112,10 +127,13 @@ const overlap = (conditionGroup) => {
 
         firstStart = startPoint;
         firstEnd = endPoint;
+        array.push({ start: firstStart, end: firstEnd });
+
+        firstStart = start;
+        firstEnd = end;
       }
     }
 
-    array.push({ start: firstStart, end: firstEnd });
     firstStart = null;
     firstEnd = null;
   }

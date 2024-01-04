@@ -67,8 +67,6 @@ const corner = (course, skill) => {
     output = [addCornerEnds[value - 1]];
   }
 
-  console.log(output);
-
   return output;
 };
 

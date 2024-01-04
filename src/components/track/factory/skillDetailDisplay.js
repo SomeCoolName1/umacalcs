@@ -70,8 +70,6 @@ const SkillDisplay = ({ skill, course, triggers }) => {
     return abilityMap[ability](effect);
   };
 
-  console.log(triggers);
-
   return (
     <div
       className={`race-track-skill-box-container race-track-skill-box-${rarity}`}

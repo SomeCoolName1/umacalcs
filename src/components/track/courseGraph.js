@@ -19,10 +19,14 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   useEffect(() => {
     if (!skill) return;
-    setSkillTrigger(skillCheck(track, skill));
+    console.log(skillTrigger);
+
+    let checkSkill = skillCheck(track, skill);
+    setSkillTrigger(checkSkill);
   }, [skill, track]);
 
   useEffect(() => {
+    //For Sassy Digital state
     checkIfAllFalse(skillTrigger);
   }, [skillTrigger]);
 
@@ -271,21 +275,25 @@ const Racetrack = ({ skill, setTriggers }) => {
       <div className="track-chart-container">
         <div className="skill-overlay-container">
           {skillTrigger &&
-            skillTrigger.map(
-              (points) =>
-                points &&
-                points.map((x) => (
-                  <div
-                    className="skill-overlay"
-                    style={{
-                      width: `${((x.end - x.start) / distance) * 100}%`,
-                      left: ` ${(x.start / distance) * 100}%`,
-                    }}
-                  ></div>
-                ))
-            )}
+            skillTrigger.map((points, index) => (
+              <div
+                className="condition-group-container"
+                key={`${index}.${points}`}
+              >
+                {points &&
+                  points.map((x, i) => (
+                    <div
+                      key={`${x}.${i}`}
+                      className="skill-overlay"
+                      style={{
+                        width: `${((x.end - x.start) / distance) * 100}%`,
+                        left: ` ${(x.start / distance) * 100}%`,
+                      }}
+                    ></div>
+                  ))}
+              </div>
+            ))}
         </div>
-
         <div className="track-chart-phase-container">
           {racePhases.map((phases) => {
             return (
