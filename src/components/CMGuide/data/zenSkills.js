@@ -5,6 +5,11 @@ export const zenSkills = {
       enName: "Urara will beat you up",
       comments: "Everyone needs her",
     },
+    {
+      id: 100101,
+      enName: "Speek",
+      comments: "Everyone except runners",
+    },
   ],
   recc: [
     {
