@@ -110,7 +110,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
             <h3>Show Course</h3>
             <img
               className={`CMGuide-course-${show}`}
-              src="https://cdn.discordapp.com/attachments/924875144260882474/1176442403910070282/image.png?ex=658a91de&is=65781cde&hm=d07978d7b3c8c5428496908da2fbf19a5366659b248623da405ce2d6e80a3460&"
+              src="https://cdn.discordapp.com/attachments/924875144260882474/1189811842567114760/image.png?ex=65a8c020&is=65964b20&hm=3923926f5ed92c82b36bb5dbfe77342eb97f39daa71fbcafb6682f47c0e6852b&"
               alt="course breakdown"
             />
           </div>
