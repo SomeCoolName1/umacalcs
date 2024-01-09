@@ -1,24 +1,43 @@
 export const senkouSkills = {
   inherit: [
     {
-      id: 109901,
-      enName: "Hokko Tarumae",
-      comments: "3rd to 5th placement required",
+      id: 105101,
+      enName: "OG Nishino Flower",
+      comments: "3rd to 4th placement",
     },
     {
-      id: 106902,
-      enName: "Ballroom Chiyo",
+      id: 101001,
+      enName: "Og Taiki Shuttle",
+      comments: "3rd to 4th placement",
+    },
+    {
+      id: 107801,
+      enName: "Yamanin Zephyr",
       comments:
-        "Powerful accel but triggers late. Requires position 4-5 but seems possible when it triggers late and you're bots suck at taking top 6 positions regardless of position. Will need testing.",
+        "Has a pretty weak effect to make up for the long duration. You'd rather want Nishino and Taiki inherits",
     },
   ],
-  inheritComments: [``],
+  inheritComments: [
+    `Nishino > Taiki >>> Zephyr. Easy to trigger accels but Taikis triggers slightly earlier so there's a bit of wasted duration. You still want both though`,
+  ],
   recc: [
+    {
+      goldSkill: "プランX",
+      goldEventCards: [30020, 30133],
+      whiteEventCards: [""],
+      comments: "",
+    },
     {
       goldSkill: "鍔迫り合い",
       goldEventCards: [30130, 30093],
       whiteEventCards: [""],
       comments: "",
+    },
+    {
+      goldSkill: "意気衝天",
+      goldEventCards: [30083],
+      whiteEventCards: [""],
+      comments: "Pretty powerful skill to push you ahead of the pack",
     },
   ],
 };

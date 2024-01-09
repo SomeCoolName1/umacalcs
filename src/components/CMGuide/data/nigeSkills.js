@@ -1,14 +1,27 @@
 export const nigeSkills = {
   inherit: [
-    { id: 106801, enName: "Kitasan Black", comments: "" },
     {
-      id: 102002,
-      enName: "Alt Seuin",
-      comments: "",
+      id: 102001,
+      enName: "OG Seiun Sky",
+      comments: "YOU NEED TO BE FIRST BY THE FINAL LEG",
     },
+    {},
   ],
   inheritComments: [
-    `If you had to get one, Og Kita > Ball Seuin. You really want both considering the lack of accel options`,
+    `Outside of typical runner accels (先手必勝 and 盤石の構え), you can get these`,
   ],
-  recc: [],
+  recc: [
+    {
+      goldSkill: "コンセントレーション",
+      goldEventCards: [30021, 30062, 30149],
+      whiteEventCards: [""],
+      comments: "Important to compete for first place",
+    },
+    {
+      goldSkill: "意気衝天",
+      goldEventCards: [30083],
+      whiteEventCards: [""],
+      comments: "Pretty powerful skill to push you ahead of the pack",
+    },
+  ],
 };

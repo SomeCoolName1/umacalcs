@@ -113,7 +113,12 @@ const SkillList = ({
 
   return (
     <div className="race-track-skill-container">
-      <h2>Skill Checker</h2>
+      <h2>
+        Skill Checker{" "}
+        <p style={{ color: "red" }}>
+          - Some Skills do not display precondition
+        </p>
+      </h2>
 
       <div
         className="race-track-skill-search-button"

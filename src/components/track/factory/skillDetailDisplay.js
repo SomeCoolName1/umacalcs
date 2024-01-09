@@ -77,7 +77,7 @@ const SkillDisplay = ({ skill, course, triggers }) => {
       <div className="race-track-skill-header">
         <div className="race-track-skill-icon">
           <img
-            src={`http://gametora.com/images/umamusume/skill_icons/utx_ico_skill_${skill.icon_id}.png`}
+            src={`http://gametora.com/images/umamusume/skill_icons/utx_ico_skill_${icon_id}.png`}
             alt="skill"
           />
         </div>

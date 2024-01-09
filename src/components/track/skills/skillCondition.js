@@ -114,6 +114,7 @@ const cornerRandom = (course, skill) => {
   if ([addCornerEnds[value - 1]]) {
     output = [addCornerEnds[value - 1]];
   }
+
   if (!output) return false;
   else return output;
 };
@@ -441,7 +442,7 @@ const rotation = (course, skill) => {
 
   if (turn == value) {
     return [{ start: 0, end: distance }];
-  }
+  } else return false;
 };
 
 const slope = (course, skill) => {
@@ -464,7 +465,8 @@ const slope = (course, skill) => {
     output = downSlopes.map((x) => ({ ...x, end: x.start + x.length }));
   }
 
-  return output;
+  if (output.length === 0 || !output) return false;
+  else return output;
 };
 
 const straightRandom = (course, skill) => {

@@ -1,35 +1,33 @@
 export const sashiSkills = {
   inherit: [
     {
-      id: 100101,
-      enName: "Special Week",
-      comments: "Nice to have but not a prioarity",
-    },
-    {
-      id: 110501,
-      enName: "Neo Universe",
-      comments: "Pretty good mid-leg speed",
-    },
-    {
-      id: 106902,
-      enName: "Ballroom Chiyo",
-      comments:
-        "Powerful accel but triggers late. Requires position 4-5 but seems possible when it triggers late and you're bots suck at taking top 6 positions regardless of position. Will need testing.",
+      id: 102701,
+      enName: "Og Ryan",
+      comments: "Need to be 6th",
     },
   ],
-  inheritComments: [],
+  inheritComments: [
+    `Keep in mind about using random accel golds.`,
+    `電光石火 >> 乗り換え上手 but stack whites if you can`,
+  ],
   recc: [
+    {
+      goldSkill: "電光石火",
+      goldEventCards: [30114],
+      whiteEventCards: [""],
+      comments: `Best backline accel`,
+    },
     {
       goldSkill: "乗り換え上手",
       goldEventCards: [30012, 30054, 30142],
       whiteEventCards: [""],
-      comments: ``,
+      comments: `Keep in mind random accels`,
     },
     {
-      goldSkill: "起死回生",
-      goldEventCards: [30091],
+      goldSkill: "気骨稜稜",
+      goldEventCards: [30170],
       whiteEventCards: [""],
-      comments: ``,
+      comments: `Best backline accel`,
     },
   ],
 };

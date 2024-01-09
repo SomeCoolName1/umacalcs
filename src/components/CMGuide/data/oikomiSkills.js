@@ -1,20 +1,9 @@
 export const oikomiSkills = {
   inherit: [
     {
-      id: 100101,
-      enName: "Special Week",
-      comments: "Nice to have but not a prioarity",
-    },
-    {
-      id: 110501,
-      enName: "Neo Universe",
-      comments: "Pretty good mid-leg speed",
-    },
-    {
-      id: 106902,
-      enName: "Ballroom Chiyo",
-      comments:
-        "Powerful accel but triggers late. Requires position 4-5 but seems possible when it triggers late and you're bots suck at taking top 6 positions regardless of position. Will need testing.",
+      id: 102701,
+      enName: "Og Ryan",
+      comments: "Need to be 6th",
     },
   ],
   inheritComments: [
@@ -22,22 +11,35 @@ export const oikomiSkills = {
   ],
   recc: [
     {
-      goldSkill: "迫る影",
-      goldEventCards: [30164],
+      goldSkill: "電光石火",
+      goldEventCards: [30114],
       whiteEventCards: [""],
-      comments: "",
+      comments: `Best backline accel`,
     },
     {
       goldSkill: "抜群の切れ味",
       goldEventCards: [30128],
       whiteEventCards: [""],
-      comments: "",
+      comments: "Random Accel",
     },
     {
-      goldSkill: "起死回生",
-      goldEventCards: [30091],
+      goldSkill: "気骨稜稜",
+      goldEventCards: [30170],
       whiteEventCards: [""],
-      comments: ``,
+      comments: `Best backline accel`,
     },
   ],
 };
+
+// {
+//   goldSkill: "迫る影",
+//   goldEventCards: [30164],
+//   whiteEventCards: [""],
+//   comments: "",
+// },
+// {
+//   goldSkill: "起死回生",
+//   goldEventCards: [30091],
+//   whiteEventCards: [""],
+//   comments: ``,
+// },

@@ -7,6 +7,16 @@
   flex-direction: column;
   position: relative;
   min-height: 500px;
+
+  h2 {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    p {
+      margin-left: 10px;
+    }
+  }
 }
 
 .race-track-skill-search-button {
