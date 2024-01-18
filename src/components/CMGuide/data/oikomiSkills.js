@@ -26,7 +26,7 @@ export const oikomiSkills = {
       goldSkill: "気骨稜稜",
       goldEventCards: [30170],
       whiteEventCards: [""],
-      comments: `Best backline accel`,
+      comments: `Power skill with potential carryover speed`,
     },
   ],
 };

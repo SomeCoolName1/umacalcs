@@ -128,7 +128,6 @@ const CMMain = () => {
         skillSetData={skillSetData}
         skillsData={skillsData}
       />
-      <Loading />
     </div>
   );
 };

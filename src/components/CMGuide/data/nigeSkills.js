@@ -18,10 +18,18 @@ export const nigeSkills = {
       comments: "Important to compete for first place",
     },
     {
+      goldSkill: "逃亡者",
+      goldEventCards: [30002, 30059, 30166],
+      whiteEventCards: [""],
+      comments:
+        "Runners only accel option which isn't totally reliable but still decent",
+    },
+    {
       goldSkill: "意気衝天",
       goldEventCards: [30083],
       whiteEventCards: [""],
-      comments: "Pretty powerful skill to push you ahead of the pack",
+      comments:
+        "Pretty powerful skill to push you ahead of the pack with potential carry-over speed",
     },
   ],
 };

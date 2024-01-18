@@ -37,7 +37,8 @@ export const senkouSkills = {
       goldSkill: "意気衝天",
       goldEventCards: [30083],
       whiteEventCards: [""],
-      comments: "Pretty powerful skill to push you ahead of the pack",
+      comments:
+        "Pretty powerful skill to push you ahead of the pack with potential carry-over speed",
     },
   ],
 };
