@@ -25,13 +25,6 @@ export const zenSkills = {
       comments:
         "Everyone except runners. Should be pretty good for backliners but depends on the meta",
     },
-    {
-      goldSkill: "決意の直滑降",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      comments:
-        "It has...decent odds for gains. I wouldn't be on it though but i'll put it here.",
-    },
   ],
   inheritComments: [`Fk`],
   ///NONE RECOMMENDATIONS

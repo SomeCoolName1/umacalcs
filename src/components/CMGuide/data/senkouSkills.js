@@ -40,5 +40,12 @@ export const senkouSkills = {
       comments:
         "Pretty powerful skill to push you ahead of the pack with potential carry-over speed",
     },
+    {
+      goldSkill: "決意の直滑降",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments:
+        "It has...decent odds for gains. I wouldn't be on it though but i'll put it here.",
+    },
   ],
 };

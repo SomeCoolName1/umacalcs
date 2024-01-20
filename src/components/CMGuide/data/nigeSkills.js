@@ -31,5 +31,11 @@ export const nigeSkills = {
       comments:
         "Pretty powerful skill to push you ahead of the pack with potential carry-over speed",
     },
+    {
+      goldSkill: "再燃焼",
+      goldEventCards: [],
+      whiteEventCards: [""],
+      comments: "Insert Comment Here",
+    },
   ],
 };
