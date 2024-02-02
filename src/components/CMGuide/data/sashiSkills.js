@@ -5,6 +5,16 @@ export const sashiSkills = {
       enName: "Og Ryan",
       comments: "Need to be 6th",
     },
+    {
+      id: 105101,
+      enName: "OG Nishino Flower",
+      comments: "3rd to 4th placement",
+    },
+    {
+      id: 101001,
+      enName: "Og Taiki Shuttle",
+      comments: "3rd to 4th placement",
+    },
   ],
   inheritComments: [
     `Keep in mind about using random accel golds.`,

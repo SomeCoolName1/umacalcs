@@ -17,6 +17,14 @@ $phoneSize: 600px;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "kanji";
+  src: url(https://fonts.gstatic.com/s/atma/v2/tUcVDHNCVY7oFp6g2zLOiQ.woff2)
+    format("woff2");
+  font-style: normal;
+  unicode-range: u+0980-09FF;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +35,7 @@ $phoneSize: 600px;
   // border: 1px rgba(0, 0, 0, 0.25) solid;
   box-sizing: border-box;
   word-break: keep-all;
-  font-family: "umaJPFont", sans-serif;
+  font-family: "umaJPFont", "kanji", sans-serif;
   // &::-webkit-scrollbar {
   //   display: none;
   // }
@@ -63,6 +71,15 @@ h3 {
   color: $primaryClr;
   text-transform: uppercase;
   font-size: small;
+}
+
+h4 {
+  font-weight: 100;
+}
+
+.rec-skill-JPname,
+.track-skill-JPname {
+  font-weight: 0;
 }
 
 p,
