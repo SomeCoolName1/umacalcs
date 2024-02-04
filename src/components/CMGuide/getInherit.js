@@ -53,6 +53,7 @@ const DisplayInherit = (uma, cardRarityData, skillSetData, skillsData) => {
           eventCards={""}
           comments={uma.comments}
           uniqueUma={uma}
+          recStrategy={uma.recStrategy}
         />
       )}
     </>

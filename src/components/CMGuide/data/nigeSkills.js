@@ -37,5 +37,11 @@ export const nigeSkills = {
       whiteEventCards: [""],
       comments: "Insert Comment Here",
     },
+    {
+      goldSkill: "ロケットスタート",
+      goldEventCards: [30184],
+      whiteEventCards: [""],
+      comments: "Insert Comment Here",
+    },
   ],
 };

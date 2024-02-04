@@ -44,7 +44,6 @@ const TrackInfo = ({ info, data, supportCardsData }) => {
         <h3>{info.name}</h3>
         <p>{info.detail}</p>
       </div>
-
       {supportCards && (
         <div className="track-info-skill-container">
           <div className="track-skill-image">

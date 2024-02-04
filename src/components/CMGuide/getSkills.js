@@ -7,7 +7,8 @@ const DisplaySkill = ({ skill, data }) => {
   const [goldData, setGoldData] = useState([]);
   // const [whiteData, setWhiteData] = useState({});
 
-  const { goldSkill, goldEventCards, whiteEventCards, comments } = skill;
+  const { goldSkill, goldEventCards, whiteEventCards, comments, recStrategy } =
+    skill;
 
   const getSkills = () => {
     let gold;
@@ -60,6 +61,7 @@ const DisplaySkill = ({ skill, data }) => {
           rarity={"gold"}
           eventCards={goldEventCards}
           comments={comments}
+          recStrategy={recStrategy}
         />
       )}
       {goldData[1] && (
@@ -68,6 +70,7 @@ const DisplaySkill = ({ skill, data }) => {
           rarity={"white"}
           eventCards={goldData[1].support_card_ids}
           comments={comments}
+          recStrategy={recStrategy}
         />
       )}
     </div>

@@ -1,7 +1,14 @@
 import { useRef, useState } from "react";
 import "./skillDisplay.scss";
 
-const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
+const SkillDisplay = ({
+  skill,
+  rarity,
+  eventCards,
+  comments,
+  uniqueUma,
+  recStrategy,
+}) => {
   const [show, setShow] = useState("false");
   const skillPopup = useRef(null);
 
@@ -31,6 +38,15 @@ const SkillDisplay = ({ skill, rarity, eventCards, comments, uniqueUma }) => {
       onClick={() => setShow((prev) => !prev)}
       ref={skillPopup}
     >
+      {recStrategy && (
+        <div className={`rec-skill-details-strategy-container`}>
+          {recStrategy.map((strat) => (
+            <div className={`rec-skill-details-strategy-bubble`}>
+              <p>{strat}</p>
+            </div>
+          ))}
+        </div>
+      )}
       <div className={`rec-skill-details-container details-${show}`}>
         <div className={`rec-skill-details rec-skill-details-info`}>
           {rarity === "unique" && (

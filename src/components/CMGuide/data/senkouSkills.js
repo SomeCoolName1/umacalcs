@@ -47,5 +47,11 @@ export const senkouSkills = {
       comments:
         "It has...decent odds for gains. I wouldn't be on it though but i'll put it here.",
     },
+    {
+      goldSkill: "ロケットスタート",
+      goldEventCards: [30184],
+      whiteEventCards: [""],
+      comments: "Insert Comment Here",
+    },
   ],
 };

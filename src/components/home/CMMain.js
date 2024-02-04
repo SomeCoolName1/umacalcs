@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   fetchSkills,
   fetchCardRarityData,
@@ -15,7 +15,6 @@ import championBg from "../../assets/champions_bg.png";
 import raceCourseLogo from "../../assets/race_course_logo.png";
 import GuideTrack from "../CMGuide/guidesections/guideTrack";
 import GuideSkills from "../CMGuide/guidesections/guideSkills";
-import Loading from "./loading/loading";
 import { trackTitle, trackInfo } from "../CMGuide/data/trackData";
 
 const CMMain = () => {

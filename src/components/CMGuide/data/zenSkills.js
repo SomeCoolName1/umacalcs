@@ -16,14 +16,15 @@ export const zenSkills = {
       goldSkill: "スプリントターボ",
       goldEventCards: [30015],
       whiteEventCards: [""],
+      recStrategy: [""],
       comments: `Everyone can use this but the chance to get decent trigger points is rough`,
     },
     {
       goldSkill: "ノンストップガール",
       goldEventCards: [30031, 30127, 30151],
       whiteEventCards: [""],
-      comments:
-        "Everyone except runners. Should be pretty good for backliners but depends on the meta",
+      recStrategy: ["差し", "追込"],
+      comments: "Should be pretty good for backliners but depends on the meta",
     },
   ],
   inheritComments: [`Fk`],
