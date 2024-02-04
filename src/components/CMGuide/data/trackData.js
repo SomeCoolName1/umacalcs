@@ -13,7 +13,7 @@ export const trackInfo = [
 
 export const trackTitle = {
   name: "Champions Meeting",
-  date: "-- / 02 (dd/mm)",
+  date: "14 / 02 (dd/mm)",
   details: "阪神 芝 1400m（短距離） 右・内 冬 曇 稍重 昼",
 };
 
