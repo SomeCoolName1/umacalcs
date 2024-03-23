@@ -42,7 +42,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
     visible: { opacity: 1, y: 0 },
   };
   const contentTransition = {
-    type: "spring",
+    type: "linear",
     stiffness: 250,
     delay: 0.2,
   };
@@ -100,7 +100,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
         <div className="CMGuide-track-header-container">
           <div className="CMGuide-track-rec-stats CMGuide-track-header CMGuide-track-info">
             <h3>Recommended Stat</h3>
-            <p>1600 / 500 / 1300 / 1200 / 1200</p>
+            <p>1700 / 650 / 1300 / 1000 / 1100 </p>
           </div>
           <div
             className={`CMGuide-track-course-container CMGuide-track-header`}
@@ -110,7 +110,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
             <h3>Show Course</h3>
             <img
               className={`CMGuide-course-${show}`}
-              src="https://cdn.discordapp.com/attachments/924875144260882474/1189811842567114760/image.png?ex=65a8c020&is=65964b20&hm=3923926f5ed92c82b36bb5dbfe77342eb97f39daa71fbcafb6682f47c0e6852b&"
+              src="https://cdn.discordapp.com/attachments/924875144260882474/1221059956745437205/image.png?ex=661133b3&is=65febeb3&hm=cd8e3e8bb5cc7a53f5346a60cb0587e5ea48015f337eb67481b0f09412a591d2&"
               alt="course breakdown"
             />
           </div>

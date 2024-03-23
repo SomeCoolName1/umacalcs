@@ -39,7 +39,7 @@ const GuideSkills = ({ strategies, cardRarity, skillSetData, skillsData }) => {
     visible: { opacity: 1, y: 0 },
   };
   const contentTransition = {
-    type: "spring",
+    type: "linear",
     stiffness: 250,
     delay: 0.2,
   };

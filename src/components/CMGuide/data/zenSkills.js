@@ -11,22 +11,7 @@ export const zenSkills = {
       comments: "Everyone except runners",
     },
   ],
-  recc: [
-    {
-      goldSkill: "スプリントターボ",
-      goldEventCards: [30015],
-      whiteEventCards: [""],
-      recStrategy: [""],
-      comments: `Everyone can use this but the chance to get decent trigger points is rough`,
-    },
-    {
-      goldSkill: "ノンストップガール",
-      goldEventCards: [30031, 30127, 30151],
-      whiteEventCards: [""],
-      recStrategy: ["差し", "追込"],
-      comments: "Should be pretty good for backliners but depends on the meta",
-    },
-  ],
+  recc: [],
   inheritComments: [`Fk`],
   ///NONE RECOMMENDATIONS
   nonInherit: [],
@@ -36,6 +21,13 @@ export const zenSkills = {
       goldEventCards: [30031, 30127, 30151],
       whiteEventCards: [""],
       comments: "Great bait",
+    },
+    {
+      goldSkill: "ノンストップガール",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      recStrategy: ["差し", "追込"],
+      comments: "Should be pretty good for backliners but depends on the meta",
     },
   ],
 };
@@ -57,4 +49,10 @@ export const zenSkills = {
 //   goldEventCards: [30031, 30127, 30151],
 //   whiteEventCards: [""],
 //   comments: "Everyone except runners",
+// },
+// {
+//   goldSkill: "スプリントターボ",
+//   goldEventCards: [30015],
+//   whiteEventCards: [""],
+//   comments: `Everyone can use this but the chance to get decent trigger points is rough`,
 // },

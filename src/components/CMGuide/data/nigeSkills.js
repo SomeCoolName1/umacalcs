@@ -3,45 +3,31 @@ export const nigeSkills = {
     {
       id: 102001,
       enName: "OG Seiun Sky",
-      comments: "YOU NEED TO BE FIRST BY THE FINAL LEG",
+      comments:
+        "Be aware of 大逃げs that prevent normal runners from using this",
     },
-    {},
+    {
+      id: 105101,
+      enName: "OG Nishino Flower",
+      comments:
+        "If there is a lot of 逃げs and 大逃げs, might be worth considering to get",
+    },
   ],
   inheritComments: [
     `Outside of typical runner accels (先手必勝 and 盤石の構え), you can get these`,
   ],
   recc: [
     {
-      goldSkill: "コンセントレーション",
-      goldEventCards: [30021, 30062, 30149],
-      whiteEventCards: [""],
-      comments: "Important to compete for first place",
-    },
-    {
       goldSkill: "逃亡者",
       goldEventCards: [30002, 30059, 30166],
       whiteEventCards: [""],
-      comments:
-        "Runners only accel option which isn't totally reliable but still decent",
+      comments: "Not totally reliable but still worth considering",
     },
     {
-      goldSkill: "意気衝天",
-      goldEventCards: [30083],
+      goldSkill: "ハイボルテージ",
+      goldEventCards: [30153],
       whiteEventCards: [""],
-      comments:
-        "Pretty powerful skill to push you ahead of the pack with potential carry-over speed",
-    },
-    {
-      goldSkill: "再燃焼",
-      goldEventCards: [],
-      whiteEventCards: [""],
-      comments: "Insert Comment Here",
-    },
-    {
-      goldSkill: "ロケットスタート",
-      goldEventCards: [30184],
-      whiteEventCards: [""],
-      comments: "Insert Comment Here",
+      comments: "Best front-line accel",
     },
   ],
 };
