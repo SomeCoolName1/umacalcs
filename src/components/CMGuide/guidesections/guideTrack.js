@@ -116,7 +116,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
           </div>
           <div className="CMGuide-track-threshold CMGuide-track-info CMGuide-track-header">
             <h3>Stat Threshold</h3>
-            <p>None</p>
+            <p>パワー</p>
           </div>
         </div>
         <div className="CMGuide-track-skills-container">
