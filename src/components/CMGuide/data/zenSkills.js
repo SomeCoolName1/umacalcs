@@ -8,19 +8,31 @@ export const zenSkills = {
     {
       id: 100101,
       enName: "Speek",
-      comments: "Everyone except runners",
+      recStrategy: ["差し", "追込"],
+      comments: "",
+    },
+    {
+      id: 107601,
+      enName: "Alt Grass Wonder",
+      recStrategy: ["先行", "差し", "追込"],
+      comments:
+        "Nice recovery option that's relatively easy to trigger. Leaders will need to rely on bot distirbution though so a little less reliable for them",
+    },
+    {
+      id: 101102,
+      enName: "Alt Grass Wonder",
+      recStrategy: ["差し", "追込"],
+      comments: "Nice recovery option that's relatively easy to trigger.",
     },
   ],
-  recc: [],
-  inheritComments: [`Fk`],
-  ///NONE RECOMMENDATIONS
-  nonInherit: [],
-  nonRecc: [
+  recc: [
     {
-      goldSkill: "王手",
-      goldEventCards: [30031, 30127, 30151],
+      goldSkill: "登山家",
+      goldEventCards: [""],
       whiteEventCards: [""],
-      comments: "Great bait",
+      recStrategy: ["逃げ", "先行", "差し", "追込"],
+      comments:
+        "Decent odds for good trigger chance while being cheap, worth considering for all",
     },
     {
       goldSkill: "ノンストップガール",
@@ -28,6 +40,24 @@ export const zenSkills = {
       whiteEventCards: [""],
       recStrategy: ["差し", "追込"],
       comments: "Should be pretty good for backliners but depends on the meta",
+    },
+  ],
+  inheritComments: [],
+  ///NONE RECOMMENDATIONS
+  nonInherit: [
+    {
+      goldSkill: "登山家",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments: "",
+    },
+  ],
+  nonRecc: [
+    {
+      goldSkill: "王手",
+      goldEventCards: [30031, 30127, 30151],
+      whiteEventCards: [""],
+      comments: "Great bait",
     },
   ],
 };

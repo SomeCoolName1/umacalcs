@@ -1,29 +1,21 @@
 export const oikomiSkills = {
-  inherit: [
-    {
-      id: 102701,
-      enName: "Og Ryan",
-      comments: "Need to be 6th",
-    },
-  ],
-  inheritComments: [
-    `Same comments as betweeners. Chasers are pretty similar to betweeners here except the gold skills`,
-  ],
+  inherit: [],
+  inheritComments: [],
   recc: [
     {
-      goldSkill: "電光石火",
-      goldEventCards: [30114],
-      whiteEventCards: [""],
-      comments: `l`,
-    },
-    {
-      goldSkill: "抜群の切れ味",
-      goldEventCards: [30128],
+      goldSkill: "迫る影",
+      goldEventCards: [30164],
       whiteEventCards: [""],
       comments: "",
     },
   ],
 };
+
+// {
+//   id: 102701,
+//   enName: "Og Ryan",
+//   comments: "Need to be 6th",
+// },
 
 // {
 //   goldSkill: "迫る影",
@@ -42,4 +34,17 @@ export const oikomiSkills = {
 //   goldEventCards: [30170],
 //   whiteEventCards: [""],
 //   comments: `Power skill with potential carryover speed`,
+// },
+
+// {
+//   goldSkill: "電光石火",
+//   goldEventCards: [30114],
+//   whiteEventCards: [""],
+//   comments: `l`,
+// },
+// {
+//   goldSkill: "抜群の切れ味",
+//   goldEventCards: [30128],
+//   whiteEventCards: [""],
+//   comments: "",
 // },

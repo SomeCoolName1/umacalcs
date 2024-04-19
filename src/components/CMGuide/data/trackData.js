@@ -1,20 +1,28 @@
 export const trackInfo = [
   {
     name: "RaceTrack",
-    detail: "Hanshin Track (阪神レース場)",
-    keyWord: "阪神レース場○",
+    detail: "Kyoto Track (京都レース場)",
+    keyWord: "京都レース場○",
   },
-  { name: "Distance", detail: "1600m", keyWord: "根幹距離○" },
+  { name: "Distance", detail: "3200m", keyWord: "根幹距離○" },
   { name: "Season", detail: "Spring", keyWord: "春ウマ娘○" },
   { name: "Turn", detail: "右回り", keyWord: "右回り○" },
-  { name: "Ground", detail: "Good (良)", keyWord: "良バ場○" },
-  { name: "Weather", detail: "Sunny (晴)", keyWord: "晴れの日○" },
+  { name: "Ground", detail: "Random", keyWord: "-" },
+  { name: "Weather", detail: "Random", keyWord: "-" },
 ];
 
 export const trackTitle = {
-  name: "Champions Meeting",
-  date: "13 / 04 (dd/mm)",
-  details: "阪神 芝 1600m（マイル） 右・外 春 晴 良 昼",
+  name: "League of Heroes",
+  date: "- / 05 (dd/mm)",
+  details: "京都 芝 3200m（長距離）右・外 春 昼",
+};
+
+export const recStats = {
+  speed: 1700,
+  stamina: `1200 + 2 golds`,
+  power: 1200,
+  guts: 1000,
+  int: 1000,
 };
 
 //右回り○

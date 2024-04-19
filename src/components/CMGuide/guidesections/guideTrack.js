@@ -100,7 +100,7 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
         <div className="CMGuide-track-header-container">
           <div className="CMGuide-track-rec-stats CMGuide-track-header CMGuide-track-info">
             <h3>Recommended Stat</h3>
-            <p>1700 / 650 / 1300 / 1000 / 1100 </p>
+            <p>1700 / 1200 + 2 golds / 1200 / 1000 / 1100 </p>
           </div>
           <div
             className={`CMGuide-track-course-container CMGuide-track-header`}
@@ -110,13 +110,13 @@ const GuideTrack = ({ trackInfo, data, supportCardsData }) => {
             <h3>Show Course</h3>
             <img
               className={`CMGuide-course-${show}`}
-              src="https://cdn.discordapp.com/attachments/924875144260882474/1221059956745437205/image.png?ex=661133b3&is=65febeb3&hm=cd8e3e8bb5cc7a53f5346a60cb0587e5ea48015f337eb67481b0f09412a591d2&"
+              src="https://cdn.discordapp.com/attachments/924875144260882474/1230769973845295124/image.png?ex=663486dc&is=662211dc&hm=fcf4003256659e4b7cf4c758c6661a2b22060596792f18e3096f625d6848ef97&"
               alt="course breakdown"
             />
           </div>
           <div className="CMGuide-track-threshold CMGuide-track-info CMGuide-track-header">
             <h3>Stat Threshold</h3>
-            <p>パワー</p>
+            <p>None</p>
           </div>
         </div>
         <div className="CMGuide-track-skills-container">
