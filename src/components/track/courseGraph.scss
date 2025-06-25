@@ -101,7 +101,7 @@ $borderRadius: 7px;
 
 .section-title {
   @include App.labelContainer(50%);
-  max-width: 200px;
+  width: 200px;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;

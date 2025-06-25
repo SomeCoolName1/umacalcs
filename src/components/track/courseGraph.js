@@ -240,9 +240,10 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   //Setting the nerd
   const checkIfAllFalse = (skillArray) => {
-    console.log('skillarray', skillArray)
+
+       
     if (!skillArray) return;
-    let checker = skillArray.every((x) => x === false);
+    let checker = skillArray.every((x) => {if (x.length == 0 || x ===false ) return true});
       //If false exists, then css-true
     if (checker) {
       setTriggers(true);

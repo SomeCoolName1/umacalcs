@@ -55,10 +55,8 @@
   h3 {
     text-align: center;
     color: white;
-    text-shadow: 5px 0 App.$primaryClr, -2px 0 App.$primaryClr,
-      0 2px App.$primaryClr, 0 -2px App.$primaryClr, 5px 5px App.$primaryClr,
-      -1px -1px App.$primaryClr, 1px -1px App.$primaryClr,
-      -1px 1px App.$primaryClr;
+    text-shadow: 2px 0 App.$primaryClr, -2px 0 App.$primaryClr,
+      0 2px App.$primaryClr, 0 -2px App.$primaryClr;
   }
 }
 

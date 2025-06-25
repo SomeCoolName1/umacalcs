@@ -16,12 +16,14 @@ export const skillCheck = (course, skill) => {
   for (let i = 0; i < conditionsArray.length; i++) {
     if (!conditionsArray[i]) continue;
     const currentCondition = conditionsArray[i];
+
    
     //Iterate over any potential @s
     for (let j = 0; j < currentCondition.length; j++) {
       let conditionGroup = currentCondition[j];
       let groupArray = [];
 
+   
       //Finally iterate over the actual conditions
       for (let k = 0; k < conditionGroup.length; k++) {
         if (!conditionGroup[k]) return;
@@ -32,13 +34,14 @@ export const skillCheck = (course, skill) => {
           conditionMap[conditionType] &&
           conditionMap[conditionType](course, condition);
 
-        if (getTriggerPoints === undefined) continue;
+                if (getTriggerPoints === undefined) continue;
 
-        if (getTriggerPoints === false) {
+       
+        if (getTriggerPoints === false ) {
           break;
         }
 
-        groupArray.push(getTriggerPoints);
+         groupArray.push(getTriggerPoints);
       }
 
       triggerPoints.push(groupArray);
@@ -49,7 +52,6 @@ export const skillCheck = (course, skill) => {
     x.filter((y) => y !== undefined)
   );
 
-  console.log('remove undefined', removeUndefined)
 
   const getOverlaps = removeUndefined.map((x) => overlap(x));
 
