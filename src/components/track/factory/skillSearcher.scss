@@ -1,5 +1,6 @@
 @use "../../../App.scss";
 
+
 .skill-searcher-box-container {
   max-width: 300px;
   height: auto;
@@ -22,6 +23,15 @@
   &:hover {
     background-color: App.$drkSecondaryClr;
     transform: translateY(-5px);
+  }
+
+   @media (max-width: 1250px){
+    flex-direction: column;
+    max-width: 250px;
+    height: 100%;
+    min-height: 170px;
+   justify-content: center;
+   align-items: center;
   }
 }
 
@@ -71,7 +81,7 @@
 }
 
 .skill-searcher-icon {
-  width: 15%;
+  min-width: 15%;
 
   img {
     width: 42px;
@@ -86,6 +96,8 @@
   padding-right: 5px;
   text-align: center;
   letter-spacing: 0.3px;
+
+
 }
 
 .skill-searcher-JPName {
