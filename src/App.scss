@@ -215,12 +215,12 @@ span {
 // transition: all cubic-bezier(0.07, 0.36, 0.84, 0.73) 0.3s;
 
 .App {
-  width: 100%;
+  width: fit-content;
   height: 100%;
 }
 
 .main-header {
-  width: 100%;
+  min-width: 100%;
   height: 35px;
   position: -webkit-sticky;
   position: -moz-sticky;
