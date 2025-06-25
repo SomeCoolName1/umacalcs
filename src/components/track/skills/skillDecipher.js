@@ -52,7 +52,6 @@ export const skillCheck = (course, skill) => {
     x.filter((y) => y !== undefined)
   );
 
-
   const getOverlaps = removeUndefined.map((x) => overlap(x));
 
   return getOverlaps;

@@ -52,7 +52,9 @@ export function getMaxHP(stats) {
   const { distance } = track;
   const { staminaCI } = getCoefficients();
 
-  return 0.8 * staminaCI * stats.stamina.final + parseInt(distance);
+  let startingHP = Math.round((0.8 * staminaCI * stats.stamina.final + parseInt(distance))*100)/100
+
+  return startingHP;
 }
 
 export function hpConsumption(stats, phase, currentSpeed) {
@@ -136,7 +138,7 @@ export function umaAccel(stats, phase) {
 
 export function skillActivationRate(stats) {
   let int = stats.int.value;
-  const rate = Math.max(100 - 9000 / int, 20);
+  const rate = Math.round(Math.max(100 - 9000 / int, 20)*100) / 100;
   return rate;
 }
 
@@ -144,7 +146,7 @@ export function kakariRate(stats) {
   let int = stats.int.final;
   //Hp consumption during kakari = x1.6
   //Every 3 seconds in kakari, the uma has a 55% chance to snap out of it. Kakari ends if the uma is still affected after 12 seconds.
-  const rate = Math.pow(6.5 / Math.log10(0.1 * int + 1), 2);
+  const rate = Math.round((Math.pow(6.5 / Math.log10(0.1 * int + 1), 2))*100)/100;
   return rate;
 }
 

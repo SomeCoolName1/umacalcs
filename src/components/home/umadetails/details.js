@@ -61,7 +61,7 @@ const Details = ({ stats, setStats }) => {
       <div className="title-block-container">
         <img src={happyAyabe} alt="happy-ayabe" />
       </div>
-      <Collapsible trigger={<h1>UMA Details</h1>}>
+      <h1>UMA Details</h1>
         <div className="uma-details-container">
           <div className="uma-stats-container stats-container">
             {Object.values(stats).map((stat) => {
@@ -145,7 +145,6 @@ const Details = ({ stats, setStats }) => {
             </div>
           </div>
         </div>
-      </Collapsible>
     </div>
   );
 };

@@ -153,7 +153,8 @@ const Calculations = ({ stats, setStats }) => {
   //RACE PLOT
 
   return (
-    <Collapsible trigger={<h1>Stat Calculations</h1>}>
+    <>
+   <h1>Stat Calculations</h1>
       <div className="calculations-container">
         <PassiveSkills
           setPassiveStats={setPassivestats}
@@ -249,8 +250,7 @@ const Calculations = ({ stats, setStats }) => {
             ))}
           </div>
         </div>
-      </div>
-    </Collapsible>
+      </div></>
   );
 };
 
