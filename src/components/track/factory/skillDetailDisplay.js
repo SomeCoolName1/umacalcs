@@ -6,6 +6,8 @@ const digitalInsults = ["nerd", "bozo", "dumbass"];
 const SkillDisplay = ({ skill, course, triggers }) => {
   if (!skill) return;
 
+  console.log('triggers',triggers)
+  
   const {
     condition_1,
     condition_2,

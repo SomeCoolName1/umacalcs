@@ -14,10 +14,14 @@ export async function fetchSkills() {
   if (data) {
     return data;
   }
+
   // const res = await fetch(
-  //   // "http://" + process.env.REACT_APP_VERCEL_URL + "/skills"
+  //   "http://" + process.env.REACT_APP_VERCEL_URL + "/skills"
   //   // `https://www.tracenacademy.com/api/CondensedSkillDataInfo`
   // );
+
+
+ 
 
   // return await res.json();
 }

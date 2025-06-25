@@ -17,6 +17,7 @@ const TrackMain = () => {
 
   useEffect(() => {
     getSkillsData();
+        
   }, []);
 
   return (

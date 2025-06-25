@@ -19,8 +19,6 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   useEffect(() => {
     if (!skill) return;
-    console.log(skillTrigger);
-
     let checkSkill = skillCheck(track, skill);
     setSkillTrigger(checkSkill);
   }, [skill, track]);
@@ -242,8 +240,10 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   //Setting the nerd
   const checkIfAllFalse = (skillArray) => {
+    console.log('skillarray', skillArray)
     if (!skillArray) return;
     let checker = skillArray.every((x) => x === false);
+      //If false exists, then css-true
     if (checker) {
       setTriggers(true);
     } else setTriggers(false);

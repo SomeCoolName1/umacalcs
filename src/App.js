@@ -52,14 +52,14 @@ const App = () => {
           >
             {windowWidth && windowWidth > 500 ? "Stat Calculations" : "Stat"}
           </div>
-          <div
+          {/* <div
             className={`CMGuide-button-container header-button ${
               window.location.pathname === "/cm" ? "path-current" : ""
             }`}
             onClick={() => navigate("/cm")}
           >
             {windowWidth && windowWidth > 500 ? "CMGuide" : "CM"}
-          </div>
+          </div> */}
           <div
             className={`CMGuide-button-container header-button ${
               window.location.pathname === "/skillcheck" ? "path-current" : ""
@@ -72,7 +72,7 @@ const App = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/cm" element={<CMMain />} />
+          {/* <Route path="/cm" element={<CMMain />} /> */}
           <Route path="/skillcheck" element={<TrackMain />} />
         </Routes>
       </div>

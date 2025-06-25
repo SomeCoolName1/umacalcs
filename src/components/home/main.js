@@ -27,14 +27,14 @@ const Main = () => {
     <div className="main-container">
       <Details stats={umaStats} setStats={setUmaStats} />
       <Calculations stats={umaStats} setStats={setUmaStats} />
-      <h1>Track Details</h1>
+      {/* <h1>Track Details</h1>
       <div className="race-course-container">
         <Coursedetails />
         <Racetrack stats={umaStats} />
         <Loading />
         This is the loading screen. It's not loading anything, it's just there
         for fun
-      </div>
+      </div> */}
     </div>
   );
 };
