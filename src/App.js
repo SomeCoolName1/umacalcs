@@ -38,9 +38,7 @@ const App = () => {
 
   let windowWidth = WindowSize();
 
-  console.log(windowWidth);
-
-  return (
+   return (
     <Provider store={store}>
       <div className="App">
         <div className="main-header">
