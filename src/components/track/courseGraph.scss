@@ -274,16 +274,19 @@ $borderRadius: 7px;
 }
 
 .track-chart-section-container {
-  display: flex;
-  flex-direction: row;
-  height: 40px;
+  display: inline-block;
+  width: 100%;
   text-transform: capitalize;
-  justify-content: end;
+  vertical-align: top;
+  position: relative;
+
 
   .track-chart-section {
     display: flex;
-    position: relative;
     box-shadow: $box-shadow-sects;
+    height: 40px;
+    position: absolute;
+      
     &:hover {
       .track-chart-section-bg {
         opacity: 100%;

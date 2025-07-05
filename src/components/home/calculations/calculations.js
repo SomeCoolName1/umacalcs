@@ -1,7 +1,6 @@
 import { groundMod } from "../data/coefficients";
 import RecoverySkills from "../data/skillsrecovery";
 import SkillBox from "../factory/skillbox";
-import Collapsible from "react-collapsible";
 import PassiveSkills from "./passiveskills";
 import "./calculations.scss";
 import { useEffect, useState } from "react";

@@ -20,13 +20,14 @@ const Racetrack = ({ skill, setTriggers }) => {
   useEffect(() => {
     if (!skill) return;
     let checkSkill = skillCheck(track, skill);
+    console.log(skillTrigger)
     setSkillTrigger(checkSkill);
   }, [skill, track]);
 
   useEffect(() => {
     //For Sassy Digital state
     checkIfAllFalse(skillTrigger);
-  }, [skillTrigger]);
+     }, [skillTrigger]);
 
   const { corners, straights, slopes, distance, threshold } = track;
 
@@ -250,7 +251,7 @@ const Racetrack = ({ skill, setTriggers }) => {
     } else setTriggers(false);
   };
 
-  return (
+   return (
     <div className="track-container">
       <h2 className="track-header">
         Track Breakdown
@@ -326,7 +327,7 @@ const Racetrack = ({ skill, setTriggers }) => {
                     ((section.distance[1] - section.distance[0]) / distance) *
                     100
                   }%`,
-                  left: `${section.distance[0] / distance}`,
+                  left: `${(section.distance[0] / distance)*100}%`,
                 }}
               >
                 <div
