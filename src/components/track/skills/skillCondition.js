@@ -227,7 +227,7 @@ const isFinalCornerRandom = (course, skill) => {
 
   if (!finalCorner){
     return }
-    
+
   const { start, length } = finalCorner
 
   if (value == 1) {
@@ -449,6 +449,12 @@ const rotation = (course, skill) => {
   } else return false;
 };
 
+const season = (course,skill) => {
+  const { distance } = course;
+
+  return [{ start: 0, end: distance }];
+}
+
 const slope = (course, skill) => {
   const { slopes, distance } = course;
   let slopeArray = slopes;
@@ -540,6 +546,7 @@ export const conditionMap = {
   phase_random: phaseRandom,
   remain_distance: remainingDistance,
   rotation: rotation,
+  season:season,
   slope: slope,
   straight_random: straightRandom,
   track_id: trackId,
