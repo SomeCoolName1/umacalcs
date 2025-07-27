@@ -7,17 +7,22 @@ const racetracks = require("./data/trackinfo.json");
 const Coursedetails = () => {
   const dispatch = useDispatch();
   const [trackList, setTrackList] = useState(racetracks[10001].courses);
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
 
   const raceTrackSelect = async (e) => {
-    let selected = e.target.value;
-    setTrackList(racetracks[selected].courses);
+  const selected = e.target.value;
+  const newCourses = racetracks[selected].courses;
+  
+  setTrackList(newCourses);
+  setSelectedCourseIndex(0); // reset selection to first option
   };
 
   const raceCourseSelect = (e) => {
-    let index = e ? e.target.value : 0;
-    let getTrack = Object.values(trackList)[index];
-
-    dispatch(setTrack({ track: getTrack }));
+   const index = e ? Number(e.target.value) : 0;
+  setSelectedCourseIndex(index);
+  
+  const getTrack = Object.values(trackList)[index];
+  dispatch(setTrack({ track: getTrack }));
   };
 
   useEffect(() => {
@@ -29,6 +34,7 @@ const Coursedetails = () => {
   useEffect(() => {
     //Once a trackcourse is changed, default to first track distance
     raceCourseSelect(null);
+    
   }, [trackList]);
 
   return (
@@ -69,7 +75,8 @@ const Coursedetails = () => {
           <select
             className="course-details"
             name="course-distance"
-            onChange={(e) => raceCourseSelect(e)}
+            value={selectedCourseIndex}
+            onChange={raceCourseSelect}
           >
             {trackList
               ? Object.values(trackList).map((track, index) => (

@@ -15,12 +15,12 @@ const Racetrack = ({ skill, setTriggers }) => {
     if (!track) return;
     sortCornersStraight();
     sortSlopes();
+
   }, [track]);
 
   useEffect(() => {
     if (!skill) return;
     let checkSkill = skillCheck(track, skill);
-    console.log(skillTrigger)
     setSkillTrigger(checkSkill);
   }, [skill, track]);
 
@@ -28,6 +28,8 @@ const Racetrack = ({ skill, setTriggers }) => {
     //For Sassy Digital state
     checkIfAllFalse(skillTrigger);
      }, [skillTrigger]);
+
+  
 
   const { corners, straights, slopes, distance, threshold } = track;
 
@@ -101,7 +103,7 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   const sortSlopes = () => {
     if (slopes.length === 0) {
-      return;
+    setSlopeOrder([]);
     }
 
     let array = [...slopes];
@@ -122,77 +124,63 @@ const Racetrack = ({ skill, setTriggers }) => {
 
   //Track chart slope
   const getSlopeChart = () => {
-    let slopeArray = [];
-    let slopeStart = 50;
-    let slopeEnd = 50;
-    let currentSlope = [0, 0, 0];
-    let currentDistance = 0;
-    let nextDistance = distance;
-    let slopeHeight = [];
+  let slopeArray = [];
+  let slopeStart = 50; // Initial Y-position
+  let slopeEnd = null;
+  let currentDistance = 0; // Tracks horizontal distance covered
 
-    if (slopes.length !== 0) {
-      for (let i = 0; i < slopes.length; i++) {
-        currentSlope = Object.values(slopes[i]);
-        nextDistance = currentSlope[0]; //Start of slope
+     if (slopes.length !== 0) {
+    for (let i = 0; i < slopes.length; i++) {
+      const [slopeStartDistance, slopeLength, slopeGradient] = Object.values(slopes[i]);
 
-        //Iteration does before slope, then does the slope
-        if (currentDistance === nextDistance) break;
-
+      // Flat section before this slope begins
+      if (currentDistance < slopeStartDistance) {
         slopeArray.push(
           createSlope(
             slopeStart,
-            slopeEnd,
-            nextDistance,
+            slopeStart, // no slope here
+            slopeStartDistance,
             currentDistance,
-            currentSlope[2]
+            0
           )
         );
-
-        currentDistance = nextDistance;
-        nextDistance = currentDistance + currentSlope[1];
-
-        //Iteration for slope
-        slopeEnd -=
-          ((nextDistance - currentDistance) / 100) * (currentSlope[2] / 2500); //Adds slope/gradient
-
-        slopeHeight.push(
-          ((currentSlope[2] / 10000) * (nextDistance - currentDistance)) / 100
-        );
-
-        slopeArray.push(
-          createSlope(
-            slopeStart,
-            slopeEnd,
-            nextDistance,
-            currentDistance,
-            currentSlope[2]
-          )
-        );
-
-        slopeHeight.push(
-          (currentSlope[2] / 10000) * ((nextDistance - currentDistance) / 100)
-        );
-
-        currentDistance = nextDistance;
-
-        slopeStart = slopeEnd;
+        slopeEnd = slopeStart;
+        currentDistance = slopeStartDistance;
       }
-    }
 
-    if (currentDistance !== distance) {
-      nextDistance = distance;
+      // Sloped section
+      const slopeEndDistance = slopeStartDistance + slopeLength;
+      slopeEnd -= ((slopeLength / 100) * (slopeGradient / 2500));
+
       slopeArray.push(
         createSlope(
           slopeStart,
           slopeEnd,
-          nextDistance,
-          currentDistance,
-          currentSlope[2]
+          slopeEndDistance,
+          slopeStartDistance,
+          slopeGradient
         )
       );
-    }
 
-    return slopeArray;
+      currentDistance = slopeEndDistance;
+      slopeStart = slopeEnd;
+    }
+  }
+
+  // Final flat segment to the end of the course
+  if (currentDistance < distance) {
+    slopeArray.push(
+      createSlope(
+        slopeStart,
+        slopeStart, // flat
+        distance,
+        currentDistance,
+        0
+      )
+    );
+  }
+
+  return slopeArray;
   };
 
   const getTrackDistance = (type) => {
@@ -203,6 +191,7 @@ const Racetrack = ({ skill, setTriggers }) => {
   };
 
   const createSlope = (slopeStart, slopeEnd, nextDis, curDis, slope) => {
+
     return (
       <div
         className="track-chart-slope-section"
@@ -490,27 +479,3 @@ const Racetrack = ({ skill, setTriggers }) => {
 
 export default Racetrack;
 
-const ladderFill = (distanceArray, distance) => {
-  let array = [];
-
-  let startPoint = 0;
-
-  for (let i = 0; i < distanceArray.length; i++) {
-    const { start, end } = distanceArray[i];
-
-    if (startPoint === start) {
-      startPoint = end;
-      if (i === distanceArray.length - 1) {
-        array.push({ start: startPoint, end: distance });
-      }
-      continue;
-    }
-
-    let ladderPoints = { start: startPoint, end: start };
-
-    startPoint = end;
-    array.push(ladderPoints);
-  }
-
-  return array;
-};

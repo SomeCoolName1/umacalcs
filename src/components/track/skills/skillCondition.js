@@ -224,7 +224,11 @@ const isFinalCornerRandom = (course, skill) => {
   const value = getNumber(skill);
 
   const finalCorner = corners[corners.length - 1];
-  const { start, length } = finalCorner;
+
+  if (!finalCorner){
+    return }
+    
+  const { start, length } = finalCorner
 
   if (value == 1) {
     return [{ start: start, end: start + length }];
