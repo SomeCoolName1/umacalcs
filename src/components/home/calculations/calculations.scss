@@ -100,7 +100,7 @@
 
 .misc-container {
   padding: 10px;
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -114,7 +114,7 @@
   }
 
   & > div {
-    grid-template-columns: 0.33fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     height: min(75px,100%);
    }
 

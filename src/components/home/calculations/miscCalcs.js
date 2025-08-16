@@ -106,7 +106,6 @@ export function staminaLimitBreak(stats) {
 
     const distCoeff = getDistanceFactor(courseDist)
 
-    
 
     const targetSpeedIncrease = Math.sqrt(stamina - 1200) *0.085 * distCoeff
     

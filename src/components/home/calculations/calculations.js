@@ -249,7 +249,7 @@ const Calculations = ({ stats, setStats }) => {
         <div className="misc-container">
           <span>Note: The calculations are speculative but are close enough.</span>
           {miscList.map((misc)=> (<div className="misc-items-container">
-            <div className="misc-item-note-button">Info</div>
+            <div className="misc-item-note-button">{misc.note}</div>
             <div className="misc-legend">           
             <p>{misc.EngName}</p>
             <p>{misc.JPName}</p>   
