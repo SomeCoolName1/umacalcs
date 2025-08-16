@@ -16,6 +16,7 @@ input {
 .uma-details-container {
   padding-top: 10px;
   padding-bottom: 10px;
+
 }
 
 .uma-stats-container,
@@ -23,6 +24,10 @@ input {
   @include App.uma-stat();
   margin-bottom: 10px;
   margin-top: 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center
+
 }
 
 .uma-stats-container {

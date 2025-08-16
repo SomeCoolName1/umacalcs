@@ -1,14 +1,14 @@
-import speedWhite from "../../../assets/skillimages/speed-passive-white.png";
-import speedGold from "../../../assets/skillimages/speed-passive-gold.png";
-import speedEvolved from "../../../assets/skillimages/speed-passive-evolved.png";
-import staminaWhite from "../../../assets/skillimages/stamina-passive-white.png";
-import staminaGold from "../../../assets/skillimages/stamina-passive-gold.png";
-import staminaEvolved from "../../../assets/skillimages/stamina-passive-evolved.png";
-import staminaURA from "../../../assets/skillimages/stamina-passive-ura.png";
-import powerWhite from "../../../assets/skillimages/power-passive-white.png";
-import powerGold from "../../../assets/skillimages/power-passive-gold.png";
-import gutsWhite from "../../../assets/skillimages/guts-passive-white.png";
-import intWhite from "../../../assets/skillimages/int-passive-white.png";
+import speedWhite from "../assets/skillimages/speed-passive-white.png";
+import speedGold from "../assets/skillimages/speed-passive-gold.png";
+import speedEvolved from "../assets/skillimages/speed-passive-evolved.png";
+import staminaWhite from "../assets/skillimages/stamina-passive-white.png";
+import staminaGold from "../assets/skillimages/stamina-passive-gold.png";
+import staminaEvolved from "../assets/skillimages/stamina-passive-evolved.png";
+import staminaURA from "../assets/skillimages/stamina-passive-ura.png";
+import powerWhite from "../assets/skillimages/power-passive-white.png";
+import powerGold from "../assets/skillimages/power-passive-gold.png";
+import gutsWhite from "../assets/skillimages/guts-passive-white.png";
+import intWhite from "../assets/skillimages/int-passive-white.png";
 
 export const PassiveSkillsList = {
   "White Passive": {

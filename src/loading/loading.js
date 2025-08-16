@@ -1,5 +1,5 @@
-import loadingGif from "../../../assets/loading.gif";
-import ayabeChibi from "../../../assets/skillimages/Ayabe_Chibi.webp";
+import loadingGif from "../assets/loading.gif";
+import ayabeChibi from "../assets/skillimages/Ayabe_Chibi.webp";
 import "./loading.scss";
 
 const Loading = () => {

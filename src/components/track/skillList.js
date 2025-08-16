@@ -3,8 +3,8 @@ import SkillSearcher from "./factory/skillSearcher";
 import { useEffect, useRef, useState } from "react";
 import SkillDisplay from "./factory/skillDetailDisplay";
 import { useSelector } from "react-redux";
-import Loading from "../home/loading/loading";
-import { allFilters } from "./data/filterTypes";
+import Loading from "../../loading/loading";
+import { allFilters } from "../../game_data/filterTypes";
 
 const defaultFilter = {
   rarity: [],

@@ -1,10 +1,10 @@
-import evolvedRecovery from "../../../assets/skillimages/evolved-recovery.png";
-import goldRecovery from "../../../assets/skillimages/gold-recovery.png";
-import whiteRecovery from "../../../assets/skillimages/white-recovery.png";
-import whiteSpeed from "../../../assets/skillimages/white-speed.png";
-import uniqueSpeed from "../../../assets/skillimages/unique-speed.png";
-import whiteStamDebuff from "../../../assets/skillimages/white-stamina-debuff.png";
-import goldStamDebuff from "../../../assets/skillimages/gold-stamina-debuff.png";
+import evolvedRecovery from "../assets/skillimages/evolved-recovery.png";
+import goldRecovery from "../assets/skillimages/gold-recovery.png";
+import whiteRecovery from "../assets/skillimages/white-recovery.png";
+import whiteSpeed from "../assets/skillimages/white-speed.png";
+import uniqueSpeed from "../assets/skillimages/unique-speed.png";
+import whiteStamDebuff from "../assets/skillimages/white-stamina-debuff.png";
+import goldStamDebuff from "../assets/skillimages/gold-stamina-debuff.png";
 
 export const RecoverySkills = {
   reco095: {

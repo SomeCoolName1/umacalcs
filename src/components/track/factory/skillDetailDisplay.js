@@ -1,4 +1,4 @@
-import { abilityMap } from "../data/abilityTypes";
+import { abilityMap } from "../../../game_data/abilityTypes";
 import "./skillDetailDisplay.scss";
 import digitalNerd from "../../../assets/digital-nerd.png";
 const digitalInsults = ["nerd", "bozo", "dumbass"];

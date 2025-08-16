@@ -1,6 +1,8 @@
 import { store } from "../../../App";
-import { strategyCoefficients } from "../data/coefficients";
+import { strategyCoefficients } from "../../../game_data/coefficients";
 import { umaAccel } from "./stapowgutsint";
+
+
 
 export function getSpeedCoefficients() {
   const proficiency = store.getState().proficiency;
@@ -18,7 +20,7 @@ export function getSpeedCoefficients() {
 }
 
 export function umaBaseSpeed() {
-  const track = store.getState().track;
+  const track = store.getState().calcsTrack;
   const { distance } = track;
 
   const baseSpeed = 20 - (distance - 2000) / 1000; //[m/s]
@@ -29,6 +31,18 @@ export function umaMinSpeed(stats) {
   const minSpeed =
     0.85 * umaBaseSpeed() + Math.sqrt(200 * stats.guts.final) * 0.001; //[m/s]
   return minSpeed;
+}
+
+export function umaSlopeModifier(stats,slope) {
+  const power = stats.power.final
+
+  return (slope - (200/power)).toFixed(2)
+
+}
+
+export function downhillSpeed(slope) {
+  return (0.3 + slope/10).toFixed(2)
+  
 }
 
 export function umaTargetSpeed(stats, phase) {

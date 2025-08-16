@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setTrack } from "../../state/userSlice";
 import "./coursedetails.scss";
-const racetracks = require("./data/trackinfo.json");
+const racetracks = require("../../game_data/trackinfo.json");
 
 const Coursedetails = () => {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import {
 } from "../../../state/userSlice";
 import happyAyabe from "../../../HappyAyabe.png";
 import "./details.scss";
-import Collapsible from "react-collapsible";
+import CalCourse from "../trackdetails/calCourse";
 
 const aptitudeTypes = [
   { en: "surface", jp: "バ場適性" },
@@ -61,30 +61,10 @@ const Details = ({ stats, setStats }) => {
       <div className="title-block-container">
         <img src={happyAyabe} alt="happy-ayabe" />
       </div>
+      <h2>Select Track</h2>
+      <CalCourse/>
       <h1>UMA Details</h1>
-        <div className="uma-details-container">
-          <div className="uma-stats-container stats-container">
-            {Object.values(stats).map((stat) => {
-              return (
-                <div className="uma-stat">
-                  <label for={`uma-${stat.en}`} className="label uma-label">
-                    <span className="jp-label">{stat.jp}</span>
-                    <span className="en-label">{stat.en}</span>
-                  </label>
-                  <input
-                    className="uma-stat-aptitude"
-                    type="text"
-                    name={stat.en}
-                    value={stat.value}
-                    maxLength="4"
-                    pattern="\d*"
-                    onChange={(e) => handleStatChange(e, stat.en)}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <div className="uma-aptitude-container">
+      <div className="uma-aptitude-container">
             <div className="uma-aptitude">
               <label for="uma-strategy" className="uma-label label">
                 <span className="jp-label">作戦</span>
@@ -144,6 +124,29 @@ const Details = ({ stats, setStats }) => {
               </select>
             </div>
           </div>
+        <div className="uma-details-container">
+          <div className="uma-stats-container stats-container">
+            {Object.values(stats).map((stat) => {
+              return (
+                <div className="uma-stat">
+                  <label for={`uma-${stat.en}`} className="label uma-label">
+                    <span className="jp-label">{stat.jp}</span>
+                    <span className="en-label">{stat.en}</span>
+                  </label>
+                  <input
+                    className="uma-stat-aptitude"
+                    type="text"
+                    name={stat.en}
+                    value={stat.value}
+                    maxLength="4"
+                    pattern="\d*"
+                    onChange={(e) => handleStatChange(e, stat.en)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          
         </div>
     </div>
   );

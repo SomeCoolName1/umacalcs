@@ -7,12 +7,33 @@ import {
   strategyCoefficients,
   surfaceProf,
   strategyProf,
-} from "../components/home/data/coefficients";
+} from "../game_data/coefficients";
 
 let initialState = {
   uma: {
     umaStrategy: "runner",
     umaMotivation: 1.0,
+  },
+  calcsTrack: {
+    raceTrackId: 10001,
+    name: "芝1200m",
+    calcsDistance: 1200,
+    distanceType: 1,
+    surface: 1,
+    turn: 1,
+    courseSetStatus: [],
+    laneMax: 13500,
+    finishTimeMin: 67.5,
+    finishTimeMax: 71,
+    corners: [
+      { start: 400, length: 275 },
+      { start: 675, length: 259 },
+    ],
+    straights: [
+      { start: 0, end: 400 },
+      { start: 934, end: 1200 },
+    ],
+    slopes: [],
   },
   track: {
     raceTrackId: 10001,
@@ -64,6 +85,12 @@ const authSlice = createSlice({
     setGround: (state, action) => {
       state.groundType = action.payload.ground;
     },
+    setCalcsTrack: (state, action) => {
+      state.calcsTrack = action.payload.track;
+    },
+    setCalcsDistance: (state, action) => {
+      state.calcsDistance = action.payload.distance;
+    },
     setProfSurface: (state, action) => {
       let proficiency = action.payload.surface;
       state.proficiency.profSurface = surfaceProf[proficiency];
@@ -83,6 +110,8 @@ export const {
   setTrack,
   setStrategy,
   setDistance,
+  setCalcsDistance,
+  setCalcsTrack,
   setGround,
   setMotivation,
   setProfSurface,

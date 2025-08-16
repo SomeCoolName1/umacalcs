@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchSkills } from "../CMGuide/data/fetchData";
+import { fetchSkills } from "../../game_data/fetchAllData";
 import Coursedetails from "./coursedetails";
 import Racetrack from "./courseGraph";
 import SkillList from "./skillList";
-import Loading from "../home/loading/loading";
+import Loading from "../../loading/loading";
 
 const TrackMain = () => {
   let [skillsData, setSkills] = useState(false);

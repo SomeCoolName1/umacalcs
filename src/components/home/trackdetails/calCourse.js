@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setGround, setTrack } from "../../../state/userSlice";
-import "./coursedetails.scss";
-const racetracks = require("../data/trackinfo.json");
+import { setCalcsTrack,setGround } from "../../../state/userSlice";
+import "./calCourse.scss";
+const racetracks = require("../../../game_data/trackinfo.json");
 
-const Coursedetails = () => {
+const CalCourse = () => {
   const dispatch = useDispatch();
   const [trackList, setTrackList] = useState(racetracks[10001].courses);
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
 
   const raceTrackSelect = async (e) => {
-    let selected = e.target.value;
-    setTrackList(racetracks[selected].courses);
+  const selected = e.target.value;
+  const newCourses = racetracks[selected].courses;
+  
+  setTrackList(newCourses);
+  setSelectedCourseIndex(0); // reset selection to first option
   };
 
   const raceCourseSelect = (e) => {
-    let index = e ? e.target.value : 0;
-    let getTrack = Object.values(trackList)[index];
-
-    dispatch(setTrack({ track: getTrack }));
+   const index = e ? Number(e.target.value) : 0;
+  setSelectedCourseIndex(index);
+  
+  const getTrack = Object.values(trackList)[index];
+  dispatch(setCalcsTrack({ track: getTrack }));
   };
 
   const groundSelect = (e) => {
@@ -27,7 +32,7 @@ const Coursedetails = () => {
   useEffect(() => {
     //Set Track on load
     //Sapporo 1200 Turf default
-    dispatch(setTrack({ track: Object.values(racetracks[10001])[1][10101] }));
+    dispatch(setCalcsTrack({ track: Object.values(racetracks[10001])[1][10101] }));
   }, []);
 
   useEffect(() => {
@@ -38,6 +43,7 @@ const Coursedetails = () => {
   return (
     <>
       <div className="course-details-container">
+        
         <div className="course-racetrack-container race-type">
           <label for="course-racetrack" className="uma-label label">
             <span className="jp-label">レース場</span>
@@ -69,10 +75,11 @@ const Coursedetails = () => {
             <span className="jp-label">コース</span>
             <span className="en-label">Course</span>
           </label>
-          <select
+           <select
             className="course-details"
             name="course-distance"
-            onChange={(e) => raceCourseSelect(e)}
+            value={selectedCourseIndex}
+            onChange={raceCourseSelect}
           >
             {trackList
               ? Object.values(trackList).map((track, index) => (
@@ -105,16 +112,4 @@ const Coursedetails = () => {
   );
 };
 
-export default Coursedetails;
-
-//API COLLECT COURSES
-// const trackCourseSelect = async (e) => {
-//   const res = await fetch(`https://www.tracenacademy.com/api/RaceCourseSet`, {
-//     method: "GET",
-//   });
-//   const data = await res.json();
-
-//   let filter = data.filter((track) => track.raceTrackId == e.target.value);
-//   console.log(filter);
-//   setTrackList(filter);
-// };
+export default CalCourse;

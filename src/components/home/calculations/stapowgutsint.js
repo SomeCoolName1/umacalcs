@@ -1,7 +1,7 @@
 import { store } from "../../../App";
-import RecoverySkills from "../data/skillsrecovery";
+import RecoverySkills from "../../../game_data/skillsrecovery";
 const { useSelector } = require("react-redux");
-const { strategyCoefficients, groundMod } = require("../data/coefficients");
+const { strategyCoefficients, groundMod } = require("../../../game_data/coefficients");
 
 export function getCoefficients() {
   const umaStratMot = store.getState().uma;
@@ -14,6 +14,7 @@ export function getCoefficients() {
 
   return { accelCI: accelCI, staminaCI: staminaCI };
 }
+
 
 export function umaBaseSpeed() {
   const track = store.getState().track;
@@ -152,7 +153,7 @@ export function kakariRate(stats) {
 
 export function downHillMode(stats) {
   let int = stats.int.final;
-  const downhillModechance = int * 0.04; //'% per second' with exit chance of 20% per second
-  const speedIncrease = 0.3; //+SlopePer/10
-  const reducedHpConsumption = 60;
+
+  return int * 0.04
+
 }

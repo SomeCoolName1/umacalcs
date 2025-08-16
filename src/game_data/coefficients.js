@@ -222,6 +222,14 @@ const phaseCoefficient = [
   },
 ];
 
+//For conserve power/release
+const strategyDistCoeff = {"runner":{"1": 1,"2":1,"3": 1, "4": 1 }, 
+"leader": {"1": 0.7,"2":0.8,"3": 0.9, "4": 0.9 },
+"betweener":{"1": 0.75,"2":0.7,"3": 0.875, "4": 1 }, 
+"chaser": {"1": 0.7,"2":0.75,"3": 0.86, "4": 0.9 }
+
+}
+
 module.exports = {
   surfaceProf: surfaceProf,
   distanceProf: distanceProf,
@@ -229,4 +237,5 @@ module.exports = {
   strategyCoefficients: strategyCoefficients,
   moodCoefficients: moodCoefficients,
   groundMod: groundMod,
+  strategyDistCoeff:strategyDistCoeff
 };

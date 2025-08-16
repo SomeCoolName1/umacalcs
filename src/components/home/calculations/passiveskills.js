@@ -1,4 +1,4 @@
-import PassiveSkillsList from "../data/skillspassive";
+import PassiveSkillsList from "../../../game_data/skillspassive";
 import SkillBox from "../factory/skillbox";
 import { useState } from "react";
 import "./passiveskills.scss";
