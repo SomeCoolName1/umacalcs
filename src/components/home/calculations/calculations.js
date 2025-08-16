@@ -23,6 +23,8 @@ const Calculations = ({ stats, setStats }) => {
   const proficiency = useSelector((state) => state.proficiency);
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
+  const [activeNote, setActiveNote] = useState(null); //Misc Notes
+
 
   //Passives
   const [passiveStats, setPassivestats] = useState({
@@ -80,8 +82,12 @@ const Calculations = ({ stats, setStats }) => {
   // //FinalStat is Adjusted Stat + green (skill modifier)
 
   // //Thresholds after motivation, pre greens
-  const leadCompNote = "Guts-dependent. 逃げ/大逃げ will compete with each other from 150m to 6/24ths of the race when conditions are met. It is force ended at 9/24ths of the race regardless of duration. Hp Consumption in this mode is increased by 1.4x/3.6x(かかり) for にげ and 3.5x/7.7x(かかり) for 大逃げ"
-  const leadComp = {EngName: "Lead Competition", JPName: "位置取り争い", output: [{name:"Target Speed", output:`+= ${leadCompetition(stats).targetSpeed} m/s`}, {name:"Duration", output:`${leadCompetition(stats).duration} s`}], note:leadCompNote}
+ const leadCompNote = `Guts-dependent.
+逃げ/大逃げ will compete with each other from 150m to 6/24ths of the race when conditions are met.
+It is force ended at 9/24ths of the race regardless of duration.
+Hp Consumption in this mode is increased by 1.4x/3.6x(かかり) for にげ and 3.5x/7.7x(かかり) for 大逃げ`;
+
+const leadComp = {EngName: "Lead Competition", JPName: "位置取り争い", output: [{name:"Target Speed", output:`+= ${leadCompetition(stats).targetSpeed} m/s`}, {name:"Duration", output:`${leadCompetition(stats).duration} s`}], note:leadCompNote}
 
   const compFightNote = "Guts-dependent. On the final straight, conditions are met when multiple umas are close to each other. Competition cannot occur when HP is less than 15%, and will end if HP is <5%"
   const compFight = {EngName: "Compete Fight", JPName: "追い比べ", output: [{name:"Target Speed", output:`+= ${competeFight(stats).targetSpeed} m/s`}, {name:"Accel", output:`${competeFight(stats).accel} m/s2`}], note:compFightNote}
@@ -95,7 +101,7 @@ const Calculations = ({ stats, setStats }) => {
   const stamKeepNote = "Wisdom-dependent. The uma will try to conserve a random amount of Hp that is 1.035x-1.04xx the required HP amount to finish the race. Every 2 seconds, she performs a wisdom check to enter stamina keep mode. In this mode, competition mode does not trigger."
   const stamKeep = {EngName: "Stamina Keep", JPName: "持久力温存", output: [{name:"Stamina Keep Chance", output:`${staminaKeep(stats)} %`}], note:stamKeepNote}
   
-  const stamLimBreakNote = "Stamina-dependent and must have >1200 stamina. The uma will gain additional speed upon reaching max spurt speed, lasting till the end of the race"
+  const stamLimBreakNote = "Stamina-dependent and must have >1200 stamina. Has an effect on >2101 tracks. The uma will gain additional speed upon reaching max spurt speed, lasting till the end of the race"
   const stamLimBreak = {EngName: "Stamina Limit Break", JPName: "スタミナ勝負", output: [{name:"Target Speed", output:`+= ${staminaLimitBreak(stats)} m/s`}], note:stamLimBreakNote}
   
   const miscList = [leadComp,compFight,consPower,competeBfSpurt,stamKeep,stamLimBreak]
@@ -248,19 +254,30 @@ const Calculations = ({ stats, setStats }) => {
         </div>
         <div className="misc-container">
           <span>Note: The calculations are speculative but are close enough.</span>
-          {miscList.map((misc)=> (<div className="misc-items-container">
-            <div className="misc-item-note-button">{misc.note}</div>
+          {miscList.map((misc,idx)=> (<div className="misc-items-container" key={idx}>
+            <div className="misc-item-note-container"><button className="misc-item-note-button" onClick={() => setActiveNote(misc.note)}>Info</button>
+                {activeNote && (
+        <div className="misc-note-popup" onClick={() => setActiveNote(null)}>
+          <div className="misc-note-popup-content">
+            <p>{activeNote}</p>
+            <button onClick={() => setActiveNote(null)}>Close</button>
+          </div>
+        </div>
+      )}      
+            </div>
             <div className="misc-legend">           
             <p>{misc.EngName}</p>
             <p>{misc.JPName}</p>   
           </div>
           <div className="misc-items-output">
           
-            {misc.output.map((numbers) => (
-              <div className="misc-output"><p>{numbers.name}: {numbers.output}</p>
+            {misc.output.map((numbers,i) => (
+              <div className="misc-output" key={i}><p>{numbers.name}: {numbers.output}</p>
              </div>
+             
             ))}  </div>
-          </div>))}        
+          </div>))}
+         
         </div>
     
       </div>
