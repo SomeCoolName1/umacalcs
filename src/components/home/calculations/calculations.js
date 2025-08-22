@@ -16,7 +16,14 @@ import {
   umaAccel,
   downHillMode,
 } from "./stapowgutsint";
-import { competeBeforeSpurt, competeFight, conservePower, leadCompetition, staminaKeep, staminaLimitBreak } from "./miscCalcs";
+import {
+  competeBeforeSpurt,
+  competeFight,
+  conservePower,
+  leadCompetition,
+  staminaKeep,
+  staminaLimitBreak,
+} from "./miscCalcs";
 
 const Calculations = ({ stats, setStats }) => {
   const track = useSelector((state) => state.calcsTrack);
@@ -24,7 +31,6 @@ const Calculations = ({ stats, setStats }) => {
   const groundType = useSelector((state) => state.groundType);
   const umaStratMot = useSelector((state) => state.uma);
   const [activeNote, setActiveNote] = useState(null); //Misc Notes
-
 
   //Passives
   const [passiveStats, setPassivestats] = useState({
@@ -82,29 +88,101 @@ const Calculations = ({ stats, setStats }) => {
   // //FinalStat is Adjusted Stat + green (skill modifier)
 
   // //Thresholds after motivation, pre greens
- const leadCompNote = `Guts-dependent.
+  const leadCompNote = `Guts-dependent.
 逃げ/大逃げ will compete with each other from 150m to 6/24ths of the race when conditions are met.
 It is force ended at 9/24ths of the race regardless of duration.
 Hp Consumption in this mode is increased by 1.4x/3.6x(かかり) for にげ and 3.5x/7.7x(かかり) for 大逃げ`;
 
-const leadComp = {EngName: "Lead Competition", JPName: "位置取り争い", output: [{name:"Target Speed", output:`+= ${leadCompetition(stats).targetSpeed} m/s`}, {name:"Duration", output:`${leadCompetition(stats).duration} s`}], note:leadCompNote}
+  const leadComp = {
+    EngName: "Lead Competition",
+    JPName: "位置取り争い",
+    output: [
+      {
+        name: "Target Speed",
+        output: `+= ${leadCompetition(stats).targetSpeed} m/s`,
+      },
+      { name: "Duration", output: `${leadCompetition(stats).duration} s` },
+    ],
+    note: leadCompNote,
+  };
 
-  const compFightNote = "Guts-dependent. On the final straight, conditions are met when multiple umas are close to each other. Competition cannot occur when HP is less than 15%, and will end if HP is <5%"
-  const compFight = {EngName: "Compete Fight", JPName: "追い比べ", output: [{name:"Target Speed", output:`+= ${competeFight(stats).targetSpeed} m/s`}, {name:"Accel", output:`${competeFight(stats).accel} m/s2`}], note:compFightNote}
+  const compFightNote =
+    "Guts-dependent. On the final straight, conditions are met when multiple umas are close to each other. Competition cannot occur when HP is less than 15%, and will end if HP is <5%";
+  const compFight = {
+    stats: ["Guts"],
+    EngName: "Compete Fight",
+    JPName: "追い比べ",
+    output: [
+      {
+        name: "Target Speed",
+        output: `+= ${competeFight(stats).targetSpeed} m/s`,
+      },
+      { name: "Accel", output: `${competeFight(stats).accel} m/s2` },
+    ],
+    note: compFightNote,
+  };
 
-  const consPowerNote = "Power-dependent and must have >1200 power. Every few seconsd, uma checks state to increase/decrease conserved power. Modes that increase are Pace down and Normal Mode. Modes that decrease are Lead Competition and Kakari."
-  const consPower = {EngName: "Conserve Power / Release", JPName: "足を貯める / 脚色十分", output: [{name:"Accel", output:`${conservePower(stats)} m/s2`}], note:consPowerNote}
-  
-  const competeSpurtNote = "Power and Guts dependent. Competing before the spurt between 11/24ths to 15/24ths of the race. Uma checks if she's too far from first place or other umas are nearby to enter competition mode."
-  const competeBfSpurt = {EngName: "Compete Before Spurt", JPName: "位置取り調整", output: [{name:"Target Speed", output:`+= ${competeBeforeSpurt(stats).targetSpeed} m/s`},{name:"Stamina Consumption", output:`${competeBeforeSpurt(stats).stamConsumption} hp/s`}], note:competeSpurtNote}
-  
-  const stamKeepNote = "Wisdom-dependent. The uma will try to conserve a random amount of Hp that is 1.035x-1.04xx the required HP amount to finish the race. Every 2 seconds, she performs a wisdom check to enter stamina keep mode. In this mode, competition mode does not trigger."
-  const stamKeep = {EngName: "Stamina Keep", JPName: "持久力温存", output: [{name:"Stamina Keep Chance", output:`${staminaKeep(stats)} %`}], note:stamKeepNote}
-  
-  const stamLimBreakNote = "Stamina-dependent and must have >1200 stamina. Has an effect on >2101 tracks. The uma will gain additional speed upon reaching max spurt speed, lasting till the end of the race"
-  const stamLimBreak = {EngName: "Stamina Limit Break", JPName: "スタミナ勝負", output: [{name:"Target Speed", output:`+= ${staminaLimitBreak(stats)} m/s`}], note:stamLimBreakNote}
-  
-  const miscList = [leadComp,compFight,consPower,competeBfSpurt,stamKeep,stamLimBreak]
+  const consPowerNote =
+    "Power-dependent and must have >1200 power. Every few seconsd, uma checks state to increase/decrease conserved power. Modes that increase are Pace down and Normal Mode. Modes that decrease are Lead Competition and Kakari.";
+  const consPower = {
+    stats: ["Power"],
+    EngName: "Conserve Power / Release",
+    JPName: "足を貯める / 脚色十分",
+    output: [{ name: "Accel", output: `${conservePower(stats)} m/s2` }],
+    note: consPowerNote,
+  };
+
+  const competeSpurtNote =
+    "Power and Guts dependent. Competing before the spurt between 11/24ths to 15/24ths of the race. Uma checks if she's too far from first place or other umas are nearby to enter competition mode.";
+  const competeBfSpurt = {
+    stats: ["Power", "Guts"],
+    EngName: "Compete Before Spurt",
+    JPName: "位置取り調整",
+    output: [
+      {
+        name: "Target Speed",
+        output: `+= ${competeBeforeSpurt(stats).targetSpeed} m/s`,
+      },
+      {
+        name: "Stamina Consumption",
+        output: `${competeBeforeSpurt(stats).stamConsumption} hp/s`,
+      },
+    ],
+    note: competeSpurtNote,
+  };
+
+  const stamKeepNote =
+    "Wisdom-dependent. The uma will try to conserve a random amount of Hp that is 1.035x-1.04xx the required HP amount to finish the race. Every 2 seconds, she performs a wisdom check to enter stamina keep mode. In this mode, competition mode does not trigger.";
+  const stamKeep = {
+    stats: ["Wisdom"],
+    EngName: "Stamina Keep",
+    JPName: "持久力温存",
+    output: [
+      { name: "Stamina Keep Chance", output: `${staminaKeep(stats)} %` },
+    ],
+    note: stamKeepNote,
+  };
+
+  const stamLimBreakNote =
+    "Stamina-dependent and must have >1200 stamina. Has an effect on >2101 tracks. The uma will gain additional speed upon reaching max spurt speed, lasting till the end of the race";
+  const stamLimBreak = {
+    stats: ["Stamina"],
+    EngName: "Stamina Limit Break",
+    JPName: "スタミナ勝負",
+    output: [
+      { name: "Target Speed", output: `+= ${staminaLimitBreak(stats)} m/s` },
+    ],
+    note: stamLimBreakNote,
+  };
+
+  const miscList = [
+    leadComp,
+    compFight,
+    consPower,
+    competeBfSpurt,
+    stamKeep,
+    stamLimBreak,
+  ];
 
   const adjustStats = () => {
     let baseStats = { ...stats };
@@ -253,39 +331,56 @@ const leadComp = {EngName: "Lead Competition", JPName: "位置取り争い", out
           <span>DownHill Mode Chance: {downHillMode(stats).toFixed(2)}%</span>
         </div>
         <div className="misc-container">
-          <span>Note: The calculations are speculative but are close enough.</span>
-          {miscList.map((misc,idx)=> (<div className="misc-items-container" key={idx}>
-            <div className="misc-item-note-container"><button className="misc-item-note-button" onClick={() => setActiveNote(misc.note)}>Info</button>
+          <span>
+            Note: The calculations are speculative but are close enough.
+          </span>
+          {miscList.map((misc, idx) => (
+          <div className="misc-items-container" key={idx}>
+              <div className="misc-item-note-container">
+                <button
+                  className="misc-item-note-button"
+                  onClick={() => setActiveNote(misc.note)}
+                >
+                  Info
+                </button>
                 {activeNote && (
-        <div className="misc-note-popup" onClick={() => setActiveNote(null)}>
-          <div className="misc-note-popup-content">
-            <p>{activeNote}</p>
-            <button onClick={() => setActiveNote(null)}>Close</button>
-          </div>
-        </div>
-      )}      
+                  <div
+                    className="misc-note-popup"
+                    onClick={() => setActiveNote(null)}
+                  >
+                    <div className="misc-note-popup-content">
+                      <p>{activeNote}</p>
+                      <button onClick={() => setActiveNote(null)}>Close</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="misc-stat-factors-container">
+                {misc.stats?.map((stat) => (
+                  <div key={stat}>{stat}</div>
+                ))}
+              </div>
+              <div className="misc-legend">
+                <p>{misc.EngName}</p>
+                <p>{misc.JPName}</p>
+              </div>
+              <div className="misc-items-output">
+                {misc.output.map((numbers, i) => (
+                  <div className="misc-output" key={i}>
+                    <p>
+                      {numbers.name}: {numbers.output}
+                    </p>
+                  </div>
+                ))}{" "}
+              </div>
             </div>
-            <div className="misc-legend">           
-            <p>{misc.EngName}</p>
-            <p>{misc.JPName}</p>   
-          </div>
-          <div className="misc-items-output">
-          
-            {misc.output.map((numbers,i) => (
-              <div className="misc-output" key={i}><p>{numbers.name}: {numbers.output}</p>
-             </div>
-             
-            ))}  </div>
-          </div>))}
-         
+          ))}
         </div>
-    
       </div>
     </>
   );
 };
 
 export default Calculations;
-
 
 //Lead competition: Lead competition occurs for 逃げ/大逃げ. Note that stamina consumpion is increased significantly

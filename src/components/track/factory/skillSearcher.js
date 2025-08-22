@@ -1,13 +1,11 @@
 import "./skillSearcher.scss";
 
 const SkillSearcher = ({ skills, image, setSelectedSkill, setSearchShow }) => {
-  let { skill_name, skill_name_english, icon_id } = skills;
+  let { skillName, iconId } = skills;
 
-  const rarity = icon_id.toString().slice(4);
+  const rarity = iconId.toString().slice(4);
 
-  skill_name_english = textCleaner(skill_name_english);
-
-  const onSkillOnClick = () => {
+   const onSkillOnClick = () => {
     setSelectedSkill(skills);
     setSearchShow(false);
   };
@@ -21,11 +19,8 @@ const SkillSearcher = ({ skills, image, setSelectedSkill, setSearchShow }) => {
         <img src={image} alt="skill" />
       </div>
       <div className="skill-searcher-name-container">
-        <div className="skill-searcher-JPName">{skill_name}</div>
-        <div className="skill-searcher-ENName">
-          {skill_name_english ? skill_name_english : "No Translation"}
+        <div className="skill-searcher-JPName">{skillName}</div>
         </div>
-      </div>
     </div>
   );
 };

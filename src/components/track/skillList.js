@@ -187,7 +187,7 @@ const SkillList = ({
             filteredSkills.map((skill) => (
               <SkillSearcher
                 skills={skill}
-                image={images[`icon_skill_${skill.icon_id}.png`]}
+                image={images[`icon_skill_${skill.iconId}.png`]}
                 setSelectedSkill={setSelectedSkill}
                 setSearchShow={setSearchShow}
               />
@@ -209,15 +209,15 @@ const iconFilter = (list, filter) => {
     //If inherited skills was selected, seperate condition
     //Extract the 9 and then filter
     rarity = rarity.filter((x) => x !== 9);
-    array = array.filter((x) => x.skill_id.toString()[0] == 9);
+    array = array.filter((x) => x.skillId.toString()[0] == 9);
   }
 
   if (skill.length !== 0) {
-    array = array.filter((x) => skill.includes(x.icon_id));
+    array = array.filter((x) => skill.includes(x.iconId));
   }
 
   if (rarity.length !== 0) {
-    array = array.filter((x) => rarity.includes(x.icon_id % 10));
+    array = array.filter((x) => rarity.includes(x.iconId % 10));
   }
 
   return array;
@@ -227,10 +227,10 @@ const conditionFilter = (list, filter) => {
   if (filter.length === 0) return list;
 
   let output = list.filter((skill) =>
-    skill.condition_1
-      ? filter.some((x) => skill.condition_1.includes(x))
-      : false && skill.condition_2
-      ? filter.some((x) => skill.condition_2.includes(x))
+    skill.condition1
+      ? filter.some((x) => skill.condition1.includes(x))
+      : false && skill.condition2
+      ? filter.some((x) => skill.condition2.includes(x))
       : false
   );
 
@@ -244,10 +244,8 @@ const searchFilter = (list, filter) => {
 
   let output = list.filter(
     (skill) =>
-      (skill.skill_name &&
-        skill.skill_name.toLowerCase().includes(lowerCase)) ||
-      (skill.skill_name_english &&
-        skill.skill_name_english.toLowerCase().includes(lowerCase))
+      (skill.skillName &&
+        skill.skillName.toLowerCase().includes(lowerCase)) 
   );
 
   return output;

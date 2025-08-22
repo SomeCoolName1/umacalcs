@@ -5,7 +5,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function fetchSkills() {
   const { data, error } = await supabase
-    .from("vw_condensed_skill_data_info")
+    .from("condensed_skill_data_info")
     .select();
 
   if (error) {

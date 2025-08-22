@@ -3,10 +3,10 @@ import { conditionMap } from "./skillCondition";
 export const skillCheck = (course, skill) => {
   if (!skill) return;
 
-  const { condition_1, condition_2 } = skill;
+  const { condition1, condition2 } = skill;
   let triggerPoints = [];
 
-  const conditions = [condition_1, condition_2];
+  const conditions = [condition1, condition2];
   // const conditions = ["activate_count_start>=3"];
 
   console.log(conditions)

@@ -8,55 +8,54 @@ const SkillDisplay = ({ skill, course, triggers }) => {
 
  
   const {
-    condition_1,
-    condition_2,
-    skill_name,
-    skill_name_english,
-    ability_type_1_1,
-    ability_type_1_2,
-    ability_type_1_3,
-    ability_type_2_1,
-    ability_type_2_2,
-    ability_type_2_3,
-    float_ability_value_1_1,
-    float_ability_value_1_2,
-    float_ability_value_1_3,
-    float_ability_value_2_1,
-    float_ability_value_2_2,
-    float_ability_value_2_3,
-    float_ability_time_1,
-    float_ability_time_2,
-    icon_id,
+    condition1,
+    condition2,
+    skillName,
+    abilityType11,
+    abilityType12,
+    abilityType13,
+    abilityType21,
+    abilityType22,
+    abilityType23,
+    floatAbilityValue11,
+    floatAbilityValue12,
+    floatAbilityValue13,
+    floatAbilityValue21,
+    floatAbilityValue22,
+    floatAbilityValue23,
+    floatAbilityTime1,
+    floatAbilityTime2,
+    iconId,
   } = skill;
 
   const { distance } = course;
 
   let firstAbilityArray = [
-    { ability: ability_type_1_1, effect: float_ability_value_1_1 },
-    { ability: ability_type_1_2, effect: float_ability_value_1_2 },
-    { ability: ability_type_1_3, effect: float_ability_value_1_3 },
+    { ability: abilityType11, effect: floatAbilityValue11 },
+    { ability: abilityType12, effect: floatAbilityValue12 },
+    { ability: abilityType13, effect: floatAbilityValue13 },
   ].filter((x) => parseInt(x.ability) !== 0);
 
   let secondAbilityArray = [
-    { ability: ability_type_2_1, effect: float_ability_value_2_1 },
-    { ability: ability_type_2_2, effect: float_ability_value_2_2 },
-    { ability: ability_type_2_3, effect: float_ability_value_2_3 },
+    { ability: abilityType21, effect: floatAbilityValue21 },
+    { ability: abilityType22, effect: floatAbilityValue22 },
+    { ability: abilityType23, effect: floatAbilityValue23 },
   ].filter((x) => parseInt(x.ability) !== 0);
 
   let conditionDetails = [
     {
-      condition: condition_1,
+      condition: condition1,
       abilityArray: firstAbilityArray,
-      duration: float_ability_time_1,
+      duration: floatAbilityTime1,
     },
     {
-      condition: condition_2,
+      condition: condition2,
       abilityArray: secondAbilityArray,
-      duration: float_ability_time_2,
+      duration: floatAbilityTime2,
     },
   ];
 
-  const rarity = icon_id.toString().slice(4);
+  const rarity = iconId.toString().slice(4);
 
   const newLineCondition = (text) => {
     const replaceAnd = text.replace(/&/g, "\n&");
@@ -78,13 +77,13 @@ const SkillDisplay = ({ skill, course, triggers }) => {
       <div className="race-track-skill-header">
         <div className="race-track-skill-icon">
           <img
-            src={`http://gametora.com/images/umamusume/skill_icons/utx_ico_skill_${icon_id}.png`}
+            src={`http://gametora.com/images/umamusume/skill_icons/utx_ico_skill_${iconId}.png`}
             alt="skill"
           />
         </div>
         <div className="race-track-skill-name-container">
-          <div className="race-track-skill-JPname">{skill_name}</div>
-          <div className="race-track-skill-ENname">{skill_name_english}</div>
+          <div className="race-track-skill-JPname">{skillName}</div>
+         
         </div>
       </div>
       <div className="race-track-details-container">
